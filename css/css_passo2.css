@@ -1,0 +1,40 @@
+.passo1{
+    background-color: #dfb1e6;
+    cursor: pointer;
+    box-shadow: 3px 3px rgb(0, 0, 0, 0.21) !important;
+}
+
+.passo1:hover{
+    background-color: #770089;
+}
+
+.passo2{
+    background-color: #770089;
+    cursor: pointer;
+    box-shadow: 3px 3px rgb(0, 0, 0, 0.21) !important;
+}
+
+
+.passo3{
+    background-color: #d37ae0;
+    cursor: pointer;
+    box-shadow: 3px 3px rgb(0, 0, 0, 0.21) !important;
+}
+
+.passo3:hover{
+    background-color: #770089;
+}
+
+.btn-add{
+    background-color: #770089 !important;
+    color: white !important;
+    border-radius: 8px;
+    border: none;
+    width: min(45vw, 250px) !important;
+    height: 35px !important;
+}
+
+.btn-add:hover{
+    background-color: #b25abf !important;
+    
+}

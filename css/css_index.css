@@ -1,0 +1,132 @@
+*{ 
+    /*Fonte utilizada no site*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*Cor de fundo utilizada na tela*/
+body{
+    background-color: #ededed;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+/* Estilização do elemento com classe .eventosR */
+.eventosR{
+    font-size: min(4vw, 24px);
+    font-weight: bold;
+    color: #000;
+}
+
+/* Estilização da barra de eventos */
+.barraE{
+    margin-top: 20px;
+    background-color: #dccce0;
+    border-radius: 13px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    overflow:auto; 
+}
+
+/* Estilização do elemento de evento */
+.evento{
+    width: 150px;
+    height: 100px;
+    border-radius: 9px;
+    margin-left: 35px;
+    border: solid 3px;
+    border-color: #770089;
+    cursor: pointer;
+}
+
+/* Estilização do elemento de evento no hover */
+.evento:hover {
+    border: 5px solid #b25abf;
+    transition-duration: all 0.4s;
+}
+
+/* Estilização do elemento com ID "slogan" */
+#slogan{
+    font-weight: bold;
+    font-size: min(5vw, 45px);
+    color: #770089;
+}
+
+/* Definindo a estilização do elemento com ID "sobre"*/
+#sobre{
+    color: #000;
+    font-weight: bold;
+    font-size: min(2vw, 18px);
+}
+
+/* Definindo a estilização do elemento com ID "fotosIniciais"*/
+#fotosIniciais{
+    border-radius: 10px;
+    border: solid 3px;
+    border-color: #770089;
+}
+
+
+/* INICIO FOOTER */
+#instagram{
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+#instagram:hover{
+    color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+#sobreN{
+    font-size: min(3vh, 20px);
+}
+
+#sobreNozes{
+    color: #000 !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#sobreNozes:hover{
+    color: #b25abf !important;
+    transition-duration: all 0.4s;
+}
+
+/* Definindo a estilização do elemento com ID "from"*/
+#from{
+    width: min(50vw, 150px);
+}
+
+/* Definindo a estilização do elemento com ID "baixar"*/
+#baixar{
+    width: min(50vw, 130px);
+}
+
+/* Definindo a estilização do elemento com ID "app"*/
+#app{
+    font-size: min(3vh, 11px);
+    font-weight: bold;
+    color: #000;
+}
+/* FIM FOOTER */
+
+/* Definindo a estilização do html scrollbar*/
+html ::-webkit-scrollbar {
+    height: 14px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #770089;
+}
+
+html ::-webkit-scrollbar-track {
+    background: #ededed;
+}

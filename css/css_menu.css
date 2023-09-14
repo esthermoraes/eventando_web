@@ -1,0 +1,694 @@
+/* Colocando a fonte e a cor em toda a tela html*/
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ededed !important
+}
+
+/* Definindo a estilização do elemento com ID "Cabecalho"*/
+#Cabecalho {
+    background-color: #bedef2;
+}
+
+/* Definindo a altura e largura da logo"*/
+#logo {
+    width: 350px;
+    position: relative;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+/* Definindo a estilização do elemento com ID "divLogoP"*/
+#divLogoP {
+    height: 85px;
+    overflow: visible;
+}
+
+/* Definindo a estilização do elemento com ID "divBuscar"*/
+.divBuscar {
+    position: relative;
+    transform: translate(-0%, - 50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Definindo a estilização do elemento com ID "buscar"*/
+.buscar {
+    background-color: #ededed;
+    height: 15px;
+    padding: 15px;
+    border: 2px solid #b25abf;
+    border-radius: 40px;
+    width: 100%;
+}
+
+.buscar:focus {
+    outline: none !important;
+}
+
+.pesquisa {
+    position: absolute;
+    right: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 20px;
+    border: none;
+    color: #000000;
+}
+
+/* Definindo a estilização do elemento com ID "Criar"*/
+.criar {
+    border: solid 3px;
+    border-color: #770089;
+    border-radius: 40px;
+    background-color: #b25abf;
+    text-align: center;
+    height: 33px;
+    width: 170px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.short-criar {
+    font-size: 14px;
+    width: 34px;
+}
+
+#logo {
+    z-index: 2
+}
+
+/*mediaquery responsividade do header*/
+
+@media screen and (max-width: 600px) {
+    .short-criar {
+        display: block !important;
+    }
+
+    .criar {
+        display: none;
+    }
+  
+    .divLogoP{
+        position: absolute;
+        width: 100%;
+    }
+
+    .short-criar {
+        position: absolute;
+        left: 85%;
+        top:2%;
+    }
+    
+    .divBtn{
+        position: absolute;
+        left: -170%;
+        top:90%;
+    }
+
+    .divBuscar {                                    
+        position: absolute;
+        top: 65px;
+        left: 0px;
+        height: 11%;
+        width: 110% !important;
+        background: #bedef2;
+        padding: 20px;
+        margin-top: 4px;
+    }
+
+    .short-pesquisa {
+        padding: 0px 15px;
+    }
+
+    #EventosR{
+        position: absolute !important;
+        left: -2%;
+        top: 17%;
+        height: 20% !important;
+        align-items: center !important;
+    }
+
+    .barraE{
+        position: absolute;
+        width: 90%;
+        overflow: none;
+        border: solid 3px #b25abf;
+    }
+
+    .evento {
+        display: none;
+    }
+
+    #eventoAparece{
+        display: block !important;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 9px;
+    }
+
+    #seta{
+        position: relative;
+        display: block !important;
+    }
+
+    #seta:hover{
+        color:#b25abf;
+    }
+
+    #MyEventos {
+        font-size: 30px !important;
+        position: absolute;
+        top: 32rem !important;
+        left: -2% !important;
+    }
+    
+    #barraMyE {
+        position: absolute;
+        top: 42rem;
+        left: -2%;
+        width: 37rem !important;
+        height: 30rem !important;
+        /* height: 40rem !important; */
+        display: block;
+        align-items: center !important;
+        overflow: auto;
+        overflow-x: hidden;
+        /* overflow-y: hidden; */
+        white-space: nowrap
+    }
+
+    .barraMyE {
+        position: absolute;
+        top: 150%;
+        left: -2%;
+        height: 20%;
+        display: block;
+    }
+
+    .evento1{
+        display: none;
+    }
+    
+    .eventoAparece1{
+        display: block !important;
+        position: relative;
+        /* width: 150% !important;
+        height: 150% !important; */
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 9px;
+        border: solid 2px #770089;;
+        left: -1%;
+        top: 8% !important;
+        /* left: -6%;
+        top: -8%; */
+    }
+
+    .eventoAparece1:hover {
+        border: 6px solid #770089;
+        transition-duration: all 0.4s;
+    }
+    
+    .moment{
+        display: none;
+    }
+
+    footer{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 798px) {
+
+    .criar {
+        display: block !important;
+    }
+
+    .short-criar {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 798px) and (max-width: 1199px) {
+  
+    .divLogoP{
+        position: absolute;
+        width: 90%;
+    }
+
+    .criar {
+        position: absolute;
+        left: 65%;
+        top: 2.5%;
+    }
+    
+    .divBtn{
+        position: absolute;
+        left: 70%;
+        top: 20%;
+    }
+
+    .divBuscar {
+        position: absolute;
+        top: 60px;
+        left: 0px;
+        height: 15%;
+        width: 100%;
+        background: #bedef2;
+        padding: 20px;
+        margin-top: 1%;
+    }
+
+    .short-pesquisa {
+        padding: 0px 15px;
+    }
+
+    #EventosR{
+        position: absolute !important;
+        left: 0%;
+        top: 24%;
+        height: 20% !important;
+        align-items: center !important;
+    }
+
+    #MyEventos {
+        font-size: 34px !important;
+        position: absolute;
+        top: 37rem !important;
+        left: 0% !important;
+    }
+    
+    #barraMyE {
+        position: absolute;
+        top: 48rem;
+        left: 0%;
+        width: 75rem !important;
+        height: 30rem !important;
+        display: block;
+    }
+
+    .barraMyE {
+        position: absolute;
+        top: 150%;
+        left: 0%;
+        height: 20%;
+        display: block;
+    }
+
+    .moment{
+        display: none;
+    }
+
+    footer{
+        position: absolute;
+        top: 105%;
+    }
+
+    #insta{
+        font-size: 15px !important;
+    }
+
+    #from{
+        position: relative;
+        left: 200% !important;
+        width: 10rem !important;
+        height: 5rem !important;
+    }
+
+    #app{
+        position: relative;
+        left: 450%;
+        font-size: 8px !important;
+        top: 0% !important;
+    }
+
+    #baixar{
+        position: relative;
+        left: 450%;
+        width: 10rem !important;
+        height: 4rem !important;
+        top: 0% !important;
+    }
+}
+/*final mediaquery>*/
+
+.css-selector {
+    background: linear-gradient(22deg, #69d006, #dd8448, #ae17d0);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 3s ease infinite;
+    -moz-animation: AnimationName 3s ease infinite;
+    animation: AnimationName 3s ease infinite;
+}
+
+.navbar-toggler-icon {
+    width:4rem; 
+    height: 4rem;
+}
+
+.xis{
+    position: relative;
+    right: 2rem;
+}
+
+.btn{
+    border: none;
+    background-color:transparent;
+    width:5rem; 
+    height: 5rem;
+    top: -4.5%;
+    position: relative;
+    left: -30% !important;
+}
+
+.btn:hover{
+    border: none;
+    background-color:transparent ;
+    width:5rem; 
+    height: 5rem;
+    top: -4.5%;
+    position: relative;
+}
+
+.option{
+    width: 7rem;  
+}
+
+.sidenav{
+    width: fit-content;
+}
+
+.tamanhoLogo{
+    width: 30rem;
+}
+.logot{
+    height: fit-content;
+}
+
+.modal-header{
+    width: 100%;
+    height: fit-content;
+}
+.modal-footer {
+    width: 100%;
+    border: none;
+    background-color:#e0e0e0;
+}
+
+#sair:hover {
+    color: rgb(255, 255, 255);
+}
+
+.modal-header{
+    background-color: #bedef2;
+    
+}
+
+.logo{
+  background-color: #bedef2;
+}
+
+li{
+    margin-top: 4rem;
+}
+
+li:hover{
+    margin-top: 4rem;;
+    color:#770089;
+}
+
+.list-group-item{
+    width: 100%;
+    background-color:#e0e0e0;
+}
+
+.overlay {
+    display: none; /* Esconde a camada de sobreposição por padrão */
+    position: fixed; /* Permanece fixo na tela */
+    z-index: 1; /* Define uma ordem de camada acima dos outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(212, 212, 212, 0.5); /* Define uma cor de fundo semitransparente */
+    backdrop-filter: blur(5px); /* Aplica o efeito de desfoque */
+  }
+/* Estilização do modal */
+
+.modal-body{
+    background-color:#e0e0e0;
+    font-size:1.5rem;
+  }
+  
+#sair{
+    width: 100%;
+    padding-left: 2%; 
+  }
+/* Estilização do ícone de seta para a direita */
+
+svg.bi.bi-box-arrow-right{
+    width: 10%;
+}
+
+svg{
+    padding-right:5%;
+}
+
+/* Estilização do item "sair" na lista */
+
+li#sair.list-group-item.d-flex.d-inline-flex{
+    border-left:none;
+    border-bottom:none;
+    border-right :none;
+}
+
+li#sair.list-group-item.d-flex.d-inline-flex:hover{ 
+    color:rgb(255, 255, 255);
+    background-color: rgba(255, 0, 0, 0.658);
+}
+/* Animação de entrada do modal */
+
+.modal-content {
+    animation-name: modal-animacao;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    transform-origin: left center;
+}   
+    
+@keyframes modal-animacao {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+/* Estilização dos links */
+
+a {
+    color: #000000;
+}
+
+/* Definindo a estilização do elemento com ID "EventosR*/
+.EventosR {
+    font-weight: bold;
+    font-size: 25px;
+    color: #424242;
+    margin-top: 80px;
+}
+
+/* Definindo a estilização do elemento com ID "barraE"*/
+.barraE {
+    margin-top: 20px;
+    background-color: #dccce0;
+    border-radius: 13px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+}
+
+/* Definindo a estilização do elemento com ID "evento"*/
+.evento {
+    width: 150px;
+    height: 100px;
+    border-radius: 9px;
+    margin-left: 35px;
+    border: solid 2px;
+    border-color: #770089;
+    cursor: pointer;
+}
+
+.evento:hover {
+    border: 6px solid #770089;
+    transition-duration: all 0.4s;
+}
+
+#eventoAparece{
+    display: none;
+}
+
+/* Definindo a estilização do elemento com ID "MyEventos"*/
+#MyEventos {
+    font-weight: bold;
+    font-size: 50px;
+    color: #770089;
+}
+
+#MyEventos>label {
+    font-size: 34px;
+}
+
+/* Definindo a estilização do elemento com ID "barraMyE"*/
+#barraMyE {
+    margin-top: 4px;
+    background-color: #dccce0;
+    border-radius: 13px;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap; /* Adicionado */
+    justify-content: center;
+    padding: 36px 26px;
+}
+
+.teste{
+    margin-left: 10px !important;
+}
+
+.teste > div{
+    min-width: 100px;
+}
+
+.evento1 {
+    width: 150px;
+    height: 100px;
+    border-radius: 9px;
+    /* margin-left: 35px; */
+    border: solid 2px;
+    border-color: #770089;
+    cursor: pointer;
+}
+
+.evento1:hover {
+    border: 6px solid #770089;
+    transition-duration: all 0.4s;
+}
+
+.eventoAparece1{
+    display: none;
+}
+
+/* Definindo a estilização do elemento com ID "EventosM" */
+#EventosM {
+    font-weight: bold;
+    font-size: 32px;
+    color: #770089;
+}
+
+/* Definindo a estilização do elemento com ID "container" */
+.container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Estlizando a cor de fundo do elemento com id "active "*/
+.active {
+    background-color: #ededed;
+}
+
+.carousel .item {
+    height: 90% !important;
+    width: 90% !important;
+    border-radius: 3px;
+    border: 3px solid #770089 !important; 
+}
+
+.item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 90%;   
+}
+
+/* Definindo a estilização do elemento com ID "slogan"*/
+#slogan{
+    font-weight: bold;
+    font-size: 45px;
+    color: #770089;
+}
+
+/* Definindo a estilização do elemento com ID "sobre"*/
+#sobre{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Definindo a estilização do elemento com ID "fotosIniciais"*/
+#fotosIniciais{
+    border-radius: 10px;
+    border: solid 3px;
+    border-color: #770089;
+}
+
+/* Definindo a estilização do elemento com ID "insta"*/
+#insta{
+    font-size: 20px;
+}
+
+/* Definindo a estilização do elemento com ID "instagram"*/
+#instagram{
+    color: black !important;
+    font-weight: bold;
+}
+
+#instagram:hover{
+    color: #b25abf !important;
+    transition-duration: all 0.4s;
+}
+
+/* Definindo a estilização do elemento com ID "from"*/
+#from{
+    width: 150px;
+    height: 80px;
+}
+
+/* Definindo a estilização do elemento com class "store*/
+.store{
+    width: 30px;
+    height: 50px;
+}
+
+/* Definindo a estilização do elemento com ID "baixar"*/
+#baixar{
+    width: 130px;
+    height: 50px;
+}
+
+/* Definindo a estilização do elemento com ID "app"*/
+#app{
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Definindo a estilização do html scrollbar*/
+html ::-webkit-scrollbar {
+    height: 14px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #770089;
+}
+
+html ::-webkit-scrollbar-track {
+    background: #ededed;
+}

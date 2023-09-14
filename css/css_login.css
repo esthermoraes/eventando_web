@@ -1,0 +1,294 @@
+/* Colocando a estilização em toda a tela html*/
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: #bedef2 !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Definindo a estilização do elemento com ID "btn"*/
+.btn {
+    top: 2%;
+    left: 1%;
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    height: 40px;
+    width: 120px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    background-color: #bedef2;
+}
+
+.btn:hover {
+    color: #b25abf !important;
+    transition-duration: all 0.4s !important;
+}
+
+/* Definindo a estilização do elemento com ID "divLogo"*/
+#divLogo {
+    align-items: center;
+    top: 15%;
+    left: 10%;
+}
+
+/* Essa parte  estiliza um elemento div com o ID "divForm", criando um contêiner de formulário  defininindo suas características,
+dimensões definidas e uma posição relativa com um deslocamento específico para cima, para a direita e para a esquerda em relação 
+ao seu elemento pai. O layout flexível é usado para centralizar os elementos filho vertical e horizontalmente no contêiner do formulário.*/
+#divMain {
+    width: 100%;
+    align-items: center;
+    height: 650px;
+    justify-content: center;
+    background-color: #f2e9f4;
+    border-radius: 9px;
+    box-shadow: 16px 16px rgb(126, 126, 126, 0.13);
+}
+ /* Estilização para telas menores que 767px de largura */
+@media (max-width: 767px)
+{
+    #divMain{
+        height: 100%;
+        margin-bottom: 20px;
+    }
+
+    #direita{
+        margin-bottom: 10px;
+    }
+
+    #formulario2{
+        height: auto !important;
+    }
+}
+/* Estilização do botão no menu de login */
+#menu-login button {
+    color: #000;
+    background-color: #f2e9f4;
+    border: 0px;
+    font-size: 20;
+    text-align: center;
+    font-weight: 600;
+    padding: 14px;
+}
+/* Estilização do botão no menu de login */
+
+#login:hover {
+    color: #770089;
+}
+/* Estilização do botão "cadastro" no menu de login */
+
+#cadastro:hover {
+    color: #37008a;
+}
+/* Estilização do botão ativo no menu de login */
+
+#menu-login .active {
+    border-bottom: 3px solid #99d6fc;
+}
+
+/* Definindo a estilização do elemento com ID "emEmail"*/
+#emEmail {
+    color: #424242;
+    border: #770089 solid 1px;
+    border-radius: 8px;
+}
+
+/* Definindo a estilização do elemento com ID "pwdSenha"*/
+#pwdSenha {
+    color: #424242;
+    border: #770089 solid 1px;
+    border-radius: 8px;
+}
+
+#txt_ckb {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Definindo a estilização do elemento com ID "recuperacao"*/
+#recuperacao {
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    float: right;
+}
+
+#recuperacao:hover {
+    color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+#entrar:hover {
+    background-color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+/* Definindo a estilização do elemento button*/
+.botao {
+    width: 100%;
+    cursor: pointer;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #fff;
+    background-color: #770089;
+    text-align: center;
+    height: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Estilização do botão "Entrar com Google" */
+#buttonG span {
+    color: #770089 !important;
+    font-weight: 600;
+}
+
+#buttonG .nsm7Bb-HzV7m-LgbsSe {
+    border: 2px #770089 solid;
+}
+
+#buttonG {
+    margin-top: 20px;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#emEmail3 {
+    color: #424242;
+    border: #770089 solid 1px;
+    border-radius: 8px;
+}
+
+#enviar {
+    background-color: #770089;
+}
+
+#enviar:hover {
+    background-color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+.loginR {
+    background: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.loginR:hover {
+    color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+#login2 {
+    color: #424242;
+    top: 15px;
+    left: 40px;
+    height: 10%;
+    width: 15%;
+    background-color: #f2e9f4;
+    border: 0px;
+    font-size: 20;
+    text-align: center;
+}
+
+#login2:hover {
+    color: #770089;
+}
+
+#cadastro2 {
+    color: #424242;
+    top: 15px;
+    left: 160px;
+    height: 10%;
+    width: 23%;
+    background-color: #f2e9f4;
+    border-bottom: 3px solid #37008a;
+    border-top: #f2e9f4;
+    border-left: #f2e9f4;
+    border-right: #f2e9f4;
+    border-radius: 0px;
+    font-size: 20;
+    text-align: center;
+}
+
+/* Definindo a estilização do elemento com ID "formulario2"*/
+#formulario2 {
+    height: 82%;
+}
+
+#txtNome {
+    border: #37008a solid 1px;
+    border-radius: 8px;
+}
+
+#date {
+    font-family: 'Montserrat', sans-serif;
+    color: #424242;
+    border: #37008a solid 1px;
+    border-radius: 8px;
+}
+
+#sltEstado {
+    border: #37008a solid 1px;
+    color: #424242;
+    border-radius: 8px;
+}
+
+#telTelefone {
+    color: #424242;
+    border: #37008a solid 1px;
+    border-radius: 8px;
+}
+
+/* Definindo a estilização do elemento com ID "emEmail"*/
+#emEmail2 {
+    color: #424242;
+    border: #37008a solid 1px;
+    border-radius: 8px;
+}
+
+/* Definindo a estilização dos elementos com ID definido*/
+#pwdSenha2 {
+    color: #424242;
+    border: #37008a solid 1px;
+    border-radius: 8px;
+}
+
+#pwdConfSenha {
+    color: #424242;
+    border: #37008a solid 1px;
+    border-radius: 8px;
+}
+
+#cadastrar {
+    background-color: #37008a;
+    margin-bottom: 16px;
+}
+
+#cadastrar:hover {
+    background-color: #5d1cc1;
+    transition-duration: all 0.4s;
+}
+
+#formulario3 input {
+    margin: 24px 0px;
+}
+
+/* Definindo a estilização do html scrollbar*/
+html ::-webkit-scrollbar {
+    height: 14px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #770089;
+}
+
+html ::-webkit-scrollbar-track {
+    background: #ededed;
+}

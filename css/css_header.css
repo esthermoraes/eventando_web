@@ -1,0 +1,140 @@
+*{ 
+    /*Fonte utilizada no site*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+nav{
+    background-color: #bedef2;
+    height: 80px;
+}
+
+header{
+    background-color: #bedef2;
+    height: 80px;
+}
+
+.logo-header{
+    min-width: 200px;
+}
+
+@media (max-width: 376px){
+    .logo-header{
+        margin-left: 85px!important;
+    }
+}
+
+@media (max-width: 426px){
+    .logo-header{
+        margin-left: 95px!important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logo-header{
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-header{
+        margin-top: 0px;
+    }
+    .div-img{
+        padding-top: 10px;
+    }
+}
+
+/* Estilização do input dentro do header */
+.form-pesquisar{
+    width: 400px;
+}
+
+nav input, header input{
+    width: min(45vw, 700px);
+    height: 30px;
+    border-radius: 8px !important;
+    border: #b25abf 2px solid !important;
+}
+
+nav input:hover, header input:hover{
+    border: #b25abf 3px solid !important;
+}
+
+/* Estilização do input de tipo 'search' */
+input[type='search']{
+    padding-left: 10px;
+}
+
+/* Estilização do botão de pesquisa */
+.div-pesquisar{
+    margin-left: 45px;
+}
+
+.btn-pesquisar{
+    background-color: transparent;
+    color: #000;
+    border: 1px solid rgb(162, 189, 206);
+    border-radius: 4px;
+    height: 45px;
+    width: 50px!important;
+}
+
+.btn-pesquisar:hover{
+    color: #b25abf;
+}
+
+.btn-collapse{
+    width: 60px;
+}
+
+@media(min-width: 1024px){
+    .teste-3{
+        align-items: center;
+    }
+}
+
+/* Estilização do botão de criar evento */
+.btn-criar-evento{
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    width: 180px;
+    font-size: min(4vw, 18px);
+}
+
+/* Estilização do botão de criar evento no hover */
+.btn-criar-evento:hover{
+    color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+.btn-criar-evento:active{
+    color: #b25abf !important;
+    border: none !important;
+}
+
+/* Estilização do botão de login */
+.btn-login{
+    font-size: min(4vw, 18px);
+    width: 115px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Estilização do botão de login no hover */
+.btn-login:hover{
+    color: #b25abf;
+    transition-duration: all 0.4s;
+}
+
+/* Estilização do botão de login quando pressionado */
+.btn-login:active{
+    color: #b25abf !important;
+    border: none !important;
+}
