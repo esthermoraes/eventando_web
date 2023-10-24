@@ -1,8 +1,8 @@
 <?php
     // Abre uma conexao com o BD.
-    $host = "flora.db.elephantsql.com"; // endereço do servidor PostgreSQL
-    $port = "5432"; // A porta padrão do PostgreSQL
-    $dbname = "iqtdtttt"; // nome do banco de dados é o mesmo que o nome de usuário
+    $host = "host = flora.db.elephantsql.com;"; // endereço do servidor PostgreSQL
+    $port = "port = 5432;"; // A porta padrão do PostgreSQL
+    $dbname = "dbname = iqtdtttt;"; // nome do banco de dados é o mesmo que o nome de usuário
     $dbuser = "iqtdtttt"; // nome de usuário
     $dbpassword = "mUCUlwPPX-APw6ctYt0SC_FgDxWvvOrv";
 

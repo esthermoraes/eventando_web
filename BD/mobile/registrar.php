@@ -1,5 +1,5 @@
 <?php
-	require_once('BD/mobile/conexao_mobile.php');
+	require_once('connect_mobile.php');
 
 	// array de resposta
 	$resposta = array();
@@ -57,7 +57,7 @@
 				// se houve erro na consulta para a tabela de usuário, indicamos que não houve sucesso
 				// na operação e o motivo no campo de erro.
 				$resposta["sucesso"] = 0;
-				$resposta["erro"] = "Erro na inserção na tabela de USUARIO: " . $consulta->errorInfo()[2];
+				$resposta["erro"] = "Erro na inserção na tabela USUARIO: " . $consulta->errorInfo()[2];
 			}
 		}
 		
