@@ -11,6 +11,8 @@
 		// o método trim elimina caracteres especiais/ocultos da string
 		$novo_nome = trim($_POST['novo_nome']);
 		$nova_data_nasc = trim($_POST['nova_data_nasc']);
+		$nova_data_nasc2 = str_replace("/", "-", $nova_data_nasc);
+		$nova_data_nasc3 = date('Y-m-d', strtotime($nova_data_nasc2));
 		$novo_estado = trim($_POST['novo_estado']);
 		$novo_telefone = trim($_POST['novo_telefone']);
 		$novo_email = trim($_POST['novo_email']);
@@ -33,8 +35,8 @@
 		}
 		else {
 			// se o usuário ainda não existe, inserimos ele no bd.
-			$consulta = $db_con->prepare("INSERT INTO USUARIO(nome, data_nasc, FK_ESTADO_id_estado, senha) VALUES('$novo_nome', 
-			'$nova_data_nasc', '$novo_estado', '$token') RETURNING id_usuario");
+			$consulta = $db_con->prepare("INSERT INTO USUARIO(nome, data_nasc, email, FK_ESTADO_id_estado, senha) VALUES('$novo_nome',
+			'$nova_data_nasc3', '$novo_email', '$novo_estado', '$token') RETURNING id_usuario");
 		
 			if ($consulta->execute()) {
 				$novo_id_usuario = $db_con->lastInsertId();
