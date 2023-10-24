@@ -29,8 +29,8 @@
                 $consulta2->execute();
 
                 $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
-                $descricao = $linha2['descricao']
-
+                $descricao = $linha2['descricao'];
+                
                 if($consulta2->execute()){
                     $resposta["sucesso"] = 1;
                     $resposta["nome"] = $nome;
@@ -38,7 +38,6 @@
                     $resposta["data_nasc"] = $data_nasc;
                     $resposta["FK_ESTADO_id_estado"] = $FK_ESTADO_id_estado;
                     $resposta["descricao"] = $descricao;
-
                 }
                 else{
                     $resposta["sucesso"] = 0;
