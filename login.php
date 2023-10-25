@@ -26,7 +26,7 @@
 
 <?php
     //Conexão
-    include_once 'BD/web/connect_web.php';
+    include_once 'BD/web/usuario.php';
     //include_once 'BD/web/login_banco.php';
 
     // Iniciar a sessão
@@ -41,10 +41,10 @@
     function sanitizeEmail($input) {
         // Remove caracteres não permitidos
         return preg_replace('/[^a-zA-Z0-9.@]+/', '', $input);
-    }
+    }   
 
     // Verifique se o formulário foi enviado
-    if (isset($_POST["cadastrar"])){
+    if (isset($_POST["cadastrar"])):
         // Recupere os dados do formulário CADASTRAR e aplique a sanitização
         $nome = $_POST["txtNome"];
         $Nomesanitized = sanitizeString($nome);
@@ -62,51 +62,70 @@
         $senha = $_POST["pwdSenha2"];// Não é necessário sanitizar senhas
         $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
 
-        try{
-            $estado = mysqli_real_escape_string($connect, $estado);
-            $sql = "SELECT id_estado FROM ESTADO WHERE descricao = '$estado';";
-            $result = mysqli_query($connect, $sql);
-            if($result){
-                if(mysqli_num_rows($result)>0){
-                    $linha = mysqli_fetch_assoc($result);
-                    $id_estado_db = $linha['id_estado'];
-                    $Nomesanitized = mysqli_real_escape_string($connect, $Nomesanitized);
-                    $Nomesanitized = strtoupper($Nomesanitized); // Converte o nome para maiúsculo
-                    $Emailsanitized = mysqli_real_escape_string($connect, $Emailsanitized);
-                    $dataNascimento = mysqli_real_escape_string($connect, $dataNascimento);
-                    $sql = "INSERT INTO USUARIO(nome, email, data_nasc, senha, FK_ESTADO_id_estado) VALUE ('$Nomesanitized', '$Emailsanitized', 
-                    '$dataNascimento', '$senhaSegura', '$id_estado_db');";
-                    $result = mysqli_query($connect, $sql);
-                    if($result){
-                        $usuario_id = mysqli_insert_id($connect);
-                        $telefone = mysqli_real_escape_string($connect, $telefone);
-                        $sql = "INSERT INTO TEM_TIPO_CONTATO_USUARIO(fk_USUARIO_id_usuario, fk_TIPO_CONTATO_id_tipo_contato, descricao) 
-                        VALUE ('$usuario_id', 2, '$telefone');";
-                        $result = mysqli_query($connect, $sql);
-                        if($result){
-                            header('Location: login.php');
-                        }
-                    }
-                    else{
-                        $erro = "Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.";
-                        if (isset($erro)) {
-                            echo "<script>alert('$erro')</script>";
-                        };
-                    }
-                }
-            }
-            else{
-                echo 'Conexão mal sucedida!';
-            }
-        }
-        catch (Exception $erro) {
-            // echo "Erro: " . $e->getMessage();
-            $erro = "Desculpe, ocorreu um erro e não foi foi possível concluir o cadastro. Por favor, Tente novamente.";
-            if (isset($erro)) {
-                echo "<script>alert('$erro')</script>";
-            };
-        }
-    }
+        $usuario = new Usuario();	
+        
+        //informa os dados do cliente
+        $usuario->setNome($nome);
+        $usuario->setSobrenome($sobrenome);
+        $usuario->setEmail($email);
+        $usuario->setIdade($idade);
+        $usuario->setTipoCliente(1);
+        
+        //insere o cliente
+        if($usuario->insert()):
+            $_SESSION['mensagem'] = "Cadastro com sucesso!";
+            header('Location: 30_consultar.php?sucesso');
+        else:
+            $_SESSION['mensagem'] = "Erro ao cadastrar!";		
+            header('Location: 30_consultar?erro');
+        endif;
+    endif;	
+
+    //     try{
+    //         $estado = mysqli_real_escape_string($connect, $estado);
+    //         $sql = "SELECT id_estado FROM ESTADO WHERE descricao = '$estado';";
+    //         $result = mysqli_query($connect, $sql);
+    //         if($result){
+    //             if(mysqli_num_rows($result)>0){
+    //                 $linha = mysqli_fetch_assoc($result);
+    //                 $id_estado_db = $linha['id_estado'];
+    //                 $Nomesanitized = mysqli_real_escape_string($connect, $Nomesanitized);
+    //                 $Nomesanitized = strtoupper($Nomesanitized); // Converte o nome para maiúsculo
+    //                 $Emailsanitized = mysqli_real_escape_string($connect, $Emailsanitized);
+    //                 $dataNascimento = mysqli_real_escape_string($connect, $dataNascimento);
+    //                 $sql = "INSERT INTO USUARIO(nome, email, data_nasc, senha, FK_ESTADO_id_estado) VALUE ('$Nomesanitized', '$Emailsanitized', 
+    //                 '$dataNascimento', '$senhaSegura', '$id_estado_db');";
+    //                 $result = mysqli_query($connect, $sql);
+    //                 if($result){
+    //                     $usuario_id = mysqli_insert_id($connect);
+    //                     $telefone = mysqli_real_escape_string($connect, $telefone);
+    //                     $sql = "INSERT INTO TEM_TIPO_CONTATO_USUARIO(fk_USUARIO_id_usuario, fk_TIPO_CONTATO_id_tipo_contato, descricao) 
+    //                     VALUE ('$usuario_id', 2, '$telefone');";
+    //                     $result = mysqli_query($connect, $sql);
+    //                     if($result){
+    //                         header('Location: login.php');
+    //                     }
+    //                 }
+    //                 else{
+    //                     $erro = "Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.";
+    //                     if (isset($erro)) {
+    //                         echo "<script>alert('$erro')</script>";
+    //                     };
+    //                 }
+    //             }
+    //         }
+    //         else{
+    //             echo 'Conexão mal sucedida!';
+    //         }
+    //     }
+    //     catch (Exception $erro) {
+    //         // echo "Erro: " . $e->getMessage();
+    //         $erro = "Desculpe, ocorreu um erro e não foi foi possível concluir o cadastro. Por favor, Tente novamente.";
+    //         if (isset($erro)) {
+    //             echo "<script>alert('$erro')</script>";
+    //         };
+    //     }
+    // }
 
     // Esta condição verifica se o formulário de login foi enviado
     if (isset($_POST["entrar"])) {
