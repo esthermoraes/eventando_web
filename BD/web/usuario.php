@@ -25,8 +25,7 @@
     getIdade - Retorn a idade do cliente
     *************************************************************/
 
-    class Usuario extends CRUD
-    {
+    class Usuario extends CRUD{
         protected $table = 'USUARIO';
 
         private $nome;
@@ -44,30 +43,6 @@
             $this->email = $email;
             $this->senha = $senha;
         }
-
-        // public function setEmail($email) {
-        //     $this->email = $email;
-        // }
-
-        // public function setSenha($senha) {
-        //     $this->senha = $senha;
-        // }
-
-        // public function setNome($nome) {
-        //     $this->nome = $nome;
-        // }
-
-        // public function setDataNasc($data_nasc) {
-        //     $this->data_nasc = $data_nasc;
-        // }
-
-        // public function setEstado($estado_id) {
-        //     $this->FK_ESTADO_id_estado = $estado_id;
-        // }
-
-        // public function setTelefone($telefone) {
-        //     $this->telefone = $telefone;
-        // }
 
         public function insert(){
             $sql = "INSERT INTO $this->table (email, senha, nome, data_nasc, FK_ESTADO_id_estado) VALUES (:email, :senha, :nome, :data_nasc, 
@@ -111,18 +86,18 @@
             return $stmt->execute();
         }
 
-        public function select($senha,$email){
-            //Criando query
+        public function select($senha, $email){
+            //Criando sql
             $sql = 'SELECT id_usuario, nome, email, senha FROM ' . $this->table . ' WHERE senha = ? AND email = ? ';
             
             //Preparando a execução da consulta
-            $stmt = Database::prepare($query);
+            $stmt = Database::prepare($sql);
             
             //Indicando o parâmetro na consulta
             $stmt->bindParam(1,$senha);
             $stmt->bindParam(2,$email);
             
-            //Executa query
+            //Executa sql
             $stmt->execute();
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             

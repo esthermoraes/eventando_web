@@ -1,5 +1,5 @@
 <?php
-	require_once 'connect_web_teste.php';
+	require_once 'connect_web.php';
 	
 	/*************************************************************
 	Objetivo: Classe responsável por representar uma tabela genérica do banco de dados.
@@ -22,8 +22,6 @@
 
 		abstract public function insert();
 		abstract public function update($id);
-		
-		
 		
 		/***************
 		Objetivo: Método que consulta pelo id

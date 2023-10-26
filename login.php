@@ -76,52 +76,6 @@
         endif;
     endif;	
 
-    //     try{
-    //         $estado = mysqli_real_escape_string($connect, $estado);
-    //         $sql = "SELECT id_estado FROM ESTADO WHERE descricao = '$estado';";
-    //         $result = mysqli_query($connect, $sql);
-    //         if($result){
-    //             if(mysqli_num_rows($result)>0){
-    //                 $linha = mysqli_fetch_assoc($result);
-    //                 $id_estado_db = $linha['id_estado'];
-    //                 $Nomesanitized = mysqli_real_escape_string($connect, $Nomesanitized);
-    //                 $Nomesanitized = strtoupper($Nomesanitized); // Converte o nome para maiúsculo
-    //                 $Emailsanitized = mysqli_real_escape_string($connect, $Emailsanitized);
-    //                 $dataNascimento = mysqli_real_escape_string($connect, $dataNascimento);
-    //                 $sql = "INSERT INTO USUARIO(nome, email, data_nasc, senha, FK_ESTADO_id_estado) VALUE ('$Nomesanitized', '$Emailsanitized', 
-    //                 '$dataNascimento', '$senhaSegura', '$id_estado_db');";
-    //                 $result = mysqli_query($connect, $sql);
-    //                 if($result){
-    //                     $usuario_id = mysqli_insert_id($connect);
-    //                     $telefone = mysqli_real_escape_string($connect, $telefone);
-    //                     $sql = "INSERT INTO TEM_TIPO_CONTATO_USUARIO(fk_USUARIO_id_usuario, fk_TIPO_CONTATO_id_tipo_contato, descricao) 
-    //                     VALUE ('$usuario_id', 2, '$telefone');";
-    //                     $result = mysqli_query($connect, $sql);
-    //                     if($result){
-    //                         header('Location: login.php');
-    //                     }
-    //                 }
-    //                 else{
-    //                     $erro = "Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.";
-    //                     if (isset($erro)) {
-    //                         echo "<script>alert('$erro')</script>";
-    //                     };
-    //                 }
-    //             }
-    //         }
-    //         else{
-    //             echo 'Conexão mal sucedida!';
-    //         }
-    //     }
-    //     catch (Exception $erro) {
-    //         // echo "Erro: " . $e->getMessage();
-    //         $erro = "Desculpe, ocorreu um erro e não foi foi possível concluir o cadastro. Por favor, Tente novamente.";
-    //         if (isset($erro)) {
-    //             echo "<script>alert('$erro')</script>";
-    //         };
-    //     }
-    // }
-
     // Esta condição verifica se o formulário de login foi enviado
     if (isset($_POST["entrar"])) {
         // Recupere os dados do formulário LOGIN e aplique a sanitização
@@ -270,25 +224,25 @@
                                 <option value="6">Ceará</option>
                                 <option value="7">Distrito Federal</option>
                                 <option value="8">Espirito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
+                                <option value="9">Goiás</option>
+                                <option value="10">Maranhão</option>
+                                <option value="11">Mato Grosso do Sul</option>
+                                <option value="12">Mato Grosso</option>
+                                <option value="13">Minas Gerais</option>
+                                <option value="14">Pará</option>
+                                <option value="15">Paraíba</option>
+                                <option value="16">Paraná</option>
+                                <option value="17">Pernambuco</option>
+                                <option value="18">Piauí</option>
+                                <option value="19">Rio de Janeiro</option>
+                                <option value="20">Rio Grande do Norte</option>
+                                <option value="21">Rio Grande do Sul</option>
+                                <option value="22">Rondônia</option>
+                                <option value="23">Roraima</option>
+                                <option value="24">Santa Catarina</option>
+                                <option value="25">São Paulo</option>
+                                <option value="26">Sergipe</option>
+                                <option value="27">Tocantins</option>
                             </select>
 
                             <input class="form-control" type="tel" id="telTelefone" name="telTelefone" placeholder="Telefone" maxlength="15" required>
