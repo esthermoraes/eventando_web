@@ -1,21 +1,20 @@
 <?php
 	require_once 'connect_web_teste.php';
 	
-/*************************************************************
-Objetivo: Classe responsável por representar uma tabela genérica do banco de dados.
+	/*************************************************************
+	Objetivo: Classe responsável por representar uma tabela genérica do banco de dados.
 
 
-Atributos:
-$table- nome do tabela
+	Atributos:
+	$table- nome do tabela
 
-Métodos:
-insert - insere um registro na tabela
-update - atualiza um registro na tabela cliente
-find - consulta pelo id
-findAll - consulta e retorna todos os registros da tabela
-delete - exclui um registro pelo id
-*************************************************************/
-
+	Métodos:
+	insert - insere um registro na tabela
+	update - atualiza um registro na tabela cliente
+	find - consulta pelo id
+	findAll - consulta e retorna todos os registros da tabela
+	delete - exclui um registro pelo id
+	*************************************************************/
 	
 	abstract class CRUD extends Database{
 		
@@ -43,7 +42,7 @@ delete - exclui um registro pelo id
 		Objetivo: Método que consulta todos clientes
 		Parâmetro de saída: Retorna a tabela com registros. Em caso de falha na consulta, retorna falso.
 		***************/		
-		public function  findAll(){
+		public function findAll(){
 			$sql = "SELECT * FROM $this->table ";
 			$stmt = Database::prepare($sql);			
 			$stmt->execute();

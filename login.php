@@ -62,22 +62,17 @@
         $senha = $_POST["pwdSenha2"];// Não é necessário sanitizar senhas
         $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
 
-        $usuario = new Usuario();	
-        
-        //informa os dados do cliente
-        $usuario->setNome($nome);
-        $usuario->setSobrenome($sobrenome);
-        $usuario->setEmail($email);
-        $usuario->setIdade($idade);
-        $usuario->setTipoCliente(1);
-        
-        //insere o cliente
+        $usuario = new Usuario($Nomesanitized, $dataNascimento, $estado, $telefone, $Emailsanitized, $senhaSegura);	
+
+        //insere o usuario
         if($usuario->insert()):
-            $_SESSION['mensagem'] = "Cadastro com sucesso!";
-            header('Location: 30_consultar.php?sucesso');
+            $sucesso = "Cadastro realizado com sucesso!";
+            $_SESSION['mensagem'] = "<script>alert('$sucesso')</script>";	
+            header('Location: login.php');
         else:
-            $_SESSION['mensagem'] = "Erro ao cadastrar!";		
-            header('Location: 30_consultar?erro');
+            $erro = "Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.";
+            $_SESSION['mensagem'] = "<script>alert('$erro')</script>";		
+            header('Location: login.php');
         endif;
     endif;	
 
@@ -135,33 +130,34 @@
         
         $senha1 = $_POST["pwdSenha"]; // Não é necessário sanitizar senhas
     
-        $Emailsanitized1 = mysqli_real_escape_string($connect, $Emailsanitized1);
-        $sql = "SELECT senha, nome FROM USUARIO WHERE email = '$Emailsanitized1';";
-        $result = mysqli_query($connect, $sql);
-    
-        if ($result) {
-            if (mysqli_num_rows($result) > 0) {
-                $linha = mysqli_fetch_assoc($result);
-                $senha_db = $linha['senha'];
-                if (password_verify($senha1, $senha_db)) {
-                    // $_SESSION['email_txt'] = $Emailsanitized1;
-                    $_SESSION['nome_txt'] = $linha['nome'];
+        // $Emailsanitized1 = mysqli_real_escape_string($connect, $Emailsanitized1);
+     
+        $usuario = new Usuario();
+	    $tabela_usuario= $usuario->select($senha1, $Emailsanitized1);
+	
+	    //Obtém a quantidade de linhas
+        $num = $tabela_usuario->rowCount();
+        
+        if ($num>0) {               
+            $linha = $tabela_usuario->fetch(PDO::FETCH_ASSOC);
 
-                    header('Location: menu.php?login_success=true');
-                } 
-                else {
-                    echo "<script>alert('Lamentamos, ocorreu um erro. As credenciais de email ou senha que você forneceu são inválidas. 
-                    Por favor, tente novamente.');</script>";
-                }
+            $senha_db = $linha['senha'];
+            if (password_verify($senha1, $senha_db)) {
+                $_SESSION['email_txt'] = $Emailsanitized1;
+                $_SESSION['nome_txt'] = $linha['nome'];
+
+                header('Location: menu.php?login_success=true');
             } 
             else {
                 echo "<script>alert('Lamentamos, ocorreu um erro. As credenciais de email ou senha que você forneceu são inválidas. 
                 Por favor, tente novamente.');</script>";
             }
-        } 
-        else {
-            echo 'Conexão mal sucedida!';
         }
+        else {
+            echo "<script>alert('Lamentamos, ocorreu um erro. As credenciais de email ou senha que você forneceu são inválidas. 
+            Por favor, tente novamente.');</script>";
+        }
+       
     }
     
     // Esta condição verifica se o formulário de recuperação de senha foi enviado
@@ -262,18 +258,18 @@
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="formulario3">
                             <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" required>
 
-                            <input class="form-control" type="text" id="date" name="date" placeholder="Data de Nascimento" onfocus="(this.type='date')" onblur="(this.type='text')" maxlength="8" required>
+                            <input class="form-control" type="number" id="date" name="date" placeholder="Data de Nascimento" onfocus="(this.type='date')" onblur="(this.type='text')" maxlength="8" required>
 
                             <select class="form-control" id="sltEstado" name="sltEstado" required>
                                 <option value="">Estado</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espirito Santo</option>
+                                <option value="1">Acre</option>
+                                <option value="2">Alagoas</option>
+                                <option value="3">Amapá</option>
+                                <option value="4">Amazonas</option>
+                                <option value="5">Bahia</option>
+                                <option value="6">Ceará</option>
+                                <option value="7">Distrito Federal</option>
+                                <option value="8">Espirito Santo</option>
                                 <option value="GO">Goiás</option>
                                 <option value="MA">Maranhão</option>
                                 <option value="MS">Mato Grosso do Sul</option>
