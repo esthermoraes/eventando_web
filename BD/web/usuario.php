@@ -99,12 +99,12 @@
             
             //Executa sql
             $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            // $row = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            $this->id = $row['id_usuario'];
-            $this->nome = $row['nome'];
-            $this->email = $row['email'];
-            $this->senha = $row['senha'];
+            // $this->id = $row['id_usuario'];
+            // $this->nome = $row['nome'];
+            // $this->email = $row['email'];
+            // $this->senha = $row['senha'];
         
             return $stmt;
         }
