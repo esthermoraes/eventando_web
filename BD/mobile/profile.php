@@ -36,8 +36,7 @@
                     $resposta["nome"] = $nome;
                     $resposta["email"] = $email;
                     $resposta["data_nasc"] = $data_nasc;
-                    $resposta["FK_ESTADO_id_estado"] = $FK_ESTADO_id_estado;
-                    $resposta["descricao"] = $descricao;
+                    $resposta["estado"] = $descricao;
                 }
                 else{
                     $resposta["sucesso"] = 0;
@@ -61,7 +60,7 @@
     else{
         // senha ou usuario nao confere
         $resposta["sucesso"] = 0;
-        $resposta["error"] = "usuario ou senha não confere";
+        $resposta["error"] = "Email ou senha não confere";
     }
 
     // Fecha a conexao com o BD

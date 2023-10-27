@@ -310,9 +310,6 @@ label{
 }
 
 .form-convidado{
-    position: relative;
-    margin-left: 250px;
-    width: 100%;
 }
 
 @media(max-width: 768px){
@@ -326,12 +323,12 @@ label{
 }
 
 .form-convidado input{
-    width: 490px;
-}
+    width: 24rem;
+} 
 
-.form-convidado input:nth-child(2){
+/* .form-convidado input:nth-child(2){
     margin-left: 10px;
-}
+} */
 
 .form-convidado button{
     width: 190px;

@@ -25,91 +25,15 @@
 </head>
 
 <?php
-    //Conexão
-    include_once 'BD/web/usuario.php';
-    //include_once 'BD/web/login_banco.php';
+    include_once 'bd/web/registrar_logar.php';
 
-    // Iniciar a sessão
-    session_start();
-
-    // Função para limpar strings
-    function sanitizeString($input) {
-        return preg_replace("/[^a-zA-Z0-9 ]/", "", $input);
-    }
-
-    // Função para limpar endereços de e-mail
-    function sanitizeEmail($input) {
-        // Remove caracteres não permitidos
-        return preg_replace('/[^a-zA-Z0-9.@]+/', '', $input);
-    }   
-
-    // Verifique se o formulário foi enviado
-    if (isset($_POST["cadastrar"])):
-        // Recupere os dados do formulário CADASTRAR e aplique a sanitização
-        $nome = $_POST["txtNome"];
-        $Nomesanitized = sanitizeString($nome);
-
-        $dataNascimento = $_POST["date"];
-
-        $estado = $_POST["sltEstado"];// Não é necessário sanitizar estado
-
-        $telefone = filter_var($_POST["telTelefone"], FILTER_SANITIZE_NUMBER_INT);
-        $telefone = preg_replace("/[^0-9]/", "", $_POST["telTelefone"]);
-
-        $email = $_POST["emEmail2"];
-        $Emailsanitized = sanitizeEmail($email);
-
-        $senha = $_POST["pwdSenha2"];// Não é necessário sanitizar senhas
-        $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
-
-        $usuario = new Usuario($Nomesanitized, $dataNascimento, $estado, $telefone, $Emailsanitized, $senhaSegura);	
-
-        //insere o usuario
-        if($usuario->insert()):
-            echo "<script>alert('Cadastro realizado com sucesso!')</script>";	
-            header('Location: login.php');
-        else:
-            echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";		
-            header('Location: login.php');
-        endif;
-    endif;	
-
-    // Esta condição verifica se o formulário de login foi enviado
-    if (isset($_POST["entrar"])) {
-        $email1 = $_POST["emEmail"];
-        $Emailsanitized1 = filter_var($email1, FILTER_SANITIZE_EMAIL);
-        $senha1 = $_POST["pwdSenha"];
-    
-        $usuario = new Usuario();
-        $tabela_usuario = $usuario->select($Emailsanitized1);
-    
-        if ($tabela_usuario !== false) {
-            $linha = $tabela_usuario->fetch(PDO::FETCH_ASSOC);
-            if ($linha) {
-                $senha_db = $linha['senha'];
-                if (password_verify($senha1, $senha_db)) {
-                    $_SESSION['email_txt'] = $Emailsanitized1;
-                    $_SESSION['nome_txt'] = $linha['nome'];
-                    header('Location: menu.php?login_success=true');
-                } 
-                else {
-                    echo "<script>alert('Credenciais de email ou senha inválidas. Tente novamente.');</script>";
-                }
-            } 
-            else {
-                echo "<script>alert('Credenciais de email ou senha inválidas. Tente novamente.');</script>";
-            }
-        } 
-        else {
-            echo "<script>alert('Erro no banco de dados. Tente novamente mais tarde.');</script>";
+    if (isset($_GET["Cadastro"])){
+        if($_GET["Cadastro"]){
+            echo "<script> alert( 'Cadastro realizado com sucesso')</script>";
         }
-    }
-    
-    // Esta condição verifica se o formulário de recuperação de senha foi enviado
-    if (isset($_POST["enviar"])){
-        // Recupere os dados do formulário RECUPERAR e aplique a sanitização
-        $email3 = $_POST["emEmail3"];
-        $Emailsanitized3 = sanitizeEmail($email3);
+        else{
+            echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";
+        }
     }
 ?>
 
@@ -201,7 +125,7 @@
                     <div id="divCadastro" name="divCadastro"  class="d-none mt-4">
                         <!-- Formulário CADASTRO, com sete campos de entrada: nome, data de nascimento, estado, telefone, email, senha e confirmação de senha -->
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="formulario3">
-                            <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" required>
+                            <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" value = "esther"required>
 
                             <input class="form-control" type="number" id="date" name="date" placeholder="Data de Nascimento" onfocus="(this.type='date')" onblur="(this.type='text')" maxlength="8" required>
 

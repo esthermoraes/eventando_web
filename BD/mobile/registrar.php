@@ -62,26 +62,6 @@
 				$resposta["erro"] = "Erro na inserção na tabela USUARIO: " . $consulta->errorInfo()[2];
 			}
 		}
-		
-		// else {
-		// 	// se o usuário ainda não existe, inserimos ele no bd.
-		// 	$consulta = $db_con->prepare("INSERT INTO USUARIO(nome, data_nasc, FK_ESTADO_id_estado, senha) VALUES('$novo_nome', '$nova_data_nasc, 
-		// 	'$novo_estado', '$token') RETURNING id_usuario");
-		
-		// 	if ($consulta->execute()) {
-		// 		// se a consulta deu certo, indicamos sucesso na operação.
-
-		// 		// php pdo get id que acabou de ser criado (pesquisar)
-
-		// 		$resposta["sucesso"] = 1;
-		// 	}
-		// 	else {
-		// 		// se houve erro na consulta, indicamos que não houve sucesso
-		// 		// na operação e o motivo no campo de erro.
-		// 		$resposta["sucesso"] = 0;
-		// 		$resposta["erro"] = "erro BD: " . $consulta->error .$consulta2->error;
-		// 	}
-		// }
 	}
 	else {
 		// se não foram enviados todos os parâmetros para o servidor, 

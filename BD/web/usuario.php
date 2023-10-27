@@ -53,8 +53,16 @@
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':data_nasc', $this->data_nasc);
             $stmt->bindParam(':FK_ESTADO_id_estado', $this->FK_ESTADO_id_estado);
+            $result;
 
-            $result = $stmt->execute();
+            try{
+                $result = $stmt->execute();
+            }
+            catch (Exception $e) {
+                echo "Ocorreu uma exceção: " . $e->getMessage();
+                throw $e;
+                return false;
+            }
 
             if ($result){
                 // Obtém o último ID inserido usando a instância PDO

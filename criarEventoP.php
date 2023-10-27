@@ -146,9 +146,13 @@
                                 <i class="mt-2 fa-solid fa-unlock fa-flip-horizontal fa-xl" style="color: #b25abf;"></i>
                                 <p class="ms-2 pp">Público</p>
                             </div>
-                            <a href="passo2.php" class="align-items-end">
-                                <button type="submit" id="btn-passo2" class="botao">&#10140; PRÓXIMO PASSO</button>
-                            </a>
+
+                            <div class="d-flex justify-content-end">
+                                <a href="passo2.php" >
+                                    <button type="submit" id="btn-passo2" class="botao">&#10140; PRÓXIMO PASSO</button>
+                                </a>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="">
@@ -159,10 +163,10 @@
         </div>
         <div class="w-100 div-passo2 d-none justify-content-center flex-wrap">
             <div class="w-100 d-flex justify-content-center mt-5">
-                <form action="" class="form-convidado">
-                    <input type="text" name="" id="" placeholder="Nome do Convidado">
-                    <input type="email" name="" id="" placeholder="Email do Convidado">
-                    <button type="submit">ADICIONAR</button>
+                <form action="" class="d-flex form-convidado ms-4">
+                    <input type="text" name="" id="" class="p-2 m-2" placeholder="Nome do Convidado">
+                    <input type="email" name="" id="" class="p-2 m-2" placeholder="Email do Convidado">
+                    <button type="submit"class="m-2">ADICIONAR</button>
                 </form>
             </div>
             <div>

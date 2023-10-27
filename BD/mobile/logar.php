@@ -13,7 +13,7 @@
     else {
         // senha ou usuario nao confere
         $resposta["sucesso"] = 0;
-        $resposta["erro"] = "usuario ou senha não confere";
+        $resposta["erro"] = "Email ou senha não confere";
     }
 
     // Fecha a conexao com o BD
