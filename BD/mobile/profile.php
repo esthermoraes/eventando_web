@@ -30,17 +30,32 @@
 
                 $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                 $descricao = $linha2['descricao'];
-                
+
                 if($consulta2->execute()){
-                    $resposta["sucesso"] = 1;
-                    $resposta["nome"] = $nome;
-                    $resposta["email"] = $email;
-                    $resposta["data_nasc"] = $data_nasc;
-                    $resposta["estado"] = $descricao;
+                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE FK_ESTADO_id_estado = '$FK_ESTADO_id_estado'");
+                    $consulta3->execute();
+
+                    $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+                    $descricao2 = $linha3['descricao'];
+
+                    if($consulta3->execute()){
+                        $resposta["sucesso"] = 1;
+                        $resposta["nome"] = $nome;
+                        $resposta["email"] = $email;
+                        $resposta["data_nasc"] = $data_nasc;
+                        $resposta["estado"] = $descricao2;
+                        $resposta["telefone"] = $descricao;
+                    }
+                    else{
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Erro no BD: " . $consulta3->error;
+                    }
                 }
                 else{
-                    $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro no BD: " . $consulta->error;
+                    else{
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Erro no BD: " . $consulta2->error;
+                    } 
                 }
             }
             else{
