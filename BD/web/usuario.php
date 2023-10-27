@@ -86,26 +86,11 @@
             return $stmt->execute();
         }
 
-        public function select($senha, $email){
-            //Criando sql
-            $sql = 'SELECT id_usuario, nome, email, senha FROM ' . $this->table . ' WHERE senha = ? AND email = ? ';
-            
-            //Preparando a execução da consulta
+        public function select($email) {
+            $sql = 'SELECT id_usuario, nome, email, senha FROM ' . $this->table . ' WHERE email = ?';
             $stmt = Database::prepare($sql);
-            
-            //Indicando o parâmetro na consulta
-            $stmt->bindParam(1,$senha);
-            $stmt->bindParam(2,$email);
-            
-            //Executa sql
+            $stmt->bindParam(1, $email);
             $stmt->execute();
-            // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            // $this->id = $row['id_usuario'];
-            // $this->nome = $row['nome'];
-            // $this->email = $row['email'];
-            // $this->senha = $row['senha'];
-        
             return $stmt;
         }
     }

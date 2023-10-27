@@ -66,52 +66,43 @@
 
         //insere o usuario
         if($usuario->insert()):
-            $sucesso = "Cadastro realizado com sucesso!";
-            $_SESSION['mensagem'] = "<script>alert('$sucesso')</script>";	
+            echo "<script>alert('Cadastro realizado com sucesso!')</script>";	
             header('Location: login.php');
         else:
-            $erro = "Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.";
-            $_SESSION['mensagem'] = "<script>alert('$erro')</script>";		
+            echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";		
             header('Location: login.php');
         endif;
     endif;	
 
     // Esta condição verifica se o formulário de login foi enviado
     if (isset($_POST["entrar"])) {
-        // Recupere os dados do formulário LOGIN e aplique a sanitização
         $email1 = $_POST["emEmail"];
-        $Emailsanitized1 = sanitizeEmail($email1);
-        
-        $senha1 = $_POST["pwdSenha"]; // Não é necessário sanitizar senhas
+        $Emailsanitized1 = filter_var($email1, FILTER_SANITIZE_EMAIL);
+        $senha1 = $_POST["pwdSenha"];
     
-        // $Emailsanitized1 = mysqli_real_escape_string($connect, $Emailsanitized1);
-     
         $usuario = new Usuario();
-	    $tabela_usuario= $usuario->select($senha1, $Emailsanitized1);
-	
-	    //Obtém a quantidade de linhas
-        $num = $tabela_usuario->rowCount();
-        
-        if ($num>0) {               
+        $tabela_usuario = $usuario->select($Emailsanitized1);
+    
+        if ($tabela_usuario !== false) {
             $linha = $tabela_usuario->fetch(PDO::FETCH_ASSOC);
-
-            $senha_db = $linha['senha'];
-            if (password_verify($senha1, $senha_db)) {
-                $_SESSION['email_txt'] = $Emailsanitized1;
-                $_SESSION['nome_txt'] = $linha['nome'];
-
-                header('Location: menu.php?login_success=true');
+            if ($linha) {
+                $senha_db = $linha['senha'];
+                if (password_verify($senha1, $senha_db)) {
+                    $_SESSION['email_txt'] = $Emailsanitized1;
+                    $_SESSION['nome_txt'] = $linha['nome'];
+                    header('Location: menu.php?login_success=true');
+                } 
+                else {
+                    echo "<script>alert('Credenciais de email ou senha inválidas. Tente novamente.');</script>";
+                }
             } 
             else {
-                echo "<script>alert('Lamentamos, ocorreu um erro. As credenciais de email ou senha que você forneceu são inválidas. 
-                Por favor, tente novamente.');</script>";
+                echo "<script>alert('Credenciais de email ou senha inválidas. Tente novamente.');</script>";
             }
-        }
+        } 
         else {
-            echo "<script>alert('Lamentamos, ocorreu um erro. As credenciais de email ou senha que você forneceu são inválidas. 
-            Por favor, tente novamente.');</script>";
+            echo "<script>alert('Erro no banco de dados. Tente novamente mais tarde.');</script>";
         }
-       
     }
     
     // Esta condição verifica se o formulário de recuperação de senha foi enviado
