@@ -52,10 +52,8 @@
                     }
                 }
                 else{
-                    else{
-                        $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Erro no BD: " . $consulta2->error;
-                    } 
+                    $resposta["sucesso"] = 0;
+                    $resposta["erro"] = "Erro no BD: " . $consulta2->error;
                 }
             }
             else{
