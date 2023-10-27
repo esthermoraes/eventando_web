@@ -269,11 +269,11 @@ label{
     font-weight: bold;
 }
 
-.b{
+/* .pprt{
     position: absolute;
     right: 95px;
     bottom: 55px;
-}
+} */
 
 @media(max-width: 1024px){
     .b{
