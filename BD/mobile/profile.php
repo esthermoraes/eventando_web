@@ -48,17 +48,17 @@
                     }
                     else{
                         $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Erro no BD: " . $consulta3->error;
+                        $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
                     }
                 }
                 else{
                     $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro no BD: " . $consulta2->error;
+                    $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
                 }
             }
             else{
                 $resposta["sucesso"] = 0;
-                $resposta["erro"] = "Erro no BD: " . $consulta->error;
+                $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
             }
         }
         else{

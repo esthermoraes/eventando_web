@@ -25,7 +25,8 @@
 </head>
 
 <?php
-    include_once 'bd/web/registrar_logar.php';
+    include_once 'bd/web/cadastrar.php';
+    include_once 'bd/web/entrar.php';
 
     if (isset($_GET["Cadastro"])){
         if($_GET["Cadastro"]){
@@ -125,9 +126,9 @@
                     <div id="divCadastro" name="divCadastro"  class="d-none mt-4">
                         <!-- Formulário CADASTRO, com sete campos de entrada: nome, data de nascimento, estado, telefone, email, senha e confirmação de senha -->
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="formulario3">
-                            <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" value = "esther"required>
+                            <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" value = "Nome Sobrenome Sobrenome" required>
 
-                            <input class="form-control" type="number" id="date" name="date" placeholder="Data de Nascimento" onfocus="(this.type='date')" onblur="(this.type='text')" maxlength="8" required>
+                            <input class="form-control" type="number" id="date" name="date" placeholder="Data de Nascimento" onfocus="(this.type='date')" onblur="(this.type='text')" maxlength="8" value = "27112000" required>
 
                             <select class="form-control" id="sltEstado" name="sltEstado" required>
                                 <option value="">Estado</option>
@@ -141,7 +142,7 @@
                                 <option value="8">Espirito Santo</option>
                                 <option value="9">Goiás</option>
                                 <option value="10">Maranhão</option>
-                                <option value="11">Mato Grosso do Sul</option>
+                                <option value="11" selected>Mato Grosso do Sul</option>
                                 <option value="12">Mato Grosso</option>
                                 <option value="13">Minas Gerais</option>
                                 <option value="14">Pará</option>
@@ -160,13 +161,13 @@
                                 <option value="27">Tocantins</option>
                             </select>
 
-                            <input class="form-control" type="tel" id="telTelefone" name="telTelefone" placeholder="Telefone" maxlength="15" required>
+                            <input class="form-control" type="tel" id="telTelefone" name="telTelefone" placeholder="Telefone" maxlength="15" value = "(67) 98765-4321" required>
 
-                            <input class="form-control" type="email" id="emEmail2" placeholder="Email" name="emEmail2" required>
+                            <input class="form-control" type="email" id="emEmail2" placeholder="Email" name="emEmail2" value = "nomesobrenome@gmail.com" required>
 
-                            <input class="form-control" type="password" id="pwdSenha2" name="pwdSenha2" placeholder="Senha" minlength="6" maxlength="20" required>
+                            <input class="form-control" type="password" id="pwdSenha2" name="pwdSenha2" placeholder="Senha" minlength="6" maxlength="20" value = "Nome123" required>
 
-                            <input class="form-control" type="password" id="pwdConfSenha" placeholder="Confirmar Senha" required>
+                            <input class="form-control" type="password" id="pwdConfSenha" placeholder="Confirmar Senha" value = "Nome123" required>
 
                             <!-- botão "CADASTRAR" que redireciona para o login quando clicado -->
                             <button class="botao mt-3" type="submit" id="cadastrar" name="cadastrar" form="formulario3"> CADASTRAR </button>
