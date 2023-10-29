@@ -8,7 +8,7 @@
     // verifica se o usuário conseguiu autenticar
     if(autenticar($db_con)){
      
-        // Verifica se o parametro id foi enviado na requisicao
+        // Verifica se o parametro email foi enviado na requisicao
         if (isset($_GET["email"])){
             
             // Aqui sao obtidos os parametros
@@ -29,22 +29,22 @@
                 $consulta2->execute();
 
                 $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
-                $descricao = $linha2['descricao'];
+                $telefone = $linha2['telefone'];
 
                 if($consulta2->execute()){
                     $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     $consulta3->execute();
 
                     $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                    $descricao2 = $linha3['descricao'];
+                    $estado = $linha3['telefone'];
 
                     if($consulta3->execute()){
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;
                         $resposta["email"] = $email;
                         $resposta["data_nasc"] = $data_nasc;
-                        $resposta["estado"] = $descricao2;
-                        $resposta["telefone"] = $descricao;
+                        $resposta["telefone"] = $telefone;
+                        $resposta["estado"] = $estado;
                     }
                     else{
                         $resposta["sucesso"] = 0;
@@ -63,7 +63,7 @@
         }
         else{
             // Se a requisicao foi feita incorretamente, ou seja, os parametros 
-            // nao foram enviados corretamente para o servidor, o cliente 
+            // nao foram enviados corretamente para o servidor, o usuario 
             // recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
             // motivo da falha.
             $resposta["sucesso"] = 0;
@@ -71,7 +71,7 @@
         }
     }
     else{
-        // senha ou usuario nao confere
+        // senha ou email nao confere
         $resposta["sucesso"] = 0;
         $resposta["error"] = "Email ou senha não confere";
     }

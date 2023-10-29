@@ -8,18 +8,19 @@
     // verifica se o usuário conseguiu autenticar
     if (autenticar($db_con)) {
         if (isset($_POST['nome_evento']) && isset($_POST['objetivo_evento']) && isset($_FILES['img_evento']) && 
-            isset($_POST['data_prevista_evento']) && isset($_POST['horario_evento']) && isset($_POST['privacidade_evento']) && isset($_POST['criador_evento'])) {
+            isset($_POST['data_prevista_evento']) && isset($_POST['horario_evento']) && isset($_POST['privacidade_evento']) 
+            && isset($_POST['criador_evento'])) {
             
             // Obtenha o e-mail do criador do evento a partir do POST
             $criador_evento_email = trim($_POST['criador_evento']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
             $sql = "SELECT id_usuario FROM USUARIO WHERE email = ?";
-            $stmt = $db_con->prepare($sql);
-            $stmt->execute();
+            $consulta = $db_con->prepare($sql);
+            $consulta->execute();
             
-            if ($stmt->rowCount() > 0) {
-                $linha = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($consulta->rowCount() > 0) {
+                $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 
                 // O ID do criador do evento
                 $criador_id = $linha ['id_usuario'];
@@ -27,7 +28,7 @@
                 $objetivo_evento = trim($_POST['objetivo_evento']);
 
                 $filename = $_FILES['img_evento']['tmp_name'];
-                $client_id="ce5d3a656e2aa51";
+                $client_id="373a5eedc23ad9b";
                 $handle = fopen($filename, "r");
                 $data = fread($handle, filesize($filename));
                 $pvars = array('image' => base64_encode($data));
@@ -51,10 +52,11 @@
                 $horario_evento = trim($_POST['horario_evento']);
                 $privacidade_evento = trim($_POST['privacidade_evento']);
 
-                $consulta = $db_con->prepare("INSERT INTO EVENTO(nome, objetivo, src_img, data_prevista, horario, privacidade_restrita, FK_USUARIO_id_usuario) VALUES('$nome_evento', 
-                '$objetivo_evento', '$img_url', '$data_prevista_evento3', '$horario_evento', '$privacidade_evento', '$horario_evento', '$criador_id')");
+                $consulta2 = $db_con->prepare("INSERT INTO EVENTO(nome, objetivo, src_img, data_prevista, horario, privacidade_restrita, 
+                FK_USUARIO_id_usuario) VALUES('$nome_evento', '$objetivo_evento', '$img_url', '$data_prevista_evento3', '$horario_evento', 
+                '$privacidade_evento', '$horario_evento', '$criador_id')");
 
-                if ($consulta->execute()) {
+                if ($consulta2->execute()) {
                     $resposta["sucesso"] = 1;
                 } 
                 else {
