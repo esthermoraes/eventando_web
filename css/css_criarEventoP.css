@@ -305,12 +305,12 @@ label{
     color: #fff !important;
 }
 
-.div-passo2{
+/* .div-passo2{
     margin-left: -190px;
-}
+} */
 
-.form-convidado{
-}
+/* .form-convidado{
+} */
 
 @media(max-width: 768px){
     .div-form{
@@ -383,11 +383,42 @@ label{
     margin-left: 378px;
 }
 
-
 .esconder{
     display: none;
 }
 
 .mostrar{
     display: flex;
+}
+
+.convite{
+    width: 14rem;
+    height: 20rem;
+    border: solid 4px #770089 !important;
+    border-radius: 8px;
+}
+
+.convite:hover{
+    border: solid 6px #770089 !important;
+}
+
+.div-passo3{
+    border-radius: 8px;
+}
+
+.botao2{
+    background-color: #d37ae0 !important;
+    border-radius: 8px !important;
+    border: solid 3px #fff !important;
+    width: min(45vw, 250px) !important;
+    height: 35px !important;
+    color: #fff !important;
+    font-size: min(3vw, 16px);
+    font-weight: bold;
+}
+
+.botao2:hover{
+    background-color: #770089 !important;
+    border: solid 3px #770089 !important;
+    color: #fff !important;
 }

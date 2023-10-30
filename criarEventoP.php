@@ -155,9 +155,6 @@
                             
                         </div>
                     </div>
-                    <div class="">
-                        
-                    </div>
                 </form>
             </div>
         </div>
@@ -169,7 +166,7 @@
                     <button type="submit"class="m-2">ADICIONAR</button>
                 </form>
             </div>
-            <div>
+            <div class="">
                 <div class="lista">
                     <div class="d-flex header-lista align-items-center">
                         <p class="me-3">CONVIDADO</p>
@@ -180,6 +177,17 @@
                         <span>tete@hotmail.com</span>
                     </div>
                 </div>
+                <div class="d-flex justify-content-end mt-2 mb-2">
+                    <a href="#">
+                        <button type="submit" id="btn-passo2" class="botao">&#10140; PRÓXIMO PASSO</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 div-passo2 d-none justify-content-center flex-wrap">
+            <div class="" style="background-color: #ebf6fc;">
+                <p>CONVITE</p>
             </div>
         </div>
     </div>
