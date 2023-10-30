@@ -14,7 +14,8 @@
             // Aqui sao obtidos os parametros
             $email = $_GET['email'];
 
-            $consulta = $db_con->prepare("SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado FROM USUARIO WHERE email ='$email'");
+            $consulta = $db_con->prepare("SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado FROM USUARIO WHERE email 
+            ='$email'");
             $consulta->execute();
 
             $linha = $consulta->fetch(PDO::FETCH_ASSOC);
@@ -67,13 +68,13 @@
             // recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
             // motivo da falha.
             $resposta["sucesso"] = 0;
-            $resposta["erro"] = "Campo requerido não preenchido";
+            $resposta["erro"] = "Campo requerido nao preenchido";
         }
     }
     else{
         // senha ou email nao confere
         $resposta["sucesso"] = 0;
-        $resposta["error"] = "Email ou senha não confere";
+        $resposta["error"] = "Email ou senha nao confere";
     }
 
     // Fecha a conexao com o BD
