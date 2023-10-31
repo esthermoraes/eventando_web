@@ -58,6 +58,8 @@
 
                 if ($consulta2->execute()) {
                     $resposta["sucesso"] = 1;
+
+                    
                 } 
                 else {
                     // se houve erro na consulta para a tabela de tem_tipo_contato_usuario, indicamos que não houve sucesso
