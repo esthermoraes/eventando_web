@@ -22,11 +22,11 @@
                 $nome = $linha['nome'];
                 $email = $linha['email'];
                 $data_nasc = $linha['data_nasc'];
-                $FK_ESTADO_id_estado = $linha['FK_ESTADO_id_estado'];
+                $FK_ESTADO_id_estado = $linha['fk_estado_id_estado'];
                 error_log("linha = ", 0);
                 var_dump($linha);
                 var_dump($FK_ESTADO_id_estado);
-                var_dump($linha['FK_ESTADO_id_estado']);
+                var_dump($linha['fk_estado_id_estado']);
 
                 $consulta2 = $db_con->prepare("SELECT descricao FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = '$id_usuario'");
                 if($consulta2->execute()){
@@ -35,7 +35,7 @@
                     error_log("linha 2 = ", 0);
                     var_dump($linha2);
 
-                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '7'");
+                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
                         $estado = $linha3['descricao'];                
