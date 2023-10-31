@@ -30,14 +30,14 @@
                 $consulta2->execute();
 
                 $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
-                $telefone = $linha2['telefone'];
+                $telefone = $linha2['descricao'];
 
                 if($consulta2->execute()){
                     $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     $consulta3->execute();
 
                     $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                    $estado = $linha3['telefone'];
+                    $estado = $linha3['descricao'];
 
                     if($consulta3->execute()){
                         $resposta["sucesso"] = 1;
