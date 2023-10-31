@@ -25,6 +25,7 @@
                 $FK_ESTADO_id_estado = $linha['FK_ESTADO_id_estado'];
                 error_log("linha = ", 0);
                 var_dump($linha);
+                var_dump($FK_ESTADO_id_estado);
 
                 $consulta2 = $db_con->prepare("SELECT descricao FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = '$id_usuario'");
                 if($consulta2->execute()){
