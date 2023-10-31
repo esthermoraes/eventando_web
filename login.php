@@ -25,8 +25,8 @@
 </head>
 
 <?php
-    include_once 'bd/web/cadastrar.php';
-    include_once 'bd/web/entrar.php';
+    include_once 'BD/web/cadastrar.php';
+    include_once 'BD/web/entrar.php';
 
     if (isset($_GET["Cadastro"])){
         if($_GET["Cadastro"]){
