@@ -23,21 +23,21 @@
                 $email = $linha['email'];
                 $data_nasc = $linha['data_nasc'];
                 $FK_ESTADO_id_estado = $linha['FK_ESTADO_id_estado'];
-                // error_log("linha = ", 0);
-                // var_dump($linha);
+                error_log("linha = ", 0);
+                var_dump($linha);
 
                 $consulta2 = $db_con->prepare("SELECT descricao FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = '$id_usuario'");
                 if($consulta2->execute()){
                     $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                     $telefone = $linha2['descricao'];
-                    // error_log("linha 2 = ", 0);
-                    // var_dump($linha2);
+                    error_log("linha 2 = ", 0);
+                    var_dump($linha2);
 
                     $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);                  
-                        // error_log("linha 3 = ", 0);
-                        // var_dump($linha3);
+                        error_log("linha 3 = ", 0);
+                        var_dump($linha3);
 
                         $estado = $linha3['descricao'];
                         $resposta["sucesso"] = 1;
