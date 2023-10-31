@@ -33,31 +33,24 @@
                     error_log("linha 2 = ", 0);
                     var_dump($linha2);
 
-                    $resposta["sucesso"] = 1;
-                    $resposta["nome"] = $nome;
-                    $resposta["email"] = $email;
-                    $resposta["data_nasc"] = $data_nasc;
-                    $resposta["telefone"] = $telefone;
-                    $resposta["FK_ESTADO_id_estado"] = $FK_ESTADO_id_estado;
-
-                    // $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
-                    // if($consulta3->execute()){
-                    //     $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                    //     $estado = $linha3['descricao'];                
-                    //     error_log("linha 3 = ", 0);
-                    //     var_dump($linha3);
+                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
+                    if($consulta3->execute()){
+                        $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+                        $estado = $linha3['descricao'];                
+                        error_log("linha 3 = ", 0);
+                        var_dump($linha3);
                         
-                    //     $resposta["sucesso"] = 1;
-                    //     $resposta["nome"] = $nome;
-                    //     $resposta["email"] = $email;
-                    //     $resposta["data_nasc"] = $data_nasc;
-                    //     $resposta["telefone"] = $telefone;
-                    //     $resposta["estado"] = $estado;
-                    // }
-                    // else{
-                    //     $resposta["sucesso"] = 0;
-                    //     $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
-                    // }
+                        $resposta["sucesso"] = 1;
+                        $resposta["nome"] = $nome;
+                        $resposta["email"] = $email;
+                        $resposta["data_nasc"] = $data_nasc;
+                        $resposta["telefone"] = $telefone;
+                        $resposta["estado"] = $estado;
+                    }
+                    else{
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
+                    }
                 }
                 else{
                     $resposta["sucesso"] = 0;
