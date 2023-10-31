@@ -33,7 +33,7 @@
                     // error_log("linha 2 = ", 0);
                     // var_dump($linha2);
 
-                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'"
+                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);                  
                         // error_log("linha 3 = ", 0);
