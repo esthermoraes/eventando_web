@@ -35,11 +35,11 @@
 
                     $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     if($consulta3->execute()){
-                        $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);                  
+                        $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+                        $estado = $linha3['descricao'];                
                         error_log("linha 3 = ", 0);
                         var_dump($linha3);
-
-                        $estado = $linha3['descricao'];
+                        
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;
                         $resposta["email"] = $email;
