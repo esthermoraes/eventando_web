@@ -57,12 +57,62 @@
                 '$privacidade_evento', '$horario_evento', '$criador_id')");
 
                 if ($consulta2->execute()) {
-                    $resposta["sucesso"] = 1;
+                    $evento_id = $db_con->lastInsertId(); // Obtém o ID do evento inserido
 
-                    
-                } 
+                    // Agora, aqui é onde o tipo de evento (online ou presencial) é determinado pelo usuário.
+                    if (isset($_POST['formato'])) {
+                        $formato = trim($_POST['formato']);
+
+                        if ($formato === 'online') {
+                            if (isset($_POST['link_evento']) && isset($_POST['plataforma_evento'])) {
+                                $link_evento = trim($_POST['link_evento']);
+                                $plataforma_evento = trim($_POST['plataforma_evento']);
+
+                                $consulta_online = $db_con->prepare("INSERT INTO EVENTO_ONLINE(link, FK_plataforma_plataforma_PK, 
+                                FK_EVENTO_id_evento) VALUES('$link_evento', '$plataforma_evento', '$evento_id')");
+                                
+                                if ($consulta_online->execute()) {
+                                    $resposta["sucesso"] = 1;
+                                } 
+                                else {
+                                    $resposta["sucesso"] = 0;
+                                    $resposta["erro"] = "Erro na inserção na tabela EVENTO_ONLINE: " . $consulta_online->errorInfo()[2];
+                                }
+                            } 
+                            else {
+                                $resposta["sucesso"] = 0;
+                                $resposta["erro"] = "Campos requeridos para evento online não preenchidos";
+                            }
+                        } 
+                        else if ($formato === 'presencial') {
+                            if (isset($_POST['local_evento']) && isset($_POST['buffet_evento'])) {
+                                $local_evento = trim($_POST['local_evento']);
+                                $buffet_evento = trim($_POST['buffet_evento']);
+
+                                $consulta_presencial = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL(FK_buffet_buffet_PK, 
+                                FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$buffet_evento', '$evento_id', '$local_evento')
+                                ");
+
+                                if ($consulta_presencial->execute()) {
+                                    $resposta["sucesso"] = 1;
+                                } 
+                                else {
+                                    $resposta["sucesso"] = 0;
+                                    $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                }
+                            } 
+                            else {
+                                $resposta["sucesso"] = 0;
+                                $resposta["erro"] = "Campos requeridos para evento presencial não preenchidos";
+                            }
+                        }
+                    } 
+                    else {
+                        $resposta["sucesso"] = 1; // Nenhum tipo de evento específico definido
+                    }
+                }
                 else {
-                    // se houve erro na consulta para a tabela de tem_tipo_contato_usuario, indicamos que não houve sucesso
+                    // se houve erro na consulta para a tabela de evennto, indicamos que não houve sucesso
                     // na operação e o motivo no campo de erro.
                     $resposta["sucesso"] = 0;
                     $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta->errorInfo()[2];
