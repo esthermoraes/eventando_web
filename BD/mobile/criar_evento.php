@@ -85,21 +85,37 @@
                             }
                         } 
                         else if ($formato === 'presencial') {
-                            if (isset($_POST['local_evento']) && isset($_POST['buffet_evento'])) {
-                                $local_evento = trim($_POST['local_evento']);
+                            if (isset($_POST['numero_evento']) && isset($_POST['logradouro_evento']) && isset($_POST['bairro_evento'])
+                            && isset($_POST['cidade_evento']) && isset($_POST['estado_evento']) && isset($_POST['cep_evento']) 
+                            && isset($_POST['buffet_evento'])) {
+                                $numero_evento = trim($_POST['numero_evento']);
+                                $logradouro_evento = trim($_POST['logradouro_evento']);
+                                $bairro_evento = trim($_POST['bairro_evento']);
+                                $cidade_evento = trim($_POST['cidade_evento']);
+                                $estado_evento = trim($_POST['estado_evento']);
+                                $cep_evento = trim($_POST['cep_evento']);
+                                
                                 $buffet_evento = trim($_POST['buffet_evento']);
 
-                                $consulta_presencial = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL(FK_buffet_buffet_PK, 
-                                FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$buffet_evento', '$evento_id', '$local_evento')
-                                ");
+                                $consulta_buffet = $db_con->prepare("INSERT INTO buffet (buffet) VALUES('$buffet_evento')");
+                                if ($consulta_buffet->execute()) {
+                                    $buffet_id = $db_con->lastInsertId();
 
-                                if ($consulta_presencial->execute()) {
-                                    $resposta["sucesso"] = 1;
-                                } 
-                                else {
-                                    $resposta["sucesso"] = 0;
-                                    $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                    $consulta_presencial2 = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL(FK_buffet_buffet_PK, 
+                                    FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$buffet_evento', '$evento_id', 
+                                    '$local_evento')");
+                                    if ($consulta_presencial->execute()) {
+                                        $resposta["sucesso"] = 1;
+                                    } 
+                                    else {
+                                        $resposta["sucesso"] = 0;
+                                        $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                    }
                                 }
+                                else{
+                                    $resposta["sucesso"] = 0;
+                                    $resposta["erro"] = "Erro na inserção na tabela buffet: " . $consulta_buffet->errorInfo()[2];;
+                                }  
                             } 
                             else {
                                 $resposta["sucesso"] = 0;
@@ -108,7 +124,8 @@
                         }
                     } 
                     else {
-                        $resposta["sucesso"] = 1; // Nenhum tipo de evento específico definido
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Campos requeridos para evento presencial não preenchidos";
                     }
                 }
                 else {

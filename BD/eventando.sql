@@ -56,9 +56,8 @@ CREATE TABLE LOCALIZACAO (
     id_localizacao serial PRIMARY KEY,
     FK_TIPO_LOGRADOURO_id_tipo_logradouro int NOT NULL,
     FK_BAIRRO_id_bairro int NOT NULL,
-    -- preciso olhar isso urgente --
-    FK_CIDADE_id_cidade int NOT NULL,
-    FK_ESTADO_id_estado int NOT NULL
+    -- preciso olhar isso urgente
+    -- ALTER TABLE LOCALIZACAO ADD coluna FK_CIDADE_id_cidade int NOT NULL, FK_ESTADO_id_estado int NOT NULL;
 );
 
 CREATE TABLE TIPO_LOGRADOURO (

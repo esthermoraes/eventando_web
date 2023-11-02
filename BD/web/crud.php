@@ -59,7 +59,6 @@
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			return $stmt->execute();
-			
 		}
 		
 	}

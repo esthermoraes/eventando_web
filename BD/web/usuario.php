@@ -27,7 +27,6 @@
 
     class Usuario extends CRUD{
         protected $table = 'USUARIO';
-
         private $nome;
         private $data_nasc;
         private $FK_ESTADO_id_estado;
@@ -86,13 +85,43 @@
         }
 
         public function update($id){
-            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc WHERE id = :id";
+            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
+            WHERE id = :id";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(":nome", $this->nome);
             $stmt->bindParam(":data_nasc", $this->data_nasc);
             $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             return $stmt->execute();
+        }
+
+        public function update2($id) {
+            // Consulta para obter o ID do registro antes do UPDATE
+            $pdo = Database::getInstance();
+            $stmt = $pdo->prepare("SELECT id FROM $this->table WHERE id = :id");
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $originalId = $stmt->fetchColumn(); // Armazena o ID original
+        
+            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
+            WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":nome", $this->nome);
+            $stmt->bindParam(":data_nasc", $this->data_nasc);
+            $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $result = $stmt->execute();
+        
+            if ($result) {
+                // Use o ID original que foi armazenado previamente
+                $sql = "UPDATE TEM_TIPO_CONTATO_USUARIO SET descricao = :telefone WHERE fk_USUARIO_id_usuario = :originalId";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':telefone', $this->telefone);
+                $stmt->bindParam(":originalId", $originalId, PDO::PARAM_INT);
+        
+                return $stmt->execute();
+            }
+            return false;
         }
 
         public function select($email) {
