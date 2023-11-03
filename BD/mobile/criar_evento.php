@@ -12,10 +12,10 @@
             && isset($_POST['criador_evento'])) {
             
             // Obtenha o e-mail do criador do evento a partir do POST
-            $criador_evento_email = trim($_POST['criador_evento']);
+            $criador_email = trim($_POST['criador_evento']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
-            $sql = "SELECT id_usuario FROM USUARIO WHERE email = ?";
+            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$criador_email'";
             $consulta = $db_con->prepare($sql);
             $consulta->execute();
             
@@ -60,10 +60,10 @@
                     $evento_id = $db_con->lastInsertId(); // Obtém o ID do evento inserido
 
                     // Agora, aqui é onde o tipo de evento (online ou presencial) é determinado pelo usuário.
-                    if (isset($_POST['formato'])) {
-                        $formato = trim($_POST['formato']);
+                    if (isset($_POST['formato_evento'])) {
+                        $formato_evento = trim($_POST['formato_evento']);
 
-                        if ($formato === 'online') {
+                        if ($formato_evento === 'online') {
                             if (isset($_POST['link_evento']) && isset($_POST['plataforma_evento'])) {
                                 $link_evento = trim($_POST['link_evento']);
                                 $plataforma_evento = trim($_POST['plataforma_evento']);
@@ -84,10 +84,9 @@
                                 $resposta["erro"] = "Campos requeridos para evento online não preenchidos";
                             }
                         } 
-                        else if ($formato === 'presencial') {
+                        else if ($formato_evento === 'presencial') {
                             if (isset($_POST['numero_evento']) && isset($_POST['logradouro_evento']) && isset($_POST['bairro_evento'])
-                            && isset($_POST['cidade_evento']) && isset($_POST['estado_evento']) && isset($_POST['cep_evento']) 
-                            && isset($_POST['buffet_evento'])) {
+                            && isset($_POST['cidade_evento']) && isset($_POST['estado_evento']) && isset($_POST['cep_evento'])) {
                                 $numero_evento = trim($_POST['numero_evento']);
                                 $logradouro_evento = trim($_POST['logradouro_evento']);
                                 $bairro_evento = trim($_POST['bairro_evento']);
@@ -95,21 +94,40 @@
                                 $estado_evento = trim($_POST['estado_evento']);
                                 $cep_evento = trim($_POST['cep_evento']);
                                 
-                                $buffet_evento = trim($_POST['buffet_evento']);
+                                if (isset($_POST['buffet_evento'])){
+                                    $buffet_evento = trim($_POST['buffet_evento']);
 
-                                $consulta_buffet = $db_con->prepare("INSERT INTO buffet (buffet) VALUES('$buffet_evento')");
-                                if ($consulta_buffet->execute()) {
-                                    $buffet_id = $db_con->lastInsertId();
-
-                                    $consulta_presencial2 = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL(FK_buffet_buffet_PK, 
-                                    FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$buffet_evento', '$evento_id', 
-                                    '$local_evento')");
-                                    if ($consulta_presencial->execute()) {
-                                        $resposta["sucesso"] = 1;
-                                    } 
-                                    else {
-                                        $resposta["sucesso"] = 0;
-                                        $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                    $consulta_buffet = $db_con->prepare("INSERT INTO buffet (buffet) VALUES('$buffet_evento')");
+                                    if ($consulta_buffet->execute()) {
+                                        $buffet_id = $db_con->lastInsertId();
+    
+                                        $consulta_presencial2 = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL(FK_buffet_buffet_PK, 
+                                        FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$buffet_evento', '$evento_id', 
+                                        '$local_evento')");
+                                        if ($consulta_presencial->execute()) {
+                                            $resposta["sucesso"] = 1;
+                                        } 
+                                        else {
+                                            $resposta["sucesso"] = 0;
+                                            $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                        }
+                                    }
+                                    else{
+                                        $consulta_buffet = $db_con->prepare("INSERT INTO buffet (buffet) VALUES('')");
+                                        if ($consulta_buffet->execute()) {
+                                            $buffet_id = $db_con->lastInsertId();
+        
+                                            $consulta_presencial2 = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL(FK_buffet_buffet_PK, 
+                                            FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$buffet_evento', '$evento_id', 
+                                            '$local_evento')");
+                                            if ($consulta_presencial->execute()) {
+                                                $resposta["sucesso"] = 1;
+                                            } 
+                                            else {
+                                                $resposta["sucesso"] = 0;
+                                                $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                            }
+                                        }
                                     }
                                 }
                                 else{
@@ -122,10 +140,34 @@
                                 $resposta["erro"] = "Campos requeridos para evento presencial não preenchidos";
                             }
                         }
+                        if (isset($_POST['atracoes_evento'])) {
+                            $atracoes_evento = trim($_POST['atracoes_evento']);
+
+                            $consulta3 = $db_con->prepare("INSERT INTO EVENTO(atracoes) VALUES('$atracoes_evento')");
+                            if ($consulta3->execute()) {
+                                $resposta["sucesso"] = 1;
+                            } 
+                            else {
+                                $resposta["sucesso"] = 0;
+                                $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta3->errorInfo()[2];
+                            }
+                        }
+                        else{
+                            // $resposta["sucesso"] = 0;
+                            // $resposta["erro"] = "Campos requerido para atracao não preenchido";
+                            $consulta3 = $db_con->prepare("INSERT INTO EVENTO(atracoes) VALUES('')");
+                            if ($consulta3->execute()) {
+                                $resposta["sucesso"] = 1;
+                            }
+                            else {
+                                $resposta["sucesso"] = 0;
+                                $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta3->errorInfo()[2];
+                            }
+                        }
                     } 
                     else {
                         $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Campos requeridos para evento presencial não preenchidos";
+                        $resposta["erro"] = "Campos requeridos para evento presencial ou online não preenchidos";
                     }
                 }
                 else {
@@ -137,7 +179,7 @@
             } 
             else {
                 $resposta["sucesso"] = 0;
-                $resposta["erro"] = "O e-mail do criador do evento não foi encontrado.";
+                $resposta["erro"] = "O email do criador do evento não foi encontrado.";
             }
         } 
         else {
