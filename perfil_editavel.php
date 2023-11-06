@@ -9,6 +9,15 @@
     $title = 'EDITAR PERFIL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+
+	require_once 'BD/web/usuario.php';
+	$usuario = new Usuario();
+	$resposta = $usuario->select($_SESSION['email_txt']);
+	$email = $resposta['email_usuario'];
+	$nome = $resposta['nome_usuario'];
+	$data_nasc = $resposta['data_nasc_usuario'];
+	$telefone = $resposta['telefone_usuario'];
+	$estado = $resposta['estado_usuario'];
 ?>
 
 	<div class="mae mt-5 mb-0">
@@ -27,48 +36,45 @@
 							
 							<div class="col-md-12">
 								<label class="form-label">Nome</label>
-								<input type="text" class="form-control" placeholder="">
-								<!-- <input type="text" class="form-control" value="TIAGO ROSA" placeholder=""> -->
+								<input type="text" class="form-control" value = <?php echo $nome;?> required>
 							</div>
 							
 							<div class="col-md-12">
 								<label class="form-label">Data de nascimento</label>
-								<input class="form-control" type="text" id="date"  placeholder="" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-								<!-- <input class="form-control" type="text" id="date" value="12/11/1981" placeholder="" onfocus="(this.type='date')" onblur="(this.type='text')" required> -->
+								<input class="form-control" type="text" id="date" onfocus="(this.type='date')" onblur="(this.type='text')" value =  <?php echo $data_nasc;?> required>
 							</div>
 							
 							<div class="col-md-12">
 								<label class="form-label">Estado</label>
-								<select class="form-select" id="sltEstado" required>
-								<option value="">Estado</option>
-                                <option value="1">Acre</option>
-                                <option value="2">Alagoas</option>
-                                <option value="3">Amapá</option>
-                                <option value="4">Amazonas</option>
-                                <option value="5">Bahia</option>
-                                <option value="6">Ceará</option>
-								<!-- <option value="6" selected>Ceará</option> -->
-                                <option value="7">Distrito Federal</option>
-                                <option value="8">Espirito Santo</option>
-                                <option value="9">Goiás</option>
-                                <option value="10">Maranhão</option>
-                                <option value="11">Mato Grosso do Sul</option>
-                                <option value="12">Mato Grosso</option>
-                                <option value="13">Minas Gerais</option>
-                                <option value="14">Pará</option>
-                                <option value="15">Paraíba</option>
-                                <option value="16">Paraná</option>
-                                <option value="17">Pernambuco</option>
-                                <option value="18">Piauí</option>
-                                <option value="19">Rio de Janeiro</option>
-                                <option value="20">Rio Grande do Norte</option>
-                                <option value="21">Rio Grande do Sul</option>
-                                <option value="22">Rondônia</option>
-                                <option value="23">Roraima</option>
-                                <option value="24">Santa Catarina</option>
-                                <option value="25">São Paulo</option>
-                                <option value="26">Sergipe</option>
-                                <option value="27">Tocantins</option>
+								<select class="form-select" value = <?php echo $estado;?> id="sltEstado" required>
+									<option value="">Estado</option>
+									<option value="1">Acre</option>
+									<option value="2">Alagoas</option>
+									<option value="3">Amapá</option>
+									<option value="4">Amazonas</option>
+									<option value="5">Bahia</option>
+									<option value="6">Ceará</option>
+									<option value="7">Distrito Federal</option>
+									<option value="8">Espirito Santo</option>
+									<option value="9">Goiás</option>
+									<option value="10">Maranhão</option>
+									<option value="11">Mato Grosso do Sul</option>
+									<option value="12">Mato Grosso</option>
+									<option value="13">Minas Gerais</option>
+									<option value="14">Pará</option>
+									<option value="15">Paraíba</option>
+									<option value="16">Paraná</option>
+									<option value="17">Pernambuco</option>
+									<option value="18">Piauí</option>
+									<option value="19">Rio de Janeiro</option>
+									<option value="20">Rio Grande do Norte</option>
+									<option value="21">Rio Grande do Sul</option>
+									<option value="22">Rondônia</option>
+									<option value="23">Roraima</option>
+									<option value="24">Santa Catarina</option>
+									<option value="25">São Paulo</option>
+									<option value="26">Sergipe</option>
+									<option value="27">Tocantins</option>
 								</select>
 							</div>
 						</div>
@@ -82,20 +88,20 @@
 					
 							<div class="col-md-12">
 								<label for="exampleInputPassword2" class="form-label">Telefone</label>
-								<input class="form-control" type="tel" id="telTelefone" placeholder="" maxlength="15" required>
-								<!-- <input class="form-control" type="tel" id="telTelefone" value="(85) 99812-4767" placeholder="" maxlength="15" required> -->
+								<input class="form-control" type="tel" id="telTelefone" maxlength="15" value = <?php echo $telefone;?> required>
 							</div>
 							
 							<div class="col-md-12">
 								<label for="exampleInputPassword3" class="form-label">E-mail</label>
-								<input class="form-control" type="email" id="emEmail2" placeholder="" disabled>
-								<!-- <input class="form-control" type="email" id="emEmail2" value="tiagorosa@gmail.com" placeholder="" disabled> -->
+								<input class="form-control" type="email" id="emEmail2"  value = <?php echo $email;?> disabled>
 							</div>
 						</div>
 					</div>
 					
 					<div class="col-xxl-12">
-						<button type="submit" class="botao btn mt-5 mb-0 text-center align-items-center">SALVAR EDIÇÕES</button>
+						<a href = "perfil_editavel.php">
+							<button type="submit" class="botao btn mt-5 mb-0 text-center align-items-center">SALVAR EDIÇÕES</button>
+						<a>
 					</div>
 				</div>
 			</div>

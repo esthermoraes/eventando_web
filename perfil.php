@@ -9,6 +9,15 @@
     $title = 'PERFIL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+
+	require_once 'BD/web/usuario.php';
+	$usuario = new Usuario();
+	$resposta = $usuario->select($_SESSION['email_txt']);
+	$email = $resposta['email_usuario'];
+	$nome = $resposta['nome_usuario'];
+	$data_nasc = $resposta['data_nasc_usuario'];
+	$telefone = $resposta['telefone_usuario'];
+	$estado = $resposta['estado_usuario'];
 ?>
 
 	<div class="mae mt-5 mb-0">
@@ -27,17 +36,17 @@
 							
 							<div class="col-md-12">
 								<label class="form-label">Nome</label>
-								<input type="text" class="form-control" disabled>
+								<input type="text" class="form-control" value = <?php echo $nome;?> disabled>
 							</div>
 							
 							<div class="col-md-12">
 								<label class="form-label">Data de nascimento</label>
-								<input class="form-control" type="text" id="date" onfocus="(this.type='date')" onblur="(this.type='text')" disabled>
+								<input class="form-control" type="text" id="date" onfocus="(this.type='date')" onblur="(this.type='text')" value =  <?php echo $data_nasc;?> disabled>
 							</div>
 							
 							<div class="col-md-12">
 								<label class="form-label">Estado</label>
-								<input type="text" class="form-control" disabled>
+								<input type="text" class="form-control" value = <?php echo $estado;?> disabled>
 							</div>
 						</div>
 					</div>
@@ -50,12 +59,12 @@
 					
 							<div class="col-md-12">
 								<label for="exampleInputPassword2" class="form-label">Telefone</label>
-								<input class="form-control" type="tel" id="telTelefone" maxlength="15" disabled>
+								<input class="form-control" type="tel" id="telTelefone" maxlength="15" value = <?php echo $telefone;?> disabled>
 							</div>
 							
 							<div class="col-md-12">
 								<label for="exampleInputPassword3" class="form-label">E-mail</label>
-								<input class="form-control" type="email" id="emEmail2"  disabled>
+								<input class="form-control" type="email" id="emEmail2"  value = <?php echo $email;?> disabled>
 							</div>
 						</div>
 					</div>
