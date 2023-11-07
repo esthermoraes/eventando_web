@@ -23,8 +23,8 @@
                 $email = $linha['email'];
                 $data_nasc = $linha['data_nasc'];
                 $FK_ESTADO_id_estado = $linha['fk_estado_id_estado'];
-                error_log("linha = ", 0);
-                var_dump($linha);
+                // error_log("linha = ", 0);
+                // var_dump($linha);
                 // var_dump($FK_ESTADO_id_estado);
                 // var_dump($linha['fk_estado_id_estado']);
 
@@ -32,15 +32,15 @@
                 if($consulta2->execute()){
                     $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                     $telefone = $linha2['descricao'];
-                    error_log("linha 2 = ", 0);
-                    var_dump($linha2);
+                    // error_log("linha 2 = ", 0);
+                    // var_dump($linha2);
 
                     $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
                         $estado = $linha3['descricao'];                
-                        error_log("linha 3 = ", 0);
-                        var_dump($linha3);
+                        // error_log("linha 3 = ", 0);
+                        // var_dump($linha3);
                         
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;
@@ -84,6 +84,6 @@
 
     // Converte a resposta para o formato JSON.
     echo json_encode($resposta);
-    error_log("resposta = ", 0);
-    var_dump($resposta);
+    // error_log("resposta = ", 0);
+    // var_dump($resposta);
 ?>

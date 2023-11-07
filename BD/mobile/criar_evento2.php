@@ -25,14 +25,8 @@
                 }
             }
             else{
-                $consulta = $db_con->prepare("UPDATE EVENTO SET atracoes = '' WHERE id_evento = '$evento_id'");
-                if ($consulta->execute()) {
-                    $resposta["sucesso"] = 1;
-                }
-                else {
-                    $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta->errorInfo()[2];
-                }
+                $resposta["sucesso"] = 0;
+                $resposta["erro"] = "Campos requeridos não preenchidos";
             }
 
             if (isset($_POST['tipo_contato_evento']) && isset($_POST['contato_evento'])){
@@ -50,15 +44,8 @@
                 }
             }
             else{
-                $consulta2 = $db_con->prepare("INSERT INTO POSSUI_TIPO_CONTATO_EVENTO(fk_TIPO_CONTATO_id_tipo_contato, fk_EVENTO_id_evento, 
-                descricao) VALUES('', '$evento_id', '')");
-                if ($consulta2->execute()) {
-                    $resposta["sucesso"] = 1;
-                }
-                else {
-                    $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro na inserção na tabela POSSUI_TIPO_CONTATO_EVENTO: " . $consulta2->errorInfo()[2];
-                }
+                $resposta["sucesso"] = 0;
+                $resposta["erro"] = "Campos requeridos não preenchidos";
             }
 
             if($formato === 'presencial'){
@@ -85,24 +72,8 @@
                     }
                 }
                 else{
-                    $consulta_buffet = $db_con->prepare("INSERT INTO buffet (buffet) VALUES('')");
-                    if ($consulta_buffet->execute()) {
-                        $buffet_id = $db_con->lastInsertId();
-
-                        $consulta3 = $db_con->prepare("UPDATE EVENTO_PRESENCIAL SET FK_buffet_buffet_PK = '' WHERE id_evento = 
-                        '$evento_id'");
-                        if ($consulta3->execute()) {
-                            $resposta["sucesso"] = 1;
-                        } 
-                        else {
-                            $resposta["sucesso"] = 0;
-                            $resposta["erro"] = "Erro na atualizacao da tabela EVENTO_PRESENCIAL: " . $consulta3->errorInfo()[2];
-                        }
-                    }
-                    else{
-                        $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Erro na insercao da tabela buffet: " . $consulta_buffet->errorInfo()[2];
-                    }
+                    $resposta["sucesso"] = 0;
+                    $resposta["erro"] = "Campos requeridos não preenchidos";
                 }
             }
             else {
