@@ -7,7 +7,7 @@
 
     // verifica se o usuário conseguiu autenticar
     if (autenticar($db_con)) {
-        if (isset($_GET['evento_id']) && $_GET['convite_id']){
+        if (isset($_GET['evento_id']) && isset($_GET['convite_id'])){
             $evento_id = $_GET['evento_id'];
             $convite_id = $_GET['convite_id'];
 

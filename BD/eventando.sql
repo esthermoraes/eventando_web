@@ -38,6 +38,7 @@ CREATE TABLE EVENTO (
 CREATE TABLE CONVITE (
     estilo varchar (20) NOT NULL,
     cores varchar (15) NOT NULL,
+    -- src_img text NOT NULL,
     id_convite serial PRIMARY KEY,
     FK_EVENTO_id_evento int NOT NULL
 );
