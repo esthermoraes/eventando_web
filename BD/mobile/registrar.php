@@ -5,8 +5,8 @@
 	$resposta = array();
 	
 	// verifica se todos os campos necessários foram enviados ao servidor
-	if (isset($_POST['novo_nome']) && isset($_POST['nova_data_nasc']) && isset($_POST['novo_estado']) && isset($_POST['novo_telefone']) && isset($_POST['novo_email']) 
-	&& isset($_POST['nova_senha'])) {
+	if (isset($_POST['novo_nome']) && isset($_POST['nova_data_nasc']) && isset($_POST['novo_estado']) && isset($_POST['novo_telefone']) 
+	&& isset($_POST['novo_email']) && isset($_POST['nova_senha'])) {
 	
 		// o método trim elimina caracteres especiais/ocultos da string
 		$novo_nome = trim($_POST['novo_nome']);

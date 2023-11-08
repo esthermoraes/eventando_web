@@ -23,24 +23,16 @@
                 $email = $linha['email'];
                 $data_nasc = $linha['data_nasc'];
                 $FK_ESTADO_id_estado = $linha['fk_estado_id_estado'];
-                // error_log("linha = ", 0);
-                // var_dump($linha);
-                // var_dump($FK_ESTADO_id_estado);
-                // var_dump($linha['fk_estado_id_estado']);
 
-                $consulta2 = $db_con->prepare("SELECT descricao FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = '$id_usuario'");
+                $consulta2 = $db_con->prepare("SELECT telefone FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = '$id_usuario'");
                 if($consulta2->execute()){
                     $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
-                    $telefone = $linha2['descricao'];
-                    // error_log("linha 2 = ", 0);
-                    // var_dump($linha2);
+                    $telefone = $linha2['telefone'];
 
-                    $consulta3 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
+                    $consulta3 = $db_con->prepare("SELECT estado FROM ESTADO WHERE id_estado = '$FK_ESTADO_id_estado'");
                     if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                        $estado = $linha3['descricao'];                
-                        // error_log("linha 3 = ", 0);
-                        // var_dump($linha3);
+                        $estado = $linha3['estado'];
                         
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;

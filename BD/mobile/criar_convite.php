@@ -32,7 +32,7 @@
                 $pms = json_decode($out,true);
                 $img_url=$pms['data']['link'];
 
-                $consulta = $db_con->prepare("INSERT INTO CONVITE(estilo, cores, src_img, FK_EVENTO_id_evento) 
+                $consulta = $db_con->prepare("INSERT INTO CONVITE(estilo, cor, src_img, FK_EVENTO_id_evento) 
                 VALUES('$estilo_convite', '$cor_convite', '$img_url', '$evento_id')");
                 if($consulta->execute()){
                     $resposta["sucesso"] = 1;

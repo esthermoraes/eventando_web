@@ -77,16 +77,16 @@
                         $FK_TIPO_LOGRADOURO_id_tipo_logradouro = $linha2['fk_tipo_logradouro_id_tipo_logradouro'];
                         $FK_BAIRRO_id_bairro = $linha2['fk_bairro_id_bairro'];
 
-                        $consulta3 = $db_con->prepare("SELECT descricao FROM TIPO_LOGRADOURO WHERE id_tipo_logradouro = 
+                        $consulta3 = $db_con->prepare("SELECT tipo_logradouro FROM TIPO_LOGRADOURO WHERE id_tipo_logradouro = 
                         '$FK_TIPO_LOGRADOURO_id_tipo_logradouro'");
                         if($consulta3->execute()){
                             $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                            $tipo_logradouro = $linha3["descricao"];
+                            $tipo_logradouro = $linha3["tipo_logradouro"];
 
-                            $consulta4 = $db_con->prepare("SELECT descricao FROM BAIRRO WHERE id_bairro = '$FK_BAIRRO_id_bairro'");
+                            $consulta4 = $db_con->prepare("SELECT bairro FROM BAIRRO WHERE id_bairro = '$FK_BAIRRO_id_bairro'");
                             if($consulta4->execute()){
                                 $linha4 = $consulta4->fetch(PDO::FETCH_ASSOC);
-                                $bairro = $linha4["descricao"];
+                                $bairro = $linha4["bairro"];
 
                                 $consulta5 = $db_con->prepare("SELECT FK_CIDADE_id_cidade FROM POSSUI_BAIRRO_CIDADE WHERE 
                                 FK_BAIRRO_id_bairro = '$FK_BAIRRO_id_bairro'");
@@ -94,10 +94,10 @@
                                     $linha5 = $consulta5->fetch(PDO::FETCH_ASSOC);
                                     $cidade_id = $linha5["FK_CIDADE_id_cidade"];
 
-                                    $consulta6 = $db_con->prepare("SELECT descricao FROM CIDADE WHERE id_cidade = 'cidade_id'");
+                                    $consulta6 = $db_con->prepare("SELECT cidade FROM CIDADE WHERE id_cidade = 'cidade_id'");
                                     if($consulta6->execute()){
                                         $linha6 = $consulta6->fetch(PDO::FETCH_ASSOC);
-                                        $cidade = $linha6["descricao"];
+                                        $cidade = $linha6["cidade"];
 
                                         $consulta7 = $db_con->prepare("SELECT FK_ESTADO_id_estado FROM POSSUI_CIDADE_ESTADO WHERE 
                                         FK_CIDADE_id_cidade = '$cidade_id'");
@@ -105,10 +105,10 @@
                                             $linha7 = $consulta7->fetch(PDO::FETCH_ASSOC);
                                             $estado_id = $linha7["FK_ESTADO_id_estado"];
 
-                                            $consulta8 = $db_con->prepare("SELECT descricao FROM ESTADO WHERE id_estado = '$estado_id'");
+                                            $consulta8 = $db_con->prepare("SELECT estado FROM ESTADO WHERE id_estado = '$estado_id'");
                                             if($consulta8->execute()){
                                                 $linha8 = $consulta8->fetch(PDO::FETCH_ASSOC);
-                                                $estado = $linha8["descricao"];
+                                                $estado = $linha8["estado"];
 
                                                 $resposta["sucesso"] = 1;
                                                 $resposta["nome"] = $nome;

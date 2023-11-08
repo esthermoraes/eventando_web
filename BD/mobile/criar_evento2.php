@@ -34,7 +34,7 @@
                 $contato_evento = trim($_POST['contato_evento']);
 
                 $consulta2 = $db_con->prepare("INSERT INTO POSSUI_TIPO_CONTATO_EVENTO(fk_TIPO_CONTATO_id_tipo_contato, fk_EVENTO_id_evento, 
-                descricao) VALUES('$tipo_contato_evento', '$evento_id', '$contato_evento')");
+                contato) VALUES('$tipo_contato_evento', '$evento_id', '$contato_evento')");
                 if($consulta2->execute()){
                     $resposta["sucesso"] = 1;
                 }

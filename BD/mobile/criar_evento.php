@@ -15,7 +15,7 @@
             $criador_email = trim($_POST['criador_evento']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
-            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$criador_email'";
+            $sql = "SELECT id_usuario FROM USUARIO WHERE login = '$criador_email'";
             $consulta = $db_con->prepare($sql);
             $consulta->execute();
             
@@ -97,7 +97,7 @@
                                 $estado_evento = trim($_POST['estado_evento']);
                                 $cep_evento = trim($_POST['cep_evento']);
 
-                                $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(descricao) VALUES('$cidade_evento') ON CONFLICT 
+                                $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
                                 (CIDADE) DO NOTHING RETURNING id;");
 
                                 if($consulta_cidade->execute()){
@@ -108,7 +108,7 @@
                                     fk_ESTADO_id_estado) VALUES('$id_cidade', '$estado_evento')");
 
                                     if($consulta_estado_cidade->execute()){
-                                        $consulta_bairro = $db_con->prepare("INSERT INTO BAIRRO(descricao) VALUES('$bairro_evento') ON 
+                                        $consulta_bairro = $db_con->prepare("INSERT INTO BAIRRO(bairro) VALUES('$bairro_evento') ON 
                                         CONFLICT (BAIRRO) DO NOTHING RETURNING id;");
 
                                         if($consulta_bairro->execute()){
