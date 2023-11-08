@@ -6,18 +6,18 @@
 	// escopo global, para que possam ser acessadas sempre que este
 	// arquivo for incluído
 
-	$login = NULL;
+	$email = NULL;
 	$senha = NULL;
 
 	// Método para extrair o login e senha via mod_php (Apache)
 	if (isset( $_SERVER['PHP_AUTH_USER'])) {
-		$login = $_SERVER['PHP_AUTH_USER'];
+		$email = $_SERVER['PHP_AUTH_USER'];
 		$senha = $_SERVER['PHP_AUTH_PW'];
 	}
 	// Método para demais servers
 	elseif(isset( $_SERVER['HTTP_AUTHORIZATION'])) {
 		if(preg_match('/^basic/i', $_SERVER['HTTP_AUTHORIZATION']))
-			list($login, $senha) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+			list($email, $senha) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
 	}
 
 	// O método abaixo realiza o processo de autenticação. Ele retorna 
@@ -26,14 +26,14 @@
 	function autenticar($db_con){
 		// Quando dentro de uma função, para acessar variáveis globais no php é
 		// necessário acessá-las via $GLOBALS.
-		$login = trim($GLOBALS['login']);
+		$email = trim($GLOBALS['email']);
 		$senha = trim($GLOBALS['senha']);
 		//$db_con = $GLOBALS['db_con'];
 		
 		// Verifica antes se o parâmetro de login foi enviado ao servidor
-		if(!is_null($login)){
+		if(!is_null($email)){
 			// realiza a consula no bd pelo usuário login
-			$consulta = $db_con->prepare("SELECT senha FROM USUARIO WHERE login='$login'");
+			$consulta = $db_con->prepare("SELECT senha FROM USUARIO WHERE email='$email'");
 			$consulta->execute();
 
 			// caso o usuário exista, obtem-se o token de autenticação e 
