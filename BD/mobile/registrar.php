@@ -42,7 +42,7 @@
 				$novo_id_usuario = $db_con->lastInsertId();
 		
 				// usar $novo_id_usuario para inserir informações na tabela tem_tipo_contato_usuario
-				$consulta2 = $db_con->prepare("INSERT INTO TEM_TIPO_CONTATO_USUARIO(FK_TIPO_CONTATO_id_tipo_contato, descricao, 
+				$consulta2 = $db_con->prepare("INSERT INTO TEM_TIPO_CONTATO_USUARIO(FK_TIPO_CONTATO_id_tipo_contato, telefone, 
 				FK_USUARIO_id_usuario) VALUES(2, '$novo_telefone', '$novo_id_usuario')");
 		
 				if ($consulta2->execute()) {
