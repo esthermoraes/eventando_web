@@ -98,7 +98,7 @@
                                 $cep_evento = trim($_POST['cep_evento']);
 
                                 $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
-                                (CIDADE) DO NOTHING RETURNING id;");
+                                (CIDADE) DO NOTHING RETURNING id_cidade;");
 
                                 if($consulta_cidade->execute()){
                                     // Usa fetchColumn para obter o valor retornado
@@ -109,7 +109,7 @@
 
                                     if($consulta_estado_cidade->execute()){
                                         $consulta_bairro = $db_con->prepare("INSERT INTO BAIRRO(bairro) VALUES('$bairro_evento') ON 
-                                        CONFLICT (BAIRRO) DO NOTHING RETURNING id;");
+                                        CONFLICT (BAIRRO) DO NOTHING RETURNING id_bairro;");
 
                                         if($consulta_bairro->execute()){
                                             // Usa fetchColumn para obter o valor retornado

@@ -3,43 +3,38 @@
     require_once 'crud.php';
 
     /*************************************************************
-    Objetivo: Classe responsável por representar todas as operações com o usuario.
+    Objetivo: Classe responsável por representar todas as operações com evento online.
 
     Atributos:
-    $nome- nome do usuario
-    $data_nasc - data de nascimento do usuario
-    $FK_ESTADO_id_estado - estado do usuario
-    $telefone - telefone do usuario
-    $email - email do usuario
-    $senha - senha do usuario
+    $link- link do evento online
+    $FK_plataforma_plataforma_PK - FK_plataforma_plataforma_PK do evento online
+    $FK_evento_id_evento - FK_evento_id_evento do evento online
 
     Métodos:
-    insert - insere um usuario na tabela usuario
-    update - atualiza um usuario na tabela usuario
+    insert - insere um evento online na tabela evento online
+    update - atualiza um evento online na tabela evento online
     *************************************************************/
 
     class EventoOnline extends Evento{
         protected $table = 'EVENTO ONLINE';
-        private $nome;
-        private $objetivo;
-        private $data_prevista;
-        private $horario;
-        private $src_img;
-        private $atracoes;
-        private $FK_USUARIO_id_usuario;
+        private $link;
+        private $FK_plataforma_plataforma_PK;
+        private $FK_EVENTO_id_evento;
 
-        public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
-        $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null){
-            $this->nome = $nome;
-            $this->objetivo = $objetivo;
-            $this->data_prevista = $data_prevista;
-            $this->horario = $horario;
-            $this->src_img = $src_img;
-            $this->atracoes = $atracoes;
-            $this->FK_USUARIO_id_usuario = $FK_USUARIO_id_usuario;
+        public function __construct($link = null, $FK_plataforma_plataforma_PK = null, $FK_EVENTO_id_evento = null){
+            $this->link = $link;
+            $this->FK_plataforma_plataforma_PK = $FK_plataforma_plataforma_PK;
+            $this->FK_EVENTO_id_evento = $FK_EVENTO_id_evento;
         }
 
         public function insert(){
+            $sql = "INSERT INTO $this->table (link, FK_plataforma_plataforma_PK, FK_EVENTO_id_evento) 
+            VALUES (:link, :FK_plataforma_plataforma_PK, :FK_EVENTO_id_evento)";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':link', $this->link);
+            $stmt->bindParam(':FK_plataforma_plataforma_PK', $this->FK_plataforma_plataforma_PK);
+            $stmt->bindParam(':FK_EVENTO_id_evento', $this->FK_EVENTO_id_evento);
+            $stmt->execute();
         }
 
         public function update(){
