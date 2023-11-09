@@ -3,26 +3,19 @@
     require_once 'crud.php';
 
     /*************************************************************
-    Objetivo: Classe responsável por representar todas as operações com o cliente do negócio.
+    Objetivo: Classe responsável por representar todas as operações com o usuario.
 
     Atributos:
-    $nome- nome do cliente
-    $sobrenome - sobrenome do cliente
-    $email - email do cliente
-    $idade - idade do cliente
+    $nome- nome do usuario
+    $data_nasc - data de nascimento do usuario
+    $FK_ESTADO_id_estado - estado do usuario
+    $telefone - telefone do usuario
+    $email - email do usuario
+    $senha - senha do usuario
 
     Métodos:
-    insert - insere um cliente na tabela cliente
-    update - atualiza um cliente na tabela cliente
-
-    setNome - Atribui um nome ao cliente
-    getNome - Retorna o nome do cliente
-    setSobrenome - Atribui um sobrenome ao cliente
-    getSobrenome - Retorna o sobrenome ao cliente
-    setEmail - Atribui um email ao cliente
-    getEmail - Retorna o email do cliente
-    setIdade - Atribui uma idade ao cliente
-    getIdade - Retorn a idade do cliente
+    insert - insere um usuario na tabela usuario
+    update - atualiza um usuario na tabela usuario
     *************************************************************/
 
     class Usuario extends CRUD{
@@ -114,7 +107,7 @@
         
             if ($result) {
                 // Use o ID original que foi armazenado previamente
-                $sql = "UPDATE TEM_TIPO_CONTATO_USUARIO SET descricao = :telefone WHERE fk_USUARIO_id_usuario = :originalId";
+                $sql = "UPDATE TEM_TIPO_CONTATO_USUARIO SET telefone = :telefone WHERE fk_USUARIO_id_usuario = :originalId";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':telefone', $this->telefone);
                 $stmt->bindParam(":originalId", $originalId, PDO::PARAM_INT);

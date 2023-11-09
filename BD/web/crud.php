@@ -4,7 +4,6 @@
 	/*************************************************************
 	Objetivo: Classe responsável por representar uma tabela genérica do banco de dados.
 
-
 	Atributos:
 	$table- nome do tabela
 
@@ -27,7 +26,7 @@
 		Objetivo: Método que consulta pelo id
 		Parâmetro de saída: Retorna o registro da tabela. Em caso de falha na consulta ou não existir o registro, retorna falso.
 		***************/
-		public function  find($id){
+		public function find($id){
 			$sql = "SELECT * FROM $this->table WHERE id = :id";
 			$stmt = Database::prepare($sql);
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -37,7 +36,7 @@
 		}
 		
 		/***************
-		Objetivo: Método que consulta todos clientes
+		Objetivo: Método que consulta todos os usuarios
 		Parâmetro de saída: Retorna a tabela com registros. Em caso de falha na consulta, retorna falso.
 		***************/		
 		public function findAll(){
@@ -46,7 +45,6 @@
 			$stmt->execute();
 			//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 			return $stmt->fetchAll(PDO::FETCH_BOTH );
-			
 		}
 		
 		/***************
