@@ -1,0 +1,79 @@
+*{ /*Fonte utilizada no site*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+.criar-evento{
+    margin: 0!important;
+}
+
+.logo-header{
+    margin-top: -8!important;
+}
+
+.div-pesquisar{
+    margin-top: -20px;
+}
+
+.div-home{
+    margin-top: -40px;
+}
+
+.lupa{
+    margin-top: -15px;
+}
+
+/*Cor de fundo utilizada na tela*/
+body{
+    background-color: #ededed;
+}
+
+a{
+    text-decoration: none;
+}
+
+.titulo p{
+    font-size: 20px;
+    color:#000;
+    font-weight: bold;
+}
+
+.bagulhete{
+    background-color: #dccce0;
+    width: 97% !important;
+    border-radius: 13px;
+}
+
+
+
+.imagem{
+    width: 362px;
+    height: 125px;
+    border-radius: 8px;
+    border: #b25abf 2px solid;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.botao{
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    border: solid 3px #770089 !important;
+    width: min(45vw, 250px) !important;
+    height: 35px !important;
+    color: #770089 !important;
+    font-size: min(3vw, 16px);
+    font-weight: bold;
+}
+
+.botao:hover{
+    background-color: #770089 !important;
+    border: solid 3px #770089 !important;
+    color: #fff !important;
+}
+
+.imagem{
+    border: solid 3px #770089;
+}

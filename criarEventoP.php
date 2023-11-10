@@ -168,20 +168,76 @@
             </div>
             <div class="">
                 <div class="lista">
-                    <div class="d-flex header-lista align-items-center">
-                        <p class="me-3">CONVIDADO</p>
-                        <p>EMAIL</p>
-                    </div>
-                    <div class="body-lista">
-                        <span>Ester Moras Nacimento</span>
-                        <span>tete@hotmail.com</span>
-                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr style="background: #bedef2">
+                                <th scope="col">N°</th>
+                                <th scope="col">Convidado</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody style="background: #ededed">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Esther Moraes</td>
+                                <td>tete@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Lorena Toraes</td>
+                                <td>lore@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Yasmin Santana</td>
+                                <td>mamin@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Anna Padilha</td>
+                                <td>padilha@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Sofia Nascimento</td>
+                                <td>sofi@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>Davi Salles</td>
+                                <td>salles@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>Harian Adami</td>
+                                <td>ariel@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">8</th>
+                                <td>Daniel Trindade</td>
+                                <td>danidani@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">9</th>
+                                <td>Moises Omena</td>
+                                <td>omena@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10</th>
+                                <td>Felipe Frechiani</td>
+                                <td>frechiani@gmail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="d-flex justify-content-end mt-2 mb-2">
                     <a href="#">
                         <button type="submit" id="btn-passo2" class="botao">&#10140; PRÓXIMO PASSO</button>
                     </a>
                 </div>
+
+                
+
             </div>
         </div>
 
