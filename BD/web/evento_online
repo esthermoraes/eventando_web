@@ -28,13 +28,22 @@
         }
 
         public function insert(){
-            $sql = "INSERT INTO $this->table (link, FK_plataforma_plataforma_PK, FK_EVENTO_id_evento) 
-            VALUES (:link, :FK_plataforma_plataforma_PK, :FK_EVENTO_id_evento)";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(':link', $this->link);
-            $stmt->bindParam(':FK_plataforma_plataforma_PK', $this->FK_plataforma_plataforma_PK);
-            $stmt->bindParam(':FK_EVENTO_id_evento', $this->FK_EVENTO_id_evento);
-            $stmt->execute();
+            try {
+                // Tenta inserir os dados específicos de evento online
+                $sql = "INSERT INTO $this->table (link, FK_plataforma_plataforma_PK, FK_EVENTO_id_evento) 
+                VALUES (:link, :FK_plataforma_plataforma_PK, :id_evento)";
+                $stmt = Database::prepare($sql);
+                $stmt->bindParam(':link', $this->link);
+                $stmt->bindParam(':FK_plataforma_plataforma_PK', $this->FK_plataforma_plataforma_PK);
+                $stmt->bindParam(':id_evento', $this->FK_EVENTO_id_evento, PDO::PARAM_INT); // Obtém o ID do evento
+    
+                return $stmt->execute();
+                    
+            } 
+            catch (PDOException $e) {
+                // Lidar com exceções de banco de dados, se necessário
+                return $e->getMessage();
+            } 
         }
 
         public function update(){

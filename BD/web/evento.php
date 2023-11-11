@@ -12,7 +12,7 @@
     $horario - horario do evento
     $src_img - src_img do evento
     $atracoes - atracoes do evento
-    $FK_evento_id_evento - FK_evento_id_evento do evento
+    $FK_USUARIO_id_usuario - FK_USUARIO_id_usuario do criador do evento
 
     Métodos:
     insert - insere um evento na tabela evento
@@ -27,23 +27,22 @@
         private $horario;
         private $src_img;
         private $atracoes;
-        private $FK_evento_id_evento;
+        private $FK_USUARIO_id_usuario;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
-        $src_img = null, $atracoes = null, $FK_evento_id_evento = null){
+        $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null){
             $this->nome = $nome;
             $this->objetivo = $objetivo;
             $this->data_prevista = $data_prevista;
             $this->horario = $horario;
             $this->src_img = $src_img;
             $this->atracoes = $atracoes;
-            $this->FK_evento_id_evento = $FK_evento_id_evento;
+            $this->FK_USUARIO_id_usuario = $FK_USUARIO_id_usuario;
         }
 
         public function insert(){
-            $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_evento_id_evento) 
-            VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_evento_id_evento) 
-            RETURNING id_evento";
+            $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
+            VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':objetivo', $this->objetivo);
@@ -51,45 +50,17 @@
             $stmt->bindParam(':horario', $this->horario);
             $stmt->bindParam(':src_img', $this->src_img);
             $stmt->bindParam(':atracoes', $this->atracoes);
-            $stmt->bindParam(':FK_evento_id_evento', $this->FK_evento_id_evento);
-            $stmt->execute();
+            $stmt->bindParam(':FK_USUARIO_id_usuario', $this->FK_USUARIO_id_usuario);
+
+            if ($stmt->execute()){
+                // Recupere o ID inserido
+                $this->id_evento = Database::getInstance()->lastInsertId();
+                return true;
+            }
+            return false;
         }
 
         public function update(){
-        }
-
-        public function select($email) {
-            $sql = 'SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado, senha FROM ' . $this->table . ' WHERE email = ?';
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(1, $email);
-            $stmt->execute();
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($user === false) {
-                return false;
-            }
-            $user_id = $user['id_usuario'];
-            $state_id = $user['fk_estado_id_estado'];
-
-            $sql2 = 'SELECT descricao FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = ' .$user_id;
-            $stmt2 = Database::prepare($sql2);
-            $stmt2->execute();
-            $telefone = $stmt2->fetch(PDO::FETCH_ASSOC);
-
-            $sql3 = 'SELECT descricao FROM ESTADO WHERE id_estado = ' .$state_id;
-            $stmt3 = Database::prepare($sql3);
-            $stmt3->execute();
-            $estado = $stmt3->fetch(PDO::FETCH_ASSOC);
-
-            $resposta = array();
-            $resposta['id_usuario'] = $user_id;
-            $resposta['nome_usuario'] = $user["nome"];
-            $resposta["email_usuario"] = $user["email"];
-            $resposta["senha_usuario"] = $user["senha"];
-            $resposta["data_nasc_usuario"] = $user["data_nasc"];
-            $resposta["telefone_usuario"] = $telefone["descricao"];
-            $resposta["estado_usuario"] = $estado["descricao"];
-
-            return $resposta;
         }
     }
 ?>

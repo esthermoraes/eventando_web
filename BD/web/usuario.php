@@ -65,7 +65,7 @@
 
                 $fk_TIPO_CONTATO_id_tipo_contato = 2;
 
-                $sql = "INSERT INTO TEM_TIPO_CONTATO_USUARIO (fk_USUARIO_id_usuario, fk_TIPO_CONTATO_id_tipo_contato, descricao) 
+                $sql = "INSERT INTO TEM_TIPO_CONTATO_USUARIO (fk_USUARIO_id_usuario, fk_TIPO_CONTATO_id_tipo_contato, telefone) 
                 VALUES (:novo_id_usuario, :fk_TIPO_CONTATO_id_tipo_contato, :telefone)";
                 $stmt = Database::prepare($sql);
                 $stmt->bindParam(':novo_id_usuario', $novo_id_usuario, PDO::PARAM_INT);
@@ -77,27 +77,16 @@
             return false;
         }
 
-        public function update($id){
-            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
-            WHERE id = :id";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(":nome", $this->nome);
-            $stmt->bindParam(":data_nasc", $this->data_nasc);
-            $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-            return $stmt->execute();
-        }
-
-        public function update2($id) {
+        public function update($id) {
             // Consulta para obter o ID do registro antes do UPDATE
             $pdo = Database::getInstance();
-            $stmt = $pdo->prepare("SELECT id FROM $this->table WHERE id = :id");
+            $stmt = $pdo->prepare("SELECT id_usuario FROM $this->table WHERE id_usuario = :id");
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
             $originalId = $stmt->fetchColumn(); // Armazena o ID original
         
-            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
-            WHERE id = :id";
+            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, 
+            data_nasc = :data_nasc WHERE id_usuario = :id";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":nome", $this->nome);
             $stmt->bindParam(":data_nasc", $this->data_nasc);
@@ -129,12 +118,12 @@
             $user_id = $user['id_usuario'];
             $state_id = $user['fk_estado_id_estado'];
 
-            $sql2 = 'SELECT descricao FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = ' .$user_id;
+            $sql2 = 'SELECT telefone FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = ' .$user_id;
             $stmt2 = Database::prepare($sql2);
             $stmt2->execute();
             $telefone = $stmt2->fetch(PDO::FETCH_ASSOC);
 
-            $sql3 = 'SELECT descricao FROM ESTADO WHERE id_estado = ' .$state_id;
+            $sql3 = 'SELECT estado FROM ESTADO WHERE id_estado = ' .$state_id;
             $stmt3 = Database::prepare($sql3);
             $stmt3->execute();
             $estado = $stmt3->fetch(PDO::FETCH_ASSOC);
@@ -145,8 +134,8 @@
             $resposta["email_usuario"] = $user["email"];
             $resposta["senha_usuario"] = $user["senha"];
             $resposta["data_nasc_usuario"] = $user["data_nasc"];
-            $resposta["telefone_usuario"] = $telefone["descricao"];
-            $resposta["estado_usuario"] = $estado["descricao"];
+            $resposta["telefone_usuario"] = $telefone["telefone"];
+            $resposta["estado_usuario"] = $estado["estado"];
 
             return $resposta;
         }

@@ -43,8 +43,6 @@ a{
     border-radius: 13px;
 }
 
-
-
 .imagem{
     width: 362px;
     height: 125px;
@@ -57,7 +55,7 @@ a{
 }
 
 
-.botao{
+.botaoS{
     background-color: #fff !important;
     border-radius: 8px !important;
     border: solid 3px #770089 !important;
@@ -68,12 +66,13 @@ a{
     font-weight: bold;
 }
 
-.botao:hover{
-    background-color: #770089 !important;
-    border: solid 3px #770089 !important;
+.botaoS:hover{
+    background-color: #006760!important;
+    border: solid 3px #006760 !important;
     color: #fff !important;
 }
 
 .imagem{
     border: solid 3px #770089;
 }
+

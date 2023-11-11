@@ -30,7 +30,7 @@
 
     if (isset($_GET["Cadastro"])){
         if($_GET["Cadastro"]){
-            echo "<script> alert( 'Cadastro realizado com sucesso')</script>";
+            echo "<script> alert('Cadastro realizado com sucesso')</script>";
         }
         else{
             echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";
@@ -126,7 +126,7 @@
                     <div id="divCadastro" name="divCadastro"  class="d-none mt-4">
                         <!-- Formulário CADASTRO, com sete campos de entrada: nome, data de nascimento, estado, telefone, email, senha e confirmação de senha -->
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="formulario3">
-                            <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" value = "Nome Sobrenome Sobrenome" required>
+                            <input class="form-control" type="text" id="txtNome" placeholder="Nome completo" name="txtNome" value = "Nome Sobrenome" required>
 
                             <input class="form-control" type="number" id="date" name="date" placeholder="Data de Nascimento" onfocus="(this.type='date')" onblur="(this.type='text')" maxlength="8" value = "27112000" required>
 

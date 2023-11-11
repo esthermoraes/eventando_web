@@ -1,6 +1,6 @@
 <?php 
-    // Define a variável $_seila como 2
-    $_seila = 2;
+    // Define a variável $header como 2
+    $header = 2;
     // Define a variável $css com um link para um arquivo CSS externo
     $css = '<link rel="stylesheet" type="text/css" href="css/css_menu.css"/>';
     // Define a variável $js com um link para um arquivo JavaScript externo com atributo 'defer'
@@ -10,7 +10,6 @@
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
 ?>
-
     
     <!-- Criamos uma div, onde nela vamos ter uma outra div onde tem as imagens de vários eventos -->
     <div class="container-fluid mb-5">
@@ -80,14 +79,14 @@
   
                 <div class="col-md-6">
                     <p id="EventosM">EVENTOS DO MOMENTO</p>
-                    <table class="table table-striped" style="border-radius: 4px;">
+                    <table class="table table-hover" style="border-radius: 4px;">
                         <thead>
-                            <tr>
+                            <tr style="background: #d9d5d4">
                                 <th scope="col">Segunda-feira</th>
                                 <th scope="col">18 de setembro</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="background: #ededed">
                             <tr>
                                 <td>14h00</td>
                                 <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>
@@ -98,9 +97,10 @@
                             </tr>
                             <tr>
                                 <td>19h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                            
+                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>
                             </tr>
                         </tbody>
+
                         <thead>
                             <tr>
                                 <th scope="col">Terça-feira</th>

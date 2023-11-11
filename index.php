@@ -1,11 +1,9 @@
 <?php 
-    // Define a variável $_seila como 1
-    $_seila = 1;
+    // Define a variável $header como 1
+    $header = 1;
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
 ?>
-
-
 
     <div class="m-5">
         <p class="eventosR">EVENTOS RECENTES</p>

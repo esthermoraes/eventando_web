@@ -1,6 +1,6 @@
 <?php 
-    // Define a variável $_seila como 2
-    $_seila = 2;
+    // Define a variável $header como 2
+    $header = 2;
     // Define a variável $css com um link para um arquivo CSS externo chamado 'css_favoritos.css'
     $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_favoritos.css" />';
     // Define a variável $js como vazia, ou seja, não inclui nenhum arquivo JavaScript

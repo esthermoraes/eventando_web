@@ -29,13 +29,21 @@
         }
 
         public function insert(){
-            $sql = "INSERT INTO $this->table (FK_buffet_buffet_PK, FK_LOCALIZACAO_id_localizacao, FK_EVENTO_id_evento) 
-            VALUES (:FK_buffet_buffet_PK, :FK_LOCALIZACAO_id_localizacao, :FK_EVENTO_id_evento)";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(':FK_buffet_buffet_PK', $this->FK_buffet_buffet_PK);
-            $stmt->bindParam(':FK_LOCALIZACAO_id_localizacao', $this->FK_LOCALIZACAO_id_localizacao);
-            $stmt->bindParam(':FK_EVENTO_id_evento', $this->FK_EVENTO_id_evento);
-            $stmt->execute();
+            try{
+                $sql = "INSERT INTO $this->table (FK_buffet_buffet_PK, FK_LOCALIZACAO_id_localizacao, FK_EVENTO_id_evento) 
+                VALUES (:FK_buffet_buffet_PK, :FK_LOCALIZACAO_id_localizacao, :id_evento)";
+                $stmt = Database::prepare($sql);
+                $stmt->bindParam(':FK_buffet_buffet_PK', $this->FK_buffet_buffet_PK);
+                $stmt->bindParam(':FK_LOCALIZACAO_id_localizacao', $this->FK_LOCALIZACAO_id_localizacao);
+                $stmt->bindParam(':id_evento', $this->FK_EVENTO_id_evento, PDO::PARAM_INT); // Obtém o ID do evento
+                
+                return $stmt->execute();
+                    
+            } 
+            catch (PDOException $e) {
+                // Lidar com exceções de banco de dados, se necessário
+                return $e->getMessage();
+            } 
         }
 
         public function update(){
