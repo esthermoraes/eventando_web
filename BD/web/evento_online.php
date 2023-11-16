@@ -37,9 +37,8 @@
 
         public function insert(){
             try {
-
                 //insere um evento genérico e retorna o id 
-                $idevento = $evento.INSERT();
+                $id_evento = $evento.INSERT();
 
                 // Tenta inserir os dados específicos de evento online
                 $sql = "INSERT INTO $this->table (link, FK_plataforma_plataforma_PK, FK_EVENTO_id_evento) 
@@ -47,7 +46,7 @@
                 $stmt = Database::prepare($sql);
                 $stmt->bindParam(':link', $this->link);
                 $stmt->bindParam(':FK_plataforma_plataforma_PK', $this->FK_plataforma_plataforma_PK);
-                $stmt->bindParam(':id_evento', $idevento , PDO::PARAM_INT); // Obtém o ID do evento
+                $stmt->bindParam(':id_evento', $id_evento , PDO::PARAM_INT); // Obtém o ID do evento
     
                 return $stmt->execute();
                     

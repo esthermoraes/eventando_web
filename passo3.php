@@ -34,13 +34,13 @@
                 <p class="fs-2 ms-3">Estilo</p>
                 <div class="d-flex">
                     <div class="p-3">
-                        <img src="img/convite1.jpg" alt="foto convite" class="convite">
+                        <img src="img/convite1.png" alt="foto convite" class="convite">
                     </div>
                     <div class="p-3">
-                        <img src="img/convite2.jpg" alt="foto convite" class="convite">
+                        <img src="img/convite2.png" alt="foto convite" class="convite">
                     </div>
                     <div class="p-3">
-                        <img src="img/convite3.jpg" alt="foto convite" class="convite">
+                        <img src="img/convite3.png" alt="foto convite" class="convite">
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-3">
@@ -53,11 +53,45 @@
             <div class="w-50 div-passo3" style="background-color: #ebf6fc;">
                 <p class="fs-2 ms-3">Cores</p>
                 <div class="d-flex m-3 p-3 justify-content-around">
-                    <div class="p-3 convite" style="background-color: #CE8C2A">
+                    <div class="p-3 convite" style="background-color: #D1593E">
                     </div>
-                    <div class="p-3 convite" style="background-color: #E4DEA6">
+                    <div class="p-3 convite" style="background-color: #B8294B">
                     </div>
-                    <div class="p-3 convite" style="background-color: #484E5C">
+                    <div class="p-3 convite" style="background-color: #7848AD">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="#">
+                        <button type="submit" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-arrow-rotate-right me-2"></i>GERAR CONVITE</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-50 div-passo3" style="background-color: #ebf6fc;">
+                <p class="fs-2 ms-3">Cores</p>
+                <div class="d-flex m-3 p-3 justify-content-around">
+                    <div class="p-3 convite" style="background-color: #246634">
+                    </div>
+                    <div class="p-3 convite" style="background-color: #49948F">
+                    </div>
+                    <div class="p-3 convite" style="background-color: #AB4100">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="#">
+                        <button type="submit" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-arrow-rotate-right me-2"></i>GERAR CONVITE</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-50 div-passo3" style="background-color: #ebf6fc;">
+                <p class="fs-2 ms-3">Cores</p>
+                <div class="d-flex m-3 p-3 justify-content-around">
+                    <div class="p-3 convite" style="background-color: #000">
+                    </div>
+                    <div class="p-3 convite" style="background-color: #FF6464">
+                    </div>
+                    <div class="p-3 convite" style="background-color: #A0B1FF">
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-3">
@@ -71,7 +105,7 @@
                 <p class="fs-2 ms-3">Convite</p>
                 <div class="d-flex justify-content-start">
                     <div class="p-3">
-                        <img src="img/convite1.jpg" alt="foto convite" class="convite">
+                        <img src="img/convite3_3.png" alt="foto convite" class="convite">
                     </div>
 
                     <div class="">

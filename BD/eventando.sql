@@ -52,27 +52,27 @@ CREATE TABLE LISTA_CONVIDADOS (
 
 CREATE TABLE LOCALIZACAO (
     numero int,
-    logradouro varchar(300) NOT NULL,
+    -- logradouro varchar(300) NOT NULL,
     cep varchar(8) NOT NULL,
     id_localizacao serial PRIMARY KEY,
-    FK_TIPO_LOGRADOURO_id_tipo_logradouro int NOT NULL,
-    FK_BAIRRO_id_bairro int NOT NULL
+    -- FK_TIPO_LOGRADOURO_id_tipo_logradouro int NOT NULL,
+    -- FK_BAIRRO_id_bairro int NOT NULL
 );
 
-CREATE TABLE TIPO_LOGRADOURO (
-    tipo_logradouro varchar(50) NOT NULL UNIQUE,
-    id_tipo_logradouro serial PRIMARY KEY
-);
+-- CREATE TABLE TIPO_LOGRADOURO (
+--     tipo_logradouro varchar(50) NOT NULL UNIQUE,
+--     id_tipo_logradouro serial PRIMARY KEY
+-- );
 
-CREATE TABLE CIDADE (
-    cidade varchar(150) NOT NULL UNIQUE,
-    id_cidade serial PRIMARY KEY
-);
+-- CREATE TABLE CIDADE (
+--     cidade varchar(150) NOT NULL UNIQUE,
+--     id_cidade serial PRIMARY KEY
+-- );
 
-CREATE TABLE BAIRRO (
-    bairro varchar(150) NOT NULL UNIQUE,
-    id_bairro serial PRIMARY KEY
-);
+-- CREATE TABLE BAIRRO (
+--     bairro varchar(150) NOT NULL UNIQUE,
+--     id_bairro serial PRIMARY KEY
+-- );
 
 CREATE TABLE ESTADO (
     estado varchar(2) NOT NULL UNIQUE,
