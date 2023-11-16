@@ -27,6 +27,7 @@
                 <p class="m-0">PASSO 3</p>
             </div>
         </div>
+
         <div class="w-100 div-passo1">
             <div class="div-form">
                 <form class="d-flex flex-wrap">
@@ -134,11 +135,12 @@
                 </form>
             </div>
         </div>
+
         <div class="w-100 div-passo2 d-none justify-content-center flex-wrap">
             <div class="w-100 d-flex justify-content-center mt-5">
                 <form action="" class="d-flex form-convidado ms-4">
-                    <input type="text" name="" id="" class="p-2 m-2" placeholder="Nome do Convidado">
-                    <input type="email" name="" id="" class="p-2 m-2" placeholder="Email do Convidado">
+                    <input type="text" name="" id="" class="p-2 m-2 form-control" placeholder="Nome do Convidado">
+                    <input type="email" name="" id="" class="p-2 m-2 form-control" placeholder="Email do Convidado">
                     <button type="submit"class="m-2">ADICIONAR</button>
                 </form>
             </div>
@@ -215,11 +217,12 @@
             </div>
         </div>
 
-        <div class="w-100 div-passo2 d-none justify-content-center flex-wrap">
+        <div class="w-100 div-passo3 d-none justify-content-center flex-wrap">
             <div class="" style="background-color: #ebf6fc;">
                 <p>CONVITE</p>
             </div>
         </div>
+        
     </div>
 </body>
 </html>

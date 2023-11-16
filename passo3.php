@@ -15,6 +15,7 @@
         <p class="ms-3">CRIAR CONVITE</p>
         <p class="me-3">Nome do Evento</p>
     </div>
+    
     <div class="container-fluid d-flex p-0 bagulhete">
         <div class="div_passos">
             <div id="btn-passo1" class="passo1 mb-2">
