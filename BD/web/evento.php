@@ -40,7 +40,7 @@
             $this->FK_USUARIO_id_usuario = $FK_USUARIO_id_usuario;
         }
 
-        public function insert(){
+        protected function insert(){
             $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
             VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
             $stmt = Database::prepare($sql);

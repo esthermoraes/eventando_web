@@ -18,18 +18,30 @@
     class EventoPresencial extends Evento{
         protected $table = 'EVENTO PRESENCIAL';
         private $FK_buffet_buffet_PK;
+        
+        /* Dados da localização */
         private $FK_LOCALIZACAO_id_localizacao;
+        private $cep;
+        
+
+        /* Dados da localização */
+
         private $FK_EVENTO_id_evento;
 
         public function __construct($FK_buffet_buffet_PK = null, $FK_LOCALIZACAO_id_localizacao = null, 
-        $FK_EVENTO_id_evento = null){
+        $FK_EVENTO_id_evento = null, $cep =null){
             $this->FK_buffet_buffet_PK = $FK_buffet_buffet_PK;
             $this->FK_LOCALIZACAO_id_localizacao = $FK_LOCALIZACAO_id_localizacao;
             $this->FK_EVENTO_id_evento = $FK_EVENTO_id_evento;
         }
 
         public function insert(){
+
             try{
+
+                $sqllocalizaca= 'insert into localizacao(cep,logradouro) value'
+
+
                 $sql = "INSERT INTO $this->table (FK_buffet_buffet_PK, FK_LOCALIZACAO_id_localizacao, FK_EVENTO_id_evento) 
                 VALUES (:FK_buffet_buffet_PK, :FK_LOCALIZACAO_id_localizacao, :id_evento)";
                 $stmt = Database::prepare($sql);

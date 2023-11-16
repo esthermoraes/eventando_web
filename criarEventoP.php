@@ -4,7 +4,7 @@
     // Define a variável $css com um link para um arquivo CSS externo chamado 'css_criarEventoP.css'
     $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_criarEventoP.css" />';
     // Define a variável $js com um link para um arquivo JavaScript externo chamado 'js_criarEventoP.js' e com o atributo 'defer'
-    $js = ' <script src="js/js_criarEventoP.js" defer></script>';
+    $js = ' <script src="js/js_criarEventoP.js" defer></script> <script src="js/js_cep.js" defer></script> ';
     // Define a variável $title como 'CRIAR EVENTO PRESENCIAL', que será o título da página
     $title = 'CRIAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
@@ -52,52 +52,52 @@
                                 <input id="cep" class="form-control" placeholder="CEP"/>
                                 <select class="form-select uf me-5" id="sltEstado">
                                     <option value="">Estado</option>
-                                    <option value="1">Acre</option>
-                                    <option value="2">Alagoas</option>
-                                    <option value="3">Amapá</option>
-                                    <option value="4">Amazonas</option>
-                                    <option value="5">Bahia</option>
-                                    <option value="6">Ceará</option>
-                                    <option value="7">Distrito Federal</option>
-                                    <option value="8">Espirito Santo</option>
-                                    <option value="9">Goiás</option>
-                                    <option value="10">Maranhão</option>
-                                    <option value="11">Mato Grosso do Sul</option>
-                                    <option value="12">Mato Grosso</option>
-                                    <option value="13">Minas Gerais</option>
-                                    <option value="14">Pará</option>
-                                    <option value="15">Paraíba</option>
-                                    <option value="16">Paraná</option>
-                                    <option value="17">Pernambuco</option>
-                                    <option value="18">Piauí</option>
-                                    <option value="19">Rio de Janeiro</option>
-                                    <option value="20">Rio Grande do Norte</option>
-                                    <option value="21">Rio Grande do Sul</option>
-                                    <option value="22">Rondônia</option>
-                                    <option value="23">Roraima</option>
-                                    <option value="24">Santa Catarina</option>
-                                    <option value="25">São Paulo</option>
-                                    <option value="26">Sergipe</option>
-                                    <option value="27">Tocantins</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espirito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
                                 </select>
                             </div>
                             <div class="d-flex flex-column pe-5">
-                                <input placeholder="Cidade" class="form-control" readonly/>
-                                <input placeholder="Bairro" class="form-control" readonly/>
+                                <input placeholder="Cidade" id="cidade" class="form-control" readonly/>
+                                <input placeholder="Bairro" id="bairro" class="form-control" readonly/>
                             </div>
                             <div class="d-flex justify-content-between pe-5">
-                                <select class="form-select me-2">
+                                <select class="form-select me-2" id = "sltTipoLogradouro">
                                     <option value="">Tipo Logradouro</option>
-                                    <option value="1">Rodovia</option>
-                                    <option value="2">Avenida</option>
-                                    <option value="3">Alameda</option>
-                                    <option value="4">Praça</option>
-                                    <option value="5">Rua</option>
-                                    <option value="6">Passarela</option>
-                                    <option value="7">Vila</option>
+                                    <option value="Rodovia">Rodovia</option>
+                                    <option value="Avenida">Avenida</option>
+                                    <option value="Alameda">Alameda</option>
+                                    <option value="Praça">Praça</option>
+                                    <option value="Rua">Rua</option>
+                                    <option value="Passarela">Passarela</option>
+                                    <option value="Vila">Vila</option>
                                 </select>
-                                <input placeholder="Logradouro" class="form-control log" readonly/>
-                                <input placeholder="N°" class="ms-2 form-control num"/>
+                                <input placeholder="Logradouro" class="form-control log" id = "logradouro" readonly/>
+                                <input placeholder="N°" id = "numero" class="ms-2 form-control num"/>
                             </div>
                         </div>
                     </div>

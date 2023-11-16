@@ -1,14 +1,23 @@
-export function buscaAPI(event){
-    let cep, estado, cidade, bairro, logradouro;
-	fetch(`https://brasilapi.com.br/api/cep/v2/${event.target.value}`)
-	.then(res => res.json())
-	.then(dados => {
-		cep = dados.cep;
-		estado = dados.state;
-        cidade = dados.city;
-        bairro = dados.neighborhood;
-        logradouro = dados.street;
-	});
+const cep = document.getElementById('cep');
+const tpLogradouro = document.getElementById('sltTipoLogradouro');
+const logradouro = document.getElementById('logradouro');
+const numero = document.getElementById('numero');
+const uf = document.getElementById('sltEstado');
+const cidade = document.getElementById('cidade');
+const bairro = document.getElementById('bairro');
 
-    return {cep, estado, cidade, bairro, logradouro}
-}
+cep.addEventListener("input", e => {
+    if(e.target.value.length === 8){
+        fetch(`https://brasilapi.com.br/api/cep/v2/${e.target.value}`)
+        .then(res => res.json())
+        .then(dados => {
+            cidade.value = dados.city;
+            bairro.value = dados.neighborhood;
+            uf.value = dados.state;
+            logradouro.value = dados.street.split(' ').slice(1).join(' ');
+            const tp_lograduro = dados.street.split(" ");
+            tpLogradouro.value = (tp_lograduro[0]);
+	});
+    }
+	
+});
