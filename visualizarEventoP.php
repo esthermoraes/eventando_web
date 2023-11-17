@@ -12,13 +12,13 @@
 ?>
 
     <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
-        <p class="ms-3">VISUALIZAR  EVENTO</p>
+        <p class="ms-3">VISUALIZAR EVENTO PRESENCIAL</p>
         <p class="me-3">Nome do Evento</p>
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete">
         <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="./img/convite1.jpg" alt="foto do evento" class="imagem m-2">
+            <img src="img/evento25.jpg" alt="foto do evento" class="imagem m-2 ms-4">
             <p class="">PÚBLICO</p>
         </div>
 

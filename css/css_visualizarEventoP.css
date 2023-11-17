@@ -44,16 +44,15 @@ a{
 }
 
 .imagem{
-    width: 362px;
-    height: 125px;
+    width: 350px;
+    height: 150px;
     border-radius: 8px;
-    border: #b25abf 2px solid;
-    background-color: white;
+    border: none !important;
+    background-color: #ebf6fc;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .botaoS{
     background-color: #fff !important;

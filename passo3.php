@@ -105,19 +105,22 @@
                 <p class="fs-2 ms-3">Convite</p>
                 <div class="d-flex justify-content-start">
                     <div class="p-3">
-                        <img src="img/convite3_3.png" alt="foto convite" class="convite">
+                        <img src="img/convite3_3.png" alt="foto convite" class="convitePronto">
                     </div>
 
                     <div class="">
                         <div class="mt-5">
                             <a href="#">
-                                <button type="submit" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-download me-2"></i>BAIXAR</button>
+                                <button type="" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-download me-2"></i>BAIXAR</button>
                             </a>
                         </div>
                         <div class="mt-5">
                             <a href="#">
-                                <button type="submit" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-share-nodes me-2"></i>COMPARTILHAR</button>
+                                <button type="" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-share-nodes me-2"></i>COMPARTILHAR</button>
                             </a>
+                        </div>
+                        <div class="mt-5">
+                            <button type="" id="btn-passo2" class="botao2 m-3"><i class="fa-solid fa-check me-2"></i>SALVAR CONVITE</button>
                         </div>
                     </div>
                 </div>

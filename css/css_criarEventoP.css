@@ -402,6 +402,12 @@ label{
     border: solid 6px #770089 !important;
 }
 
+.convitePronto{
+    width: 14rem;
+    height: 20rem;
+    border-radius: 8px;
+}
+
 .div-passo3{
     border-radius: 8px;
 }
