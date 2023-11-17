@@ -66,33 +66,34 @@
             return false;
         }
 
-        public function update($id) {
-            // Consulta para obter o ID do registro antes do UPDATE
+        public function update($email) {
+            // Consulta para obter o ID do usuário usando o e-mail fornecido
             $pdo = Database::getInstance();
-            $stmt = $pdo->prepare("SELECT id_usuario FROM $this->table WHERE id_usuario = :id");
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt = $pdo->prepare("SELECT id_usuario FROM $this->table WHERE email = :email");
+            $stmt->bindParam(":email", $email);
             $stmt->execute();
-            $originalId = $stmt->fetchColumn(); // Armazena o ID original
-        
-            $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, 
-            data_nasc = :data_nasc WHERE id_usuario = :id";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":nome", $this->nome);
-            $stmt->bindParam(":data_nasc", $this->data_nasc);
-            $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-            $result = $stmt->execute();
-        
-            if ($result) {
-                // Use o ID original que foi armazenado previamente
-                $sql = "UPDATE TEM_TIPO_CONTATO_USUARIO SET telefone = :telefone WHERE fk_USUARIO_id_usuario = :originalId";
+            $id = $stmt->fetchColumn(); // Obtém o ID do usuário
+            
+            if($id) {
+                $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
+                WHERE id_usuario = :id";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':telefone', $this->telefone);
-                $stmt->bindParam(":originalId", $originalId, PDO::PARAM_INT);
-        
-                return $stmt->execute();
+                $stmt->bindParam(":nome", $this->nome);
+                $stmt->bindParam(":data_nasc", $this->data_nasc);
+                $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                $result = $stmt->execute();
+            
+                if ($result) {
+                    // Atualiza o telefone na tabela 'TEM_TIPO_CONTATO_USUARIO' usando o ID obtido
+                    $sql2 = "UPDATE TEM_TIPO_CONTATO_USUARIO SET telefone = :telefone WHERE fk_USUARIO_id_usuario = :id";
+                    $stmt2 = $pdo->prepare($sql);
+                    $stmt2->bindParam(':telefone', $this->telefone);
+                    $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
+            
+                    return $stmt2->execute();
+                }
             }
-            return false;
         }
 
         public function select($email) {
@@ -101,9 +102,11 @@
             $stmt->bindParam(1, $email);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
             if ($user === false) {
                 return false;
             }
+
             $user_id = $user['id_usuario'];
             $state_id = $user['fk_estado_id_estado'];
 
