@@ -28,14 +28,15 @@
     include_once 'BD/web/cadastrar.php';
     include_once 'BD/web/entrar.php';
 
-    if (isset($_GET["Cadastro"])){
-        if($_GET["Cadastro"]){
+    if (isset($_GET["Cadastro"])) {
+        if ($_GET["Cadastro"] == "sucesso") {
             echo "<script> alert('Cadastro realizado com sucesso')</script>";
-        }
-        else{
+        } 
+        else {
             echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";
         }
     }
+    
 ?>
 
 <body>

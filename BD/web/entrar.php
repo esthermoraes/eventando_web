@@ -23,7 +23,7 @@
             } 
         } 
         else {
-            echo "<script>alert('Erro no banco de dados. Tente novamente mais tarde.');</script>";
+            echo "<script>alert('Credenciais de email ou senha inválidas. Tente novamente.');</script>";
         }
     }
     

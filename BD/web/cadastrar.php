@@ -39,15 +39,14 @@
         $usuario = new Usuario($Nomesanitized, $dataNascimento, $estado, $telefone, $Emailsanitized, $senhaSegura);	
 
         //insere o usuario
-
         try{
            $result =  $usuario->insert();
         }
         catch (Exception $e) {
-             header('Location: login.php?Cadastro=false');
+            header('Location: login.php?Cadastro=false');
         }
         if($result):
-           header('Location: login.php?Cadastro=true');
+           header('Location: login.php?Cadastro=sucesso');
         endif;
     endif;	
 ?>
