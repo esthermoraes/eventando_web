@@ -37,6 +37,11 @@ a{
     font-weight: bold;
 }
 
+.privacidade{
+    background-color: #fff !important;
+    border-radius: 8px;
+}
+
 .bagulhete{
     background-color: #dccce0;
     width: 97% !important;

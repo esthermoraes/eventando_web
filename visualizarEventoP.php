@@ -19,7 +19,7 @@
     <div class="container-fluid d-flex p-0 bagulhete">
         <div class="d-flex flex-column justify-content-center align-items-center">
             <img src="img/evento25.jpg" alt="foto do evento" class="imagem m-2 ms-4">
-            <p class="">PÚBLICO</p>
+            <p class="privacidade">PÚBLICO</p>
         </div>
 
         <div class="d-flex justify-content-end mt-2 mb-2">
