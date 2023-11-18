@@ -76,6 +76,23 @@ a{
     color: #fff !important;
 }
 
+.botaoD{
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    border: solid 3px #770089 !important;
+    width: min(45vw, 250px) !important;
+    height: 35px !important;
+    color: #770089 !important;
+    font-size: min(3vw, 16px);
+    font-weight: bold;
+}
+
+.botaoD:hover{
+    background-color: #006760!important;
+    border: solid 3px #006760 !important;
+    color: #fff !important;
+}
+
 .imagem{
     border: solid 3px #770089;
 }

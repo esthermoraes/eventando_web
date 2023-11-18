@@ -1,6 +1,5 @@
 <?php
-
-    require_once 'crud.php';
+    require_once 'evento.php';
 
     /*************************************************************
     Objetivo: Classe responsável por representar todas as operações com evento presencial.
@@ -30,13 +29,13 @@
         /* Dados da localização */
 
         private $FK_EVENTO_id_evento;
-        // private $evento;
+        private $evento;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $FK_buffet_buffet_PK = null, $buffet = null, 
         $FK_LOCALIZACAO_id_localizacao = null, $cep =null, $numero = null, $FK_EVENTO_id_evento = null){
 
-            $evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
+            $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
 
             $this->FK_buffet_buffet_PK = $FK_buffet_buffet_PK;
             $this->buffet = $buffet;
@@ -47,10 +46,11 @@
         }
 
         public function insert(){
-
             try{
                 //insere um evento genérico e retorna o id 
-                $id_evento = $evento.INSERT();
+                if($this->evento->insert()){
+                    $id_evento = $this->evento->getId();
+                }
 
                 // Tenta inserir os dados de localização
                 $sql_localizacao = "INSERT INTO LOCALIZACAO (cep, numero) VALUES (:cep, :numero)";
@@ -63,7 +63,7 @@
                     $id_localizacao = $this->id_localizacao = Database::getInstance()->lastInsertId();
 
                     $sql_buffet = "INSERT INTO buffet (buffet) VALUES (:buffet)";
-                    $stmt = Database::prepare($sql);
+                    $stmt = Database::prepare($sql_buffet);
                     $stmt->bindParam(':buffet', $this->buffet);
                     $result2 = $stmt->execute();
 
@@ -88,7 +88,7 @@
             } 
         }
 
-        public function update(){
+        public function update($id){
         }
     }
 ?>
