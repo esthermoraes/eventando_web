@@ -70,10 +70,21 @@
 					</div>
 				</div>
 				
-				<div class="col-md-12">
-					<a href = "perfil_editavel.php">
-						<button class="botao btn mt-5 mb-3 text-center align-items-center">EDITAR PERFIL</button>
-					<a>
+				<div class="row-1">
+					<div class="col-md-6">
+						<a href="perfil_editavel.php">
+							<button class="botao btn mt-5 mb-3 text-center align-items-center col-md-12">
+								<i class="fa-solid fa-user-pen"></i> 
+								EDITAR PERFIL
+							</button>
+						</a>
+					</div>
+					<div class="col-md-6">
+						<button class="botao btn mt-5 mb-3 text-center align-items-center col-md-12">
+							<i class="fa-solid fa-user-xmark"></i> 
+							DELETAR PERFIL
+						</button>
+					</div>
 				</div>
 			</div>
 			<!-- </div> -->

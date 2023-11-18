@@ -28,20 +28,20 @@
 		$estado = $_POST['estado_usuario']; // Exemplo de um campo de estado
 		$telefone = $_POST['telefone_usuario']; // Exemplo de um campo de telefone
 	
-		// // Aqui você chamaria sua função update passando os dados coletados
+		// Aqui você chamaria sua função update passando os dados coletados
 		// require_once 'BD/web/usuario.php';
-		$usuario = new Usuario();
+		$usuario = new Usuario($nome, $data_nasc, $estado, $telefone);
 		$resultado = $usuario->update($email);
-	
-		if ($resultado) {
-			// Atualização bem-sucedida, redirecione ou exiba uma mensagem
-			header("Location: perfil.php?atualizacao=sucesso");
-			exit();
-		} else {
-			// Algo deu errado na atualização, redirecione ou exiba uma mensagem de erro
-			header("Location: perfil.php?atualizacao=erro");
-			exit();
-		}
+
+		// try{
+		// 	$resultado = $usuario->update($email);
+		// }
+		// catch (Exception $e) {
+		// 	header("Location: perfil_editavel.php?");
+		// }
+		// if($resultado):
+		// 	header("Location: perfil.php?");
+		// endif;
 	}
 	
 ?>
@@ -63,17 +63,17 @@
 								
 								<div class="col-md-12">
 									<label class="form-label">Nome</label>
-									<input type="text" class="form-control" value = <?php echo $nome;?> required>
+									<input type="text" name = "nome_usuario" class="form-control" value = <?php echo $nome;?> required>
 								</div>
 								
 								<div class="col-md-12">
 									<label class="form-label">Data de nascimento</label>
-									<input class="form-control" type="text" id="date" onfocus="(this.type='date')" onblur="(this.type='text')" value =  <?php echo $data_nasc;?> required>
+									<input class="form-control" name = "data_nasc_usuario" type="text" id="date" onfocus="(this.type='date')" onblur="(this.type='text')" value =  <?php echo $data_nasc;?> required>
 								</div>
 								
 								<div class="col-md-12">
 									<label class="form-label">Estado</label>
-									<select class="form-select" value = <?php echo $estado;?> id="sltEstado" required>
+									<select class="form-select" name = "estado_usuario" value = <?php echo $estado;?> id="sltEstado" required>
 										<option value="">Estado</option>
 										<option value="1">Acre</option>
 										<option value="2">Alagoas</option>
@@ -115,7 +115,7 @@
 						
 								<div class="col-md-12">
 									<label for="exampleInputPassword2" class="form-label">Telefone</label>
-									<input class="form-control" type="tel" id="telTelefone" maxlength="15" value = <?php echo $telefone;?> required>
+									<input class="form-control" name = "telefone_usuario" type="tel" id="telTelefone" maxlength="15" value = <?php echo $telefone;?> required>
 								</div>
 								
 								<div class="col-md-12">
