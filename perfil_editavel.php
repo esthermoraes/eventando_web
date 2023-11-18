@@ -47,11 +47,11 @@
 ?>
 
 	<div class="mae mt-5 mb-0">
-		<div class="container-fluid row-2 col-11 ms-5">
+		<!-- <div class="container-fluid row-2 col-11 ms-5">
 			<button class="btn mt-5 rounded-circle w-0 h-0 avatar">
 				<i class="fa-solid fa-circle-user text-center avatarU"></i>
 			</button>
-		</div>	
+		</div>	 -->
 		
 		<div class = "row teste">
 			<form method ="post">
@@ -59,7 +59,7 @@
 					<div class="col-xxl-5 mt-5 mb-5 me-5 mb-xxl-0">
 						<div class="bg-secondary-soft mt-0 px-4 py-5 rounded">
 							<div class="row g-3">
-								<h2 class="mb-4 mt-0 infos"><i class="fa-solid fa-user me-2"></i>INFORMAÇÕES BÁSICAS</h2>
+								<h3 class="mb-4 mt-0 infos"><i class="fa-solid fa-user me-2"></i>INFORMAÇÕES BÁSICAS</h3>
 								
 								<div class="col-md-12">
 									<label class="form-label">Nome</label>
@@ -111,7 +111,7 @@
 					<div class="col-xxl-5 mb-5 ms-5 mb-xxl-0">
 						<div class="bg-secondary-soft mt-5 px-4 py-5 rounded">
 							<div class="row g-3">
-								<h2 class="my-4 mb-4 mt-0 infos"><i class="fa-solid fa-phone me-2"></i>INFORMAÇÕES DE CONTATO</h2>
+								<h3 class="my-4 mb-4 mt-0 infos"><i class="fa-solid fa-phone me-2"></i>INFORMAÇÕES DE CONTATO</h3>
 						
 								<div class="col-md-12">
 									<label for="exampleInputPassword2" class="form-label">Telefone</label>

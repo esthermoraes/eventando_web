@@ -21,7 +21,7 @@ nav input, header input{
     padding: 20px;
 }
 
-.rounded-circle {
+/*.rounded-circle {
     height: 7rem;
     width: 7rem;
     margin: auto;
@@ -29,7 +29,7 @@ nav input, header input{
     background-color: #770089;
 }
 
-.avatar {
+ .avatar {
     margin: 10px 0 -100px 25px !important;
     background-color: #770089;
     transition: background-color 0.3s;
@@ -43,7 +43,7 @@ nav input, header input{
 .avatarU {
     font-size: 5rem;
     color: #ffffff;
-}
+} */
 
 .font-adjust {
     font-size: 7rem;
@@ -54,9 +54,9 @@ nav input, header input{
     border-radius: 8px !important;
     border: solid 3px #fff !important;
     width: 100% !important;
-    height: 60px;
+    height: 3.125rem;
     color: #fff !important;
-    font-size: 1.5rem !important;
+    font-size: 1.2rem !important;
     font-weight: bold;
     margin-top: 20px;
     transition: background-color 0.3s;
@@ -64,7 +64,7 @@ nav input, header input{
 
 .botao:hover {
     background-color: #b25abf !important;
-    height: 60px;
+    height: 3.125rem;
 }
 
 .bg-secondary-soft {
@@ -76,13 +76,13 @@ nav input, header input{
 }
 
 .py-5 {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
 }
 
 .px-4 {
-    padding-right: 1.5rem !important;
-    padding-left: 1.5rem !important;
+    padding-right: 1.3rem !important;
+    padding-left: 1.3rem !important;
 }
 
 .infos {
@@ -112,7 +112,7 @@ nav input, header input{
 .form-select {
     width: 100%;
     padding: 0.5rem 1rem;
-    font-size: 1.4rem !important;
+    font-size: 1.1rem !important;
     font-weight: 400;
     line-height: 1.6;
     color: #424242;
@@ -130,13 +130,13 @@ nav input, header input{
         padding: 10px;
     }
     
-    .avatar {
+    /* .avatar {
         margin-left: 10px !important;
     }
 
     .avatarU {
         font-size: 3rem;
-    }
+    } */
 
     .botao {
         font-size: 1.2rem !important;
