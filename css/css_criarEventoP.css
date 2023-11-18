@@ -160,6 +160,10 @@ input[type="file"]{
     align-items: center;
 }
 
+.msi{
+    margin-left: 5rem !important; /* antigo ms-5 */
+}
+
 @media(max-width: 1024px){
     .imagem{
         width: 300px;
@@ -269,12 +273,6 @@ label{
     font-weight: bold;
 }
 
-/* .pprt{
-    position: absolute;
-    right: 95px;
-    bottom: 55px;
-} */
-
 @media(max-width: 1024px){
     .b{
         right: 40px;
@@ -305,13 +303,6 @@ label{
     color: #fff !important;
 }
 
-/* .div-passo2{
-    margin-left: -190px;
-} */
-
-/* .form-convidado{
-} */
-
 @media(max-width: 768px){
     .div-form{
         width: 100%;
@@ -325,10 +316,6 @@ label{
 .form-convidado input{
     width: 24rem;
 } 
-
-/* .form-convidado input:nth-child(2){
-    margin-left: 10px;
-} */
 
 .form-convidado button{
     width: 190px;
@@ -375,10 +362,6 @@ label{
     max-width: 500px;
 }
 
-/* .body-lista span:nth-child(2){
-   
-} */
-
 .header-lista p:nth-child(2){
     margin-left: 378px;
 }
@@ -400,6 +383,10 @@ label{
 
 .convite:hover{
     border: solid 6px #770089 !important;
+}
+
+.msg{
+    margin-left: 1.8rem !important; /* antigo ms-4*/
 }
 
 .convitePronto{

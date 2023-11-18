@@ -31,7 +31,7 @@
             </a>
             <button type="submit" id="btn-deletar" class="botaoD">
                 <i class="fa-regular fa-calendar-xmark"></i>
-                SALVAR EVENTO
+                DELETAR EVENTO
             </button>
         </div>
     </div>

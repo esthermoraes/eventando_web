@@ -64,17 +64,16 @@
                 <form class="d-flex flex-wrap" action="criarEventoP.php" method = "post">
                     <div class="div-img d-flex flex-wrap w-100">
                         <div class="col-5">
-                            <label class="imagem" for="file">FOTO DO EVENTO</label>
+                            <label class="imagem msi" for="file">FOTO DO EVENTO</label>
                             <input id="file" type="file" name="img_evento"/>
                         </div>
-                        <div class="col-5 ms-5 w-50">
+                        <div class="col-5 msg w-50">
                             <input placeholder="Objetivo do evento" class="obj form-control"/>
                             <div class="d-flex justify-content-between mt-5">
                                 <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" onfocus="(this.type='date')" onblur="(this.type='text')">
                                 <input class="form-control horario" type="text" id="time" placeholder="Horário" onfocus="(this.type='time')" onblur="(this.type='text')"/>
                             </div>
                         </div>
-                            <!-- <div class="d-flex align-items-center datetime"></div> -->
                     </div>
                     <div class="lado1">
                         <div class="endereco">
