@@ -53,7 +53,7 @@ nav input, header input{
     background-color: #770089 !important;
     border-radius: 8px !important;
     border: solid 3px #fff !important;
-    width: 50% !important;
+    width: 48% !important;
     height: 3.125rem;
     color: #fff !important;
     font-size: 1.2rem !important;
@@ -64,6 +64,42 @@ nav input, header input{
 
 .botao:hover {
     background-color: #b25abf !important;
+    height: 3.125rem;
+}
+
+.tchau{
+    background-color: #770089 !important;
+    border-radius: 8px !important;
+    border: solid 3px #fff !important;
+    width: 48% !important;
+    height: 3.125rem;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.tchau:hover{
+    background-color: #c23934 !important;
+    height: 3.125rem;
+}
+
+.salvarEd{
+    background-color: #770089 !important;
+    border-radius: 8px !important;
+    border: solid 3px #fff !important;
+    width: 50% !important;
+    height: 3.125rem;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.salvarEd:hover{
+    background-color: #006760 !important;
     height: 3.125rem;
 }
 
