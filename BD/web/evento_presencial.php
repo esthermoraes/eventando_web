@@ -30,7 +30,7 @@
         /* Dados da localização */
 
         private $FK_EVENTO_id_evento;
-        private $evento;
+        // private $evento;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $FK_buffet_buffet_PK = null, $buffet = null, 
@@ -54,7 +54,7 @@
 
                 // Tenta inserir os dados de localização
                 $sql_localizacao = "INSERT INTO LOCALIZACAO (cep, numero) VALUES (:cep, :numero)";
-                $stmt = Database::prepare($sql);
+                $stmt = Database::prepare($sql_localizacao);
                 $stmt->bindParam(':cep', $this->cep);
                 $stmt->bindParam(':numero', $this->numero);
                 $result = $stmt->execute();

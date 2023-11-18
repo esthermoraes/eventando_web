@@ -53,27 +53,30 @@
 			</button>
 		</div>	 -->
 		
-		<div class = "row teste">
+		<div class = "row teste d-flex justify-content-center ms-3 me-3">
 			<form method ="post">
-				<div class="row d-flex justify-content-center mt-5 mb-5 gx-4">
-					<div class="col-xxl-5 mt-5 mb-5 me-5 mb-xxl-0">
-						<div class="bg-secondary-soft mt-0 px-4 py-5 rounded">
+				<!-- <div class="row d-flex justify-content-center mt-5 mb-5 gx-4"> -->
+					<div class="col-md-5 mt-3 me-5">
+						<div class="bg-secondary-soft px-4 py-5 rounded">
 							<div class="row g-3">
 								<h3 class="mb-4 mt-0 infos"><i class="fa-solid fa-user me-2"></i>INFORMAÇÕES BÁSICAS</h3>
 								
 								<div class="col-md-12">
 									<label class="form-label">Nome</label>
-									<input type="text" name = "nome_usuario" class="form-control" value = <?php echo $nome;?> required>
+									<input type="text" name = "nome_usuario" class="form-control" value = <?php echo $nome;?> 
+									required>
 								</div>
 								
 								<div class="col-md-12">
 									<label class="form-label">Data de nascimento</label>
-									<input class="form-control" name = "data_nasc_usuario" type="text" id="date" onfocus="(this.type='date')" onblur="(this.type='text')" value =  <?php echo $data_nasc;?> required>
+									<input class="form-control" name = "data_nasc_usuario" type="text" id="date" 
+									onfocus="(this.type='date')" onblur="(this.type='text')" value =  <?php echo $data_nasc;?> required>
 								</div>
 								
 								<div class="col-md-12">
 									<label class="form-label">Estado</label>
-									<select class="form-select" name = "estado_usuario" value = <?php echo $estado;?> id="sltEstado" required>
+									<select class="form-select" name = "estado_usuario" value = <?php echo $estado;?> 
+									id="sltEstado" required>
 										<option value="">Estado</option>
 										<option value="1">Acre</option>
 										<option value="2">Alagoas</option>
@@ -108,14 +111,15 @@
 						</div>
 					</div>
 
-					<div class="col-xxl-5 mb-5 ms-5 mb-xxl-0">
-						<div class="bg-secondary-soft mt-5 px-4 py-5 rounded">
+					<div class="col-md-5 mt-3 me-5">
+						<div class="bg-secondary-soft px-4 py-5 rounded">
 							<div class="row g-3">
 								<h3 class="my-4 mb-4 mt-0 infos"><i class="fa-solid fa-phone me-2"></i>INFORMAÇÕES DE CONTATO</h3>
 						
 								<div class="col-md-12">
 									<label for="exampleInputPassword2" class="form-label">Telefone</label>
-									<input class="form-control" name = "telefone_usuario" type="tel" id="telTelefone" maxlength="15" value = <?php echo $telefone;?> required>
+									<input class="form-control" name = "telefone_usuario" type="tel" id="telTelefone" 
+									maxlength="15" value = <?php echo $telefone;?> required>
 								</div>
 								
 								<div class="col-md-12">
@@ -125,11 +129,13 @@
 							</div>
 						</div>
 						
-						<div class="col-xxl-12">
-							<button type="submit" name="salvarEd" class="botao btn mt-5 mb-0 text-center align-items-center">SALVAR EDIÇÕES</button>
+						<div class="col-md-12">
+							<button type="submit" name="salvarEd" class="botao btn mt-5 mb-0 text-center align-items-center">
+								SALVAR EDIÇÕES
+							</button>
 						</div>
 					</div>
-				</div>
+				<!-- </div> -->
 			</form>
 		</div>
 	</div>
