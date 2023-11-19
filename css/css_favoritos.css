@@ -5,19 +5,24 @@ body{
 
 /* Estilização geral da classe .titulo */
 .titulo{
-    font-size: min(3vw, 24px);
+    font-size: min(3vw, 23px);
     margin: 0 0 -100px 0;
     color: #000;
     font-weight: bold;
 }
 
+.mtt{
+    margin-top: 5rem !important; /* antigo mt-5 */
+}
+
 /* Estilização do elemento de seleção de formulário */
 .form-select{
-    width: 300px !important;
-    min-width: 140px;
+    width: 40% !important;
+    height: 60% !important;
+    /* min-width: 140px; */
     padding: 0.5rem 1rem;
-    font-family: 'FontAwesome', 'Montserrat';
-    font-size: 1.2rem !important;
+    font-family:  'Montserrat', 'FontAwesome';
+    font-size: 1.1rem !important;
     font-weight: 400;
     line-height: 1.6;
     color: #424242 !important;
@@ -42,7 +47,7 @@ body{
 
 .config-card{
     border: 3px solid #770089;
-    border-radius: 9px;
+    border-radius: 8px;
     width: 154px;
     height: 104px;
 }
@@ -50,7 +55,7 @@ body{
 .config-img{
     width: 150px;
     height: 100px;
-    border-radius: 7px;
+    border-radius: 6px;
 }
 
 .titulo-card{
