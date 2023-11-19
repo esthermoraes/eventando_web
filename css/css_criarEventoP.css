@@ -1,5 +1,6 @@
-*{ /*Fonte utilizada no site*/
+*{
     font-family: 'Montserrat', sans-serif;
+    background-color: #ededed;
 }
 
 .criar-evento{
@@ -20,11 +21,6 @@
 
 .lupa{
     margin-top: -15px;
-}
-
-/*Cor de fundo utilizada na tela*/
-body{
-    background-color: #ededed;
 }
 
 a{
@@ -414,4 +410,17 @@ label{
     background-color: #770089 !important;
     border: solid 3px #770089 !important;
     color: #fff !important;
+}
+
+html ::-webkit-scrollbar {
+    height: 14px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #770089;
+}
+
+html ::-webkit-scrollbar-track {
+    background: #ededed;
 }

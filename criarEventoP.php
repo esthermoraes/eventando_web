@@ -9,37 +9,7 @@
     $title = 'CRIAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
-    include_once 'BD/web/evento_presencial.php';
-
-    // Verifica se foi enviado um arquivo
-    if(!empty($_POST)){
-        if (isset($_FILES['img_evento'])) {
-
-            // $filename = file_get_contents($_FILES['img_evento']['tmp_name']);
-            $filename = $_FILES['img_evento']['tmp_name'];
-            $client_id="373a5eedc23ad9b";
-            $handle = fopen($filename, "r");
-            $data = fread($handle, filesize($filename));
-            $pvars = array('image' => base64_encode($data));
-            $timeout = 30;
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, 'https://api.imgur.com/3/image.json');
-            curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Client-ID ' . $client_id));
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $pvars);
-            $out = curl_exec($curl);
-            curl_close ($curl);
-            $pms = json_decode($out,true);
-            $img_url=$pms['data']['link'];
-            var_dump($img_url);
-        } 
-        else {
-            echo "Nenhum arquivo enviado.";
-        }
-    }   
-
+    include_once 'BD/web/criar_evento_presencial.php';
 ?>
 
     <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
@@ -68,10 +38,12 @@
                             <input id="file" type="file" name="img_evento"/>
                         </div>
                         <div class="col-5 msg w-50">
-                            <input placeholder="Objetivo do evento" class="obj form-control"/>
+                            <input placeholder="Objetivo do evento" name="objetivo_evento" class="obj form-control"/>
                             <div class="d-flex justify-content-between mt-5">
-                                <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                <input class="form-control horario" type="text" id="time" placeholder="Horário" onfocus="(this.type='time')" onblur="(this.type='text')"/>
+                                <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" 
+                                name="data_prevista_evento" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <input class="form-control horario" type="text" id="time" placeholder="Horário" 
+                                name="horario_evento" onfocus="(this.type='time')" onblur="(this.type='text')"/>
                             </div>
                         </div>
                     </div>
@@ -79,8 +51,8 @@
                         <div class="endereco">
                             <label for="cep" class="mb-3 localizacao">Localização:</label>
                             <div class="d-flex cep-estado">
-                                <input id="cep" class="form-control" placeholder="CEP"/>
-                                <select class="form-select uf me-5" id="sltEstado">
+                                <input id="cep" class="form-control" placeholder="CEP" name="cep_evento"/>
+                                <select class="form-select uf me-5" name="estado_evento" id="sltEstado">
                                     <option value="">Estado</option>
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
@@ -112,11 +84,11 @@
                                 </select>
                             </div>
                             <div class="d-flex flex-column pe-5">
-                                <input placeholder="Cidade" id="cidade" class="form-control" readonly/>
-                                <input placeholder="Bairro" id="bairro" class="form-control" readonly/>
+                                <input placeholder="Cidade" name="cidade_evento" id="cidade" class="form-control" readonly/>
+                                <input placeholder="Bairro" name="bairro_evento" id="bairro" class="form-control" readonly/>
                             </div>
                             <div class="d-flex justify-content-between pe-5">
-                                <select class="form-select me-2" id = "sltTipoLogradouro">
+                                <select class="form-select me-2" name="tipo_logradouro_evento" id="sltTipoLogradouro">
                                     <option value="">Tipo Logradouro</option>
                                     <option value="Rodovia">Rodovia</option>
                                     <option value="Avenida">Avenida</option>
@@ -126,8 +98,8 @@
                                     <option value="Passarela">Passarela</option>
                                     <option value="Vila">Vila</option>
                                 </select>
-                                <input placeholder="Logradouro" class="form-control log" id = "logradouro" readonly/>
-                                <input placeholder="N°" id = "numero" class="ms-2 form-control num"/>
+                                <input placeholder="Logradouro" name="logradouro_evento" class="form-control log" id = "logradouro" readonly/>
+                                <input placeholder="N°" name="numero_evento" id = "numero" class="ms-2 form-control num"/>
                             </div>
                         </div>
                     </div>
@@ -135,11 +107,11 @@
                         <div class = "col- w-100">
                             <label class="mb-3 complemento" for="buffet">Complementos:</label>
                             <div class="mb-3 d-flex justify-content-between">
-                                <textarea id = "buffet" placeholder="Buffet" class="form-control buffet"></textarea>
-                                <textarea placeholder="Atrações" class="form-control atracoes"></textarea>
+                                <textarea id = "buffet" placeholder="Buffet" name="buffet_evento" class="form-control buffet"></textarea>
+                                <textarea placeholder="Atrações" name="atracoes_evento" class="form-control atracoes"></textarea>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <select class="form-select info">
+                                <select class="form-select info" name="tipo_contato_evento">
                                     <option value="">Tipo de Contato</option>
                                     <option value="1">E-mail</option>
                                     <option value="2">Telefone</option>
@@ -147,19 +119,16 @@
                                     <option value="4">Instagram</option>
                                     <option value="5">Tik Tok</option>
                                 </select>
-                                <input class="info form-control" placeholder="Contato"/>
+                                <input class="info form-control" placeholder="Contato" name="contato_evento"/>
                             </div>
-                            <div id="privacidade" estado="publico" class="mt-4 d-flex publico_privado">
+                            <div id="privacidade" estado="publico" name="privacidade_evento" class="mt-4 d-flex publico_privado">
                                 <i class="mt-2 fa-solid fa-unlock fa-flip-horizontal fa-xl" style="color: #b25abf;"></i>
                                 <p class="ms-2 pp">Público</p>
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <a href="passo2.php" >
-                                    <button type="submit" id="btn-passo2" class="botao">&#10140; PRÓXIMO PASSO</button>
-                                </a>
-                            </div>
-                            
+                                <button type="submit" id="btn-passo2" class="botao">&#10140; PRÓXIMO PASSO</button>
+                            </div>    
                         </div>
                     </div>
                 </form>
