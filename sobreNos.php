@@ -29,7 +29,7 @@
                     <div class="bg-secondary-soft mt-2">
                         <div class="divSobre row mt-3 g-3">
                             <div class="row mt-0 mb-4 align-items-start sobre">
-                                <p class="ms-1 mt-5 mb-4 fs-3 text-justify">
+                                <p class="ms-1 mt-5 mb-4 fs-5 text-justify">
                                     A empresa EVENTANDO é especializada em planejamento de eventos que buscam criar memórias inesquecíveis. Fundada em 2023 como um projeto da instituição IFES. A empresa valoriza a personalização dos eventos, trabalhando em estreita colaboração com cada cliente para entender suas necessidades e objetivos.
                                     <br><br>
                                     Nosso time está sempre em busca de melhorias e ideias criativas para criar eventos exclusivos e personalizados que superem as expectativas de nossos clientes.
@@ -42,9 +42,9 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="d-flex align-items-center">
-                                                <p class="fs-3">
+                                                <p class="fs-5">
                                                     <a href="https://www.instagram.com/eventando.nozes/" class="insta" target="_blank">
-                                                        <i id="insta2" class="fa-brands fa-instagram p-1 mt-2"></i>   
+                                                        <i id="insta2" class="fa-brands fa-instagram p-1 mt-1"></i>   
                                                         <p class="ms-1 mt-1">@eventando.nozes</p>
                                                     </a>
                                                 </p> 
@@ -53,9 +53,9 @@
 
                                         <div class="col">
                                             <div class="d-flex align-items-center">
-                                                <p class="fs-3">
+                                                <p class="fs-5">
                                                     <a href="mailto:eventando.nozes@gmail.com" class="email" target="_blank">
-                                                        <i id="email" class="fa-regular fa-envelope p-1 mt-2"></i>   
+                                                        <i id="email" class="fa-regular fa-envelope p-1 mt-1"></i>   
                                                         <p class="ms-1 mt-1">eventando.nozes@gmail.com</p>
                                                     </a>
                                                 </p> 
@@ -64,9 +64,9 @@
 
                                         <div class="col">
                                             <div class="d-flex align-items-center">
-                                                <p class="fs-3 ms-xxl-5">
+                                                <p class="fs-5 ms-0">
                                                     <a href="https://api.whatsapp.com/send?phone=5527998296191" class="whats" target="_blank">
-                                                        <i id="whats" class="fa-brands fa-whatsapp p-1 mt-2"></i>   
+                                                        <i id="whats" class="fa-brands fa-whatsapp p-1 mt-1"></i>   
                                                         <p class="ms-1 mt-1">(27) 99829-6191</p>
                                                     </a>
                                                 </p> 
@@ -83,18 +83,18 @@
                     <div class="card teste p-0">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="img/esther.jpeg" alt="foto da esther" class="rounded-circle img-fluid ms-xxl-5" style="width: 14.5rem; height: 14.5rem;">
+                                <img src="img/esther.jpeg" alt="foto da esther" class="rounded-circle img-fluid ms-xxl-5" style="width: 12.5rem; height: 12.5rem;">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body p-0">
-                                    <p class="card-title fs-2 titulo-card mt-4">ESTHER MORAES</p>
+                                <div class="card-body p-0 ms-3">
+                                    <p class="card-title fs-3 titulo-card mt-4 ms-5">ESTHER MORAES</p>
                                     <div class="text-dark card-text">
-                                        <a href="https://instagram.com/esther.moraes_?igshid=NGExMmI2YTkyZg==" id="instaE" class="mt-4 d-flex" target="_blank">
-                                            <i class="iconI fa-brands fa-instagram p-1 mt-1"></i>
+                                        <a href="https://instagram.com/esther.moraes_?igshid=NGExMmI2YTkyZg==" id="instaE" class="mt-4 ms-5 d-flex" target="_blank">
+                                            <i class="iconI fa-brands fa-instagram p-1 mt-0"></i>
                                             <p class="ms-1">@esther.moraes_</p> 
                                         </a>
-                                        <a href="mailto:esther.ifes2021@gmail.com" id="emailE" class="mt-3 d-flex" target="_blank">
-                                            <i class="iconE fa-regular fa-envelope p-1 mt-1"></i>
+                                        <a href="mailto:esther.ifes2021@gmail.com" id="emailE" class="mt-3 ms-5 d-flex" target="_blank">
+                                            <i class="iconE fa-regular fa-envelope p-1 mt-0"></i>
                                             <p class="ms-1">moraesesther16@gmail.com</p>
                                         </a>
                                     </div>
@@ -106,17 +106,17 @@
                     <div class="card teste p-0 mt-4">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="img/lorena.jpeg" alt="foto da lorena" class="rounded-circle img-fluid ms-xxl-5" style="width: 14.5rem; height: 14.5rem;">
+                                <img src="img/lorena.jpeg" alt="foto da lorena" class="rounded-circle img-fluid ms-xxl-5" style="width: 12.5rem; height: 12.5rem;">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body p-0">
-                                    <p class="card-title fs-2 titulo-card mt-4">LORENA TORAES</p>
+                                <div class="card-body p-0 ms-3">
+                                    <p class="card-title fs-3 titulo-card mt-4 ms-5">LORENA TORAES</p>
                                     <div class="text-dark card-text">
-                                        <a href="https://instagram.com/lorenatoraes?igshid=MzRlODBiNWFlZA==" id="instaL" class="col-4 mt-3 d-flex align-items-center justify-content-start" target="_blank">
-                                            <i class="iconI fa-brands fa-instagram p-1"></i>
+                                        <a href="https://instagram.com/lorenatoraes?igshid=MzRlODBiNWFlZA==" id="instaL" class="col-4 mt-3 ms-5 d-flex align-items-center justify-content-start" target="_blank">
+                                            <i class="iconI fa-brands fa-instagram p-1 mt-1"></i>
                                             <p class="ms-1 mt-3">@lorenatoraes</p> 
                                         </a>
-                                        <a href="mailto:lorenatoraesdossantos@gmail.com" id="emailL" class="col-4 d-flex target="_blank">
+                                        <a href="mailto:lorenatoraesdossantos@gmail.com" id="emailL" class="col-4 d-flex ms-5" target="_blank">
                                             <i class="iconE fa-regular fa-envelope p-1 mt-3"></i>
                                             <p class="ms-1 mt-3">lorenatoraesdossantos@gmail.com </p>
                                         </a>
@@ -129,17 +129,17 @@
                     <div class="card teste p-0 mt-5">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="img/sofia.jpeg" alt="foto da sofia" class="rounded-circle img-fluid ms-xxl-5" style="width: 14.5rem; height: 14.5rem;">
+                                <img src="img/sofia.jpeg" alt="foto da sofia" class="rounded-circle img-fluid ms-xxl-5" style="width: 12.5rem; height: 12.5rem;">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body p-0">
-                                    <p class="card-title fs-2 titulo-card mt-4">SOFIA ANDRADE</p>
+                                <div class="card-body p-0 ms-3">
+                                    <p class="card-title fs-3 titulo-card mt-4 ms-5">SOFIA ANDRADE</p>
                                     <div class="text-dark card-text">
-                                        <a href="https://instagram.com/solfiee?igshid=MzRlODBiNWFlZA==" id="instaS" class="col-4 d-flex align-items-center justify-content-start" target="_blank">
+                                        <a href="https://instagram.com/solfiee?igshid=MzRlODBiNWFlZA==" id="instaS" class="col-4 ms-5 d-flex align-items-center justify-content-start" target="_blank">
                                             <i class="iconI fa-brands fa-instagram p-1 mt-1"></i>
                                             <p class="ms-1 mt-3">@solfiee</p> 
                                         </a>
-                                        <a href="mailto:andradesoso17@gmail.com" id="emailS" class="col-4 d-flex align-items-center justify-content-start" target="_blank">
+                                        <a href="mailto:andradesoso17@gmail.com" id="emailS" class="col-4 ms-5 d-flex align-items-center justify-content-start" target="_blank">
                                             <i class="iconE fa-regular fa-envelope p-1"></i>
                                             <p class="ms-1 mt-3">andradesoso17@gmail.com</p>
                                         </a>

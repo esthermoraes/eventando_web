@@ -10,7 +10,7 @@ body{
 }
 
 .titulo{
-    font-size: min(3vw, 24px);
+    font-size: min(3vw, 23px);
     margin: 0 0 -100px 0;
     color: #000;
     font-weight: bold;
@@ -21,12 +21,12 @@ body{
     border: solid 3px ;
     border-color: #770089;
     border-radius: 13px;
-    width: min(45vw, 650px);
+    width: min(45vw, 700px);
 }
 
 .sobre{
     color: #ededed;
-    font-size: min(2vw, 14px);
+    font-size: min(2vw, 12px);
 }
 
 .insta{
