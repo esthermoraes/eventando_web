@@ -66,36 +66,6 @@
             return false;
         }
 
-        public function update($email) {
-            // Consulta para obter o ID do usuário usando o e-mail fornecido
-            $pdo = Database::getInstance();
-            $stmt = $pdo->prepare("SELECT id_usuario FROM $this->table WHERE email = :email");
-            $stmt->bindParam(":email", $email);
-            $stmt->execute();
-            $id = $stmt->fetchColumn(); // Obtém o ID do usuário
-            
-            if($id) {
-                $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
-                WHERE id_usuario = :id";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(":nome", $this->nome);
-                $stmt->bindParam(":data_nasc", $this->data_nasc);
-                $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
-                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-                $result = $stmt->execute();
-            
-                if ($result) {
-                    // Atualiza o telefone na tabela 'TEM_TIPO_CONTATO_USUARIO' usando o ID obtido
-                    $sql2 = "UPDATE TEM_TIPO_CONTATO_USUARIO SET telefone = :telefone WHERE fk_USUARIO_id_usuario = :id";
-                    $stmt2 = $pdo->prepare($sql2);
-                    $stmt2->bindParam(':telefone', $this->telefone);
-                    $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
-            
-                    return $stmt2->execute();
-                }
-            }
-        }
-
         public function select($email) {
             $sql = 'SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado, senha FROM ' . $this->table . ' WHERE email = ?';
             $stmt = Database::prepare($sql);
@@ -132,6 +102,36 @@
             return $resposta;
         }
 
+        public function update($email) {
+            // Consulta para obter o ID do usuário usando o e-mail fornecido
+            $pdo = Database::getInstance();
+            $stmt = $pdo->prepare("SELECT id_usuario FROM $this->table WHERE email = :email");
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $id = $stmt->fetchColumn(); // Obtém o ID do usuário
+            
+            if($id) {
+                $sql = "UPDATE $this->table SET nome = :nome, FK_ESTADO_id_estado = :FK_ESTADO_id_estado, data_nasc = :data_nasc 
+                WHERE id_usuario = :id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(":nome", $this->nome);
+                $stmt->bindParam(":data_nasc", $this->data_nasc);
+                $stmt->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                $result = $stmt->execute();
+            
+                if ($result) {
+                    // Atualiza o telefone na tabela 'TEM_TIPO_CONTATO_USUARIO' usando o ID obtido
+                    $sql2 = "UPDATE TEM_TIPO_CONTATO_USUARIO SET telefone = :telefone WHERE fk_USUARIO_id_usuario = :id";
+                    $stmt2 = $pdo->prepare($sql2);
+                    $stmt2->bindParam(':telefone', $this->telefone);
+                    $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
+            
+                    return $stmt2->execute();
+                }
+            }
+        }
+
         public function delete($email) {
             // Consulta para obter o ID do usuário usando o e-mail fornecido
             $pdo = Database::getInstance();
@@ -154,6 +154,8 @@
                     $stmt2->bindParam(":nome", $this->nome);
                     $stmt2->bindParam(":data_nasc", $this->data_nasc);
                     $stmt2->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
+                    $stmt2->bindParam(":email", $email, PDO::PARAM_INT);
+                    $stmt2->bindParam(":senha", $this->senha);
                     $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
                     return $stmt2->execute();
                 }

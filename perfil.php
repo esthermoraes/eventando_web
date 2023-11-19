@@ -20,7 +20,6 @@
 		</div> -->
 		
 		<div class = "row teste d-flex justify-content-center ms-3 me-3">
-			<!-- <div class="row d-flex justify-content-center mt-5 mb-5 gx-4"> -->
 			<div class="col-md-5 mt-3 me-5">
 				<div class="bg-secondary-soft px-4 py-5 rounded">
 					<div class="row g-3">
@@ -65,17 +64,18 @@
 				<div class = "row-1">
 					<div class="col-md-12">
 						<a href = "perfil_editavel.php">
-							<button class="botao btn mt-5 mb-3 text-center align-items-center col-md-6"><i class="fa-solid fa-user-pen"></i>
+							<button class="botao btn mt-5 mb-3 text-center align-items-center col-md-6">
+								<i class="fa-solid fa-user-pen"></i>
 								EDITAR PERFIL
 							</button>
 						<a>
-						<button class="tchau btn mt-5 mb-3 ms-3 text-center align-items-center col-md-6"><i class="fa-solid fa-user-xmark"></i>
+						<button name = "deletarP" class="tchau btn mt-5 mb-3 ms-3 text-center align-items-center col-md-6">
+							<i class="fa-solid fa-user-xmark"></i>
 							DELETAR PERFIL
 						</button>
 					</div>
 				</div>
 			</div>
-			<!-- </div> -->
 		</div>
 	</div>
 
