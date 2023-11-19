@@ -54,8 +54,8 @@
 		</div>	 -->
 		
 		<div class = "row teste d-flex justify-content-center ms-3 me-3">
-			<form method ="post">
-				<div class="col-md-5 mt-3 me-5">
+			<form method ="post" class="d-flex justify-content-between ms-3 me-3">
+				<div class="col-md-5 mt-3 ms-5 mb-3">
 					<div class="bg-secondary-soft px-4 py-5 rounded">
 						<div class="row g-3">
 							<h3 class="mb-4 mt-0 infos"><i class="fa-solid fa-user me-2"></i>INFORMAÇÕES BÁSICAS</h3>
@@ -110,7 +110,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-5 mt-3 me-5">
+				<div class="col-md-5 mt-3 mb-3 me-5">
 					<div class="bg-secondary-soft px-4 py-5 rounded">
 						<div class="row g-3">
 							<h3 class="my-4 mb-4 mt-0 infos"><i class="fa-solid fa-phone me-2"></i>INFORMAÇÕES DE CONTATO</h3>
