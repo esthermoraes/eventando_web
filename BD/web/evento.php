@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'crud.php';
+    include_once 'crud.php';
 
     /*************************************************************
     Objetivo: Classe responsável por representar todas as operações com evento.

@@ -1,5 +1,5 @@
 <?php
-	require_once 'connect_web.php';
+	include_once 'connect_web.php';
 	
 	/*************************************************************
 	Objetivo: Classe responsável por representar uma tabela genérica do banco de dados.

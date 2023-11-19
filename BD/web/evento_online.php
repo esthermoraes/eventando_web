@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'crud.php';
+    include_once 'crud.php';
 
     /*************************************************************
     Objetivo: Classe responsável por representar todas as operações com evento online.
@@ -22,13 +22,12 @@
         private $FK_EVENTO_id_evento;
         private $evento;
 
-
-
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
-        $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $link = null, $FK_plataforma_plataforma_PK = null, $FK_EVENTO_id_evento = null){
+        $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $link = null, $FK_plataforma_plataforma_PK = null, 
+        $FK_EVENTO_id_evento = null){
 
             //cria um evento genérico
-            $evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
+            $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
 
             $this->link = $link;
             $this->FK_plataforma_plataforma_PK = $FK_plataforma_plataforma_PK;
@@ -38,7 +37,9 @@
         public function insert(){
             try {
                 //insere um evento genérico e retorna o id 
-                $id_evento = $evento.INSERT();
+                if($this->evento->insert()){
+                    $id_evento = $this->evento->getId();
+                }
 
                 // Tenta inserir os dados específicos de evento online
                 $sql = "INSERT INTO $this->table (link, FK_plataforma_plataforma_PK, FK_EVENTO_id_evento) 
@@ -57,7 +58,7 @@
             } 
         }
 
-        public function update(){
+        public function update($id){
         }
     }
 ?>

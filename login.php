@@ -36,7 +36,6 @@
             echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";
         }
     }
-    
 ?>
 
 <body>

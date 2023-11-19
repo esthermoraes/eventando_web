@@ -1,5 +1,5 @@
 <?php
-    require_once 'evento.php';
+    include_once 'evento.php';
 
     /*************************************************************
     Objetivo: Classe responsável por representar todas as operações com evento presencial.
@@ -26,6 +26,12 @@
         private $FK_LOCALIZACAO_id_localizacao;
         private $cep;
         private $numero;
+        private $logradouro;
+        private $FK_TIPO_LOGRADOURO_id_tipo_logradouro;
+        private $FK_BAIRRO_id_bairro;
+        private $bairro;
+        private $FK_CIDADE_id_cidade;
+        private $cidade;
         /* Dados da localização */
 
         private $FK_EVENTO_id_evento;
@@ -73,7 +79,7 @@
                         $sql = "INSERT INTO $this->table (FK_buffet_buffet_PK, FK_LOCALIZACAO_id_localizacao, FK_EVENTO_id_evento) 
                         VALUES (:id_buffet, :id_localizacao, :id_evento)";
                         $stmt = Database::prepare($sql);
-                        $stmt->bindParam(':FK_buffet_buffet_PK', id_buffet, PDO::PARAM_INT);
+                        $stmt->bindParam(':FK_buffet_buffet_PK', $id_buffet, PDO::PARAM_INT);
                         $stmt->bindParam(':FK_LOCALIZACAO_id_localizacao', $id_localizacao, PDO::PARAM_INT);
                         $stmt->bindParam(':id_evento', $id_evento, PDO::PARAM_INT); // Obtém o ID do evento
                         
