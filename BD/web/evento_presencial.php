@@ -34,14 +34,18 @@
         private $cidade;
         /* Dados da localização */
 
-        private $FK_EVENTO_id_evento;
+        /*Dados do tipo contato*/
+        private $fk_TIPO_CONTATO_id_tipo_contato;
+        private $contato;
+        /*Dados do tipo contato*/
+
         private $evento;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $FK_buffet_buffet_PK = null, $buffet = null, 
         $FK_LOCALIZACAO_id_localizacao = null, $cep =null, $numero = null, $logradouro = null, 
         $FK_TIPO_LOGRADOURO_id_tipo_logradouro = null, $FK_BAIRRO_id_bairro = null, $bairro = null, $FK_CIDADE_id_cidade = null,
-        $cidade = null, $FK_EVENTO_id_evento = null, $evento = null){
+        $cidade = null, $fk_TIPO_CONTATO_id_tipo_contato = null, $contato = null, $evento = null){
 
             $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
 
@@ -56,7 +60,9 @@
             $this->bairro = $bairro;
             $this->FK_CIDADE_id_cidade = $FK_CIDADE_id_cidade;
             $this->cidade = $cidade;
-            $this->FK_EVENTO_id_evento = $FK_EVENTO_id_evento;
+
+            $this->fk_TIPO_CONTATO_id_tipo_contato = $fk_TIPO_CONTATO_id_tipo_contato;
+            $this->contato = $contato;
         }
 
         public function insert(){
@@ -96,7 +102,17 @@
                         $stmt->bindParam(':FK_LOCALIZACAO_id_localizacao', $id_localizacao, PDO::PARAM_INT);
                         $stmt->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
                         
-                        return $stmt->execute();
+                        $result3 = $stmt->execute();
+
+                        if($result3){
+                            $sql_contato = "INSERT INTO POSSUI_TIPO_CONTATO_EVENTO (fk_TIPO_CONTATO_id_tipo_contato, fk_EVENTO_id_evento, contato) 
+                            VALUES (:fk_TIPO_CONTATO_id_tipo_contato, :id_evento, :contato)";
+                            $stmt = Database::prepare($sql_contato);
+                            $stmt->bindParam(':fk_TIPO_CONTATO_id_tipo_contato', $this->fk_TIPO_CONTATO_id_tipo_contato);
+                            $stmt->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
+                            $stmt->bindParam(':contato', $this->contato);
+                            return $stmt->execute();
+                        }
                     }
                 }
                     

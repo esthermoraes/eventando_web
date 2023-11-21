@@ -17,21 +17,31 @@
 
     class EventoOnline extends Evento{
         protected $table = 'EVENTO ONLINE';
+
+        /*Dados do online*/
         private $link;
         private $FK_plataforma_plataforma_PK;
-        private $FK_EVENTO_id_evento;
+        /*Dados do online*/
+
+        /*Dados do tipo contato*/
+        private $fk_TIPO_CONTATO_id_tipo_contato;
+        private $contato;
+        /*Dados do tipo contato*/
+
         private $evento;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $link = null, $FK_plataforma_plataforma_PK = null, 
-        $FK_EVENTO_id_evento = null){
+        $fk_TIPO_CONTATO_id_tipo_contato = null, $contato = null, $evento = null){
 
             //cria um evento genérico
             $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
 
             $this->link = $link;
             $this->FK_plataforma_plataforma_PK = $FK_plataforma_plataforma_PK;
-            $this->FK_EVENTO_id_evento = $FK_EVENTO_id_evento;
+
+            $this->fk_TIPO_CONTATO_id_tipo_contato = $fk_TIPO_CONTATO_id_tipo_contato;
+            $this->contato = $contato;
         }
 
         public function insert(){
@@ -49,7 +59,17 @@
                 $stmt->bindParam(':FK_plataforma_plataforma_PK', $this->FK_plataforma_plataforma_PK);
                 $stmt->bindParam(':id_evento', $id_evento , PDO::PARAM_INT); // Obtém o ID do evento
     
-                return $stmt->execute();
+                $result = $stmt->execute();
+
+                if($result){
+                    $sql_contato = "INSERT INTO POSSUI_TIPO_CONTATO_EVENTO (fk_TIPO_CONTATO_id_tipo_contato, fk_EVENTO_id_evento, contato) 
+                    VALUES (:fk_TIPO_CONTATO_id_tipo_contato, :id_evento, :contato)";
+                    $stmt = Database::prepare($sql_contato);
+                    $stmt->bindParam(':fk_TIPO_CONTATO_id_tipo_contato', $this->fk_TIPO_CONTATO_id_tipo_contato);
+                    $stmt->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
+                    $stmt->bindParam(':contato', $this->contato);
+                    return $stmt->execute();
+                }
                     
             } 
             catch (PDOException $e) {

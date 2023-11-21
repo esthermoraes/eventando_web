@@ -15,10 +15,11 @@
             if ($consulta->execute()) {
                 $convite_id = $db_con->lastInsertId();
 
+                // FOR i ... INSERE O CONVIDADO
                 if(isset($_POST['nome_convidado']) && isset($_POST['email_convidado'])){
                     $nome_convidado = trim($_POST['nome_convidado']);
                     $email_convidado = trim($_POST['email_convidado']);
-
+                    
                     $consulta2 = $db_con->prepare("INSERT INTO LISTA_CONVIDADOS(nome_convidado, email_convidado, FK_CONVITE_id_convite) 
                     VALUES('$nome_convidado', '$email_convidado', '$convite_id')");
                     if($consulta2->execute()){
