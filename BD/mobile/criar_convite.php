@@ -32,14 +32,16 @@
                 $pms = json_decode($out,true);
                 $img_url=$pms['data']['link'];
 
-                $consulta = $db_con->prepare("INSERT INTO CONVITE(estilo, cor, src_img, FK_EVENTO_id_evento) 
-                VALUES('$estilo_convite', '$cor_convite', '$img_url', '$evento_id')");
+                // $consulta = $db_con->prepare("INSERT INTO CONVITE(estilo, cor, src_img, FK_EVENTO_id_evento) 
+                // VALUES('$estilo_convite', '$cor_convite', '$img_url', '$evento_id')");
+                $consulta = $db_con->prepare("UPDATE CONVITE SET estilo, cor, src_img = '$estilo_convite', 'cor_convite', 
+                'img_url' WHERE id_evento = '$evento_id'");
                 if($consulta->execute()){
                     $resposta["sucesso"] = 1;
                 }
                 else{
                     $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro na inserção na tabela CONVITE: " . $consulta->errorInfo()[2];
+                    $resposta["erro"] = "Erro na atualização da tabela CONVITE: " . $consulta->errorInfo()[2];
                 }
             }
             else{

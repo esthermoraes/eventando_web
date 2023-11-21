@@ -7,14 +7,13 @@
 
     // verifica se o usuário conseguiu autenticar
     if (autenticar($db_con)) {
-        if (isset($_GET['evento_id']) && isset($_GET['convite_id'])){
+        if (isset($_GET['evento_id'])){
             $evento_id = $_GET['evento_id'];
-            $convite_id = $_GET['convite_id'];
 
-            $consulta = $db_con->prepare("SELECT nome FROM EVENTO WHERE id_evento = '$evento_id'");
+            $consulta = $db_con->prepare("INSERT INTO CONVITE(estilo, cor, src_img, FK_EVENTO_id_evento) 
+            VALUES('estilo1', 'cor1', 'https://acesse.one/N9nb9', '$evento_id')");
             if ($consulta->execute()) {
-                $linha = $consulta->fetch(PDO::FETCH_ASSOC);
-                $nome = $linha['nome'];
+                $convite_id = $db_con->lastInsertId();
 
                 if(isset($_POST['nome_convidado']) && isset($_POST['email_convidado'])){
                     $nome_convidado = trim($_POST['nome_convidado']);
@@ -37,7 +36,7 @@
             }
             else{
                 $resposta["sucesso"] = 0;
-                $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
+                $resposta["erro"] = "Erro na inserção na tabela CONVITE: " . $consulta->errorInfo()[2];
             }
         }
         else{
