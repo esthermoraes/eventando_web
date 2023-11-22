@@ -17,10 +17,12 @@
 		// 	$resultado = $usuario->update($email);
 		// }
 		// catch (Exception $e) {
-		// 	header("Location: perfil_editavel.php?");
+		// 	header("Location: perfil_editavel.php");
+		// 	exit;
 		// }
-		// if($resultado):
-		// 	header("Location: perfil.php?");
-		// endif;
+		// if($resultado){
+		// 	header("Location: perfil.php");
+		// 	exit;
+		// }
 	}
 ?>

@@ -133,32 +133,27 @@
         }
 
         public function delete($email) {
-            // Consulta para obter o ID do usuário usando o e-mail fornecido
             $pdo = Database::getInstance();
+        
             $stmt = $pdo->prepare("SELECT id_usuario FROM $this->table WHERE email = :email");
             $stmt->bindParam(":email", $email);
             $stmt->execute();
-            $id = $stmt->fetchColumn(); // Obtém o ID do usuário
-            
+            $id = $stmt->fetchColumn();
+        
             if($id) {
                 $sql = "DELETE FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = :id";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':telefone', $this->telefone);
-                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-            
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $result = $stmt->execute();
-            
+        
                 if ($result) {
                     $sql2 = "DELETE FROM $this->table WHERE id_usuario = :id";
                     $stmt2 = $pdo->prepare($sql2);
-                    $stmt2->bindParam(":nome", $this->nome);
-                    $stmt2->bindParam(":data_nasc", $this->data_nasc);
-                    $stmt2->bindParam(":FK_ESTADO_id_estado", $this->FK_ESTADO_id_estado);
-                    $stmt2->bindParam(":email", $email, PDO::PARAM_INT);
-                    $stmt2->bindParam(":senha", $this->senha);
                     $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
-                    return $stmt2->execute();
-                }
+                    $result2 = $stmt2->execute();
+                    
+                    return $result2; // Retorna o resultado da exclusão do usuário
+                } 
             }
         }
     }
