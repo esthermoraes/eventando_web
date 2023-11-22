@@ -28,7 +28,7 @@
 							
 							<div class="col-md-12">
 								<label class="form-label">Nome</label>
-								<input type="text" name = "nome_usuario" class="form-control" value = <?php echo $nome;?> 
+								<input type="text" name = "nome_usuario" class="form-control" value ="<?php echo htmlspecialchars($nome);?>"
 								required>
 							</div>
 							

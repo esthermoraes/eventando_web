@@ -83,58 +83,58 @@
                         <thead>
                             <tr style="background: #d9d5d4">
                                 <th scope="col">Segunda-feira</th>
-                                <th scope="col">18 de setembro</th>
+                                <th scope="col">27 de Novembro</th>
                             </tr>
                         </thead>
                         <tbody style="background: #ededed">
                             <tr>
                                 <td>14h00</td>
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>
+                                <td style="color: #b25abf; font-weight: bold;">Fantasia Fest</td>
                             </tr>
                             <tr>
                                 <td>16h00</td>
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                            
+                                <td style="color: #b25abf; font-weight: bold;">Inovação Insights</td>                            
                             </tr>
                             <tr>
                                 <td>19h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>
+                                <td style="color: #b25abf; font-weight: bold;">Conexão Cultural</td>
                             </tr>
                         </tbody>
 
                         <thead>
                             <tr>
                                 <th scope="col">Terça-feira</th>
-                                <th scope="col">20 de setembro</th>
+                                <th scope="col">28 de Novembro</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>8h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                            
+                                <td style="color: #b25abf; font-weight: bold;">Aventura Arte</td>                            
                             </tr>
                             <tr>
                                 <td>13h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                            
+                                <td style="color: #b25abf; font-weight: bold;">Exploração Express</td>                            
                             </tr>
                             <tr>
                                 <td>22h00</td>                            
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                            
+                                <td style="color: #b25abf; font-weight: bold;">Criativa com Classe</td>                            
                             </tr>
                         </tbody>
                         <thead>
                             <tr>
                                 <th scope="col">Quarta-feira</th>
-                                <th scope="col">21 de setembro</th>
+                                <th scope="col">29 de Novembro</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>10h45</td>                            
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                            
+                                <td style="color: #b25abf; font-weight: bold;">Radiante Reunião</td>                            
                             </tr>
                             <tr>
                                 <td>15h30</td>                            
-                                <td style="color: #b25abf; font-weight: bold;">Nome do Evento</td>                           
+                                <td style="color: #b25abf; font-weight: bold;">Inspirar Interação</td>                           
                             </tr>
                         </tbody>
                     </table>

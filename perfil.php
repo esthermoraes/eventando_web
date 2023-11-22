@@ -29,7 +29,7 @@
 							
 							<div class="col-md-12">
 								<label class="form-label">Nome</label>
-								<input type="text" class="form-control" value = <?php echo $nome;?> disabled>
+								<input type="text" class="form-control" value ="<?php echo htmlspecialchars($nome);?>" disabled>
 							</div>
 							
 							<div class="col-md-12">
