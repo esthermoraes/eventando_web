@@ -16,8 +16,8 @@ class BuscaCest
     {
 		$I->amOnPage('/eventando_web/menu.php');
 	    	$I->click('btn');
-		$I->click('PERFIL');
-		$I->seeCurrentURLEquals('/eventando_web/perfil.php');
+		$I->click('SOBRE NÓS');
+		$I->seeCurrentURLEquals('/eventando_web/sobreNos.php');
 		$I->see('Data de nascimento');
     }
 }
