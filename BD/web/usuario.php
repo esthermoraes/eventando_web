@@ -141,18 +141,20 @@
             $id = $stmt->fetchColumn();
         
             if($id) {
+                // Exclui da tabela de relacionamento
                 $sql = "DELETE FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $result = $stmt->execute();
         
                 if ($result) {
+                    // Exclui da tabela principal
                     $sql2 = "DELETE FROM $this->table WHERE id_usuario = :id";
                     $stmt2 = $pdo->prepare($sql2);
                     $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
-                    $result2 = $stmt2->execute();
+                    $stmt2->execute();
                     
-                    return $result2; // Retorna o resultado da exclusão do usuário
+                    return $stmt2->execute(); // Retorna o resultado da exclusão do usuário
                 } 
             }
         }
