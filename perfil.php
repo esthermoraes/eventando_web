@@ -71,7 +71,8 @@
 									EDITAR PERFIL
 								</button>
 							</a>
-							<button name = "tchau" type = "submit" class="tchau btn mt-5 mb-3 ms-3 text-center align-items-center col-md-6">
+							<button name = "tchau" type = "submit" class="tchau btn mt-5 mb-3 ms-3 text-center align-items-center 
+							col-md-6">
 								<i class="fa-solid fa-user-xmark"></i>
 								DELETAR PERFIL
 							</button>

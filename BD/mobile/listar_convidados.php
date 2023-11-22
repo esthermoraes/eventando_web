@@ -15,7 +15,42 @@
             if ($consulta->execute()) {
                 $convite_id = $db_con->lastInsertId();
 
-                // FOR i ... INSERE O CONVIDADO
+                /* FOR i ... INSERE O CONVIDADO
+                $jsonString = '{
+                    "convidados": [
+                      {
+                        "nome": "João",
+                        "email": "joao@example.com"
+                      },
+                      {
+                        "nome": "Maria",
+                        "email": "maria@example.com"
+                      },
+                      {
+                        "nome": "Carlos",
+                        "email": "carlos@example.com"
+                      }
+                    ]
+                }';
+                
+                // Converte a string JSON em um array associativo
+                $data = json_decode($jsonString, true);
+                
+                // Verifica se houve algum erro durante a decodificação
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    // Manipula os dados como um array associativo
+                    foreach ($data['convidados'] as $convidado) {
+                        $nome = $convidado['nome'];
+                        $email = $convidado['email'];
+                        
+                        // Aqui você pode realizar operações com os dados, como imprimir na tela
+                        echo "Nome: $nome, Email: $email<br>";
+                    }
+                } else {
+                    // Lida com erros na decodificação JSON
+                    echo 'Erro na decodificação JSON.';
+                }*/
+                
                 if(isset($_POST['nome_convidado']) && isset($_POST['email_convidado'])){
                     $nome_convidado = trim($_POST['nome_convidado']);
                     $email_convidado = trim($_POST['email_convidado']);
