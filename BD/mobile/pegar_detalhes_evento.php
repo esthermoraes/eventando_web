@@ -17,6 +17,7 @@
             if($formato === 'online'){
                 $consulta = $db_con->prepare("SELECT * FROM EVENTO_ONLINE
                 INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento
+                INNER JOIN POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
                 WHERE EVENTO_ONLINE.FK_EVENTO_id_evento = '$evento_id';");
                 if ($consulta->execute()) {
                     $linha = $consulta->fetch(PDO::FETCH_ASSOC);
@@ -28,23 +29,39 @@
                     $objetivo = $linha['objetivo'];
                     $atracoes = $linha['atracoes'];
                     $link = $linha['link'];
-                    $FK_plataforma_plataforma_PK = $linha['FK_plataforma_plataforma_PK'];
+                    $FK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+                    $contato = $linha['contato'];
+                    $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
 
-                    $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = '$FK_plataforma_plataforma_PK'");
+                    $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
+                    '$FK_plataforma_plataforma_PK'");
                     if($consulta2->execute()){
                         $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                         $plataforma = $linha2['plataforma'];
 
-                        $resposta["sucesso"] = 1;
-                        $resposta["nome"] = $nome;
-                        $resposta["privacidade_restrita"] = $privacidade_restrita;
-                        $resposta["src_img"] = $src_img;
-                        $resposta["data_prevista"] = $data_prevista;
-                        $resposta["horario"] = $horario;
-                        $resposta["objetivo"] = $objetivo;
-                        $resposta["atracoes"] = $atracoes;
-                        $resposta["link"] = $link;
-                        $resposta["plataforma"] = $plataforma;
+                        $consulta3 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
+                        '$fk_TIPO_CONTATO_id_tipo_contato'");
+                        if($consulta2->execute()){
+                            $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+                            $tipo_contato = $linha3['tipo_contato'];
+
+                            $resposta["sucesso"] = 1;
+                            $resposta["nome"] = $nome;
+                            $resposta["privacidade_restrita"] = $privacidade_restrita;
+                            $resposta["src_img"] = $src_img;
+                            $resposta["data_prevista"] = $data_prevista;
+                            $resposta["horario"] = $horario;
+                            $resposta["objetivo"] = $objetivo;
+                            $resposta["atracoes"] = $atracoes;
+                            $resposta["link"] = $link;
+                            $resposta["plataforma"] = $plataforma;
+                            $resposta["tipo_contato"] = $tipo_contato;
+                            $resposta["contato"] = $contato;
+                        }
+                        else{
+                            $resposta["sucesso"] = 0;
+                            $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
+                        }
                     }
                     else{
                         $resposta["sucesso"] = 0;
@@ -59,6 +76,7 @@
             else if($formato === 'presencial'){
                 $consulta = $db_con->prepare("SELECT * FROM EVENTO_PRESENCIAL
                 INNER JOIN EVENTO ON EVENTO_PRESENCIAL.FK_EVENTO_id_evento = EVENTO.id_evento
+                INNER JOIN POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
                 WHERE EVENTO_PRESENCIAL.FK_EVENTO_id_evento = '$evento_id';");
                 if ($consulta->execute()) {
                     $linha = $consulta->fetch(PDO::FETCH_ASSOC);
@@ -71,6 +89,8 @@
                     $atracoes = $linha['atracoes'];
                     $FK_LOCALIZACAO_id_localizacao = $linha['fk_localizacao_id_localizacao'];
                     $FK_buffet_buffet_PK = $linha['fk_buffet_buffet_pk'];
+                    $contato = $linha['contato'];
+                    $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
 
                     $consulta2 = $db_con->prepare("SELECT * FROM LOCALIZACAO WHERE id_localizacao = '$FK_LOCALIZACAO_id_localizacao'");
                     if($consulta2->execute()){
@@ -118,23 +138,36 @@
                                                 if($consulta9->execute()){
                                                     $linha9 = $consulta8->fetch(PDO::FETCH_ASSOC);
                                                     $buffet = $linha9["buffet"];
-    
-                                                    $resposta["sucesso"] = 1;
-                                                    $resposta["nome"] = $nome;
-                                                    $resposta["privacidade_restrita"] = $privacidade_restrita;
-                                                    $resposta["src_img"] = $src_img;
-                                                    $resposta["data_prevista"] = $data_prevista;
-                                                    $resposta["horario"] = $horario;
-                                                    $resposta["objetivo"] = $objetivo;
-                                                    $resposta["atracoes"] = $atracoes;
-                                                    $resposta["numero"] = $numero;
-                                                    $resposta["logradouro"] = $logradouro;
-                                                    $resposta["cep"] = $cep;
-                                                    $resposta["tipo_logradouro"] = $tipo_logradouro;
-                                                    $resposta["bairro"] = $bairro;
-                                                    $resposta["cidade"] = $cidade;
-                                                    $resposta["estado"] = $estado;
-                                                    $resposta["buffet"] = $buffet;
+
+                                                    $consulta10 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
+                                                    '$fk_TIPO_CONTATO_id_tipo_contato'");
+                                                    if($consulta2->execute()){
+                                                        $linha10 = $consulta10->fetch(PDO::FETCH_ASSOC);
+                                                        $tipo_contato = $linha10['tipo_contato'];
+
+                                                        $resposta["sucesso"] = 1;
+                                                        $resposta["nome"] = $nome;
+                                                        $resposta["privacidade_restrita"] = $privacidade_restrita;
+                                                        $resposta["src_img"] = $src_img;
+                                                        $resposta["data_prevista"] = $data_prevista;
+                                                        $resposta["horario"] = $horario;
+                                                        $resposta["objetivo"] = $objetivo;
+                                                        $resposta["atracoes"] = $atracoes;
+                                                        $resposta["numero"] = $numero;
+                                                        $resposta["logradouro"] = $logradouro;
+                                                        $resposta["cep"] = $cep;
+                                                        $resposta["tipo_logradouro"] = $tipo_logradouro;
+                                                        $resposta["bairro"] = $bairro;
+                                                        $resposta["cidade"] = $cidade;
+                                                        $resposta["estado"] = $estado;
+                                                        $resposta["buffet"] = $buffet;
+                                                        $resposta["tipo_contato"] = $tipo_contato;
+                                                        $resposta["contato"] = $contato;
+                                                    }
+                                                    else{
+                                                        $resposta["sucesso"] = 0;
+                                                        $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
+                                                    }
                                                 }
                                                 else{
                                                     $resposta["sucesso"] = 0;
