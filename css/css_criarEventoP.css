@@ -1,9 +1,5 @@
-*{
+*{ /*Fonte utilizada no site*/
     font-family: 'Montserrat', sans-serif;
-}
-
-body{
-    background-color: #ededed;
 }
 
 .criar-evento{
@@ -24,6 +20,11 @@ body{
 
 .lupa{
     margin-top: -15px;
+}
+
+/*Cor de fundo utilizada na tela*/
+body{
+    background-color: #ededed;
 }
 
 a{
@@ -54,10 +55,6 @@ a{
     display: flex;
     align-items: center;
     border-radius: 0px 8px 8px 0px;
-}
-
-.uf{
-    margin-left: 10px;
 }
 
 .passo1{
@@ -140,13 +137,7 @@ a{
     }
 }
 
-input{
-    height: 35px;
-}
 
-input[type="file"]{
-    display: none;
-}
 
 .imagem{
     width: 362px;
@@ -157,10 +148,6 @@ input[type="file"]{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.msi{
-    margin-left: 5rem !important; /* antigo ms-5 */
 }
 
 @media(max-width: 1024px){
@@ -242,27 +229,33 @@ input{
     font-weight: bolder !important; 
 }
 
-select{
+/* select{
     width: 270px !important;
     height: 35px !important;
-}
+} */
 
 label{
     font-weight: bolder;
 }
 
 .buffet, .atracoes{
-    height: 75px;
+    height: 90px;
     width: 49%;
     border: none !important;
     border-radius: 6px !important;
 }
 
-.info{
-    width: 49%!important;
+
+.infos-sec{
+    margin-top: 20px
+}
+
+.form-select.info{
+    font-size: 14px;
 }
 
 #privacidade{
+    margin-top: 9px !important;
     cursor: pointer;
 }
 
@@ -271,6 +264,12 @@ label{
     color:#000;
     font-weight: bold;
 }
+
+/* .pprt{
+    position: absolute;
+    right: 95px;
+    bottom: 55px;
+} */
 
 @media(max-width: 1024px){
     .b{
@@ -302,6 +301,13 @@ label{
     color: #fff !important;
 }
 
+/* .div-passo2{
+    margin-left: -190px;
+} */
+
+/* .form-convidado{
+} */
+
 @media(max-width: 768px){
     .div-form{
         width: 100%;
@@ -312,13 +318,15 @@ label{
     }
 }
 
-.form-convidado input{
+/* .form-convidado input{
     width: 24rem;
-} 
+}  */
+
+/* .form-convidado input:nth-child(2){
+    margin-left: 10px;
+} */
 
 .form-convidado button{
-    width: 190px;
-    height: 35px;
     background-color: #770089;
     color: white;
     border-radius: 8px;
@@ -330,12 +338,12 @@ label{
     background-color: #b25abf;
 }
 
-.lista{
+/* .lista{
     width: 1000px;
     margin-left: 40px;
     margin-bottom: 30px;
     border-radius: 8px;
-}
+} */
 
 .header-lista{
     background-color: #bedef2;
@@ -361,6 +369,10 @@ label{
     max-width: 500px;
 }
 
+/* .body-lista span:nth-child(2){
+   
+} */
+
 .header-lista p:nth-child(2){
     margin-left: 378px;
 }
@@ -375,23 +387,23 @@ label{
 
 .convite{
     width: 14rem;
-    height: 20rem;
-    border: solid 4px #770089 !important;
+    min-height: 50px;
+    border: solid 4px #770089;
     border-radius: 8px;
+}
+
+
+.convite.active{
+    border: solid 6px #770089 !important;
 }
 
 .convite:hover{
     border: solid 6px #770089 !important;
-}
-
-.msg{
-    margin-left: 1.8rem !important; /* antigo ms-4*/
+    cursor:pointer
 }
 
 .convitePronto{
-    width: 14rem;
-    height: 20rem;
-    border-radius: 8px;
+    border-radius: 8px !important;
 }
 
 .div-passo3{
@@ -415,15 +427,10 @@ label{
     color: #fff !important;
 }
 
-html ::-webkit-scrollbar {
-    height: 14px;
-}
 
-html ::-webkit-scrollbar-thumb {
-    border-radius: 50px;
-    background: #770089;
-}
+iframe {
+    width: 100%; /* Ajusta automaticamente à largura do contêiner pai */
+    height: 150%; /* Mantém a proporção original da altura */
+    border: 0;
 
-html ::-webkit-scrollbar-track {
-    background: #ededed;
 }
