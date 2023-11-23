@@ -56,7 +56,7 @@
                                                 <p class="fs-5">
                                                     <a href="mailto:eventando.nozes@gmail.com" class="email" target="_blank">
                                                         <i id="email" class="fa-regular fa-envelope p-1 mt-1"></i>   
-                                                        <p class="ms-1 mt-1">eventando.nozes@gmail.com</p>
+                                                        <p class="ms-1 mt-1 me-3">eventando.nozes@gmail.com</p>
                                                     </a>
                                                 </p> 
                                             </div>
@@ -64,7 +64,7 @@
 
                                         <div class="col">
                                             <div class="d-flex align-items-center">
-                                                <p class="fs-5 ms-0">
+                                                <p class="fs-5 ms-3">
                                                     <a href="https://api.whatsapp.com/send?phone=5527998296191" class="whats" target="_blank">
                                                         <i id="whats" class="fa-brands fa-whatsapp p-1 mt-1"></i>   
                                                         <p class="ms-1 mt-1">(27) 99829-6191</p>

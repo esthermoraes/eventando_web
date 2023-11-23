@@ -6,7 +6,7 @@ $header = 3;
 // Define a variável $css com um link para um arquivo CSS externo chamado 'css_criarEventoP.css'
 $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_criarEventoP.css" />';
 // Define a variável $js com um link para um arquivo JavaScript externo chamado 'js_criarEventoP.js' e com o atributo 'defer'
-$js = '';
+$js = '<script src = "js/js_criarEventoP.js" defer></script>';
 // Define a variável $title como 'CRIAR EVENTO PRESENCIAL', que será o título da página
 $title = 'CRIAR EVENTO PRESENCIAL';
 // Inclui o arquivo 'header.php', que contém código HTML e PHP
@@ -155,7 +155,7 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
             <div class="row infos-sec">
                 <div class="col-md-6">
                     <div class="d-flex justify-content-between">
-                        <select class="w-100 form-select info" name="tipo_contato">
+                        <select class="w-100 form-select " name="tipo_contato">
                             <option value="">Tipo de Contato</option>
                             <option value="1">E-mail</option>
                             <option value="2">Telefone</option>

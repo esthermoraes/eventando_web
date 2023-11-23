@@ -4,7 +4,7 @@
     // Define a variável $css com um link para um arquivo CSS externo chamado 'css_favoritos.css'
     $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_favoritos.css" />';
     // Define a variável $js como vazia, ou seja, não inclui nenhum arquivo JavaScript
-    $js = '';
+	$js = '<script src = "js/js_favorito.js" defer></script>';
     // Define a variável $title como 'FAVORITOS', que será o título da página
     $title = 'FAVORITOS';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP anteriormente comentado
@@ -38,169 +38,169 @@
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento1.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
 							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento2.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento3.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento4.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento5.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento6.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento7.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento8.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento9.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento10.jpg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento11.jpg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento12.jfif" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento13.jfif" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento14.jfif" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento15.jfif" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<!-- <div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento16.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div> -->
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento17.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento18.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento19.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<!-- <div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento20.jfif" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div>
 
 					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
 						<img src="img/evento21.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div class="card-img-overlay d-flex">
-							<i class="fa-solid fa-star ms-0 mt-2 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 fs-4">Título</p>
+						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
+							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
+							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
 						</div>
 					</div> -->
 
