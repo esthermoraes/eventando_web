@@ -26,6 +26,7 @@
                     $data_prevista = $linha['data_prevista'];
                     $horario = $linha['horario'];
                     $objetivo = $linha['objetivo'];
+                    $atracoes = $linha['atracoes'];
                     $link = $linha['link'];
                     $FK_plataforma_plataforma_PK = $linha['FK_plataforma_plataforma_PK'];
 
@@ -41,6 +42,7 @@
                         $resposta["data_prevista"] = $data_prevista;
                         $resposta["horario"] = $horario;
                         $resposta["objetivo"] = $objetivo;
+                        $resposta["atracoes"] = $atracoes;
                         $resposta["link"] = $link;
                         $resposta["plataforma"] = $plataforma;
                     }
@@ -66,7 +68,9 @@
                     $data_prevista = $linha['data_prevista'];
                     $horario = $linha['horario'];
                     $objetivo = $linha['objetivo'];
+                    $atracoes = $linha['atracoes'];
                     $FK_LOCALIZACAO_id_localizacao = $linha['fk_localizacao_id_localizacao'];
+                    $FK_buffet_buffet_PK = $linha['fk_buffet_buffet_pk'];
 
                     $consulta2 = $db_con->prepare("SELECT * FROM LOCALIZACAO WHERE id_localizacao = '$FK_LOCALIZACAO_id_localizacao'");
                     if($consulta2->execute()){
@@ -110,20 +114,32 @@
                                                 $linha8 = $consulta8->fetch(PDO::FETCH_ASSOC);
                                                 $estado = $linha8["estado"];
 
-                                                $resposta["sucesso"] = 1;
-                                                $resposta["nome"] = $nome;
-                                                $resposta["privacidade_restrita"] = $privacidade_restrita;
-                                                $resposta["src_img"] = $src_img;
-                                                $resposta["data_prevista"] = $data_prevista;
-                                                $resposta["horario"] = $horario;
-                                                $resposta["objetivo"] = $objetivo;
-                                                $resposta["numero"] = $numero;
-                                                $resposta["logradouro"] = $logradouro;
-                                                $resposta["cep"] = $cep;
-                                                $resposta["tipo_logradouro"] = $tipo_logradouro;
-                                                $resposta["bairro"] = $bairro;
-                                                $resposta["cidade"] = $cidade;
-                                                $resposta["estado"] = $estado;
+                                                $consulta9 = $db_con->prepare("SELECT buffet FROM buffet WHERE buffet_PK = '$FK_buffet_buffet_PK'");
+                                                if($consulta9->execute()){
+                                                    $linha9 = $consulta8->fetch(PDO::FETCH_ASSOC);
+                                                    $buffet = $linha9["buffet"];
+    
+                                                    $resposta["sucesso"] = 1;
+                                                    $resposta["nome"] = $nome;
+                                                    $resposta["privacidade_restrita"] = $privacidade_restrita;
+                                                    $resposta["src_img"] = $src_img;
+                                                    $resposta["data_prevista"] = $data_prevista;
+                                                    $resposta["horario"] = $horario;
+                                                    $resposta["objetivo"] = $objetivo;
+                                                    $resposta["atracoes"] = $atracoes;
+                                                    $resposta["numero"] = $numero;
+                                                    $resposta["logradouro"] = $logradouro;
+                                                    $resposta["cep"] = $cep;
+                                                    $resposta["tipo_logradouro"] = $tipo_logradouro;
+                                                    $resposta["bairro"] = $bairro;
+                                                    $resposta["cidade"] = $cidade;
+                                                    $resposta["estado"] = $estado;
+                                                    $resposta["buffet"] = $buffet;
+                                                }
+                                                else{
+                                                    $resposta["sucesso"] = 0;
+                                                    $resposta["erro"] = "Erro no BD: " . $consulta9->errorInfo()[2];
+                                                }
                                             }
                                             else{
                                                 $resposta["sucesso"] = 0;
