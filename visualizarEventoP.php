@@ -23,7 +23,7 @@
         </div>
 
         <div class="d-flex justify-content-end mt-2 mb-2">
-            <a href="BD/web/salvar_evento.php">
+            <a href="salvar_evento.php">
                 <button type="submit" id="btn-salvar" class="botaoS">
                     <i class="fa-regular fa-calendar-check"></i>
                     SALVAR EVENTO
