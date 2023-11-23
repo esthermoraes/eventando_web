@@ -67,11 +67,9 @@
 					
 					<div class = "row-1">
 						<div class="col-md-12">
-							<a href="perfil_editavel.php">
-								<button class="botao btn mt-5 mb-3 text-center align-items-center col-md-6">
-									<i class="fa-solid fa-user-pen"></i>
-									EDITAR PERFIL
-								</button>
+							<a href="perfil_editavel.php" class="botao btn mt-5 mb-3 text-center align-items-center col-md-6">
+								<i class="fa-solid fa-user-pen"></i>
+								EDITAR PERFIL
 							</a>
 							<button name = "tchau" type = "submit" class="tchau btn mt-5 mb-3 ms-3 text-center align-items-center 
 							col-md-6">
