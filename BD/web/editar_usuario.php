@@ -10,18 +10,18 @@
 	
 		// Aqui você chama a função update passando os dados coletados
 		$usuario = new Usuario($nome, $data_nasc, $estado, $telefone);
-		// $resultado = $usuario->update($email);
 
-		try{
-			//Atualiza as informações do usuario
+		try {
+			// Atualiza as informações do usuário
 			$resultado = $usuario->update($email);
-		}
-		catch (Exception $e) {
-			header("Location: perfil_editavel.php");
+	
+			// Se a atualização for bem-sucedida, redireciona usando JavaScript
+			echo '<script>window.location.href = "perfil.php";</script>';
 			exit;
-		}
-		if($resultado){
-			header("Location: perfil.php");
+		} 
+		catch (Exception $e) {
+			// Se ocorrer uma exceção, redireciona usando JavaScript
+			echo '<script>window.location.href = "perfil_editavel.php";</script>';
 			exit;
 		}
 	}

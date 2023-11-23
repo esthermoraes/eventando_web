@@ -7,18 +7,18 @@ include_once 'BD/web/usuario.php';
 
 		// Cria uma instância da classe Usuario
 		$usuario = new Usuario();
-		//$resultado = $usuario->delete($email);
 
-		try{
+		try {
 			//deleta o usuario
 			$resultado = $usuario->delete($email);
-		}
-		catch (Exception $e) {
-			header("Location: index.php");
+	
+			// Se o delete for bem-sucedido, redireciona usando JavaScript
+			echo '<script>window.location.href = "index.php";</script>';
 			exit;
-		}
-		if($resultado){
-			header("Location: perfil.php");
+		} 
+		catch (Exception $e) {
+			// Se ocorrer uma exceção, redireciona usando JavaScript
+			echo '<script>window.location.href = "perfil.php";</script>';
 			exit;
 		}
 	}
