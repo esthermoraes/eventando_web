@@ -4,15 +4,19 @@
 
     // Esta condição verifica se o formulário de login foi enviado
     if (isset($_POST["entrar"])) {
+        // recupera os valores dos campos preenchidos e sanitiza o email
         $email1 = $_POST["emEmail"];
         $Emailsanitized1 = filter_var($email1, FILTER_SANITIZE_EMAIL);
         $senha1 = $_POST["pwdSenha"];
-    
+
+        // Cria uma instância da classe Usuario
         $usuario = new Usuario();
+        // seleciona o usuario a partir do email
         $tabela_usuario = $usuario->select($Emailsanitized1);
     
         if ($tabela_usuario !== false) {
             $senha_db = $tabela_usuario['senha_usuario'];
+            // Verifica se a senha fornecida pelo usuário corresponde à senha armazenada no banco de dados (após a aplicação de hash).
             if (password_verify($senha1, $senha_db)) {
                 $_SESSION['email_txt'] = $Emailsanitized1;
                 $_SESSION['nome_txt'] = $tabela_usuario['nome_usuario'];

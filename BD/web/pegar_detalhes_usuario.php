@@ -1,6 +1,7 @@
 <?php
     include_once 'BD/web/usuario.php';
 	
+	// Obtém informações do usuário da resposta da consulta ao banco de dados.
 	$usuario = new Usuario();
 	$resposta = $usuario->select($_SESSION['email_txt']);
 	$email = $resposta['email_usuario'];

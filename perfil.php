@@ -9,7 +9,9 @@
     $title = 'PERFIL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+	// Inclui o arquivo 'pegar_detalhes_usuario.php'
 	include_once 'BD/web/pegar_detalhes_usuario.php';
+	// Inclui o arquivo 'deletar_usuario.php'
 	include_once 'BD/web/deletar_usuario.php';
 ?>
 

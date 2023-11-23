@@ -9,6 +9,7 @@
     $title = 'EDITAR PERFIL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';	
+	// Inclui o arquivo 'editar_usuario.php'
 	include_once 'BD/web/editar_usuario.php';	
 ?>
 

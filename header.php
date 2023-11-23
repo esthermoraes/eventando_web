@@ -209,7 +209,7 @@
             </header>
         ';
     }
-    // Mas, se o valor da variável $header for igual a 2 incluirá esse header abaixo
+    // Mas, se o valor da variável $header for igual a 3 incluirá esse header abaixo
     else if($header == 3){
         echo '
         <!-- Aqui iniciamos o código html -->

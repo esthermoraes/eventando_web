@@ -16,9 +16,12 @@
     Métodos:
     insert - insere um usuario na tabela usuario
     update - atualiza um usuario na tabela usuario
+    delete - deleta um usuario na tabela usuario
+    select - pega as informações de um usuaria na tabela usuario
     *************************************************************/
 
     class Usuario extends CRUD{
+        // Propriedade protegida que especifica o nome da tabela no banco de dados.
         protected $table = 'USUARIO';
         private $nome;
         private $data_nasc;
@@ -27,6 +30,7 @@
         private $email;
         private $senha;
 
+        // Método construtor para inicializar os atributos do usuário.
         public function __construct($nome = null, $data_nasc = null, $FK_ESTADO_id_estado = null, $telefone = null, $email = null, $senha = null){
             $this->nome = $nome;
             $this->data_nasc = $data_nasc;
@@ -36,6 +40,7 @@
             $this->senha = $senha;
         }
 
+        // Método 'insert' para inserir um usuário na tabela 'USUARIO'.
         public function insert(){
             $sql = "INSERT INTO $this->table (email, senha, nome, data_nasc, FK_ESTADO_id_estado) VALUES (:email, :senha, :nome, :data_nasc, 
             :FK_ESTADO_id_estado)";
@@ -66,30 +71,37 @@
             return false;
         }
 
+        // Método 'select' para obter as informações de um usuário com base no e-mail.
         public function select($email) {
+            // Consulta SQL para obter informações do usuário com base no e-mail
             $sql = 'SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado, senha FROM ' . $this->table . ' WHERE email = ?';
             $stmt = Database::prepare($sql);
             $stmt->bindParam(1, $email);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            // Verifica se o usuário foi encontrado.]
             if ($user === false) {
                 return false;
             }
 
+            // Obtém o ID do usuário e o ID do estado.
             $user_id = $user['id_usuario'];
             $state_id = $user['fk_estado_id_estado'];
 
+            // Consulta para obter o telefone do usuário na tabela 'TEM_TIPO_CONTATO_USUARIO'.
             $sql2 = 'SELECT telefone FROM TEM_TIPO_CONTATO_USUARIO WHERE fk_USUARIO_id_usuario = ' .$user_id;
             $stmt2 = Database::prepare($sql2);
             $stmt2->execute();
             $telefone = $stmt2->fetch(PDO::FETCH_ASSOC);
 
+            // Consulta para obter o estado do usuário na tabela 'ESTADO'.
             $sql3 = 'SELECT estado FROM ESTADO WHERE id_estado = ' .$state_id;
             $stmt3 = Database::prepare($sql3);
             $stmt3->execute();
             $estado = $stmt3->fetch(PDO::FETCH_ASSOC);
 
+            // Monta um array com as informações do usuário e retorna
             $resposta = array();
             $resposta['id_usuario'] = $user_id;
             $resposta['nome_usuario'] = $user["nome"];
@@ -102,6 +114,7 @@
             return $resposta;
         }
 
+        // Método 'update' para atualizar as informações de um usuário com base no e-mail.
         public function update($email) {
             // Consulta para obter o ID do usuário usando o e-mail fornecido
             $pdo = Database::getInstance();
@@ -131,7 +144,8 @@
                 }
             }
         }
-
+        
+        // Método 'delete' para excluir um usuário com base no e-mail.
         public function delete($email) {
             $pdo = Database::getInstance();
         

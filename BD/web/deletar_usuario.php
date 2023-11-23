@@ -7,12 +7,19 @@ include_once 'BD/web/usuario.php';
 
 		// Cria uma instância da classe Usuario
 		$usuario = new Usuario();
-		$resultado = $usuario->delete($email);
+		//$resultado = $usuario->delete($email);
 
-		// if ($resultado) {
-		// 	header('Location: index.php');
-		// } else {
-		// 	header('Location: perfil.php');
-		// }
+		try{
+			//deleta o usuario
+			$resultado = $usuario->delete($email);
+		}
+		catch (Exception $e) {
+			header("Location: index.php");
+			exit;
+		}
+		if($resultado){
+			header("Location: perfil.php");
+			exit;
+		}
 	}
 ?>
