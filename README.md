@@ -7,5 +7,5 @@
 * https://github.com/esthermoraes/eventando_web.git
 
 ## Sites:
-* Back4App: https://eventandoweb-estherifes2021.b4a.run/
+* Back4App: https://eventandoweb1-3e27zf94.b4a.run/
 * Infinity Free: http://eventando.rf.gd/ 
