@@ -26,7 +26,7 @@
                 $criador_id = $linha ['id_usuario'];
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario = '$criador_id' 
+                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$criador_id' 
                 LIMIT " . $limit . " OFFSET " . $offset);
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
