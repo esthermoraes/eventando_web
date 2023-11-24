@@ -49,7 +49,6 @@
                             $evento = array();
                             $evento["id"] = $linha2["id"];
                             $evento["nome"] = $linha2["nome"];
-                            $evento["objetivo"] = $linha2["objetivo"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
                             $evento["img"] = $linha2["img"];
                     
