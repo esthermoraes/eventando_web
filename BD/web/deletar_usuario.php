@@ -9,17 +9,23 @@ include_once 'BD/web/usuario.php';
 		$usuario = new Usuario();
 
 		try {
-			//deleta o usuario
+			// Deleta o usuário
 			$resultado = $usuario->delete($email);
-	
-			// Se o delete for bem-sucedido, redireciona usando JavaScript
-			echo '<script>window.location.href = "index.php";</script>';
+		
+			// Se a exclusão for bem-sucedida, exibe um alerta e redireciona
+			echo '<script>';
+			echo 'alert("Seu perfil foi deletado com sucesso!");';
+			echo 'window.location.href = "index.php";';
+			echo '</script>';
 			exit;
 		} 
 		catch (Exception $e) {
-			// Se ocorrer uma exceção, redireciona usando JavaScript
-			echo '<script>window.location.href = "perfil.php";</script>';
+			// Se ocorrer uma exceção, exibe um alerta e redireciona
+			echo '<script>';
+			echo 'alert("Erro ao deletar o perfil. Tente novamente.");';
+			echo 'window.location.href = "perfil.php";';
+			echo '</script>';
 			exit;
-		}
+		}		
 	}
 ?>

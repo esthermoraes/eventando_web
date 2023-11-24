@@ -14,14 +14,20 @@
 		try {
 			// Atualiza as informações do usuário
 			$resultado = $usuario->update($email);
-	
-			// Se a atualização for bem-sucedida, redireciona usando JavaScript
-			echo '<script>window.location.href = "perfil.php";</script>';
+		
+			// Se a atualização for bem-sucedida, exibe um alerta e redireciona
+			echo '<script>';
+			echo 'alert("Atualização bem-sucedida!");';
+			echo 'window.location.href = "perfil.php";';
+			echo '</script>';
 			exit;
 		} 
 		catch (Exception $e) {
-			// Se ocorrer uma exceção, redireciona usando JavaScript
-			echo '<script>window.location.href = "perfil_editavel.php";</script>';
+			// Se ocorrer uma exceção, exibe um alerta e redireciona
+			echo '<script>';
+			echo 'alert("Erro ao atualizar. Tente novamente.");';
+			echo 'window.location.href = "perfil_editavel.php";';
+			echo '</script>';
 			exit;
 		}
 	}
