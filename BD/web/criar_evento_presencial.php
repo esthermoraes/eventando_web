@@ -3,10 +3,12 @@
 
     // Verifica se foi enviado um arquivo
     if(!empty($_POST)){
-        if (isset($_FILES['img_evento'])) {
+        if (isset($_POST['nome_evento']) && isset($_POST['objetivo_evento']) && isset($_FILES['img_evento']) && 
+        isset($_POST['data_prevista_evento']) && isset($_POST['horario_evento']) && isset($_POST['privacidade_evento']) 
+        && isset($_POST['criador_evento'])) {
 
             // $filename = file_get_contents($_FILES['img_evento']['tmp_name']);
-            $filename = $_FILES['img_evento']['tmp_name'];
+            $filename = $_FILES['imagem']['tmp_name'];
             $client_id="373a5eedc23ad9b";
             $handle = fopen($filename, "r");
             $data = fread($handle, filesize($filename));
