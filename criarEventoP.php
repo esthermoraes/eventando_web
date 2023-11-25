@@ -55,14 +55,16 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
-                    <input placeholder="Objetivo do evento" class="obj form-control">
+                    <input placeholder="Objetivo do evento" class="obj form-control" name="objetivo">
                 </div>
 
                 <div class="col-md-6">
-                    <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" 
+                    onfocus="(this.type='date')" onblur="(this.type='text')" name="data_prevista">
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control horario" type="text" id="time" placeholder="Horário" onfocus="(this.type='time')" onblur="(this.type='text')">
+                    <input class="form-control horario" type="text" id="time" placeholder="Horário" 
+                    onfocus="(this.type='time')" onblur="(this.type='text')" name="hotario">
                 </div>
             </div>
         </div>
@@ -117,7 +119,7 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
 
 
                 <div class="col-md-3">
-                    <select class="form-select" id="sltTipoLogradouro">
+                    <select class="form-select" id="sltTipoLogradouro" name="tipo_logradouro">
                         <option value="">Tipo Logradouro</option>
                         <option value="Rodovia">Rodovia</option>
                         <option value="Avenida">Avenida</option>
@@ -130,10 +132,10 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
                 </div>
 
                 <div class="col-md-6">
-                    <input placeholder="Logradouro" name="logradouro" class="form-control log w-100" id="logradouro" readonly />
+                    <input placeholder="Logradouro" name="logradouro" class="form-control log w-100" id="logradouro" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input placeholder="N°" id="numero" class="form-control num w-100" />
+                    <input placeholder="N°" id="numero" class="form-control num w-100" name="numero"/>
 
                 </div>
 
@@ -172,7 +174,7 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
             </div>
 
             <div class="row">
-                <div id="privacidade" estado="publico" class="d-flex publico_privado">
+                <div id="privacidade" estado="publico" class="d-flex publico_privado" name="privacidade">
                     <i class="mt-2 fa-solid fa-unlock fa-flip-horizontal fa-xl" style="color: #b25abf;"></i>
                     <p class="ms-2 pp">Público</p>
                 </div>
