@@ -27,37 +27,45 @@
         private $horario;
         private $src_img;
         private $atracoes;
-        private $FK_USUARIO_id_usuario;
+        private $email_criador;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
-        $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null){
+        $src_img = null, $atracoes = null, $email_criador = null){
             $this->nome = $nome;
             $this->objetivo = $objetivo;
             $this->data_prevista = $data_prevista;
             $this->horario = $horario;
             $this->src_img = $src_img;
             $this->atracoes = $atracoes;
-            $this->FK_USUARIO_id_usuario = $FK_USUARIO_id_usuario;
+            $this->email_criador = $email_criador;
         }
 
         public function insert(){
-            $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
-            VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(':nome', $this->nome);
-            $stmt->bindParam(':objetivo', $this->objetivo);
-            $stmt->bindParam(':data_prevista', $this->data_prevista);
-            $stmt->bindParam(':horario', $this->horario);
-            $stmt->bindParam(':src_img', $this->src_img);
-            $stmt->bindParam(':atracoes', $this->atracoes);
-            $stmt->bindParam(':FK_USUARIO_id_usuario', $this->FK_USUARIO_id_usuario);
+            $sql_criador = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
+            $stmt_criador = Database::prepare($sql_criador);
+            $stmt_criador->bindParam(":email", $this->email_criador);
+            $stmt_criador->execute();
+            $id_criador = $stmt_criador->fetchColumn();
+        
+            if($id_criador) {
+                $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
+                VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
+                $stmt = Database::prepare($sql);
+                $stmt->bindParam(':nome', $this->nome);
+                $stmt->bindParam(':objetivo', $this->objetivo);
+                $stmt->bindParam(':data_prevista', $this->data_prevista);
+                $stmt->bindParam(':horario', $this->horario);
+                $stmt->bindParam(':src_img', $this->src_img);
+                $stmt->bindParam(':atracoes', $this->atracoes);
+                $stmt->bindParam(':FK_USUARIO_id_usuario', $id_criador, PDO::PARAM_INT);
 
-            if ($stmt->execute()){
-                // Recupere o ID inserido
-                $this->id_evento = Database::getInstance()->lastInsertId();
-                return true;
+                if ($stmt->execute()){
+                    // Recupere o ID inserido
+                    $this->id_evento = Database::getInstance()->lastInsertId();
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
 
         public function getId(){

@@ -29,7 +29,7 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
 
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
     <p class="ms-3">INFORMAÇÕES DO EVENTO</p>
-    <p class="me-3">Nome do Evento</p>
+    <p class="me-3" name="nome">Nome do Evento</p>
 </div>
 
 <div class="container-fluid  p-0 bagulhete d-flex">

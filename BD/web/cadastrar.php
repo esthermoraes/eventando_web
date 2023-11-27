@@ -20,7 +20,7 @@
     }   
 
     // Verifique se o formulário foi enviado
-    if (isset($_POST["cadastrar"])):
+    if (isset($_POST["cadastrar"])){
         // Recupere os dados do formulário CADASTRAR e aplique a sanitização
         $nome = $_POST["txtNome"];
         $Nomesanitized = sanitizeString($nome);
@@ -47,8 +47,8 @@
         catch (Exception $e) {
             header('Location: login.php?Cadastro=false');
         }
-        if($result):
+        if($result){
            header('Location: login.php?Cadastro=sucesso');
-        endif;
-    endif;	
+        }
+    }	
 ?>
