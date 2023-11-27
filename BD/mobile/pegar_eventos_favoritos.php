@@ -7,7 +7,11 @@
 
     // verifica se o usuário conseguiu autenticar
     if(autenticar($db_con)) {
-        if (isset($_GET['criador_evento'])) {
+        // limit - quantidade de eventos a ser entregues
+        // offset - indica a partir de qual evento começa a lista
+        if (isset($_GET['limit']) && isset($_GET['offset']) && isset($_GET['criador_evento'])) {
+            $limit = $_GET['limit'];
+            $offset = $_GET['offset'];
             $criador_email = trim($_GET['criador_evento']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
@@ -20,10 +24,9 @@
 
                 // O ID do criador do evento
                 $criador_id = $linha ['id_usuario'];
-    
-                // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario = '$criador_id' 
-                LIMIT 10");
+
+                $consulta2 = $db_con->prepare("SELECT EVENTO * FROM EVENTO JOIN Favorita ON FK_EVENTO_id_evento = id_evento 
+                WHERE FK_USUARIO_id_usuario = '$criador_id' LIMIT " . $limit . " OFFSET " . $offset);
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
                     // chave "eventos". O valor dessa chave e formado por um 
@@ -51,7 +54,7 @@
                             // Adiciona o evento no array de eventos.
                             array_push($resposta["eventos"], $evento);
                         }
-                    }
+                    }   
                 }
                 else {
                     // Caso ocorra falha no BD, o cliente 

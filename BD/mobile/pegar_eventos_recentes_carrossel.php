@@ -7,11 +7,7 @@
 
     // verifica se o usuário conseguiu autenticar
     if(autenticar($db_con)) {
-        // limit - quantidade de eventos a ser entregues
-        // offset - indica a partir de qual evento começa a lista
-        if (isset($_GET['limit']) && isset($_GET['offset']) && isset($_GET['criador_evento'])) {
-            $limit = $_GET['limit'];
-            $offset = $_GET['offset'];
+        if (isset($_GET['criador_evento'])) {
             $criador_email = trim($_GET['criador_evento']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
@@ -27,7 +23,7 @@
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
                 $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$criador_id' ORDER BY 
-                data_prevista DESC LIMIT " . $limit . " OFFSET " . $offset);
+                data_prevista DESC LIMIT 10");
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
                     // chave "eventos". O valor dessa chave e formado por um 
@@ -62,7 +58,7 @@
                     // recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
                     // motivo da falha.
                     $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
+                    $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
                 }
             }
             else{

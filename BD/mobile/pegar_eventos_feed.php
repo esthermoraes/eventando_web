@@ -63,7 +63,7 @@
                     // recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
                     // motivo da falha.
                     $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
+                    $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
                 }
             }
             else{
