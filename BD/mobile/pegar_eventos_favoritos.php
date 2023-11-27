@@ -15,7 +15,7 @@
             $criador_email = trim($_GET['criador_evento']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
-            $sql = "SELECT id_usuario FROM USUARIO WHERE login = '$criador_email'";
+            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$criador_email'";
             $consulta = $db_con->prepare($sql);
             $consulta->execute();
             
