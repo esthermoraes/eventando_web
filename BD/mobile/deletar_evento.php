@@ -11,6 +11,7 @@
             $criador_email = trim($_GET['criador_evento']);
             $id_evento = $_GET['id_evento'];
 
+            //DELETE FROM Favorita WHERE fk_EVENTO_id_evento = 1;
         }
         else {
             // Se a requisicao foi feita incorretamente, ou seja, os parametros 
