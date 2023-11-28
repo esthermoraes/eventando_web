@@ -85,87 +85,94 @@
                                 $resposta["erro"] = "Campos requeridos para evento online não preenchidos";
                             }
                         } 
-                        else if ($formato_evento === 'presencial') {
-                            if (isset($_POST['numero_evento']) && isset($_POST['logradouro_evento']) && isset($_POST['tipo_logradouro_evento'])
-                            && isset($_POST['bairro_evento']) && isset($_POST['cidade_evento']) && isset($_POST['estado_evento'])
-                            && isset($_POST['cep_evento'])) {
-                                $numero_evento = trim($_POST['numero_evento']);
-                                $logradouro_evento = trim($_POST['logradouro_evento']);
-                                $tipo_logradouro_evento = trim($_POST['tipo_logradouro_evento']);
-                                $bairro_evento = trim($_POST['bairro_evento']);
-                                $cidade_evento = trim($_POST['cidade_evento']);
-                                $estado_evento = trim($_POST['estado_evento']);
-                                $cep_evento = trim($_POST['cep_evento']);
+                        else {
+                            if ($formato_evento === 'presencial') {
+                                if (isset($_POST['numero_evento']) && isset($_POST['logradouro_evento']) && isset($_POST['tipo_logradouro_evento'])
+                                && isset($_POST['bairro_evento']) && isset($_POST['cidade_evento']) && isset($_POST['estado_evento'])
+                                && isset($_POST['cep_evento'])) {
+                                    $numero_evento = trim($_POST['numero_evento']);
+                                    $logradouro_evento = trim($_POST['logradouro_evento']);
+                                    $tipo_logradouro_evento = trim($_POST['tipo_logradouro_evento']);
+                                    $bairro_evento = trim($_POST['bairro_evento']);
+                                    $cidade_evento = trim($_POST['cidade_evento']);
+                                    $estado_evento = trim($_POST['estado_evento']);
+                                    $cep_evento = trim($_POST['cep_evento']);
 
-                                $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
-                                (CIDADE) DO NOTHING RETURNING id_cidade;");
+                                    $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
+                                    (CIDADE) DO NOTHING RETURNING id_cidade;");
 
-                                if($consulta_cidade->execute()){
-                                    // Usa fetchColumn para obter o valor retornado
-                                    $id_cidade = $consulta_cidade->fetchColumn();
-                                    
-                                    $consulta_estado_cidade = $db_con->prepare("INSERT INTO POSSUI_CIDADE_ESTADO(fk_CIDADE_id_cidade, 
-                                    fk_ESTADO_id_estado) VALUES('$id_cidade', '$estado_evento')");
+                                    if($consulta_cidade->execute()){
+                                        // Usa fetchColumn para obter o valor retornado
+                                        $id_cidade = $consulta_cidade->fetchColumn();
+                                        
+                                        $consulta_estado_cidade = $db_con->prepare("INSERT INTO POSSUI_CIDADE_ESTADO(fk_CIDADE_id_cidade, 
+                                        fk_ESTADO_id_estado) VALUES('$id_cidade', '$estado_evento')");
 
-                                    if($consulta_estado_cidade->execute()){
-                                        $consulta_bairro = $db_con->prepare("INSERT INTO BAIRRO(bairro) VALUES('$bairro_evento') ON 
-                                        CONFLICT (BAIRRO) DO NOTHING RETURNING id_bairro;");
+                                        if($consulta_estado_cidade->execute()){
+                                            $consulta_bairro = $db_con->prepare("INSERT INTO BAIRRO(bairro) VALUES('$bairro_evento') ON 
+                                            CONFLICT (BAIRRO) DO NOTHING RETURNING id_bairro;");
 
-                                        if($consulta_bairro->execute()){
-                                            // Usa fetchColumn para obter o valor retornado
-                                            $id_bairro = $consulta_bairro->fetchColumn();
-                                            
-                                            $consulta_cidade_bairro = $db_con->prepare("INSERT INTO POSSUI_BAIRRO_CIDADE(fk_BAIRRO_id_bairro, 
-                                            fk_CIDADE_id_cidade) VALUES('$id_bairro', '$id_cidade')");
+                                            if($consulta_bairro->execute()){
+                                                // Usa fetchColumn para obter o valor retornado
+                                                $id_bairro = $consulta_bairro->fetchColumn();
+                                                
+                                                $consulta_cidade_bairro = $db_con->prepare("INSERT INTO POSSUI_BAIRRO_CIDADE(fk_BAIRRO_id_bairro, 
+                                                fk_CIDADE_id_cidade) VALUES('$id_bairro', '$id_cidade')");
 
-                                            if($consulta_cidade_bairro->execute()){
-                                                $consulta_localizacao = $db_con->prepare("INSERT INTO LOCALIZACAO(numero, logradouro, cep, 
-                                                FK_TIPO_LOGRADOURO_id_tipo_logradouro, FK_BAIRRO_id_bairro) VALUES('$numero_evento', 
-                                                '$logradouro_evento', '$cep_evento', '$tipo_logradouro_evento', '$id_bairro')");
+                                                if($consulta_cidade_bairro->execute()){
+                                                    $consulta_localizacao = $db_con->prepare("INSERT INTO LOCALIZACAO(numero, logradouro, cep, 
+                                                    FK_TIPO_LOGRADOURO_id_tipo_logradouro, FK_BAIRRO_id_bairro) VALUES('$numero_evento', 
+                                                    '$logradouro_evento', '$cep_evento', '$tipo_logradouro_evento', '$id_bairro')");
 
-                                                if($consulta_localizacao->execute()){
-                                                    $localizacao_id = $db_con->lastInsertId();
+                                                    if($consulta_localizacao->execute()){
+                                                        $localizacao_id = $db_con->lastInsertId();
 
-                                                    $consulta_presencial = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL
-                                                    (FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$evento_id',
-                                                    '$localizacao_id')");
-                                                    if ($consulta_presencial->execute()) {
-                                                        $resposta["sucesso"] = 1;
-                                                        $resposta["evento_id"] = $evento_id;
-                                                    } 
-                                                    else {
+                                                        $consulta_presencial = $db_con->prepare("INSERT INTO EVENTO_PRESENCIAL
+                                                        (FK_EVENTO_id_evento, FK_LOCALIZACAO_id_localizacao) VALUES('$evento_id',
+                                                        '$localizacao_id')");
+                                                        if ($consulta_presencial->execute()) {
+                                                            $resposta["sucesso"] = 1;
+                                                            $resposta["evento_id"] = $evento_id;
+                                                        } 
+                                                        else {
+                                                            $resposta["sucesso"] = 0;
+                                                            $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                                        }
+                                                    }
+                                                    else{
                                                         $resposta["sucesso"] = 0;
-                                                        $resposta["erro"] = "Erro na inserção na tabela EVENTO_PRESENCIAL: " . $consulta_presencial->errorInfo()[2];
+                                                        $resposta["erro"] = "Erro na inserção na tabela LOCALIZACAO: " . $consulta_localizacao->errorInfo()[2];
                                                     }
                                                 }
                                                 else{
                                                     $resposta["sucesso"] = 0;
-                                                    $resposta["erro"] = "Erro na inserção na tabela LOCALIZACAO: " . $consulta_localizacao->errorInfo()[2];
+                                                    $resposta["erro"] = "Erro na inserção na tabela POSSUI_BAIRRO_CIDADE: " . $consulta_cidade_bairro->errorInfo()[2];
                                                 }
                                             }
                                             else{
                                                 $resposta["sucesso"] = 0;
-                                                $resposta["erro"] = "Erro na inserção na tabela POSSUI_BAIRRO_CIDADE: " . $consulta_cidade_bairro->errorInfo()[2];
+                                                $resposta["erro"] = "Erro na inserção na tabela BAIRRO: " . $consulta_bairro->errorInfo()[2];
                                             }
                                         }
                                         else{
                                             $resposta["sucesso"] = 0;
-                                            $resposta["erro"] = "Erro na inserção na tabela BAIRRO: " . $consulta_bairro->errorInfo()[2];
+                                            $resposta["erro"] = "Erro na inserção na tabela POSSUI_CIDADE_ESTADO: " . $consulta_estado_cidade->errorInfo()[2];
                                         }
                                     }
                                     else{
                                         $resposta["sucesso"] = 0;
-                                        $resposta["erro"] = "Erro na inserção na tabela POSSUI_CIDADE_ESTADO: " . $consulta_estado_cidade->errorInfo()[2];
-                                    }
-                                }
-                                else{
+                                        $resposta["erro"] = "Erro na inserção na tabela CIDADE: " . $consulta_cidade->errorInfo()[2];
+                                    }     
+                                } 
+                                else {
                                     $resposta["sucesso"] = 0;
-                                    $resposta["erro"] = "Erro na inserção na tabela CIDADE: " . $consulta_cidade->errorInfo()[2];
-                                }     
-                            } 
-                            else {
+                                    $resposta["erro"] = "Campos requeridos para evento presencial não preenchidos";
+                                }
+                            }
+                            else{
+                                error_log("Formato Evento = " . $formato_evento, 0);
                                 $resposta["sucesso"] = 0;
-                                $resposta["erro"] = "Campos requeridos para evento presencial não preenchidos";
+                                $resposta["erro"] = "Formato não definido";
                             }
                         }
                     } 
