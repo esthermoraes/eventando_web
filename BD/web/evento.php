@@ -96,11 +96,35 @@
             $id_user = $stmt_user->fetchColumn();
             
             if($id_user) {
-                $sql_myE = "SELECT id_evento, img_src FROM $this->table WHERE FK_USUARIO_id_usuario = (:id_user) LIMIT 10";
+                $sql_myE = "SELECT id_evento, img_src FROM $this->table WHERE FK_USUARIO_id_usuario = (:id_user) LIMIT 8";
                 $stmt_myE = Database::prepare($sql_myE);
                 $stmt_myE->bindParam(":id_user", $id_user, PDO::PARAM_INT);
                 $stmt_myE->execute();
             }  
+        }
+
+        public function selectCalendar(){
+            $sql_user = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
+        
+            if($id_user) {
+                $sql_eR = " SELECT id_evento, data_prevista, nome, horario FROM $this->table WHERE FK_USUARIO_id_usuario != (:id_user) ORDER BY 
+                data_prevista LIMIT 10";
+                $stmt_eR = Database::prepare($sql_eR);
+                $stmt_eR->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+                $stmt_eR->execute();
+            }
+        }
+
+        public function favorita(){
+
+        }
+
+        public function selectFavoritos(){
+            
         }
 
         public function update($id){
