@@ -7,11 +7,11 @@
 
     // verifica se o usuário conseguiu autenticar
     if(autenticar($db_con)) {
-        if (isset($_GET['criador_evento'])) {
-            $criador_email = trim($_GET['criador_evento']);
+        if (isset($_GET['user_email'])) {
+            $user_email = trim($_GET['user_email']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
-            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$criador_email'";
+            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$user_email'";
             $consulta = $db_con->prepare($sql);
             $consulta->execute();
             
@@ -19,10 +19,10 @@
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 
                 // O ID do criador do evento
-                $criador_id = $linha ['id_usuario'];
+                $user_id = $linha ['id_usuario'];
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$criador_id' ORDER BY 
+                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$user_id' ORDER BY 
                 data_prevista DESC LIMIT 10");
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 

@@ -12,7 +12,7 @@
     $horario - horario do evento
     $src_img - src_img do evento
     $atracoes - atracoes do evento
-    $FK_USUARIO_id_usuario - FK_USUARIO_id_usuario do criador do evento
+    $FK_USUARIO_id_usuario - FK_USUARIO_id_usuario do user do evento
 
     Métodos:
     insert - insere um evento na tabela evento
@@ -27,27 +27,27 @@
         private $horario;
         private $src_img;
         private $atracoes;
-        private $email_criador;
+        private $email_user;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
-        $src_img = null, $atracoes = null, $email_criador = null){
+        $src_img = null, $atracoes = null, $email_user = null){
             $this->nome = $nome;
             $this->objetivo = $objetivo;
             $this->data_prevista = $data_prevista;
             $this->horario = $horario;
             $this->src_img = $src_img;
             $this->atracoes = $atracoes;
-            $this->email_criador = $email_criador;
+            $this->email_user = $email_user;
         }
 
         public function insert(){
-            $sql_criador = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
-            $stmt_criador = Database::prepare($sql_criador);
-            $stmt_criador->bindParam(":email", $this->email_criador);
-            $stmt_criador->execute();
-            $id_criador = $stmt_criador->fetchColumn();
+            $sql_user = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
         
-            if($id_criador) {
+            if($id_user) {
                 $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
                 VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
                 $stmt = Database::prepare($sql);
@@ -57,7 +57,7 @@
                 $stmt->bindParam(':horario', $this->horario);
                 $stmt->bindParam(':src_img', $this->src_img);
                 $stmt->bindParam(':atracoes', $this->atracoes);
-                $stmt->bindParam(':FK_USUARIO_id_usuario', $id_criador, PDO::PARAM_INT);
+                $stmt->bindParam(':FK_USUARIO_id_usuario', $id_user, PDO::PARAM_INT);
 
                 if ($stmt->execute()){
                     // Recupere o ID inserido
@@ -70,6 +70,37 @@
 
         public function getId(){
             return $this->id_evento;
+        }
+
+        public function selectEventosR(){
+            $sql_user = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
+        
+            if($id_user) {
+                $sql_eR = " SELECT id_evento, img_src FROM $this->table WHERE FK_USUARIO_id_usuario != (:id_user) ORDER BY 
+                data_prevista DESC LIMIT 10";
+                $stmt_eR = Database::prepare($sql_eR);
+                $stmt_eR->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+                $stmt_eR->execute();
+            }
+        }
+
+        public function selectMyEventos(){
+            $sql_user = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
+            
+            if($id_user) {
+                $sql_myE = "SELECT id_evento, img_src FROM $this->table WHERE FK_USUARIO_id_usuario = (:id_user) LIMIT 10";
+                $stmt_myE = Database::prepare($sql_myE);
+                $stmt_myE->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+                $stmt_myE->execute();
+            }  
         }
 
         public function update($id){

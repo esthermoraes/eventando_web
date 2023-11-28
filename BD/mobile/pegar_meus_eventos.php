@@ -9,13 +9,13 @@
     if(autenticar($db_con)) {
         // limit - quantidade de eventos a ser entregues
         // offset - indica a partir de qual evento começa a lista
-        if (isset($_GET['limit']) && isset($_GET['offset']) && isset($_GET['criador_evento'])) {
+        if (isset($_GET['limit']) && isset($_GET['offset']) && isset($_GET['user_email'])) {
             $limit = $_GET['limit'];
             $offset = $_GET['offset'];
-            $criador_email = trim($_GET['criador_evento']);
+            $user_email = trim($_GET['user_email']);
             
             // Consulta SQL para obter o ID do criador com base no e-mail
-            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$criador_email'";
+            $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$user_email'";
             $consulta = $db_con->prepare($sql);
             $consulta->execute();
             
@@ -23,10 +23,10 @@
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 
                 // O ID do criador do evento
-                $criador_id = $linha ['id_usuario'];
+                $user_id = $linha ['id_usuario'];
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario = '$criador_id' 
+                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario = '$user_id' 
                 LIMIT " . $limit . " OFFSET " . $offset);
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
