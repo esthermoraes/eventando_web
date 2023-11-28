@@ -7,9 +7,12 @@
 
     // verifica se o usuário conseguiu autenticar
     if (autenticar($db_con)) {
+        error_log("autenticado", 0);
         if (isset($_POST['nome_evento']) && isset($_POST['objetivo_evento']) && isset($_FILES['img_evento']) && 
             isset($_POST['data_prevista_evento']) && isset($_POST['horario_evento']) && isset($_POST['privacidade_evento']) 
             && isset($_POST['criador_evento'])) {
+
+            error_log("dados evento base ok", 0);
             
             // Obtenha o e-mail do criador do evento a partir do POST
             $criador_email = trim($_POST['criador_evento']);
@@ -21,6 +24,8 @@
             
             if ($consulta->rowCount() > 0) {
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
+
+                error_log("user existe pd inserir evento", 0);
 
                 // O ID do criador do evento
                 $criador_id = $linha ['id_usuario'];
@@ -44,6 +49,8 @@
                 curl_close ($curl);
                 $pms = json_decode($out,true);
                 $img_url=$pms['data']['link'];
+
+                error_log("imagem:" . $img_url, 0);
                     
                 $data_prevista_evento = trim($_POST['data_prevista_evento']);
                 $data_prevista_evento2 = str_replace("/", "-", $data_prevista_evento);
@@ -57,6 +64,7 @@
                 '$privacidade_evento', '$horario_evento', '$criador_id')");
 
                 if ($consulta2->execute()) {
+                    error_log("evento base inserido", 0);
                     $evento_id = $db_con->lastInsertId(); // Obtém o ID do evento inserido
 
                     // Agora, aqui é onde o tipo de evento (online ou presencial) é determinado pelo usuário.
