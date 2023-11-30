@@ -1,30 +1,29 @@
 <?php
-// Variavel padrão do primeiro passo
-$passo = 1;
-// Define a variável $header como 3
-$header = 3;
-// Define a variável $css com um link para um arquivo CSS externo chamado 'css_criarEventoP.css'
-$css = '<link rel = "stylesheet" type = "text/css" href = "css/css_criarEventoP.css" />';
-// Define a variável $js com um link para um arquivo JavaScript externo chamado 'js_criarEventoP.js' e com o atributo 'defer'
-$js = '<script src = "js/js_criarEventoP.js" defer></script>';
-// Define a variável $title como 'CRIAR EVENTO PRESENCIAL', que será o título da página
-$title = 'CRIAR EVENTO PRESENCIAL';
-// Inclui o arquivo 'header.php', que contém código HTML e PHP
-include_once 'header.php';
+    // Variavel padrão do primeiro passo
+    $passo = 1;
+    // Define a variável $header como 3
+    $header = 3;
+    // Define a variável $css com um link para um arquivo CSS externo chamado 'css_criarEventoP.css'
+    $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_criarEventoP.css" />';
+    // Define a variável $js com um link para um arquivo JavaScript externo chamado 'js_criarEventoP.js' e com o atributo 'defer'
+    $js = '<script src = "js/js_criarEventoP.js" defer></script>';
+    // Define a variável $title como 'CRIAR EVENTO PRESENCIAL', que será o título da página
+    $title = 'CRIAR EVENTO PRESENCIAL';
+    // Inclui o arquivo 'header.php', que contém código HTML e PHP
+    include_once 'header.php';
 
-// deixei o POST para debugar os valores de acordo com os passos
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
+    // deixei o POST para debugar os valores de acordo com os passos
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
 
-if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionado 
-    $passo = $_POST['passo'] ?? $passo; // pega o passo atual e salva o array
+    if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionado 
+        $passo = $_POST['passo'] ?? $passo; // pega o passo atual e salva o array
 
-    $_SESSION['passo_' . $passo] = $_POST;
+        $_SESSION['passo_' . $passo] = $_POST;
 
-    $passo++; // avança ao próximo passo
-}
-
+        $passo++; // avança ao próximo passo
+    }
 ?>
 
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
@@ -45,11 +44,11 @@ if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionad
         </div>
     </div>
 
-    <form method="POST" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
+    <form method="POST" action = "criar_evento_presencial.php" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
             <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)">
-            <img id="preview" src="#" alt="Prévia da Imagem" style="display: none;" width="200px">
+            <img id="preview" src="#" alt="Prévia da Imagem" name = "imagem" style="display: none;" width="200px">
         </div>
 
         <div class="col-md-6">
