@@ -6,6 +6,7 @@ privacidade.addEventListener('click', () => {
         privacidade.innerHTML = `
             <i class="mt-2 fa-solid fa-lock fa-xl"></i>
             <p class="ms-2 pp" style = "font-size: 18px; color:#000; font-weight: bold;">Privado</p>
+            <input type = "hidden" name="privacidade" id="privado" value="true"/>
         `
     }
 
@@ -14,6 +15,7 @@ privacidade.addEventListener('click', () => {
         privacidade.innerHTML = `
         <i class="mt-2 fa-solid fa-unlock fa-flip-horizontal fa-xl" style="color: #b25abf;"></i>
         <p class="ms-2 pp">Público</p>
+        <input type = "hidden" name="privacidade" id="privado" value="false"/>
         `
     }
 })

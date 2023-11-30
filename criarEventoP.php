@@ -48,7 +48,7 @@
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
             <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)">
-            <img id="preview" src="#" alt="Prévia da Imagem" name = "imagem" style="display: none;" width="200px">
+            <img id="preview" src="#" alt="Prévia da Imagem" style="display: none;" width="200px">
         </div>
 
         <div class="col-md-6">
@@ -173,9 +173,10 @@
             </div>
 
             <div class="row">
-                <div id="privacidade" estado="publico" class="d-flex publico_privado" name="privacidade">
+                <div id="privacidade" estado="publico" class="d-flex publico_privado">
                     <i class="mt-2 fa-solid fa-unlock fa-flip-horizontal fa-xl" style="color: #b25abf;"></i>
                     <p class="ms-2 pp">Público</p>
+                    <input type = "hidden" name="privacidade" id="privado" value="false"/>
                 </div>
             </div>
         </div>
