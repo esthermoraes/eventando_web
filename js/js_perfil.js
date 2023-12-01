@@ -55,3 +55,16 @@ telTelefone.addEventListener("input", function (e) {
 
   e.target.value = telefone;
 });
+
+// Código JavaScript para selecionar a opção com base em $estado
+document.addEventListener("DOMContentLoaded", function() {
+  var estadoValue = "<?php echo $estado; ?>";
+  var sltEstado = document.getElementById('sltEstado');
+  
+  for (var i = 0; i < sltEstado.options.length; i++) {
+    if (sltEstado.options[i].value === estadoValue) {
+      sltEstado.selectedIndex = i;
+      break;
+    }
+  }
+});

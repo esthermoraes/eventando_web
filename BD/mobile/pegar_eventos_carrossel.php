@@ -22,8 +22,8 @@
                 $user_id = $linha ['id_usuario'];
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario = '$user_id' 
-                LIMIT 10");
+                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$user_id' ORDER BY 
+                data_prevista LIMIT 10");
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
                     // chave "eventos". O valor dessa chave e formado por um 
@@ -46,7 +46,7 @@
                             $evento["id"] = $linha2["id"];
                             $evento["nome"] = $linha2["nome"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
-                            $evento["img"] = $linha2["img"];
+                            $evento["img"] = $linha2["src_img"];
                     
                             // Adiciona o evento no array de eventos.
                             array_push($resposta["eventos"], $evento);

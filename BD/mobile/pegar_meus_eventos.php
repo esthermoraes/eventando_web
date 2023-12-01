@@ -51,7 +51,7 @@
                             $evento["nome"] = $linha2["nome"];
                             $evento["objetivo"] = $linha2["objetivo"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
-                            $evento["img"] = $linha2["img"];
+                            $evento["img"] = $linha2["src_img"];
                     
                             // Adiciona o evento no array de eventos.
                             array_push($resposta["eventos"], $evento);

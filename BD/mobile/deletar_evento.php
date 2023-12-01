@@ -7,11 +7,17 @@
 
     // verifica se o usuário conseguiu autenticar
     if(autenticar($db_con)) {
-        if (isset($_GET['criador_evento']) &&isset($_GET['id_evento'])) {
-            $criador_email = trim($_GET['criador_evento']);
+        if (isset($_GET['id_evento'])) {
             $id_evento = $_GET['id_evento'];
 
-            //DELETE FROM Favorita WHERE fk_EVENTO_id_evento = 1;
+            $consulta = $db_con->prepare("DELETE FROM EVENTO WHERE id_evento = '$id_evento';");
+            if($consulta->execute()){
+                $resposta["sucesso"] = 1;
+            }
+            else{
+                $resposta["sucesso"] = 0;
+                $resposta["erro"] = "Erro no delete na tabela EVENTO: " . $consulta->errorInfo()[2];
+            }
         }
         else {
             // Se a requisicao foi feita incorretamente, ou seja, os parametros 
