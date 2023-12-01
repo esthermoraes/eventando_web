@@ -101,5 +101,4 @@
 
     // Converte a resposta para o formato JSON.
     echo json_encode($resposta);
-
 ?>
