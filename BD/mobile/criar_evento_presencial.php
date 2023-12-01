@@ -68,7 +68,6 @@
                     $cidade_evento = trim($_POST['cidade_evento']);
                     $estado_evento = trim($_POST['estado_evento']);
                     $cep_evento = trim($_POST['cep_evento']);
-                    var_dump($_POST);
 
                     $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
                     (CIDADE) DO NOTHING RETURNING id_cidade;");
