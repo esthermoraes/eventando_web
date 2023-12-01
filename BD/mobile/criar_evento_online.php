@@ -16,14 +16,14 @@
             
             // Consulta SQL para obter o ID do criador com base no e-mail
             $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$criador_email'";
-            $consulta = $db_con->prepare($sql);
-            $consulta->execute();
+            $consulta_criador_email = $db_con->prepare($sql);
+            $consulta_criador_email->execute();
             
-            if ($consulta->rowCount() > 0) {
-                $linha = $consulta->fetch(PDO::FETCH_ASSOC);
+            if ($consulta_criador_email->rowCount() > 0) {
+                $linha = $consulta_criador_email->fetch(PDO::FETCH_ASSOC);
 
                 // O ID do criador do evento
-                $criador_id = $linha ['id_usuario'];
+                $criador_id = $linha['id_usuario'];
                 $nome_evento = trim($_POST['nome_evento']);
                 $objetivo_evento = trim($_POST['objetivo_evento']);
 
@@ -52,33 +52,33 @@
                 $horario_evento = trim($_POST['horario_evento']);
                 $privacidade_evento = trim($_POST['privacidade_evento']);
 
-                $consulta2 = $db_con->prepare("INSERT INTO EVENTO(nome, objetivo, src_img, data_prevista, horario, privacidade_restrita, 
+                $consulta_insert_evento_base = $db_con->prepare("INSERT INTO EVENTO(nome, objetivo, src_img, data_prevista, horario, privacidade_restrita, 
                 FK_USUARIO_id_usuario) VALUES('$nome_evento', '$objetivo_evento', '$img_url', '$data_prevista_evento3', '$horario_evento', 
                 '$privacidade_evento', '$criador_id')");
 
-                if ($consulta2->execute()) {
+                if ($consulta_insert_evento_base->execute()) {
                     $evento_id = $db_con->lastInsertId(); // Obtém o ID do evento inserido
 
                     $link_evento = trim($_POST['link_evento']);
                     $plataforma_evento = trim($_POST['plataforma_evento']);
 
-                    $consulta_online = $db_con->prepare("INSERT INTO EVENTO_ONLINE(link, FK_plataforma_plataforma_PK, 
+                    $consulta_insert_online = $db_con->prepare("INSERT INTO EVENTO_ONLINE(link, FK_plataforma_plataforma_PK, 
                     FK_EVENTO_id_evento) VALUES('$link_evento', '$plataforma_evento', '$evento_id')");
                     
-                    if ($consulta_online->execute()) {
+                    if ($consulta_insert_online->execute()) {
                         $resposta["sucesso"] = 1;
                         $resposta["evento_id"] = $evento_id;
                     } 
                     else {
                         $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Erro na inserção na tabela EVENTO_ONLINE: " . $consulta_online->errorInfo()[2];
+                        $resposta["erro"] = "Erro na inserção na tabela EVENTO_ONLINE: " . $consulta_insert_online->errorInfo()[2];
                     }
                 }
                 else {
                     // se houve erro na consulta para a tabela de evennto, indicamos que não houve sucesso
                     // na operação e o motivo no campo de erro.
                     $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta2->errorInfo()[2];
+                    $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta_insert_evento_base->errorInfo()[2];
                 }
             } 
             else {
