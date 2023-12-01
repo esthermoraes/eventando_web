@@ -7,11 +7,14 @@
 
     // Verifica se foi enviado um arquivo
     if (isset($_POST["proximo_passo"])){
-        $user = $_POST[""];
+        var_dump($_SESSION);
+        $user = $_SESSION['email_txt'];
+        echo ("user: " . $user . " ");
+
         //$nome = $_POST["nome"];
         //$Nomesanitized = sanitizeString($nome);
         $nome = 'NOME DO EVENTO';
-        echo ("nome: " . $nome);
+        echo ("nome: " . $nome . " ");
 
         // $filename = $_FILES['imagem']['tmp_name'];
         // $client_id="373a5eedc23ad9b";
@@ -30,7 +33,7 @@
         // curl_close ($curl);
         // $pms = json_decode($out,true);
         $img_url = 'evento1.jpg';
-        echo ("imagem: " . $img_url);
+        echo ("imagem: " . $img_url . " ");
 
         $privacidade = $_POST["privacidade"];
         echo ("imagem: " . $privacidade . " ");
