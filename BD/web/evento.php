@@ -42,32 +42,30 @@
 
         public function insert(){
             $sql_user = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
-
             echo($sql_user);
-
-            // $stmt_user = Database::prepare($sql_user);
-            // $stmt_user->bindParam(":email", $this->email_user);
-            // $stmt_user->execute();
-            // $id_user = $stmt_user->fetchColumn();
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
         
             if($id_user) {
                 $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
                 VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
-                // $stmt = Database::prepare($sql);
-                // $stmt->bindParam(':nome', $this->nome);
-                // $stmt->bindParam(':objetivo', $this->objetivo);
-                // $stmt->bindParam(':data_prevista', $this->data_prevista);
-                // $stmt->bindParam(':horario', $this->horario);
-                // $stmt->bindParam(':src_img', $this->src_img);
-                // $stmt->bindParam(':atracoes', $this->atracoes);
-                // $stmt->bindParam(':FK_USUARIO_id_usuario', $id_user, PDO::PARAM_INT);
+                $stmt = Database::prepare($sql);
+                $stmt->bindParam(':nome', $this->nome);
+                $stmt->bindParam(':objetivo', $this->objetivo);
+                $stmt->bindParam(':data_prevista', $this->data_prevista);
+                $stmt->bindParam(':horario', $this->horario);
+                $stmt->bindParam(':src_img', $this->src_img);
+                $stmt->bindParam(':atracoes', $this->atracoes);
+                $stmt->bindParam(':FK_USUARIO_id_usuario', $id_user, PDO::PARAM_INT);
 
-                // if ($stmt->execute()){
-                //     // Recupere o ID inserido
-                //     $this->id_evento = Database::getInstance()->lastInsertId();
-                //     return true;
-                // }
-                // return false;
+                if ($stmt->execute()){
+                    // Recupere o ID inserido
+                    $this->id_evento = Database::getInstance()->lastInsertId();
+                    return true;
+                }
+                return false;
                 echo($sql);
             }
         }
