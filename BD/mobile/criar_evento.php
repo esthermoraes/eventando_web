@@ -12,6 +12,8 @@
             isset($_POST['data_prevista_evento']) && isset($_POST['horario_evento']) && isset($_POST['privacidade_evento']) 
             && isset($_POST['criador_evento'])) {
 
+            var_dump($_POST);
+
             error_log("dados evento base ok", 0);
             
             // Obtenha o e-mail do criador do evento a partir do POST
@@ -61,7 +63,7 @@
 
                 $consulta2 = $db_con->prepare("INSERT INTO EVENTO(nome, objetivo, src_img, data_prevista, horario, privacidade_restrita, 
                 FK_USUARIO_id_usuario) VALUES('$nome_evento', '$objetivo_evento', '$img_url', '$data_prevista_evento3', '$horario_evento', 
-                '$privacidade_evento', '$horario_evento', '$criador_id')");
+                '$privacidade_evento', '$criador_id')");
 
                 if ($consulta2->execute()) {
                     error_log("evento base inserido", 0);

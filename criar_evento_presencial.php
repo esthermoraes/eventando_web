@@ -10,7 +10,7 @@
         $user = $_POST[""];
         //$nome = $_POST["nome"];
         //$Nomesanitized = sanitizeString($nome);
-        $nome = 'NOME';
+        $nome = 'NOME DO EVENTO';
         echo ("nome: " . $nome);
 
         // $filename = $_FILES['imagem']['tmp_name'];

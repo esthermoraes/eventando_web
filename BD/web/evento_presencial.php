@@ -25,14 +25,14 @@
         private $cep;
         private $numero;
         private $logradouro;
-        private $FK_TIPO_LOGRADOURO_id_tipo_logradouro;
+        private $tipo_logradouro;
         private $bairro;
         private $cidade;
         private $estado;
         /* Dados da localização */
 
         /*Dados do tipo contato*/
-        private $fk_TIPO_CONTATO_id_tipo_contato;
+        private $tipo_contato;
         private $contato;
         /*Dados do tipo contato*/
 
@@ -40,8 +40,8 @@
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $buffet = null, $cep =null, $numero = null, 
-        $logradouro = null, $FK_TIPO_LOGRADOURO_id_tipo_logradouro = null, $bairro = null, $cidade = null, $estado = null, 
-        $fk_TIPO_CONTATO_id_tipo_contato = null, $contato = null, $evento = null){
+        $logradouro = null, $tipo_logradouro = null, $bairro = null, $cidade = null, $estado = null, 
+        $tipo_contato = null, $contato = null, $evento = null){
 
             $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
 
@@ -50,12 +50,12 @@
             $this->cep = $cep;
             $this->numero = $numero;
             $this->logradouro = $logradouro;
-            $this->FK_TIPO_LOGRADOURO_id_tipo_logradouro = $FK_TIPO_LOGRADOURO_id_tipo_logradouro;
+            $this->tipo_logradouro = $tipo_logradouro;
             $this->bairro = $bairro;
             $this->cidade = $cidade;
             $this->estado = $estado;
 
-            $this->fk_TIPO_CONTATO_id_tipo_contato = $fk_TIPO_CONTATO_id_tipo_contato;
+            $this->tipo_contato = $tipo_contato;
             $this->contato = $contato;
         }
 
@@ -99,7 +99,7 @@
 
                                 if($result_cidade_estado){
                                     $sql_bairro = "INSERT INTO INSERT INTO BAIRRO(bairro) VALUES(:bairro) ON CONFLICT 
-                                    (CIDADE) DO NOTHING RETURNING id_bairro";
+                                    (BAIRRO) DO NOTHING RETURNING id_bairro";
                                     $stmt_bairro = Database::prepare($sql_bairro);
                                     $stmt_bairro->bindParam(':bairro', $this->bairro);
                                     $result_bairro = $stmt_bairro->execute();
@@ -118,49 +118,63 @@
                                             $result_bairro_cidade = $stmt_bairro_cidade->execute();
 
                                             if($result_bairro_cidade){
-                                                // Tenta inserir os dados de localização
-                                                $sql_localizacao = "INSERT INTO LOCALIZACAO(numero, logradouro, cep, FK_TIPO_LOGRADOURO_id_tipo_logradouro, 
-                                                FK_BAIRRO_id_bairro) VALUES (:numero, :logradouro, :cep, :FK_TIPO_LOGRADOURO_id_tipo_logradouro, 
-                                                :FK_BAIRRO_id_bairro)";
-                                                $stmt = Database::prepare($sql_localizacao);
-                                                $stmt->bindParam(':numero', $this->numero);
-                                                $stmt->bindParam(':logradouro', $this->logradouro);
-                                                $stmt->bindParam(':cep', $this->cep);
-                                                $stmt->bindParam(':FK_TIPO_LOGRADOURO_id_tipo_logradouro', $this->FK_TIPO_LOGRADOURO_id_tipo_logradouro);
-                                                $stmt->bindParam(':FK_BAIRRO_id_bairro', $id_bairro, PDO::PARAM_INT);
-                                                $result = $stmt->execute();
+                                                $sql_tpLogradouro = "INSERT INTO TIPO_LOGRADOURO(tipo_logradouro) VALUES(:tipo_logradouro)
+                                                ON CONFLICT (TIPO_LOGRADOURO) DO NOTHING RETURNING id_tipo_logradouro";
+                                                $stmt_tpLogradouro = Database::prepare($sql_tpLogradouro);
+                                                $stmt_tpLogradouro->bindParam(':tipo_logradouro', $this->tipo_logradouro);
+                                                $result_tpLogradouro = $stmt_tpLogradouro->execute();
+            
+                                                if($result_tpLogradouro){
+                                                    if ($stmt_bairro->rowCount() > 0) {
+                                                        // Obtem o ID retornado
+                                                        $result = $stmt_tpLogradouro->fetch(PDO::FETCH_ASSOC);
+                                                        $id_tipo_logradouro = $result['id_tipo_logradouro'];
 
-                                                if ($result){
-                                                    $id_localizacao = $this->id_localizacao = Database::getInstance()->lastInsertId();
+                                                        // Tenta inserir os dados de localização
+                                                        $sql_localizacao = "INSERT INTO LOCALIZACAO(numero, logradouro, cep, tipo_logradouro, 
+                                                        FK_BAIRRO_id_bairro) VALUES (:numero, :logradouro, :cep, :tipo_logradouro, 
+                                                        :FK_BAIRRO_id_bairro)";
+                                                        $stmt_localizacao = Database::prepare($sql_localizacao);
+                                                        $stmt_localizacao->bindParam(':numero', $this->numero);
+                                                        $stmt_localizacao->bindParam(':logradouro', $this->logradouro);
+                                                        $stmt_localizacao->bindParam(':cep', $this->cep);
+                                                        $stmt_localizacao->bindParam(':tipo_logradouro', $id_tipo_logradouro, PDO::PARAM_INT);
+                                                        $stmt_localizacao->bindParam(':FK_BAIRRO_id_bairro', $id_bairro, PDO::PARAM_INT);
+                                                        $result_localizacao = $stmt_localizacao->execute();
 
-                                                    $sql_buffet = "INSERT INTO buffet (buffet) VALUES (:buffet)";
-                                                    $stmt = Database::prepare($sql_buffet);
-                                                    $stmt->bindParam(':buffet', $this->buffet);
-                                                    $result2 = $stmt->execute();
+                                                        if ($result_localizacao){
+                                                            $id_localizacao = $this->id_localizacao = Database::getInstance()->lastInsertId();
 
-                                                    if($result2){
-                                                        $id_buffet = $this->id_buffet = Database::getInstance()->lastInsertId();
-                                                        
-                                                        $sql = "INSERT INTO $this->table (FK_buffet_buffet_PK, FK_LOCALIZACAO_id_localizacao, FK_EVENTO_id_evento) 
-                                                        VALUES (:id_buffet, :id_localizacao, :id_evento)";
-                                                        $stmt = Database::prepare($sql);
-                                                        $stmt->bindParam(':FK_buffet_buffet_PK', $id_buffet, PDO::PARAM_INT);
-                                                        $stmt->bindParam(':FK_LOCALIZACAO_id_localizacao', $id_localizacao, PDO::PARAM_INT);
-                                                        $stmt->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
-                                                        
-                                                        $result3 = $stmt->execute();
+                                                            $sql_buffet = "INSERT INTO buffet (buffet) VALUES (:buffet)";
+                                                            $stmt_buffet = Database::prepare($sql_buffet);
+                                                            $stmt_buffet->bindParam(':buffet', $this->buffet);
+                                                            $result_buffet = $stmt_buffet->execute();
 
-                                                        if($result3){
-                                                            $sql_contato = "INSERT INTO POSSUI_TIPO_CONTATO_EVENTO (fk_TIPO_CONTATO_id_tipo_contato, fk_EVENTO_id_evento, contato) 
-                                                            VALUES (:fk_TIPO_CONTATO_id_tipo_contato, :id_evento, :contato)";
-                                                            $stmt = Database::prepare($sql_contato);
-                                                            $stmt->bindParam(':fk_TIPO_CONTATO_id_tipo_contato', $this->fk_TIPO_CONTATO_id_tipo_contato);
-                                                            $stmt->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
-                                                            $stmt->bindParam(':contato', $this->contato);
-                                                            return $stmt->execute();
-                                                        }
-                                                    }
-                                                }
+                                                            if($result_buffet){
+                                                                $id_buffet = $this->id_buffet = Database::getInstance()->lastInsertId();
+
+                                                                $sql_presencial = "INSERT INTO $this->table (FK_buffet_buffet_PK, FK_LOCALIZACAO_id_localizacao, FK_EVENTO_id_evento) 
+                                                                VALUES (:id_buffet, :id_localizacao, :id_evento)";
+                                                                $stmt_presencial = Database::prepare($sql_presencial);
+                                                                $stmt_presencial->bindParam(':FK_buffet_buffet_PK', $id_buffet, PDO::PARAM_INT);
+                                                                $stmt_presencial->bindParam(':FK_LOCALIZACAO_id_localizacao', $id_localizacao, PDO::PARAM_INT);
+                                                                $stmt_presencial->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
+                                                                $result_presencial = $stmt_presencial->execute();
+
+                                                                if($result_presencial){
+                                                                    $sql_contato = "INSERT INTO POSSUI_TIPO_CONTATO_EVENTO (tipo_contato, fk_EVENTO_id_evento, contato) 
+                                                                    VALUES (:tipo_contato, :id_evento, :contato)";
+                                                                    $stmt_contato = Database::prepare($sql_contato);
+                                                                    $stmt_contato->bindParam(':tipo_contato', $this->tipo_contato);
+                                                                    $stmt_contato->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
+                                                                    $stmt_contato->bindParam(':contato', $this->contato);
+                                                                    return $stmt_contato->execute();
+
+                                                                }
+                                                            }           
+                                                        }      
+                                                    }        
+                                                }  
                                             }
                                         }
                                     }
