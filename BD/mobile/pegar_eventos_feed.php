@@ -5,7 +5,6 @@
     // array for JSON resposta
     $resposta = array();
 
-    // verifica se o usuário conseguiu autenticar
     if(autenticar($db_con)) {
         // limit - quantidade de eventos a ser entregues
         // offset - indica a partir de qual evento começa a lista
