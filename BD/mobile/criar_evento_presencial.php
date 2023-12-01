@@ -72,7 +72,8 @@
                     $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
                     (CIDADE) DO NOTHING RETURNING id_cidade;");
 
-                    if($consulta_cidade->execute()){
+                    //if($consulta_cidade->execute()){
+                        $consulta_cidade->execute();
                         // Usa fetchColumn para obter o valor retornado
                         $id_cidade = $consulta_cidade->fetchColumn();
                         
@@ -129,17 +130,17 @@
                             $resposta["sucesso"] = 0;
                             $resposta["erro"] = "Erro na inserção na tabela POSSUI_CIDADE_ESTADO: " . $consulta_estado_cidade->errorInfo()[2];
                         }
-                    }
-                    else{
-                        $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Erro na inserção na tabela CIDADE: " . $consulta_cidade->errorInfo()[2];
-                    }     
+                    // }
+                    // else{
+                    //     $resposta["sucesso"] = 0;
+                    //     $resposta["erro"] = "Erro na inserção na tabela CIDADE: " . $consulta_cidade->errorInfo()[2];
+                    // }     
                 }          
                 else {
                     // se houve erro na consulta para a tabela de evennto, indicamos que não houve sucesso
                     // na operação e o motivo no campo de erro.
                     $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta->errorInfo()[2];
+                    $resposta["erro"] = "Erro na inserção na tabela EVENTO: " . $consulta2->errorInfo()[2];
                 }
             } 
             else {
