@@ -12,6 +12,8 @@
             && isset($_POST['criador_evento']) && isset($_POST['numero_evento']) && isset($_POST['logradouro_evento']) && 
             isset($_POST['tipo_logradouro_evento']) && isset($_POST['bairro_evento']) && isset($_POST['cidade_evento']) && 
             isset($_POST['estado_evento']) && isset($_POST['cep_evento'])) {
+
+            var_dump($_POST);
             
             // Obtenha o e-mail do criador do evento a partir do POST
             $criador_email = trim($_POST['criador_evento']);
@@ -72,8 +74,7 @@
                     $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
                     (CIDADE) DO NOTHING RETURNING id_cidade;");
 
-                    //if($consulta_cidade->execute()){
-                        $consulta_cidade->execute();
+                    if($consulta_cidade->execute()){
                         // Usa fetchColumn para obter o valor retornado
                         $id_cidade = $consulta_cidade->fetchColumn();
                         
@@ -130,11 +131,11 @@
                             $resposta["sucesso"] = 0;
                             $resposta["erro"] = "Erro na inserção na tabela POSSUI_CIDADE_ESTADO: " . $consulta_estado_cidade->errorInfo()[2];
                         }
-                    // }
-                    // else{
-                    //     $resposta["sucesso"] = 0;
-                    //     $resposta["erro"] = "Erro na inserção na tabela CIDADE: " . $consulta_cidade->errorInfo()[2];
-                    // }     
+                    }
+                    else{
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Erro na inserção na tabela CIDADE: " . $consulta_cidade->errorInfo()[2];
+                    }     
                 }          
                 else {
                     // se houve erro na consulta para a tabela de evennto, indicamos que não houve sucesso
