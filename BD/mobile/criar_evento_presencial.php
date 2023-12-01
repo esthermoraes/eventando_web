@@ -12,8 +12,6 @@
             && isset($_POST['criador_evento']) && isset($_POST['numero_evento']) && isset($_POST['logradouro_evento']) && 
             isset($_POST['tipo_logradouro_evento']) && isset($_POST['bairro_evento']) && isset($_POST['cidade_evento']) && 
             isset($_POST['estado_evento']) && isset($_POST['cep_evento'])) {
-
-            var_dump($_POST);
             
             // Obtenha o e-mail do criador do evento a partir do POST
             $criador_email = trim($_POST['criador_evento']);
@@ -70,6 +68,7 @@
                     $cidade_evento = trim($_POST['cidade_evento']);
                     $estado_evento = trim($_POST['estado_evento']);
                     $cep_evento = trim($_POST['cep_evento']);
+                    var_dump($_POST);
 
                     $consulta_cidade = $db_con->prepare("INSERT INTO CIDADE(cidade) VALUES('$cidade_evento') ON CONFLICT 
                     (CIDADE) DO NOTHING RETURNING id_cidade;");
