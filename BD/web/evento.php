@@ -28,6 +28,7 @@
         private $src_img;
         private $atracoes;
         private $email_user;
+        private $id_evento;
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $email_user = null){
@@ -41,16 +42,16 @@
         }
 
         public function insert(){
-            $sql_user = "SELECT id_usuario FROM $this->table WHERE email = (:email)";
-            echo($sql_user);
+            $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
             $stmt_user = Database::prepare($sql_user);
             $stmt_user->bindParam(":email", $this->email_user);
             $stmt_user->execute();
             $id_user = $stmt_user->fetchColumn();
         
-            if($id_user) {
-                $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, FK_USUARIO_id_usuario) 
-                VALUES (:nome, :objetivo, :data_prevista, :data_nasc, :horario, :src_img, :atracoes, :FK_USUARIO_id_usuario)";
+            if($id_user !== false) {
+                $sql = "INSERT INTO $this->table (nome, objetivo, data_prevista, horario, src_img, atracoes, 
+                FK_USUARIO_id_usuario) VALUES (:nome, :objetivo, :data_prevista, :horario, :src_img, :atracoes, 
+                :FK_USUARIO_id_usuario)";
                 $stmt = Database::prepare($sql);
                 $stmt->bindParam(':nome', $this->nome);
                 $stmt->bindParam(':objetivo', $this->objetivo);
@@ -59,15 +60,14 @@
                 $stmt->bindParam(':src_img', $this->src_img);
                 $stmt->bindParam(':atracoes', $this->atracoes);
                 $stmt->bindParam(':FK_USUARIO_id_usuario', $id_user, PDO::PARAM_INT);
-
+        
                 if ($stmt->execute()){
                     // Recupere o ID inserido
                     $this->id_evento = Database::getInstance()->lastInsertId();
                     return true;
                 }
-                return false;
-                echo($sql);
             }
+            return false;
         }
 
         public function getId(){

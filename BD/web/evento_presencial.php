@@ -15,7 +15,7 @@
     *************************************************************/
 
     class EventoPresencial extends Evento{
-        protected $table = 'EVENTO PRESENCIAL';
+        protected $table = 'EVENTO_PRESENCIAL';
 
         /* Dados do buffet */
         private $buffet;
@@ -41,7 +41,7 @@
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $buffet = null, $cep =null, $numero = null, 
         $logradouro = null, $tipo_logradouro = null, $bairro = null, $cidade = null, $estado = null, 
-        $tipo_contato = null, $contato = null, $evento = null){
+        $tipo_contato = null, $contato = null){
 
             $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
 
@@ -66,8 +66,8 @@
                     $id_evento = $this->evento->getId();
                 }
 
-                $sql_estado = "INSERT INTO INSERT INTO ESTADO(estado) VALUES(:estado) ON CONFLICT 
-                (ESTADO) DO NOTHING RETURNING id_cidade";
+                $sql_estado = "INSERT INTO ESTADO(estado) VALUES(:estado) ON CONFLICT 
+                (ESTADO) DO NOTHING RETURNING id_estado";
                 $stmt_estado = Database::prepare($sql_estado);
                 $stmt_estado->bindParam(':estado', $this->estado);
                 $result_estado = $stmt_estado->execute();
@@ -78,7 +78,7 @@
                         $result = $stmt_estado->fetch(PDO::FETCH_ASSOC);
                         $id_estado = $result['id_estado'];
 
-                        $sql_cidade = "INSERT INTO INSERT INTO CIDADE(cidade) VALUES(:cidade) ON CONFLICT 
+                        $sql_cidade = "INSERT INTO CIDADE(cidade) VALUES(:cidade) ON CONFLICT 
                         (CIDADE) DO NOTHING RETURNING id_cidade";
                         $stmt_cidade = Database::prepare($sql_cidade);
                         $stmt_cidade->bindParam(':cidade', $this->cidade);
