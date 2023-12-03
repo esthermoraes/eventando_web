@@ -17,7 +17,8 @@
 
         //$nome = $_POST["nome"];
         //$Nomesanitized = sanitizeString($nome);
-        $nome = 'NOME DO EVENTO';
+        // $nome = 'NOME DO EVENTO';
+        $nome = 'After do churras';
         echo ("Nome: " . $nome . "<br>");
 
         // $filename = $_FILES['imagem']['tmp_name'];
@@ -36,7 +37,8 @@
         // $out = curl_exec($curl);
         // curl_close ($curl);
         // $pms = json_decode($out,true);
-        $img_url = 'evento1.jpg';
+        //$img_url = 'evento1.jpg';
+        $img_url = 'a_ultima_ceia.png';
         echo ("Imagem: " . $img_url . "<br>");
 
         $privacidade = $_POST["privacidade"];

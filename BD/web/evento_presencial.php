@@ -43,7 +43,8 @@
         $logradouro = null, $tipo_logradouro = null, $bairro = null, $cidade = null, $estado = null, 
         $tipo_contato = null, $contato = null){
 
-            $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);
+            $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, 
+            $FK_USUARIO_id_usuario);
 
             $this->buffet = $buffet;
             
@@ -58,6 +59,7 @@
             $this->tipo_contato = $tipo_contato;
             $this->contato = $contato;
         }
+
 
         public function insert(){
             try{
