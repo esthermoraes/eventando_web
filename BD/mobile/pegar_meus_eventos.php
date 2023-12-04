@@ -47,7 +47,7 @@
                             // os detalhes de um evento somente serao transferidos ao cliente 
                             // em caso de real interesse.
                             $evento = array();
-                            $evento["id"] = $linha2["id"];
+                            $evento["id"] = $linha2["id_evento"];
                             $evento["nome"] = $linha2["nome"];
                             $evento["objetivo"] = $linha2["objetivo"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
