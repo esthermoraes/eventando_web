@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Seu arquivo de estilo personalizado -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+    </style>
+    <title>MODAL</title>
+</head>
+<body>
+
+<button id="openModalBtn">CRIAR EVENTO</button>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <label for="eventName"> <b>NOME EVENTO:</b></label>
+        <input type="text" id="eventName" placeholder="Digite o nome do evento" class="w-100 form-control eventNameInput">
+        <p><b>FORMATO:</b></p>
+        <div class="formatOptions">
+            <label for="onlineCheckbox">
+                <input type="radio" id="onlineCheckbox" name="eventFormat"> <b>ON-LINE</b>
+            </label>
+            <label for="presencialCheckbox">
+                <input type="radio" id="presencialCheckbox" name="eventFormat"> <b>PRESENCIAL</b>
+            </label>
+        </div>
+        <button class="btnCriar createEventButton" onclick="createEvent()">CRIAR</button>
+    </div>
+</div>
+<script src="script.js"></script>
+<script>
+    // Adiciona um evento de clique ao botão de criar evento
+    document.querySelector('.createEventButton').addEventListener('click', function() {
+        // Verifica qual checkbox está selecionada
+        var onlineCheckbox = document.getElementById('onlineCheckbox');
+        var presencialCheckbox = document.getElementById('presencialCheckbox');
+
+        if (onlineCheckbox.checked) {
+            // Se a checkbox online estiver selecionada, redirecione para a página de eventos online
+            window.location.href = 'criarEventoO.php'; // Substitua com o caminho da sua página
+        } else if (presencialCheckbox.checked) {
+            // Se a checkbox presencial estiver selecionada, redirecione para a página de eventos presenciais
+            window.location.href = 'criarEventoP.php'; // Substitua com o caminho da sua página
+        } else {
+            // Se nenhuma checkbox estiver selecionada, faça algo (por exemplo, mostre uma mensagem de erro)
+            alert('Selecione o formato do evento.');
+        }
+    });
+</script>
+</body>
+</html>

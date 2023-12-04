@@ -1,6 +1,5 @@
 <?php
-
-    include_once 'crud.php';
+    include_once 'evento.php';
 
     /*************************************************************
     Objetivo: Classe responsável por representar todas as operações com evento online.
@@ -16,7 +15,7 @@
     *************************************************************/
 
     class EventoOnline extends Evento{
-        protected $table = 'EVENTO ONLINE';
+        protected $table = 'EVENTO_ONLINE';
 
         /*Dados do online*/
         private $link;
@@ -32,7 +31,7 @@
 
         public function __construct($nome = null, $objetivo = null, $data_prevista = null, $horario = null, 
         $src_img = null, $atracoes = null, $FK_USUARIO_id_usuario = null, $link = null, $FK_plataforma_plataforma_PK = null, 
-        $fk_TIPO_CONTATO_id_tipo_contato = null, $contato = null, $evento = null){
+        $fk_TIPO_CONTATO_id_tipo_contato = null, $contato = null){
 
             //cria um evento genérico
             $this->evento = new Evento($nome, $objetivo, $data_prevista, $horario, $src_img, $atracoes, $FK_USUARIO_id_usuario);

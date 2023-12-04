@@ -133,7 +133,7 @@
                     </div>
                     
                     <div class="col col-md-2 d-md-flex d-none flex-wrap align-self-center mb-5 mt-2 ms-5">
-                        <a href = "criarEventoP.php"> 
+                        <a href = "modal.html"> 
                             <button class="btn-criar-evento">
                                 <i class="fa-regular fa-calendar-plus"></i> 
                                 &nbsp;CRIAR EVENTO
@@ -142,7 +142,7 @@
                     </div>
                     <div class="col-1 d-md-none d-flex justify-content-center flex-wrap">
                         <button class="short-criar">
-                            <a href = "criarEventoP.php"> 
+                            <a href = "modal.html"> 
                                 <i class="fa-regular fa-calendar-plus" aria-hidden="true"></i>
                             </a> 
                         </button>

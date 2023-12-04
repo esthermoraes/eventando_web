@@ -58,10 +58,10 @@
         $Atracoessanitized = sanitizeString($atracoes);
         echo ("Atracoes: " . $Atracoessanitized . "<br>");
 
-        $evento = new Evento($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, $user);
-        $evento->insert();
-        $id_evento = $evento->getId();
-        echo ("ID DO EVENTO: " . $id_evento . "<br>");
+        // $evento = new Evento($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, $user);
+        // $evento->insert();
+        // $id_evento = $evento->getId();
+        // echo ("ID DO EVENTO: " . $id_evento . "<br>");
         
         $cep = $_POST["cep"];
         echo ("Cep: " . $cep . "<br>");
@@ -70,36 +70,35 @@
         echo ("Estado: " . $estado . "<br>");
 
         $cidade = $_POST["cidade"];
-        $Cidadesanitized = sanitizeString($cidade);
-        echo ("Cidade: " . $Cidadesanitized . "<br>");
+        echo ("Cidade: " . $cidade . "<br>");
 
         $bairro = $_POST["bairro"];
-        $Bairrosanitized = sanitizeString($bairro);
-        echo ("Bairro: " . $Bairrosanitized . "<br>");
+        echo ("Bairro: " . $bairro . "<br>");
 
         $tipoLogradouro = $_POST["tipo_logradouro"];
         echo ("Tipo Logradouro: " . $tipoLogradouro . "<br>");
 
         $logradouro = $_POST["logradouro"];
-        $Logradourosanitized = sanitizeString($logradouro);
-        echo ("Logradouro: " . $Logradourosanitized . "<br>");
+        echo ("Logradouro: " . $logradouro . "<br>");
 
         $numero = $_POST["numero"];
         echo ("Numero: " . $numero . "<br>");
 
         $buffet = $_POST["buffet"];
-        $Buffetsanitized = sanitizeString($buffet);
-        echo ("Buffet: " . $Buffetsanitized . "<br>");
+        echo ("Buffet: " . $buffet . "<br>");
 
         $tipoContato = $_POST["tipo_contato"];
         echo ("Tipo Contato: " . $tipoContato . "<br>");
 
         $contato = $_POST["contato"];
-        $Contatosanitized = sanitizeString($contato);
-        echo ("Contato: " . $Contatosanitized . "<br>");
+        echo ("Contato: " . $contato . "<br>");
 
-        $eventoP = new EventoPresencial($estado, $Cidadesanitized, $Bairrosanitized, $tipoLogradouro, $numero, $logradouro,
-        $cep, $Buffetsanitized, $id_evento);
+        // $eventoP = new EventoPresencial($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, 
+        // $user, $estado, $Cidadesanitized, $Bairrosanitized, $tipoLogradouro, $numero, $logradouro,
+        // $cep, $Buffetsanitized, $tipoContato, $contato);
+        $eventoP = new EventoPresencial($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, 
+        $user, $buffet, $cep, $numero, $logradouro, $tipoLogradouro, $bairro, $cidade, $estado,
+        $tipoContato, $contato);
         $eventoP->insert();
     }   
 ?>

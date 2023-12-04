@@ -6,7 +6,7 @@
     // Define a variável $css com um link para um arquivo CSS externo chamado 'css_criarEventoP.css'
     $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_criarEventoP.css" />';
     // Define a variável $js com um link para um arquivo JavaScript externo chamado 'js_criarEventoP.js' e com o atributo 'defer'
-    $js = '<script src = "js/js_criarEventoP.js" defer></script>';
+    $js = '<script src = "js/js_criarEvento.js" defer></script>';
     // Define a variável $title como 'CRIAR EVENTO PRESENCIAL', que será o título da página
     $title = 'CRIAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
@@ -309,19 +309,10 @@
 
     </form>
 
-
-
-
-    <div class="w-100 div-passo3 d-none justify-content-center flex-wrap">
-        <div class="" style="background-color: #ebf6fc;">
-            <p>CONVITE</p>
-        </div>
-    </div>
-
 </div>
 </body>
 
 </html>
 
-<script src="js/js_criarEventoP.js" defer></script>
+<script src="js/js_criarEvento.js" defer></script>
 <script src="js/js_cep.js" defer></script>
