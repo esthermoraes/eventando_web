@@ -26,6 +26,7 @@ function createEvent() {
     modal.style.display = "none";
 }
 
+// Adiciona um evento de clique ao botão de criar evento
 document.querySelector('.createEventButton').addEventListener('click', function() {
     // Verifica qual checkbox está selecionada
     var onlineCheckbox = document.getElementById('onlineCheckbox');
