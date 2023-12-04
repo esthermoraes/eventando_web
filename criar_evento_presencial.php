@@ -16,28 +16,9 @@
         echo ("User: " . $user . "<br>");
 
         //$nome = $_POST["nome"];
-        //$Nomesanitized = sanitizeString($nome);
-        // $nome = 'NOME DO EVENTO';
         $nome = 'After do churras';
         echo ("Nome: " . $nome . "<br>");
 
-        // $filename = $_FILES['imagem']['tmp_name'];
-        // $client_id="373a5eedc23ad9b";
-        // $handle = fopen($filename, "r");
-        // $data = fread($handle, filesize($filename));
-        // $pvars = array('image' => base64_encode($data));
-        // $timeout = 30;
-        // $curl = curl_init();
-        // curl_setopt($curl, CURLOPT_URL, 'https://api.imgur.com/3/image.json');
-        // curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
-        // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Client-ID ' . $client_id));
-        // curl_setopt($curl, CURLOPT_POST, 1);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($curl, CURLOPT_POSTFIELDS, $pvars);
-        // $out = curl_exec($curl);
-        // curl_close ($curl);
-        // $pms = json_decode($out,true);
-        //$img_url = 'evento1.jpg';
         $img_url = 'a_ultima_ceia.png';
         echo ("Imagem: " . $img_url . "<br>");
 
@@ -45,8 +26,7 @@
         echo ("Privacidade: " . $privacidade . "<br>");
 
         $objetivo = $_POST["objetivo"];
-        $Objetivosanitized = sanitizeString($objetivo);
-        echo ("Objetivo: " . $Objetivosanitized . "<br>");
+        echo ("Objetivo: " . $objetivo . "<br>");
 
         $dataPrevista = $_POST["data_prevista"];
         echo ("Data: " . $dataPrevista . "<br>");
@@ -55,13 +35,7 @@
         echo ("Horario: " . $horario . "<br>");
 
         $atracoes = $_POST["atracoes"];
-        $Atracoessanitized = sanitizeString($atracoes);
-        echo ("Atracoes: " . $Atracoessanitized . "<br>");
-
-        // $evento = new Evento($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, $user);
-        // $evento->insert();
-        // $id_evento = $evento->getId();
-        // echo ("ID DO EVENTO: " . $id_evento . "<br>");
+        echo ("Atracoes: " . $atracoes . "<br>");
         
         $cep = $_POST["cep"];
         echo ("Cep: " . $cep . "<br>");
@@ -93,10 +67,7 @@
         $contato = $_POST["contato"];
         echo ("Contato: " . $contato . "<br>");
 
-        // $eventoP = new EventoPresencial($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, 
-        // $user, $estado, $Cidadesanitized, $Bairrosanitized, $tipoLogradouro, $numero, $logradouro,
-        // $cep, $Buffetsanitized, $tipoContato, $contato);
-        $eventoP = new EventoPresencial($nome, $Objetivosanitized, $dataPrevista, $horario, $img_url, $Atracoessanitized, 
+        $eventoP = new EventoPresencial($nome, $objetivo, $dataPrevista, $horario, $img_url, $atracoes, 
         $user, $buffet, $cep, $numero, $logradouro, $tipoLogradouro, $bairro, $cidade, $estado,
         $tipoContato, $contato);
         $eventoP->insert();
