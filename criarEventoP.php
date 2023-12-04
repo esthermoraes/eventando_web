@@ -86,7 +86,7 @@
                         <option value="BA">Bahia</option>
                         <option value="CE">Ceará</option>
                         <option value="DF">Distrito Federal</option>
-                        <option value="LP">Espirito Santo</option>
+                        <option value="ES">Espirito Santo</option>
                         <option value="GO">Goiás</option>
                         <option value="MA">Maranhão</option>
                         <option value="MS">Mato Grosso do Sul</option>
