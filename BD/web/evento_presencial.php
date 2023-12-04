@@ -100,7 +100,7 @@
                                 $result_cidade_estado = $stmt_cidade_estado->execute();
 
                                 if($result_cidade_estado){
-                                    $sql_bairro = "INSERT INTO INSERT INTO BAIRRO(bairro) VALUES(:bairro) ON CONFLICT 
+                                    $sql_bairro = "INSERT INTO BAIRRO(bairro) VALUES(:bairro) ON CONFLICT 
                                     (BAIRRO) DO NOTHING RETURNING id_bairro";
                                     $stmt_bairro = Database::prepare($sql_bairro);
                                     $stmt_bairro->bindParam(':bairro', $this->bairro);

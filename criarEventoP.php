@@ -86,7 +86,7 @@
                         <option value="BA">Bahia</option>
                         <option value="CE">Ceará</option>
                         <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espirito Santo</option>
+                        <option value="LP">Espirito Santo</option>
                         <option value="GO">Goiás</option>
                         <option value="MA">Maranhão</option>
                         <option value="MS">Mato Grosso do Sul</option>
@@ -314,5 +314,5 @@
 
 </html>
 
-<script src="js/js_criarEvento.js" defer></script>
+<script src="js/js_criarEventoP.js" defer></script>
 <script src="js/js_cep.js" defer></script>
