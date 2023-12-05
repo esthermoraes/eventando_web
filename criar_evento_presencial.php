@@ -19,7 +19,7 @@
         $nome = 'After do churras';
         echo ("Nome: " . $nome . "<br>");
 
-        $img_url = 'a_ultima_ceia.png';
+        $img_url = 'https://imgur.com/j7dmVFY.jpg';
         echo ("Imagem: " . $img_url . "<br>");
 
         $privacidade = $_POST["privacidade"];
@@ -71,5 +71,8 @@
         $user, $buffet, $cep, $numero, $logradouro, $tipoLogradouro, $bairro, $cidade, $estado,
         $tipoContato, $contato);
         $eventoP->insert();
-    }   
+    }  
+    
+    /*echo '<script>window.location.href = "visualizarEventoP.php";</script>';
+    exit();*/
 ?>

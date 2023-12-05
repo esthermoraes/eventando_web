@@ -227,6 +227,7 @@
             <link rel="stylesheet" href="css/css_header.css">
             ' . $css . ' <!-- Inclui o CSS externo definido na variável $css -->
             <!-- JS externo-->
+            <script src = "js/js_criarEvento.js" defer></script>
             ' . $js . ' <!-- Inclui o JS externo definido na variável $js -->
             <!-- Definimos o título da página -->
             <title> ' . $title . ' </title>

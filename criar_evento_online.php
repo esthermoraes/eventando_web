@@ -16,10 +16,10 @@
         // echo ("User: " . $user . "<br>");
 
         //$nome = $_POST["nome"];
-        $nome = 'Noite das Artes';
+        $nome = 'THE TOWN';
         // echo ("Nome: " . $nome . "<br>");
 
-        $img_url = 'a_ultima_ceia.png';
+        $img_url = 'https://imgur.com/XQTprnS.jpg';
         // echo ("Imagem: " . $img_url . "<br>");
 
         $privacidade = $_POST["privacidade"];
@@ -51,5 +51,8 @@
 
         $eventoO = new EventoOnline($nome, $objetivo, $dataPrevista, $horario, $img_url, $atracoes, $user, $link, $plataforma, $tipoContato, $contato);
         $eventoO->insert();
-    }   
+    }
+    
+    echo '<script>window.location.href = "visualizarEventoO.php";</script>';
+    exit();
 ?>
