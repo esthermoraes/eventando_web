@@ -21,3 +21,24 @@ cep.addEventListener("input", e => {
     }
 	
 });
+
+
+// var sltEstado = document.getElementById('sltEstado');
+
+// sltEstado.addEventListener('mousedown', function(event) {
+//     event.preventDefault(); // Impede a ação padrão do mouse
+// });
+
+// sltEstado.addEventListener('keydown', function(event) {
+//     event.preventDefault(); // Impede a ação padrão da tecla
+// });
+
+// var sltTipoLogradouro = document.getElementById('sltTipoLogradouro');
+
+// sltTipoLogradouro.addEventListener('mousedown', function(event) {
+//     event.preventDefault(); // Impede a ação padrão do mouse
+// });
+
+// sltTipoLogradouro.addEventListener('keydown', function(event) {
+//     event.preventDefault(); // Impede a ação padrão da tecla
+// });

@@ -48,23 +48,23 @@
     <form method="POST" action = "criar_evento_presencial.php" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
-            <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)">
+            <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)" required>
             <img id="preview" src="#" alt="Prévia da Imagem" style="display: none;" width="200px">
         </div>
 
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
-                    <input placeholder="Objetivo do evento" class="obj form-control" name="objetivo">
+                    <input placeholder="Objetivo do evento" class="obj form-control" name="objetivo" required>
                 </div>
 
                 <div class="col-md-6">
                     <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" 
-                    onfocus="(this.type='date')" onblur="(this.type='text')" name="data_prevista">
+                    onfocus="(this.type='date')" onblur="(this.type='text')" name="data_prevista" required>
                 </div>
                 <div class="col-md-6">
                     <input class="form-control horario" type="text" id="time" placeholder="Horário" 
-                    onfocus="(this.type='time')" onblur="(this.type='text')" name="hotario">
+                    onfocus="(this.type='time')" onblur="(this.type='text')" name="hotario" required>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
             <h5><strong>Localização</strong></h5>
             <div class="row">
                 <div class="col-md-6">
-                    <input id="cep" class="form-control" name="cep" placeholder="CEP">
+                    <input id="cep" class="form-control" name="cep" placeholder="CEP" required>
                 </div>
 
                 <div class="col-md-6">
@@ -135,8 +135,7 @@
                     <input placeholder="Logradouro" name="logradouro" class="form-control log w-100" id="logradouro" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input placeholder="N°" id="numero" class="form-control num w-100" name="numero"/>
-
+                    <input placeholder="N°" id="numero" class="form-control num w-100" name="numero" required/>
                 </div>
 
             </div>
