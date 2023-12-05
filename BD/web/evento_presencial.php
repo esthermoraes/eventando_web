@@ -137,9 +137,9 @@
                                                 echo ("cep: " . $this->cep . "<br>");
                                                 echo ("tipo_logradouro: " . $id_tipo_logradouro . "<br>");
                                                 echo ("FK_BAIRRO_id_bairro: " . $id_bairro . "<br>");
-                                                echo ("fffffff aaaaaaaaa <br>");
+                                                echo ("ddddddd aaaaaaaaa <br>");
                                                 $result_localizacao = $stmt_localizacao->execute();
-                                                echo ("fffffff aaaaaaaaa <br>");
+                                                echo ("eeeeeee aaaaaaaaa <br>");
 
                                                 if ($result_localizacao){
                                                     echo ("fffffff aaaaaaaaa <br>");
