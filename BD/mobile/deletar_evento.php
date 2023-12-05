@@ -12,7 +12,16 @@
 
             $consulta = $db_con->prepare("DELETE FROM EVENTO WHERE id_evento = '$id_evento';");
             if($consulta->execute()){
-                $resposta["sucesso"] = 1;
+                $consulta2 = $db_con->prepare("DELETE FROM POSSUI_TIPO_CONTATO_EVENTO WHERE fk_evento_id_evento = 
+                '$id_evento'");
+                if($consulta2->execute()){
+                    $resposta["sucesso"] = 1;
+                }
+                else{
+                    $resposta["sucesso"] = 0;
+                    $resposta["erro"] = "Erro no delete na tabela POSSUI_TIPO_CONTATO_EVENTO: " 
+                    . $consulta2->errorInfo()[2];
+                }
             }
             else{
                 $resposta["sucesso"] = 0;
