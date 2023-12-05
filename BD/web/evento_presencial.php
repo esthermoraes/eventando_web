@@ -132,6 +132,7 @@
                                                 $stmt_localizacao->bindParam(':cep', $this->cep);
                                                 $stmt_localizacao->bindParam(':tipo_logradouro', $id_tipo_logradouro, PDO::PARAM_INT);
                                                 $stmt_localizacao->bindParam(':FK_BAIRRO_id_bairro', $id_bairro, PDO::PARAM_INT);
+                                                // erro a partir daqui n sei pq
                                                 $result_localizacao = $stmt_localizacao->execute();
 
                                                 if ($result_localizacao){
