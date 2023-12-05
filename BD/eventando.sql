@@ -1,5 +1,5 @@
 -- DELETANDO AS TABELAS
--- drop table USUARIO, EVENTO_PRESENCIAL, EVENTO_ONLINE, EVENTO, CONVITE, LISTA_CONVIDADOS, LOCALIZACAO, TIPO_LOGRADOURO, BAIRRO, CIDADE, ESTADO, TIPO_CONTATO, buffet, plataforma, Favorita, Possui_bairro_cidade, Possui_cidade_estado, Possui_tipo_contato_evento, Tem_tipo_contato_usuario;
+-- drop table USUARIO, EVENTO_PRESENCIAL, EVENTO_ONLINE, EVENTO, CONVITE, LISTA_CONVIDADOS, LOCALIZACAO, TIPO_LOGRADOURO, BAIRRO, CIDADE, ESTADO, TIPO_CONTATO, buffet, plataforma, Favorita, Possui_bairro_cidade, Possui_cidade_estado, Possui_tipo_contato_evento, Possui_tipo_contato_usuario;
 
 -- CREATE DAS TABELAS
 CREATE TABLE USUARIO (
@@ -115,11 +115,17 @@ CREATE TABLE POSSUI_TIPO_CONTATO_EVENTO (
     contato varchar(250) NOT NULL
 );
 
-CREATE TABLE TEM_TIPO_CONTATO_USUARIO (
+CREATE TABLE POSSUI_TIPO_CONTATO_USUARIO (
     fk_USUARIO_id_usuario int,
     fk_TIPO_CONTATO_id_tipo_contato int,
     telefone varchar(12) NOT NULL
 );
+
+-- CREATE TABLE TEM_TIPO_CONTATO_USUARIO (
+--     fk_USUARIO_id_usuario int,
+--     fk_TIPO_CONTATO_id_tipo_contato int,
+--     telefone varchar(12) NOT NULL
+-- );
 
 -- ALTER DAS TABELAS
 ALTER TABLE USUARIO ADD CONSTRAINT FK_USUARIO_2
@@ -212,15 +218,25 @@ ALTER TABLE Possui_tipo_contato_evento ADD CONSTRAINT FK_Possui_4
     REFERENCES EVENTO (id_evento)
     ON DELETE SET NULL;
  
-ALTER TABLE Tem_tipo_contato_usuario ADD CONSTRAINT FK_Tem_1
+ALTER TABLE Possui_tipo_contato_usuario ADD CONSTRAINT FK_Possui_7
     FOREIGN KEY (fk_USUARIO_id_usuario)
     REFERENCES USUARIO (id_usuario)
     ON DELETE RESTRICT;
 
-ALTER TABLE Tem_tipo_contato_usuario ADD CONSTRAINT FK_Tem_2
+ALTER TABLE Possui_tipo_contato_usuario ADD CONSTRAINT FK_Possui_8
     FOREIGN KEY (fk_TIPO_CONTATO_id_tipo_contato)
     REFERENCES TIPO_CONTATO (id_tipo_contato)
     ON DELETE SET NULL;
+
+-- ALTER TABLE Tem_tipo_contato_usuario ADD CONSTRAINT FK_Tem_1
+--     FOREIGN KEY (fk_USUARIO_id_usuario)
+--     REFERENCES USUARIO (id_usuario)
+--     ON DELETE RESTRICT;
+
+-- ALTER TABLE Tem_tipo_contato_usuario ADD CONSTRAINT FK_Tem_2
+--     FOREIGN KEY (fk_TIPO_CONTATO_id_tipo_contato)
+--     REFERENCES TIPO_CONTATO (id_tipo_contato)
+--     ON DELETE SET NULL;
 
 -- INSERÇÃO DOS DADOS NAS TABELAS
 INSERT INTO ESTADO (estado) VALUES
