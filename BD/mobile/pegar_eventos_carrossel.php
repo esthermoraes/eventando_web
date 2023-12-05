@@ -22,8 +22,13 @@
                 $user_id = $linha ['id_usuario'];
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$user_id' ORDER BY 
-                data_prevista LIMIT 10");
+                // $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$user_id' ORDER BY 
+                // data_prevista LIMIT 10");
+                $consulta2 = $db_con->prepare("SELECT e.id_evento, e.nome, e.data_prevista, e.src_img, 
+                ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
+                LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
+                LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento
+                WHERE e.FK_USUARIO_id_usuario != '$user_id' ORDER BY data_prevista LIMIT 10");
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
                     // chave "eventos". O valor dessa chave e formado por um 
@@ -47,6 +52,13 @@
                             $evento["nome"] = $linha2["nome"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
                             $evento["img"] = $linha2["src_img"];
+
+                            // Adiciona a informação se o evento é presencial ou online
+                            if (!empty($linha2["evento_presencial"])) {
+                                $evento["formato"] = "presencial";
+                            } elseif (!empty($linha2["evento_online"])) {
+                                $evento["formato"] = "online";
+                            }
                     
                             // Adiciona o evento no array de eventos.
                             array_push($resposta["eventos"], $evento);
