@@ -73,6 +73,6 @@
         $eventoP->insert();
     }  
     
-    /*echo '<script>window.location.href = "visualizarEventoP.php";</script>';
+    /*echo '<script>window.location.href = "menu.php";</script>';
     exit();*/
 ?>

@@ -132,10 +132,17 @@
                                                 $stmt_localizacao->bindParam(':cep', $this->cep);
                                                 $stmt_localizacao->bindParam(':tipo_logradouro', $id_tipo_logradouro, PDO::PARAM_INT);
                                                 $stmt_localizacao->bindParam(':FK_BAIRRO_id_bairro', $id_bairro, PDO::PARAM_INT);
-                                                // erro a partir daqui n sei pq
+                                                echo ("numero: " . $this->numero . "<br>");
+                                                echo ("logradouro: " . $this->logradouro . "<br>");
+                                                echo ("cep: " . $this->cep . "<br>");
+                                                echo ("tipo_logradouro: " . $id_tipo_logradouro . "<br>");
+                                                echo ("FK_BAIRRO_id_bairro: " . $id_bairro . "<br>");
+                                                echo ("fffffff aaaaaaaaa <br>");
                                                 $result_localizacao = $stmt_localizacao->execute();
+                                                echo ("fffffff aaaaaaaaa <br>");
 
                                                 if ($result_localizacao){
+                                                    echo ("fffffff aaaaaaaaa <br>");
                                                     $id_localizacao = $this->id_localizacao = Database::getInstance()->lastInsertId();
 
                                                     $sql_buffet = "INSERT INTO buffet (buffet) VALUES (:buffet)";
@@ -165,7 +172,10 @@
 
                                                         }
                                                     }           
-                                                }      
+                                                } 
+                                                else{
+                                                    echo ("error aaaaaaaaa <br>");
+                                                }  
                                             }        
                                         }  
                                     }

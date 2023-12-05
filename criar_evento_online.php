@@ -53,6 +53,6 @@
         $eventoO->insert();
     }
     
-    echo '<script>window.location.href = "visualizarEventoO.php";</script>';
+    echo '<script>window.location.href = "menu.php";</script>';
     exit();
 ?>
