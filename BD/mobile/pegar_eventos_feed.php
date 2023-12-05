@@ -25,8 +25,11 @@
                 $user_id = $linha ['id_usuario'];
     
                 // Realiza uma consulta ao BD e obtem todos os eventos.
-                $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario != '$user_id' 
-                LIMIT " . $limit . " OFFSET " . $offset);
+                $consulta2 = $db_con->prepare("SELECT e.id_evento, e.nome, e.objetivo, e.data_prevista, e.src_img, 
+                ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
+                LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
+                LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento
+                WHERE e.FK_USUARIO_id_usuario != '$user_id' LIMIT " . $limit . " OFFSET " . $offset);
                 if($consulta2->execute()) {
                     // Caso existam eventos no BD, eles sao armazenados na 
                     // chave "eventos". O valor dessa chave e formado por um 
@@ -36,22 +39,20 @@
 
                     if ($consulta2->rowCount() > 0) {
                         while ($linha2 = $consulta2->fetch(PDO::FETCH_ASSOC)) {
-                            // Para cada evento, sao retornados somente o 
-                            // pid (id do evento), o nome do evento e o preço. Nao ha necessidade 
-                            // de retornar nesse momento todos os campos dos eventos 
-                            // pois a app cliente, inicialmente, so precisa do nome e preço do mesmo para 
-                            // exibir na lista de eventos. O campo id e usado pela app cliente 
-                            // para buscar os detalhes de um evento especifico quando o usuario 
-                            // o seleciona. Esse tipo de estrategia poupa banda de rede, uma vez 
-                            // os detalhes de um evento somente serao transferidos ao cliente 
-                            // em caso de real interesse.
                             $evento = array();
                             $evento["id"] = $linha2["id_evento"];
                             $evento["nome"] = $linha2["nome"];
                             $evento["objetivo"] = $linha2["objetivo"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
                             $evento["img"] = $linha2["src_img"];
-                    
+                        
+                            // Adiciona a informação se o evento é presencial ou online
+                            if (!empty($linha2["evento_presencial"])) {
+                                $evento["formato"] = "presencial";
+                            } elseif (!empty($linha2["evento_online"])) {
+                                $evento["formato"] = "online";
+                            }
+                        
                             // Adiciona o evento no array de eventos.
                             array_push($resposta["eventos"], $evento);
                         }
