@@ -31,8 +31,7 @@
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
 		$id_plataforma = intval($fK_plataforma_plataforma_PK);
 
-		error_log(var_dump($linha['fk_plataforma_plataforma_PK']));
-		error_log(var_dump($linha['fk_tipo_contato_id_tipo_contato']));
+		
                 $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
                 $id_plataforma");
 
@@ -45,7 +44,6 @@
                     if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
                         $tipo_contato = $linha3['tipo_contato'];
-			    error_log(var_dump($linha3['tipo_contato']));
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;
                         $resposta["privacidade_restrita"] = $privacidade_restrita;
