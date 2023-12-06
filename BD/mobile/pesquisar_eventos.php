@@ -1,88 +1,60 @@
 <?php
- 
-/*
- * O seguinte codigo retorna para o cliente a lista de produtos 
- * armazenados no servidor. Essa e uma requisicao do tipo GET. 
- * Devem ser enviados os parâmetro de limit e offset para 
- * realização da paginação de dados no cliente.
- * A resposta e no formato JSON.
- */
+	require_once('connect_mobile.php');
+	require_once('autenticacao.php');
 
-// conexão com bd
-require_once('connect_mobile.php');
+	// array for JSON resposta
+	$resposta = array();
 
-// autenticação
-//require_once('autenticacao.php');
+	if (autenticar($db_con)) {
+		$pesquisa = $_GET['pesquisa'];
 
-// array for JSON resposta
-$resposta = array();
+		$consulta = $db_con->prepare("SELECT e.id_evento, e.nome, e.objetivo, e.data_prevista, e.src_img, 
+		ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
+		LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
+		LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento 
+		WHERE UNACCENT(LOWER(e.nome)) LIKE UNACCENT(LOWER(:pesquisa))");
+		$consulta->bindValue(':pesquisa', "%$pesquisa%", PDO::PARAM_STR);
+		if($consulta->execute()) {
+			// Caso existam eventos no BD, eles sao armazenados na 
+			// chave "eventos". O valor dessa chave e formado por um 
+			// array onde cada elemento e um evento.
+			$resposta["eventos"] = array();
+			$resposta["sucesso"] = 1;
 
-	
-// Primeiro, verifica-se se todos os parametros foram enviados pelo cliente.
-// limit - quantidade de produtos a ser entregues
-// offset - indica a partir de qual produto começa a lista
-//if (isset($_GET['limit']) && isset($_GET['offset'])) {
-	
-	//$limit = $_GET['limit'];
-	//$offset = $_GET['offset'];
-	$pesquisa = $_GET['pesquisa'];
-
-	// Realiza uma consulta ao BD e obtem todos os produtos.
-	//$consulta = $db_con->prepare("SELECT * FROM PRODUTO LIMIT " . $limit . " OFFSET " . $offset);
-	$consulta = $db_con->prepare("SELECT produto.codigo,imagem,nome,valor_atual,avaliacao,desconto FROM PRODUTO WHERE UNACCENT(LOWER(nome)) LIKE UNACCENT(LOWER(:pesquisa))");
-	$consulta->bindValue(':pesquisa', "%$pesquisa%", PDO::PARAM_STR);
-	if($consulta->execute()) {
-		// Caso existam produtos no BD, eles sao armazenados na 
-		// chave "produtos". O valor dessa chave e formado por um 
-		// array onde cada elemento e um produto.
-		$resposta["produtos"] = array();
-		$resposta["sucesso"] = 1;
-
-		if ($consulta->rowCount() > 0) {
-			while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
-				// Para cada produto, sao retornados somente o 
-				// pid (id do produto), o nome do produto e o preço. Nao ha necessidade 
-				// de retornar nesse momento todos os campos dos produtos 
-				// pois a app cliente, inicialmente, so precisa do nome e preço do mesmo para 
-				// exibir na lista de produtos. O campo id e usado pela app cliente 
-				// para buscar os detalhes de um produto especifico quando o usuario 
-				// o seleciona. Esse tipo de estrategia poupa banda de rede, uma vez 
-				// os detalhes de um produto somente serao transferidos ao cliente 
-				// em caso de real interesse.
-				$produto = array();
-				$produto["codigo"] = $linha["codigo"];
-				$produto["nome"] = $linha["nome"];
-				$produto["valor_atual"] = $linha["valor_atual"];
-				$produto["imagem"] = $linha["imagem"];
-				$produto["avaliacao"] = $linha["avaliacao"];
-				$produto["desconto"] = $linha["desconto"];
-			
-				// Adiciona o produto no array de produtos.
-				array_push($resposta["produtos"], $produto);
+			if ($consulta2->rowCount() > 0) {
+				while ($linha = $consulta2->fetch(PDO::FETCH_ASSOC)) {
+					$evento = array();
+					$evento["id"] = $linha["id_evento"];
+					$evento["nome"] = $linha["nome"];
+					$evento["objetivo"] = $linha["objetivo"];
+					$evento["data_prevista"] = $linha["data_prevista"];
+					$evento["img"] = $linha["src_img"];
+				
+					// Adiciona a informação se o evento é presencial ou online
+					if (!empty($linha2["evento_presencial"])) {
+						$evento["formato"] = "presencial";
+					} elseif (!empty($linha2["evento_online"])) {
+						$evento["formato"] = "online";
+					}
+				
+					// Adiciona o evento no array de eventos.
+					array_push($resposta["eventos"], $evento);
+				}
 			}
+		}
+		else {
+			$resposta["sucesso"] = 0;
+			$resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
 		}
 	}
 	else {
-		// Caso ocorra falha no BD, o cliente 
-		// recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
-		// motivo da falha.
-		$resposta["sucesso"] = 0;
-		$resposta["erro"] = "Erro no BD: " . $consulta->error;
-	}
-/*}
-else {
-	// Se a requisicao foi feita incorretamente, ou seja, os parametros 
-	// nao foram enviados corretamente para o servidor, o cliente 
-	// recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
-	// motivo da falha.
-	$resposta["sucesso"] = 0;
-	$resposta["erro"] = "Campo requerido não preenchido";
-}*/
+        $resposta["sucesso"] = 0;
+        $resposta["erro"] = "Email ou senha não conferem";
+    }
 
+    // Fecha a conexao com o BD
+    $db_con = null;
 
-// fecha conexão com o bd
-$db_con = null;
-
-// Converte a resposta para o formato JSON.
-echo json_encode($resposta);
+    // Converte a resposta para o formato JSON.
+    echo json_encode($resposta);
 ?>
