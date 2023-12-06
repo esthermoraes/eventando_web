@@ -44,16 +44,16 @@
                         <label id="MyEventos"> MEUS <br> EVENTOS </label>
                         <br>
                         <div id="barraMyE" class="row ms-1 me-1 mt-4 d-flex justify-content-between">
-                            <!-- <div class="row teste mt-0">
+                            <div class="row teste mt-0">
                                 <p>
                                     <center>Você ainda não possui eventos!</center>
                                 </p>
-                            </div> -->
+                            </div>
     
-                             
+                            <!-- 
                             <div class="row teste mt-0">
                                 <div class="row-sm col-md-3 mb-3 my-1">
-                                    img src="img/evento14.jfif" alt="Imagem 14" class="img-fluid evento1">
+                                    <img src="img/evento14.jfif" alt="Imagem 14" class="img-fluid evento1">
                                 </div>
                                 <div class="row-sm col-md-3 mb-3 my-1">
                                     <img src="img/evento15.jfif" alt="Imagem 15" class="img-fluid evento1">
@@ -79,6 +79,7 @@
                                     <img src="img/evento22.jpeg" alt="Imagem 22" class="img-fluid evento1">
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
