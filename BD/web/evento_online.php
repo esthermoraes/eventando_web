@@ -79,5 +79,24 @@
 
         public function update($id){
         }
+        
+        public function select($id){
+            $sql = 'SELECT * FROM EVENTO_ONLINE
+            INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento
+            INNER JOIN POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
+            WHERE EVENTO_ONLINE.FK_EVENTO_id_evento =  ?';
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(1, $id);
+            $stmt->execute();
+            $evento = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verifica se o usuário foi encontrado.]
+            if ($evento === false) {
+                return false;
+            }
+
+            // Obtém o ID do usuário e o ID do estado.
+            $evento_id = $evento['id_evento'];
+        }
     }
 ?>

@@ -74,7 +74,8 @@
         // Método 'select' para obter as informações de um usuário com base no e-mail.
         public function select($email) {
             // Consulta SQL para obter informações do usuário com base no e-mail
-            $sql = 'SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado, senha FROM ' . $this->table . ' WHERE email = ?';
+            $sql = 'SELECT id_usuario, nome, email, data_nasc, FK_ESTADO_id_estado, senha FROM ' . $this->table . ' 
+            WHERE email = ?';
             $stmt = Database::prepare($sql);
             $stmt->bindParam(1, $email);
             $stmt->execute();

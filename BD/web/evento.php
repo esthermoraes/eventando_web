@@ -82,8 +82,8 @@
             $id_user = $stmt_user->fetchColumn();
         
             if($id_user) {
-                $sql_eR = " SELECT id_evento, img_src FROM $this->table WHERE FK_USUARIO_id_usuario != (:id_user) ORDER BY 
-                data_prevista DESC LIMIT 10";
+                $sql_eR = " SELECT id_evento, img_src FROM $this->table WHERE FK_USUARIO_id_usuario != (:id_user) 
+                ORDER BY data_prevista DESC LIMIT 14";
                 $stmt_eR = Database::prepare($sql_eR);
                 $stmt_eR->bindParam(":id_user", $id_user, PDO::PARAM_INT);
                 $stmt_eR->execute();
