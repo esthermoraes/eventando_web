@@ -23,19 +23,22 @@
 
 <div id="myModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closeModalBtn">&times;</span>
-        <label for="eventName"> <b>NOME EVENTO:</b></label>
-        <input type="text" id="eventName" placeholder="Digite o nome do evento" class="w-100 form-control eventNameInput">
-        <p><b>FORMATO:</b></p>
-        <div class="formatOptions">
-            <label for="onlineCheckbox">
-                <input type="radio" id="onlineCheckbox" name="eventFormat"> <b>ON-LINE</b>
-            </label>
-            <label for="presencialCheckbox">
-                <input type="radio" id="presencialCheckbox" name="eventFormat"> <b>PRESENCIAL</b>
-            </label>
-        </div>
-        <button class="btnCriar createEventButton" onclick="createEvent()">CRIAR</button>
+        <!-- <form method= "post" action="criarEventoO.php"> -->
+            <span class="close" id="closeModalBtn">&times;</span>
+            <label for="eventName"> <b>NOME EVENTO:</b></label>
+            <input type="text" id="eventName" name= "nome" placeholder="Digite o nome do evento" 
+            class="w-100 form-control eventNameInput">
+            <p><b>FORMATO:</b></p>
+            <div class="formatOptions">
+                <label for="onlineCheckbox">
+                    <input type="radio" id="onlineCheckbox" name="eventFormat"> <b>ONLINE</b>
+                </label>
+                <label for="presencialCheckbox">
+                    <input type="radio" id="presencialCheckbox" name="eventFormat"> <b>PRESENCIAL</b>
+                </label>
+            </div>
+            <button name = "criar" class="btnCriar createEventButton" onclick="createEvent()">CRIAR</button>
+        <!-- </form> -->
     </div>
 </div>
 </body>
