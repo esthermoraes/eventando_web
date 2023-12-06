@@ -19,8 +19,8 @@
             if ($consulta->execute()) {
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
                 $nome = $linha['nome'];
-                // Mapeia o valor de $privacidade_restrita para "público" se for false ou "privado" se for true
-                $privacidade_restrita = ($linha['privacidade_restrita'] == false) ? 'público' : 'privado';
+                $privacidade_restrita = $linha['privacidade_restrita'];
+                //$privacidade_restrita = ($linha['privacidade_restrita'] == false) ? 'público' : 'privado';
                 $src_img = $linha['src_img'];
                 $data_prevista = $linha['data_prevista'];
                 $horario = $linha['horario'];
