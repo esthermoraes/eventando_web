@@ -26,22 +26,24 @@
                 $objetivo = $linha['objetivo'];
                 $atracoes = $linha['atracoes'];
                 $link = $linha['link'];
-                $FK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+                $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
                 $contato = $linha['contato'];
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
+		$id_plataforma = intval($fK_plataforma_plataforma_PK);
 
+		
                 $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
-                '$FK_plataforma_plataforma_PK'");
+                $id_plataforma");
+
                 if($consulta2->execute()){
                     $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                     $plataforma = $linha2['plataforma'];
 
                     $consulta3 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
                     '$fk_TIPO_CONTATO_id_tipo_contato'");
-                    if($consulta2->execute()){
+                    if($consulta3->execute()){
                         $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
                         $tipo_contato = $linha3['tipo_contato'];
-
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;
                         $resposta["privacidade_restrita"] = $privacidade_restrita;
