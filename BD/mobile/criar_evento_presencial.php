@@ -92,11 +92,11 @@
                                 fk_CIDADE_id_cidade) VALUES('$id_bairro', '$id_cidade')");
 
                                 if($consulta_cidade_bairro->execute()){
-                                    echo "$numero_evento = " . $numero_evento;
-                                    echo "$logradouro_evento = " . $logradouro_evento;
-                                    echo "$cep_evento = " . $cep_evento;
-                                    echo "$tipo_logradouro_evento = " . $tipo_logradouro_evento;
-                                    echo "$id_bairro = " . $id_bairro;	
+                        echo "$numero_evento = " . $numero_evento;
+                        echo "$logradouro_evento = " . $logradouro_evento;
+                        echo "$cep_evento = " . $cep_evento;
+                        echo "$tipo_logradouro_evento = " . $tipo_logradouro_evento;
+                        echo "$id_bairro = " . $id_bairro;	
 				  
                                     $consulta_localizacao = $db_con->prepare("INSERT INTO LOCALIZACAO(numero, logradouro, cep, 
                                     FK_TIPO_LOGRADOURO_id_tipo_logradouro, FK_BAIRRO_id_bairro) VALUES('$numero_evento', 
