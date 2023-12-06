@@ -11,6 +11,7 @@
     $title = 'CRIAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+    include_once 'BD/web/criar_evento_presencial.php';
 
     // deixei o POST para debugar os valores de acordo com os passos
     // echo "<pre>";
@@ -29,7 +30,7 @@
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
     <p class="ms-3">INFORMAÇÕES DO EVENTO</p>
     <p class="me-3" name="nome">Nome do Evento</p>
-    <!-- <input type="hidden" id="nome" name="nome"/> -->
+    <!-- <input class="inputName me-3" value = <?php echo htmlspecialchars($nome);?> -->
 </div>
 
 <div class="container-fluid  p-0 bagulhete d-flex">
@@ -45,7 +46,7 @@
         </div>
     </div>
 
-    <form method="POST" action = "criar_evento_presencial.php" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
+    <form method="POST" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
             <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)" required>
@@ -178,6 +179,7 @@
                     <p class="ms-2 pp">Público</p>
                     <input type = "hidden" name="privacidade" id="privado" value="false"/>
                 </div>
+                <!-- <input type="hidden" name="nome" value = <?php echo htmlspecialchars($nome);?>/>-->
             </div>
         </div>
 

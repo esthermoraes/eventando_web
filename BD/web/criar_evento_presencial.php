@@ -71,8 +71,15 @@
         $user, $buffet, $cep, $numero, $logradouro, $tipoLogradouro, $bairro, $cidade, $estado,
         $tipoContato, $contato);
         $eventoP->insert();
+
+        /*try{
+            $eventoP->insert();
+            echo "<script>alert('Evento criado com sucesso!');</script>";
+            echo '<script>window.location.href = "menu.php";</script>';
+            exit();
+        }
+        catch (Exception $e){
+            echo "<script>alert('Erro ao criar evento. Tente novamente.');</script>";
+        }*/
     }  
-    
-    /*echo '<script>window.location.href = "menu.php";</script>';
-    exit();*/
 ?>

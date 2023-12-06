@@ -12,7 +12,7 @@
     $title = 'CRIAR EVENTO ONLINE';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
-    include_once 'criar_evento_online.php';
+    include_once 'BD/web/criar_evento_online.php';
 
     // deixei o POST para debugar os valores de acordo com os passos
     // echo "<pre>";
@@ -59,23 +59,23 @@
     <form method="POST" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
-            <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)">
+            <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)" required>
             <img id="preview" src="#" alt="Prévia da Imagem" style="display: none;" width="200px">
         </div>
 
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
-                    <input placeholder="Objetivo do evento" class="obj form-control" name="objetivo">
+                    <input placeholder="Objetivo do evento" class="obj form-control" name="objetivo" required>
                 </div>
 
                 <div class="col-md-6">
                     <input class="form-control me-3" type="text" id="date" placeholder="Data Prevista" 
-                    onfocus="(this.type='date')" onblur="(this.type='text')" name="data_prevista">
+                    onfocus="(this.type='date')" onblur="(this.type='text')" name="data_prevista" required>
                 </div>
                 <div class="col-md-6">
                     <input class="form-control horario" type="text" id="time" placeholder="Horário" 
-                    onfocus="(this.type='time')" onblur="(this.type='text')" name="hotario">
+                    onfocus="(this.type='time')" onblur="(this.type='text')" name="hotario" required>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
             <h5><strong>Endereço</strong></h5>
             <div class="row">
                 <div class="col-md-12">
-                    <select class="w-100 form-select" id="sltPlataforma" name="plataforma">
+                    <select class="w-100 form-select" id="sltPlataforma" name="plataforma" required>
                         <option value="">Plataforma</option>
                         <option value="1">Google Meet</option>
                         <option value="2">Microsoft Teams</option>
