@@ -79,6 +79,12 @@ body{
     cursor: pointer;
 }
 
+.blur{
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 150px;
+    width: 100px;
+}
+
 .evento1:hover {
     border: 6px solid #770089;
     transition-duration: all 0.4s;
