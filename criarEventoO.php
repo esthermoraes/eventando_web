@@ -12,6 +12,7 @@
     $title = 'CRIAR EVENTO ONLINE';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+    include_once 'criar_evento_online.php';
 
     // deixei o POST para debugar os valores de acordo com os passos
     // echo "<pre>";
@@ -55,7 +56,7 @@
         </div>
     </div>
 
-    <form method="POST" action = "criar_evento_online.php" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
+    <form method="POST" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
             <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)">

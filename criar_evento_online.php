@@ -49,10 +49,17 @@
         $contato = $_POST["contato"];
         // echo ("Contato: " . $contato . "<br>");
 
-        $eventoO = new EventoOnline($nome, $objetivo, $dataPrevista, $horario, $img_url, $atracoes, $user, $link, $plataforma, $tipoContato, $contato);
-        $eventoO->insert();
+        $eventoO = new EventoOnline($nome, $objetivo, $dataPrevista, $horario, $img_url, $atracoes, $user, $link, 
+        $plataforma, $tipoContato, $contato);
+        
+        try{
+            $eventoO->insert();
+            echo "<script>alert('Evento criado com sucesso!');</script>";
+            echo '<script>window.location.href = "menu.php";</script>';
+            exit();
+        }
+        catch (Exception $e){
+            echo "<script>alert('Erro ao criar evento. Tente novamente.');</script>";
+        }
     }
-    
-    echo '<script>window.location.href = "menu.php";</script>';
-    exit();
 ?>
