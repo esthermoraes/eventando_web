@@ -29,9 +29,10 @@
                 $FK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
                 $contato = $linha['contato'];
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
+		$plataforma = intval($FK_plataforma_plataforma_PK);
 
                 $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
-                '$FK_plataforma_plataforma_PK'");
+                $plataforma");
                 if($consulta2->execute()){
                     $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                     $plataforma = $linha2['plataforma'];
