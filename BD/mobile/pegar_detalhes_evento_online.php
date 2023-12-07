@@ -71,7 +71,6 @@
 			    $resposta["contato"] = $contato;
 			    $resposta["tipo_contato"] = $tipo_contato;
                             $resposta["plataforma"] = $plataforma;
-				error_log(var_dump($plataforma));
                         }
                         else{
                             $resposta["sucesso"] = 0;
