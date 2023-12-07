@@ -36,20 +36,20 @@
 
                     if ($consulta2->rowCount() > 0) {
                         while ($linha2 = $consulta2->fetch(PDO::FETCH_ASSOC)) {
-                            // Para cada evento, sao retornados somente o 
-                            // pid (id do evento), o nome do evento e o preço. Nao ha necessidade 
-                            // de retornar nesse momento todos os campos dos eventos 
-                            // pois a app cliente, inicialmente, so precisa do nome e preço do mesmo para 
-                            // exibir na lista de eventos. O campo id e usado pela app cliente 
-                            // para buscar os detalhes de um evento especifico quando o usuario 
-                            // o seleciona. Esse tipo de estrategia poupa banda de rede, uma vez 
-                            // os detalhes de um evento somente serao transferidos ao cliente 
-                            // em caso de real interesse.
                             $evento = array();
                             $evento["id"] = $linha2["id_evento"];
                             $evento["nome"] = $linha2["nome"];
                             $evento["data_prevista"] = $linha2["data_prevista"];
                             $evento["img"] = $linha2["src_img"];
+                        
+                            // Adiciona a lógica para determinar o formato do evento
+                            if (!empty($linha2["evento_presencial"])) {
+                                $evento["formato"] = "presencial";
+                            } elseif (!empty($linha2["evento_online"])) {
+                                $evento["formato"] = "online";
+                            } else {
+                                $evento["formato"] = "indefinido";
+                            }
                     
                             // Adiciona o evento no array de eventos.
                             array_push($resposta["eventos"], $evento);
