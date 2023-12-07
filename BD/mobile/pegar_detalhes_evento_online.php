@@ -29,7 +29,7 @@
                 $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
                 $contato = $linha['contato'];
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
-		        $id_plataforma = intval($fK_plataforma_plataforma_PK);
+		$id_plataforma = intval($fK_plataforma_plataforma_PK);
 
                 if($nome == 'NULL' || $nome == ""){
                     $consulta = $db_con->prepare("SELECT * FROM EVENTO_ONLINE
@@ -55,6 +55,8 @@
                             $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                             $plataforma = $linha2['plataforma'];
 			    $contato = "sem contato";
+			    $tipo_contato = "sem tipo";
+			    $atracoes = "sem atrações";
                             $resposta["sucesso"] = 1;
                             $resposta["nome"] = $nome;
                             $resposta["privacidade_restrita"] = $privacidade_restrita;
@@ -65,6 +67,7 @@
                             $resposta["atracoes"] = $atracoes;
                             $resposta["link"] = $link;
 			    $resposta["contato"] = $contato;
+			    $resposta["tipo_contato"] = $tipo_contato;
                             $resposta["plataforma"] = $plataforma;
                         }
                         else{
