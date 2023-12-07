@@ -48,7 +48,6 @@
                         $link = $linha['link'];
                         $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_pk'];
 			$id_plataforma = intval($fK_plataforma_plataforma_PK);
-			error_log(var_dump($id_plataforma));
 
 
                         $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
@@ -72,6 +71,7 @@
 			    $resposta["contato"] = $contato;
 			    $resposta["tipo_contato"] = $tipo_contato;
                             $resposta["plataforma"] = $plataforma;
+				error_log(var_dump($plataforma));
                         }
                         else{
                             $resposta["sucesso"] = 0;
