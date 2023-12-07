@@ -18,7 +18,7 @@
             WHERE EVENTO_ONLINE.FK_EVENTO_id_evento = '$evento_id';");
             if ($consulta->execute()) {
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
-                $nome = $linha['nome'];
+		$nome = $linha['nome'];
                 $privacidade_restrita = $linha['privacidade_restrita'];
                 $src_img = $linha['src_img'];
                 $data_prevista = $linha['data_prevista'];
@@ -26,10 +26,10 @@
                 $objetivo = $linha['objetivo'];
                 $atracoes = $linha['atracoes'];
                 $link = $linha['link'];
-                $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+                $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_pk'];
                 $contato = $linha['contato'];
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
-		        $id_plataforma = intval($fK_plataforma_plataforma_PK);
+		$id_plataforma = intval($fK_plataforma_plataforma_PK);
 
                 if($nome == 'NULL' || $nome == ""){
                     $consulta = $db_con->prepare("SELECT * FROM EVENTO_ONLINE
@@ -46,17 +46,19 @@
                         $objetivo = $linha['objetivo'];
                         $atracoes = $linha['atracoes'];
                         $link = $linha['link'];
-                        $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+                        $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_pk'];
+			$id_plataforma = intval($fK_plataforma_plataforma_PK);
+
 
                         $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
-                        $id_plataforma");
+                        '$id_plataforma'");
 
                         if($consulta2->execute()){
                             $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
-                            $plataforma = $linha2['plataforma'];
-
-                            $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                            $tipo_contato = $linha3['tipo_contato'];
+			    $plataforma = $linha2['plataforma'];
+			    $contato = "sem contato";
+			    $tipo_contato = "sem tipo";
+			    $atracoes = "sem atrações";
                             $resposta["sucesso"] = 1;
                             $resposta["nome"] = $nome;
                             $resposta["privacidade_restrita"] = $privacidade_restrita;
@@ -66,6 +68,8 @@
                             $resposta["objetivo"] = $objetivo;
                             $resposta["atracoes"] = $atracoes;
                             $resposta["link"] = $link;
+			    $resposta["contato"] = $contato;
+			    $resposta["tipo_contato"] = $tipo_contato;
                             $resposta["plataforma"] = $plataforma;
                         }
                         else{
