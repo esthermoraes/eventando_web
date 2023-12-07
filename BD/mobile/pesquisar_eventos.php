@@ -44,6 +44,7 @@ if (autenticar($db_con)) {
         }
     } else {
         $resposta["sucesso"] = 0;
+        $resposta["erro"] = "Email ou senha não conferem";
         $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
     }
 } else {
