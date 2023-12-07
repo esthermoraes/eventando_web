@@ -18,7 +18,6 @@
             WHERE EVENTO_ONLINE.FK_EVENTO_id_evento = '$evento_id';");
             if ($consulta->execute()) {
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
-                var_dump($linha);
 		$nome = $linha['nome'];
                 $privacidade_restrita = $linha['privacidade_restrita'];
                 $src_img = $linha['src_img'];
@@ -49,6 +48,7 @@
                         $link = $linha['link'];
                         $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_pk'];
 			$id_plataforma = intval($fK_plataforma_plataforma_PK);
+			error_log(var_dump($id_plataforma);
 
 
                         $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
