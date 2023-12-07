@@ -39,8 +39,7 @@
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
     <p class="ms-3">INFORMAÇÕES DO EVENTO</p>
     <!-- <input class="inputName me-3" placeholder='Nome do Evento' name="nome"/> -->
-    <input class="inputName me-3" value = <?php echo htmlspecialchars($nome);?> 
-    readonly/>
+    <p class="me-3"> <?php echo htmlspecialchars($nome);?> </p>
 </div>
 
 <div class="container-fluid  p-0 bagulhete d-flex">

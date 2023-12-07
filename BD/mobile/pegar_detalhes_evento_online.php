@@ -58,8 +58,16 @@
                         $resposta["contato"] = $contato;
                     }
                     else{
-                        $resposta["sucesso"] = 0;
-                        $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
+                        $resposta["sucesso"] = 1;
+                        $resposta["nome"] = $nome;
+                        $resposta["privacidade_restrita"] = $privacidade_restrita;
+                        $resposta["src_img"] = $src_img;
+                        $resposta["data_prevista"] = $data_prevista;
+                        $resposta["horario"] = $horario;
+                        $resposta["objetivo"] = $objetivo;
+                        $resposta["atracoes"] = $atracoes;
+                        $resposta["link"] = $link;
+                        $resposta["plataforma"] = $plataforma;
                     }
                 }
                 else{

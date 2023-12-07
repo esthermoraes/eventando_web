@@ -30,7 +30,7 @@
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
     <p class="ms-3">INFORMAÇÕES DO EVENTO</p>
     <p class="me-3" name="nome">Nome do Evento</p>
-    <!-- <input class="inputName me-3" value = <?php echo htmlspecialchars($nome);?> -->
+    <!-- <p class="me-3"> <?php echo htmlspecialchars($nome);?> </p> -->
 </div>
 
 <div class="container-fluid  p-0 bagulhete d-flex">
