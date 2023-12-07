@@ -55,8 +55,6 @@
                             $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                             $plataforma = $linha2['plataforma'];
 
-                            $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                            $tipo_contato = $linha3['tipo_contato'];
                             $resposta["sucesso"] = 1;
                             $resposta["nome"] = $nome;
                             $resposta["privacidade_restrita"] = $privacidade_restrita;
