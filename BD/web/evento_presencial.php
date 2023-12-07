@@ -14,7 +14,7 @@
     update - atualiza um evento presencial na tabela evento presencial
     *************************************************************/
 
-    class EventoPresencial extends Evento{
+    class evento extends Evento{
         protected $table = 'EVENTO_PRESENCIAL';
 
         /* Dados do buffet */
@@ -239,6 +239,68 @@
         }
 
         public function update($id){
+        }
+
+        public function select($id) {
+            $sql = 'SELECT * FROM EVENTO_PRESENCIAL
+                    INNER JOIN EVENTO ON EVENTO_PRESENCIAL.FK_EVENTO_id_evento = EVENTO.id_evento
+                    INNER JOIN POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
+                    INNER JOIN LOCALIZACAO ON EVENTO_PRESENCIAL.FK_LOCALIZACAO_id_localizacao = LOCALIZACAO.id_localizacao
+                    LEFT JOIN POSSUI_BAIRRO_CIDADE ON LOCALIZACAO.FK_BAIRRO_id_bairro = POSSUI_BAIRRO_CIDADE.FK_BAIRRO_id_bairro
+                    LEFT JOIN BAIRRO ON POSSUI_BAIRRO_CIDADE.FK_BAIRRO_id_bairro = BAIRRO.id_bairro
+                    LEFT JOIN POSSUI_CIDADE_ESTADO ON POSSUI_BAIRRO_CIDADE.FK_CIDADE_id_cidade = POSSUI_CIDADE_ESTADO.FK_CIDADE_id_cidade
+                    LEFT JOIN CIDADE ON POSSUI_CIDADE_ESTADO.FK_CIDADE_id_cidade = CIDADE.id_cidade
+                    LEFT JOIN ESTADO ON POSSUI_CIDADE_ESTADO.FK_ESTADO_id_estado = ESTADO.id_estado
+                    INNER JOIN TIPO_LOGRADOURO ON LOCALIZACAO.FK_TIPO_LOGRADOURO_id_tipo_logradouro = TIPO_LOGRADOURO.id_tipo_logradouro
+                    LEFT JOIN BUFFET ON EVENTO_PRESENCIAL.fk_buffet_buffet_pk = BUFFET.buffet_pk
+                    INNER JOIN TIPO_CONTATO ON POSSUI_TIPO_CONTATO_EVENTO.FK_TIPO_CONTATO_id_tipo_contato = TIPO_CONTATO.id_tipo_contato
+                    WHERE EVENTO_PRESENCIAL.FK_EVENTO_id_evento = ?';
+
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(1, $id);
+            $stmt->execute();
+            $evento = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verifica se o evento foi encontrado.
+            if ($evento === false) {
+                return false;
+            }
+
+            // Obtém informações adicionais.
+            $logradouro = $evento['logradouro'];
+            $numero = $evento['numero'];
+            $cep = $evento['cep'];
+            $tipoLogradouro = $evento['tipo_logradouro'];
+            $bairro = $evento['bairro'];
+            $cidade = $evento['cidade'];
+            $estado = $evento['estado'];
+            $idBuffet = $evento['buffet_pk']; // Alterado para a coluna correta
+            $tipoContato = $evento['tipo_contato'];
+
+            // Adiciona informações do buffet.
+            $buffet['buffet'] = $idBuffet['buffet'];
+
+            // Adiciona as informações do buffet ao array de resposta.
+            $resposta['id_evento'] = $evento['id_evento'];
+            $resposta["nome"] = $evento['nome'];
+            $resposta["privacidade_restrita"] = $evento['privacidade_restrita'];
+            $resposta["src_img"] = $evento['src_img'];
+            $resposta["data_prevista"] = $evento['data_prevista'];
+            $resposta["horario"] = $evento['horario'];
+            $resposta["objetivo"] = $evento['objetivo'];
+            $resposta["atracoes"] = $evento['atracoes'];
+            $resposta['buffet'] = $buffet;
+            $resposta['cep'] = $cep;
+            $resposta['estado'] = $estado;
+            $resposta['cidade'] = $cidade;
+            $resposta['bairro'] = $bairro;
+            $resposta['tipo_logradouro'] = $tipoLogradouro;
+            $resposta['logradouro'] = $logradouro;
+            $resposta['numero'] = $numero;
+            $resposta['tipo_contato_evento'] = $tipoContato;
+            $resposta["contato"] = $evento['contato'];
+
+            return $resposta;
         }
     }
 ?>

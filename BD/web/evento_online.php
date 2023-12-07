@@ -79,24 +79,58 @@
 
         public function update($id){
         }
-        
-        public function select($id){
+
+        public function select($id) {
             $sql = 'SELECT * FROM EVENTO_ONLINE
-            INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento
-            INNER JOIN POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
-            WHERE EVENTO_ONLINE.FK_EVENTO_id_evento =  ?';
+                    INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento INNER JOIN 
+                    POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
+                    WHERE EVENTO_ONLINE.FK_EVENTO_id_evento =  ?';
             $stmt = Database::prepare($sql);
             $stmt->bindParam(1, $id);
             $stmt->execute();
             $evento = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Verifica se o usuário foi encontrado.]
+        
+            // Verifica se o evento foi encontrado.
             if ($evento === false) {
                 return false;
             }
-
-            // Obtém o ID do usuário e o ID do estado.
-            $evento_id = $evento['id_evento'];
+        
+            // Obtém o ID da plataforma e o ID do tipo de contato.
+            $plataforma_id = $evento['fk_plataforma_plataforma_PK'];
+            $tipo_contato_id = $evento['fk_tipo_contato_id_tipo_contato'];
+        
+            // Consulta para obter a plataforma.
+            $sqlPlataforma = 'SELECT plataforma FROM plataforma WHERE plataforma_PK = ?';
+            $stmtPlataforma = Database::prepare($sqlPlataforma);
+            $stmtPlataforma->bindParam(1, $plataforma_id);
+            $stmtPlataforma->execute();
+            $plataforma = $stmtPlataforma->fetch(PDO::FETCH_ASSOC);
+        
+            // Consulta para obter o tipo de contato.
+            $sqlTipoContato = 'SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = ?';
+            $stmtTipoContato = Database::prepare($sqlTipoContato);
+            $stmtTipoContato->bindParam(1, $tipo_contato_id);
+            $stmtTipoContato->execute();
+            $tipo_contato = $stmtTipoContato->fetch(PDO::FETCH_ASSOC);
+        
+            // Monta um array com as informações do evento e retorna.
+            $resposta = array();
+            
+            $resposta['id_evento'] = $evento['id_evento'];
+            $resposta["nome"] = $evento['nome'];
+            $resposta["privacidade_restrita"] = $evento['privacidade_restrita'];
+            $resposta["src_img"] = $evento['src_img'];
+            $resposta["data_prevista"] = $evento['data_prevista'];
+            $resposta["horario"] = $evento['horario'];
+            $resposta["objetivo"] = $evento['objetivo'];
+            $resposta["atracoes"] = $evento['atracoes'];
+            $resposta["link"] = $evento['link']; 
+            $resposta['plataforma_evento'] = $plataforma['plataforma'];
+            $resposta['tipo_contato_evento'] = $tipo_contato['tipo_contato'];
+            $resposta["contato"] = $evento['contato'];
+        
+            return $resposta;
         }
+        
     }
 ?>
