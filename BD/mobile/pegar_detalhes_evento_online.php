@@ -54,7 +54,7 @@
                         if($consulta2->execute()){
                             $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                             $plataforma = $linha2['plataforma'];
-
+			    $contato = "sem contato";
                             $resposta["sucesso"] = 1;
                             $resposta["nome"] = $nome;
                             $resposta["privacidade_restrita"] = $privacidade_restrita;
@@ -64,6 +64,7 @@
                             $resposta["objetivo"] = $objetivo;
                             $resposta["atracoes"] = $atracoes;
                             $resposta["link"] = $link;
+			    $resposta["contato"] = $contato;
                             $resposta["plataforma"] = $plataforma;
                         }
                         else{
