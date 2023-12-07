@@ -75,7 +75,7 @@
 
                     if($consulta_insert_cidade->execute()){
                         // Usa fetchColumn para obter o valor retornado
-			$cidade_retorno = $consulta_insert_cidade->fetch(PDO::FETCH_ASSOC)
+			$cidade_retorno = $consulta_insert_cidade->fetch(PDO::FETCH_ASSOC);
                         $id_cidade = $cidade_retorno["id_cidade"];
                         
                         $consulta_estado_cidade = $db_con->prepare("INSERT INTO POSSUI_CIDADE_ESTADO(fk_CIDADE_id_cidade, 
