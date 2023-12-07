@@ -26,7 +26,7 @@
                 $objetivo = $linha['objetivo'];
                 $atracoes = $linha['atracoes'];
                 $link = $linha['link'];
-                $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+                $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_pk'];
                 $contato = $linha['contato'];
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
 		$id_plataforma = intval($fK_plataforma_plataforma_PK);
@@ -46,7 +46,7 @@
                         $objetivo = $linha['objetivo'];
                         $atracoes = $linha['atracoes'];
                         $link = $linha['link'];
-                        $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+                        $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_pk'];
 			$id_plataforma = intval($fK_plataforma_plataforma_PK);
 
 
