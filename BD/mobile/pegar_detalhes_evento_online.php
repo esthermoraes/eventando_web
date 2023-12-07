@@ -47,9 +47,11 @@
                         $atracoes = $linha['atracoes'];
                         $link = $linha['link'];
                         $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
+			$id_plataforma = intval($fK_plataforma_plataforma_PK);
+
 
                         $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
-                        '$fK_plataforma_plataforma_PK'");
+                        '$id_plataforma'");
 
                         if($consulta2->execute()){
                             $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
