@@ -42,23 +42,7 @@
                     $consulta3 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
                     '$fk_TIPO_CONTATO_id_tipo_contato'");
                     if($consulta3->execute()){
-                        $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-                        $tipo_contato = $linha3['tipo_contato'];
-                        $resposta["sucesso"] = 1;
-                        $resposta["nome"] = $nome;
-                        $resposta["privacidade_restrita"] = $privacidade_restrita;
-                        $resposta["src_img"] = $src_img;
-                        $resposta["data_prevista"] = $data_prevista;
-                        $resposta["horario"] = $horario;
-                        $resposta["objetivo"] = $objetivo;
-                        $resposta["atracoes"] = $atracoes;
-                        $resposta["link"] = $link;
-                        $resposta["plataforma"] = $plataforma;
-                        $resposta["tipo_contato"] = $tipo_contato;
-                        $resposta["contato"] = $contato;
-                    }
-                    else{
-                        if ($fk_TIPO_CONTATO_id_tipo_contato == 'null' || $fk_TIPO_CONTATO_id_tipo_contato == ''){
+			    if ($fk_TIPO_CONTATO_id_tipo_contato == 'null' || $fk_TIPO_CONTATO_id_tipo_contato == ''){
                             $resposta["sucesso"] = 1;
                             $resposta["nome"] = $nome;
                             $resposta["privacidade_restrita"] = $privacidade_restrita;
@@ -69,7 +53,22 @@
                             $resposta["atracoes"] = $atracoes;
                             $resposta["link"] = $link;
                             $resposta["plataforma"] = $plataforma;
-                        }
+                        }else{
+	                        $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+	                        $tipo_contato = $linha3['tipo_contato'];
+	                        $resposta["sucesso"] = 1;
+	                        $resposta["nome"] = $nome;
+	                        $resposta["privacidade_restrita"] = $privacidade_restrita;
+	                        $resposta["src_img"] = $src_img;
+	                        $resposta["data_prevista"] = $data_prevista;
+	                        $resposta["horario"] = $horario;
+	                        $resposta["objetivo"] = $objetivo;
+	                        $resposta["atracoes"] = $atracoes;
+	                        $resposta["link"] = $link;
+	                        $resposta["plataforma"] = $plataforma;
+	                        $resposta["tipo_contato"] = $tipo_contato;
+	                        $resposta["contato"] = $contato;
+			    }
                     }
                 }
                 else{
