@@ -9,6 +9,9 @@
     $title = 'MENU';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+    include_once 'BD/web/evento.php';
+
+    $evento = new Evento();
 ?>
     
     <!-- Criamos uma div, onde nela vamos ter uma outra div onde tem as imagens de vários eventos -->
@@ -18,7 +21,18 @@
                 <div class="container-fluid EventosR ps-5 mt-5" id="EventosR">
                     <label>EVENTOS RECENTES</label>
                     <div class="barraE">
-                        <img class="evento" src="img/evento1.jpeg" alt="evento1">
+                        <?php
+                        $eventos = $evento->selectEventosR();
+
+                        // Verifica se há eventos para renderizar
+                        if ($eventos["sucesso"] == 1 && !empty($eventos["eventos"])) {
+                            // Chama a função para renderizar o carrossel
+                            renderCarrossel($eventos["eventos"]);
+                        } else {
+                            // Caso não haja eventos, você pode lidar com isso conforme necessário
+                            echo "<div> <center> Nenhum evento encontrado. </center> </div>";
+                        }?>
+                        <!--<img class="evento" src="img/evento1.jpeg" alt="evento1">
                         <img class="evento" src="img/evento2.jpeg" alt="evento2">
                         <img class="evento" src="img/evento3.jpeg" alt="evento3">
                         <img class="evento" src="img/evento4.jpeg" alt="evento4">
@@ -30,7 +44,7 @@
                         <img class="evento" src="img/evento10.jpg" alt="evento10">
                         <img class="evento" src="img/evento11.jpg" alt="evento11">
                         <img class="evento" src="img/evento12.jfif" alt="evento12">
-                        <img class="evento" src="img/evento13.jfif" alt="evento13">
+                        <img class="evento" src="img/evento13.jfif" alt="evento13">-->
                     </div>
                 </div>
             </div>
@@ -40,15 +54,28 @@
         <div class="row" >
             <div class="container-fluid row ps-5 mt-5">
                 <div class="col-md-6">
-                    <div class = "barraMyE">
+                    <div class="barraMyE">
                         <label id="MyEventos"> MEUS <br> EVENTOS </label>
                         <br>
                         <div id="barraMyE" class="row ms-1 me-1 mt-4 d-flex justify-content-between">
-                            <div class="row teste mt-0">
-                                <p>
-                                    <center>Você ainda não possui eventos!</center>
-                                </p>
-                            </div>
+                            <?php
+                            $eventosmY = $evento->selectEventosR();
+                            // Verifica se há eventos para exibir
+                            if ($eventosmY["sucesso"] == 1 && !empty($eventosmY["eventos"])) {
+                                foreach ($eventosmY["eventos"] as $evento) {
+                                    ?>
+                                    <div class="row-sm col-md-3 mb-3 my-1">
+                                        <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1">
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                // Caso não haja eventos, você pode lidar com isso conforme necessário
+                                echo "<div>
+                                <center>Você ainda não possui eventos!</center>
+                                </div>";
+                            }
+                            ?>
     
                             <!-- 
                             <div class="row teste mt-0">

@@ -60,7 +60,7 @@
 							
 							<div class="col-md-12">
 								<label for="exampleInputPassword3" class="form-label">E-mail</label>
-								<input class="form-control" name="email_usuario" type="email" id="emEmail2" value = <?php echo $email;?>>
+								<p class="form-control" name="email_usuario" type="email" id="emEmail2"><?php echo $email;?></p>
 							</div>
 						</div>
 					</div>

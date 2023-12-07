@@ -29,7 +29,7 @@
                 $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
                 $contato = $linha['contato'];
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
-		$id_plataforma = intval($fK_plataforma_plataforma_PK);
+		        $id_plataforma = intval($fK_plataforma_plataforma_PK);
 
 		
                 $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
