@@ -57,7 +57,7 @@
                         $resposta["tipo_contato"] = $tipo_contato;
                         $resposta["contato"] = $contato;
                     }
-                    else{
+                    elseif ($fk_TIPO_CONTATO_id_tipo_contato == 'null'){
                         $resposta["sucesso"] = 1;
                         $resposta["nome"] = $nome;
                         $resposta["privacidade_restrita"] = $privacidade_restrita;
