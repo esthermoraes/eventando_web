@@ -27,24 +27,11 @@
                         // Verifica se há eventos para renderizar
                         if ($eventos["sucesso"] == 1 && !empty($eventos["eventos"])) {
                             // Chama a função para renderizar o carrossel
-                            renderCarrossel($eventos["eventos"]);
+                            $evento->renderCarrossel($eventos);
                         } else {
                             // Caso não haja eventos, você pode lidar com isso conforme necessário
                             echo "<div> <center> Nenhum evento encontrado. </center> </div>";
                         }?>
-                        <!--<img class="evento" src="img/evento1.jpeg" alt="evento1">
-                        <img class="evento" src="img/evento2.jpeg" alt="evento2">
-                        <img class="evento" src="img/evento3.jpeg" alt="evento3">
-                        <img class="evento" src="img/evento4.jpeg" alt="evento4">
-                        <img class="evento" src="img/evento5.jpeg" alt="evento5">
-                        <img class="evento" src="img/evento6.jpeg" alt="evento6">
-                        <img class="evento" src="img/evento7.jpeg" alt="evento7">
-                        <img class="evento" src="img/evento8.jpeg" alt="evento8">
-                        <img class="evento" src="img/evento9.jpeg" alt="evento9">
-                        <img class="evento" src="img/evento10.jpg" alt="evento10">
-                        <img class="evento" src="img/evento11.jpg" alt="evento11">
-                        <img class="evento" src="img/evento12.jfif" alt="evento12">
-                        <img class="evento" src="img/evento13.jfif" alt="evento13">-->
                     </div>
                 </div>
             </div>
@@ -76,37 +63,6 @@
                                 </div>";
                             }
                             ?>
-    
-                            <!-- 
-                            <div class="row teste mt-0">
-                                <div class="row-sm col-md-3 mb-3 my-1">
-                                    <img src="img/evento14.jfif" alt="Imagem 14" class="img-fluid evento1">
-                                </div>
-                                <div class="row-sm col-md-3 mb-3 my-1">
-                                    <img src="img/evento15.jfif" alt="Imagem 15" class="img-fluid evento1">
-                                </div>
-                                <div class="row-sm col-md-3 mb-3 my-1">
-                                    <img src="img/evento16.jpeg" alt="Imagem 16" class="img-fluid evento1">
-                                </div>
-                                <div class="row-sm col-md-3 mb-3 my-1">
-                                    <img src="img/evento17.jpeg" alt="Imagem 17" class="img-fluid evento1">
-                                </div>   
-                            </div>
-                            <div class="row teste">
-                                <div class="col-md-3 mt-3">
-                                    <img src="img/evento18.jpeg" alt="Imagem 18" class="img-fluid evento1">
-                                </div> 
-                                <div class="col-md-3 mt-3">
-                                    <img src="img/evento19.jpeg" alt="Imagem 19" class="img-fluid evento1">
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                    <img src="img/evento20.jfif" alt="Imagem 20" class="img-fluid evento1">
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                    <img src="img/evento22.jpeg" alt="Imagem 22" class="img-fluid evento1">
-                                </div>
-                            </div>
-                            -->
                         </div>
                     </div>
                 </div>

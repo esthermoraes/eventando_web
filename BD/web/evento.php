@@ -77,13 +77,12 @@
         public function selectEventosR(){
             $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
             $stmt_user = Database::prepare($sql_user);
-            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->bindParam(":email", $_SESSION['email_txt']);
             $stmt_user->execute();
             $id_user = $stmt_user->fetchColumn();
         
             // Inicialize $stmt_eR fora do bloco condicional
             $stmt_eR = null;
-
             if ($id_user) {
                 $sql_eR = "SELECT e.id_evento, e.src_img, 
                 ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
@@ -146,7 +145,7 @@
         public function selectMyEventos(){
             $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
             $stmt_user = Database::prepare($sql_user);
-            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->bindParam(":email", $_SESSION['email_txt']);
             $stmt_user->execute();
             $id_user = $stmt_user->fetchColumn();
             
