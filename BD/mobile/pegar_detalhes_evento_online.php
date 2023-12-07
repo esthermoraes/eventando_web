@@ -39,6 +39,7 @@
                     $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
                     $plataforma = $linha2['plataforma'];
 
+		    $fk_TIPO_CONTATO_id_tipo_contato = intval($fk_TIPO_CONTATO_id_tipo_contato);
                     $consulta3 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
                     '$fk_TIPO_CONTATO_id_tipo_contato'");
                     if($consulta3->execute()){
