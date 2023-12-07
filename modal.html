@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles.css"> <!-- Seu arquivo de estilo personalizado -->
     <!-- JS externo -->
     <script src="script.js" defer></script>
+    
     <title>MODAL</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
 
 <div id="myModal" class="modal">
     <div class="modal-content">
-        <form method= "post" action="criarEventoO.php">
+        <form method= "post" id="myForm">
             <span class="close" id="closeModalBtn">&times;</span>
             <label for="eventName"> <b>NOME EVENTO:</b></label>
             <input type="text" id="eventName" name= "nome" placeholder="Digite o nome do evento" 
@@ -31,13 +32,13 @@
             <p><b>FORMATO:</b></p>
             <div class="formatOptions">
                 <label for="onlineCheckbox">
-                    <input type="radio" id="onlineCheckbox" name="eventFormat"> <b>ONLINE</b>
+                    <input type="radio" id="onlineCheckbox" name="eventFormat" value="online"> <b>ONLINE</b>
                 </label>
                 <label for="presencialCheckbox">
-                    <input type="radio" id="presencialCheckbox" name="eventFormat"> <b>PRESENCIAL</b>
+                    <input type="radio" id="presencialCheckbox" name="eventFormat" value="presencial"> <b>PRESENCIAL</b>
                 </label>
             </div>
-            <button name = "criar" class="btnCriar createEventButton" onclick="createEvent()">CRIAR</button>
+            <button name="criar" type="button" class="btnCriar createEventButton" onclick="criarEvento()">CRIAR</button>
         </form>
     </div>
 </div>

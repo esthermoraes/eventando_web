@@ -14,7 +14,7 @@
     update - atualiza um evento presencial na tabela evento presencial
     *************************************************************/
 
-    class evento extends Evento{
+    class EventoPresencial extends Evento{
         protected $table = 'EVENTO_PRESENCIAL';
 
         /* Dados do buffet */

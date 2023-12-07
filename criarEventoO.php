@@ -20,7 +20,7 @@
     // echo "</pre>";
     
     // Verifica se o nome foi enviado
-    if (isset($_POST['criar'])) {
+    if (isset($_POST['eventFormat'])) {
         $nome = $_POST['nome'];
     } 
     else {

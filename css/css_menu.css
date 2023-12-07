@@ -77,6 +77,7 @@ body{
     border: solid 2px;
     border-color: #770089;
     cursor: pointer;
+    margin-left: 2rem;
 }
 
 .blur{

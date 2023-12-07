@@ -15,8 +15,7 @@
         $user = $_SESSION['email_txt'];
         echo ("User: " . $user . "<br>");
 
-        //$nome = $_POST["nome"];
-        $nome = 'After do churras';
+        $nome = $_POST["nome"];
         echo ("Nome: " . $nome . "<br>");
 
         $img_url = 'https://imgur.com/j7dmVFY.jpg';

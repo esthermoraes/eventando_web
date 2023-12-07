@@ -46,7 +46,7 @@
                         <br>
                         <div id="barraMyE" class="row ms-1 me-1 mt-4 d-flex justify-content-between">
                             <?php
-                            $eventosmY = $evento->selectEventosR();
+                            $eventosmY = $evento->selectMyEventos();
                             // Verifica se há eventos para exibir
                             if ($eventosmY["sucesso"] == 1 && !empty($eventosmY["eventos"])) {
                                 foreach ($eventosmY["eventos"] as $evento) {

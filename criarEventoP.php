@@ -18,6 +18,14 @@
     // print_r($_POST);
     // echo "</pre>";
 
+    // Verifica se o nome foi enviado
+    if (isset($_POST['eventFormat'])) {
+        $nome = $_POST['nome'];
+    } 
+    else {
+        echo '<p>Nenhum nome foi enviado.</p>';
+    }
+
     if (isset($_POST["proximo_passo"])) { // se algum botão de passo foi pressionado 
         $passo = $_POST['passo'] ?? $passo; // pega o passo atual e salva o array
 
@@ -29,8 +37,8 @@
 
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
     <p class="ms-3">INFORMAÇÕES DO EVENTO</p>
-    <p class="me-3" name="nome">Nome do Evento</p>
-    <!-- <p class="me-3"> <?php echo htmlspecialchars($nome);?> </p> -->
+    <!-- <p class="me-3" name="nome">Nome do Evento</p> -->
+    <p class="me-3"> <?php echo htmlspecialchars($nome);?> </p>
 </div>
 
 <div class="container-fluid  p-0 bagulhete d-flex">
@@ -179,7 +187,7 @@
                     <p class="ms-2 pp">Público</p>
                     <input type = "hidden" name="privacidade" id="privado" value="false"/>
                 </div>
-                <!-- <input type="hidden" name="nome" value = <?php echo htmlspecialchars($nome);?>/>-->
+                <input type="hidden" name="nome" value = <?php echo htmlspecialchars($nome);?>/>
             </div>
         </div>
 

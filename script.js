@@ -20,26 +20,19 @@ function selectEventFormat(format) {
     alert("Você escolheu um evento " + format + ".");
 }
 
-function createEvent() {
-    var eventName = document.getElementById("eventName").value;
-    alert("Evento criado: " + eventName);
-    modal.style.display = "none";
-}
 
-// Adiciona um evento de clique ao botão de criar evento
-document.querySelector('.createEventButton').addEventListener('click', function() {
-    // Verifica qual checkbox está selecionada
-    var onlineCheckbox = document.getElementById('onlineCheckbox');
-    var presencialCheckbox = document.getElementById('presencialCheckbox');
 
-    if (onlineCheckbox.checked) {
-        // Se a checkbox online estiver selecionada, redirecione para a página de eventos online
-        window.location.href = 'criarEventoO.php'; // Substitua com o caminho da sua página
-    } else if (presencialCheckbox.checked) {
-        // Se a checkbox presencial estiver selecionada, redirecione para a página de eventos presenciais
-        window.location.href = 'criarEventoP.php'; // Substitua com o caminho da sua página
-    } else {
-        // Se nenhuma checkbox estiver selecionada, faça algo (por exemplo, mostre uma mensagem de erro)
-        alert('Selecione o formato do evento.');
-    }
-});
+function criarEvento() {
+
+      var onlineCheckbox = document.getElementById("onlineCheckbox");
+      var myForm = document.getElementById("myForm");
+
+      if (onlineCheckbox.checked) {
+        myForm.action = "criarEventoO.php";
+      } else {
+          myForm.action = "criarEventoP.php";
+     }
+    // Submit the form
+     myForm.submit();
+  }
+  
