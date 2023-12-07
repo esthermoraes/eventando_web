@@ -18,7 +18,8 @@
             WHERE EVENTO_ONLINE.FK_EVENTO_id_evento = '$evento_id';");
             if ($consulta->execute()) {
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
-                $nome = $linha['nome'];
+                var_dump($linha);
+		$nome = $linha['nome'];
                 $privacidade_restrita = $linha['privacidade_restrita'];
                 $src_img = $linha['src_img'];
                 $data_prevista = $linha['data_prevista'];
