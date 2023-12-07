@@ -57,17 +57,19 @@
                         $resposta["tipo_contato"] = $tipo_contato;
                         $resposta["contato"] = $contato;
                     }
-                    elseif ($fk_TIPO_CONTATO_id_tipo_contato == 'null'){
-                        $resposta["sucesso"] = 1;
-                        $resposta["nome"] = $nome;
-                        $resposta["privacidade_restrita"] = $privacidade_restrita;
-                        $resposta["src_img"] = $src_img;
-                        $resposta["data_prevista"] = $data_prevista;
-                        $resposta["horario"] = $horario;
-                        $resposta["objetivo"] = $objetivo;
-                        $resposta["atracoes"] = $atracoes;
-                        $resposta["link"] = $link;
-                        $resposta["plataforma"] = $plataforma;
+                    else{
+                        if ($fk_TIPO_CONTATO_id_tipo_contato == 'null'){
+                            $resposta["sucesso"] = 1;
+                            $resposta["nome"] = $nome;
+                            $resposta["privacidade_restrita"] = $privacidade_restrita;
+                            $resposta["src_img"] = $src_img;
+                            $resposta["data_prevista"] = $data_prevista;
+                            $resposta["horario"] = $horario;
+                            $resposta["objetivo"] = $objetivo;
+                            $resposta["atracoes"] = $atracoes;
+                            $resposta["link"] = $link;
+                            $resposta["plataforma"] = $plataforma;
+                        }
                     }
                 }
                 else{
