@@ -31,19 +31,32 @@
                 $fk_TIPO_CONTATO_id_tipo_contato = $linha['fk_tipo_contato_id_tipo_contato'];
 		        $id_plataforma = intval($fK_plataforma_plataforma_PK);
 
-		
-                $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
-                $id_plataforma");
+                if($nome == 'NULL' || $nome == ""){
+                    $consulta = $db_con->prepare("SELECT * FROM EVENTO_ONLINE
+                    INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento
+                    WHERE EVENTO_ONLINE.FK_EVENTO_id_evento = '$evento_id';");
 
-                if($consulta2->execute()){
-                    $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
-                    $plataforma = $linha2['plataforma'];
+                    if ($consulta->execute()) {
+                        $linha = $consulta->fetch(PDO::FETCH_ASSOC);
+                        $nome = $linha['nome'];
+                        $privacidade_restrita = $linha['privacidade_restrita'];
+                        $src_img = $linha['src_img'];
+                        $data_prevista = $linha['data_prevista'];
+                        $horario = $linha['horario'];
+                        $objetivo = $linha['objetivo'];
+                        $atracoes = $linha['atracoes'];
+                        $link = $linha['link'];
+                        $fK_plataforma_plataforma_PK = $linha['fk_plataforma_plataforma_PK'];
 
-		    $fk_TIPO_CONTATO_id_tipo_contato = intval($fk_TIPO_CONTATO_id_tipo_contato);
-                    $consulta3 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
-                    '$fk_TIPO_CONTATO_id_tipo_contato'");
-                    if($consulta3->execute()){
-			    if ($fk_TIPO_CONTATO_id_tipo_contato == 'null' || $fk_TIPO_CONTATO_id_tipo_contato == ''){
+                        $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
+                        $id_plataforma");
+
+                        if($consulta2->execute()){
+                            $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
+                            $plataforma = $linha2['plataforma'];
+
+                            $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+                            $tipo_contato = $linha3['tipo_contato'];
                             $resposta["sucesso"] = 1;
                             $resposta["nome"] = $nome;
                             $resposta["privacidade_restrita"] = $privacidade_restrita;
@@ -54,27 +67,52 @@
                             $resposta["atracoes"] = $atracoes;
                             $resposta["link"] = $link;
                             $resposta["plataforma"] = $plataforma;
-                        }else{
-	                        $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
-	                        $tipo_contato = $linha3['tipo_contato'];
-	                        $resposta["sucesso"] = 1;
-	                        $resposta["nome"] = $nome;
-	                        $resposta["privacidade_restrita"] = $privacidade_restrita;
-	                        $resposta["src_img"] = $src_img;
-	                        $resposta["data_prevista"] = $data_prevista;
-	                        $resposta["horario"] = $horario;
-	                        $resposta["objetivo"] = $objetivo;
-	                        $resposta["atracoes"] = $atracoes;
-	                        $resposta["link"] = $link;
-	                        $resposta["plataforma"] = $plataforma;
-	                        $resposta["tipo_contato"] = $tipo_contato;
-	                        $resposta["contato"] = $contato;
-			    }
+                        }
+                        else{
+                            $resposta["sucesso"] = 0;
+                            $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
+                        }
+                    }
+                    else{
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
                     }
                 }
                 else{
-                    $resposta["sucesso"] = 0;
-                    $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
+                    $consulta2 = $db_con->prepare("SELECT plataforma FROM plataforma WHERE plataforma_PK = 
+                    $id_plataforma");
+
+                    if($consulta2->execute()){
+                        $linha2 = $consulta2->fetch(PDO::FETCH_ASSOC);
+                        $plataforma = $linha2['plataforma'];
+
+                        $consulta3 = $db_con->prepare("SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = 
+                        '$fk_TIPO_CONTATO_id_tipo_contato'");
+                        if($consulta3->execute()){
+                            $linha3 = $consulta3->fetch(PDO::FETCH_ASSOC);
+                            $tipo_contato = $linha3['tipo_contato'];
+                            $resposta["sucesso"] = 1;
+                            $resposta["nome"] = $nome;
+                            $resposta["privacidade_restrita"] = $privacidade_restrita;
+                            $resposta["src_img"] = $src_img;
+                            $resposta["data_prevista"] = $data_prevista;
+                            $resposta["horario"] = $horario;
+                            $resposta["objetivo"] = $objetivo;
+                            $resposta["atracoes"] = $atracoes;
+                            $resposta["link"] = $link;
+                            $resposta["plataforma"] = $plataforma;
+                            $resposta["tipo_contato"] = $tipo_contato;
+                            $resposta["contato"] = $contato;
+                        }
+                        else{
+                            $resposta["sucesso"] = 0;
+                            $resposta["erro"] = "Erro no BD: " . $consulta3->errorInfo()[2];
+                        }
+                    }
+                    else{
+                        $resposta["sucesso"] = 0;
+                        $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
+                    }
                 }
             }
             else{
