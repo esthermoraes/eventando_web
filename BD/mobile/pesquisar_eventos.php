@@ -12,7 +12,7 @@
         ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
         LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
         LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento 
-        WHERE UNACCENT(LOWER(e.nome)) LIKE UNACCENT(LOWER("%$pesquisa%"))");
+        WHERE UNACCENT(LOWER(e.nome)) LIKE UNACCENT(LOWER('%$pesquisa%'))");
 
         if ($consulta->execute()) {
             // Caso existam eventos no BD, eles sao armazenados na 
@@ -45,7 +45,6 @@
         } 
         else {
             $resposta["sucesso"] = 0;
-            $resposta["erro"] = "Email ou senha não conferem";
             $resposta["erro"] = "Erro no BD: " . $consulta->errorInfo()[2];
         }
     } 
