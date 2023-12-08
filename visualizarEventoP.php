@@ -9,46 +9,44 @@
     $title = 'VISUALIZAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
-    require_once 'BD/web/evento_presencial.php';
+    require_once 'BD/web/pegar_detalhes_evento_presencial.php';
 ?>
 
     <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
-        <p class="ms-3">VISUALIZAR EVENTO ONLINE</p>
-        <p class="me-3">Nome Do Evento</p>
+        <p class="ms-3">VISUALIZAR EVENTO PRESENCIAL</p>
+        <p class="me-3"><?php echo htmlspecialchars($nome);?></p>
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete">
         <div class="col-4 d-flex flex-column justify-content-between align-items-start primeiraparte">
-            <img src="img/evento25.jpg" alt="foto do evento" class="imagem">
-            <p class="privacidade">PÚBLICO</p>
-            <p class="justify-content-start"></p>
+            <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
+            <p class="privacidade"><?php echo $privacidade;?></p>
+            
             <div class="d-flex">
                 <div class="form-floating">
-                <p for="ObjetivoE">Objetivo do evento</p>
-                    <p for="dataEvento">Data do Evento</p>
+                <p><?php echo $objetivo;?></p> 
+                <p><?php echo $data_prevista;?></p>  
+                <p><?php echo $horario;?></p>
                   
                 
                 <p><strong>Localização</strong></p>
-                <p class="font-weight-bold">CEP</p>
-                <p class="font-weight-bold">Estado</p>
-                <p class="font-weight-bold">Bairro</p>
-                <p class="font-weight-bold">Cidade</p>
-                <p class="font-weight-bold">Logradouro</p>
-                <p class="font-weight-bold">Nº</p>
+                <p> <?php echo $cep;?> </p>
+                <p> <?php echo $estado;?> </p>
+                <p> <?php echo $cidade;?> </p>
+                <p> <?php echo $bairro;?> </p>
+                <p> <?php echo $tipoLogradouro;?> </p>
+                <p> <?php echo $logradouro;?> </p>
+                <p> <?php echo $numero;?> </p>
                 </div>  
-            </div>
-            
-            <div class="">
-                
-                
             </div>
         </div>
         
             <div class="col-4 d-flexflex-column align-items-center-start mt-4">
                 <p><strong>Complemento</strong></p>
-                <p id=""> Complemento aqui</p>
-                <div class="d-flex mt-4">
-                    <p id=""> Tipo de contato</p>
+                <p> <?php echo $atracoes;?> </p>
+                <p> <?php echo $buffet;?> </p>
+                <p> <?php echo $tipo_contato;?> </p>
+                <p> <?php echo $contato;?> </p>
                 </div>
             
             <div class="botoesev d-flex flex-column align-items-center m-2 mt-5">

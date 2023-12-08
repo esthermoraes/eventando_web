@@ -24,6 +24,7 @@
             
             <div class="d-flex">
                 <div class="form-floating">
+                <p><?php echo $objetivo;?></p> 
                 <p><?php echo $data_prevista;?></p>  
                 <p><?php echo $horario;?></p>
 

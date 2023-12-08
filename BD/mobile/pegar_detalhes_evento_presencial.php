@@ -6,7 +6,7 @@
     $resposta = array();
     
     // verifica se o usuário conseguiu autenticar
-    if(autenticar($db_con)){
+    //if(autenticar($db_con)){
         // Verifica se o parametro email foi enviado na requisicao
         if (isset($_GET["evento_id"])){
             
@@ -73,24 +73,24 @@
                                     if($consulta5->execute()){
                                         $linha5 = $consulta5->fetch(PDO::FETCH_ASSOC);
                                         $cidade_id = $linha5["FK_CIDADE_id_cidade"];
-
+					echo $cidade_id;
                                         $consulta6 = $db_con->prepare("SELECT cidade FROM CIDADE WHERE id_cidade = :cidade_id");
-                                        $consulta6->bindParam(':cidade_id', $cidade_id, PDO::PARAM_INT); // Dependendo do tipo de dados
+                                        $consulta6->bindParam(':cidade_id', $cidade_id); // Dependendo do tipo de dados
                                         if($consulta6->execute()){
                                             $linha6 = $consulta6->fetch(PDO::FETCH_ASSOC);
                                             $cidade = $linha6["cidade"];
 
-                                            $consulta7 = $db_con->prepare("SELECT FK_ESTADO_id_estado FROM POSSUI_CIDADE_ESTADO WHERE 
-                                            FK_CIDADE_id_cidade = '$cidade_id'");
+                                            $consulta7 = $db_con->prepare("SELECT FK_ESTADO_id_estado FROM POSSUI_CIDADE_ESTADO WHERE FK_CIDADE_id_cidade = :cidade_id");
+					    $consulta7->bindParam(':cidade_id', $cidade_id);
                                             if($consulta7->execute()){
                                                 $linha7 = $consulta7->fetch(PDO::FETCH_ASSOC);
                                                 $estado_id = $linha7["FK_ESTADO_id_estado"];
 
-                                                $consulta8 = $db_con->prepare("SELECT estado FROM ESTADO WHERE id_estado = '$estado_id'");
-                                                if($consulta8->execute()){
-                                                    $linha8 = $consulta8->fetch(PDO::FETCH_ASSOC);
-                                                    $estado = $linha8["estado"];
-
+                                                $consulta8 = $db_con->prepare("SELECT estado FROM ESTADO WHERE id_estado = :estado_id");
+						$consulta8->bindParam(':estado_id', $estado_id, PDO::PARAM_INT);
+						if ($consulta8->execute()) {
+						    $linha8 = $consulta8->fetch(PDO::FETCH_ASSOC);
+						    $estado = $linha8["estado"];
                                                     $contato = "sem contato";
                                                     $tipo_contato = "sem tipo";
                                                     $atracoes = "sem atrações";
@@ -286,12 +286,12 @@
             $resposta["sucesso"] = 0;
             $resposta["erro"] = "Campo requerido nao preenchido";
         }
-    }
-    else{
+//}
+    //else{
         // senha ou email nao confere
-        $resposta["sucesso"] = 0;
-        $resposta["error"] = "Email ou senha nao confere";
-    }
+        //$resposta["sucesso"] = 0;
+        //$resposta["error"] = "Email ou senha nao confere";
+    //}
 
     // Fecha a conexao com o BD
     $db_con = null;
