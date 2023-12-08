@@ -96,22 +96,28 @@
             }
         
             // Obtém o ID da plataforma e o ID do tipo de contato.
-            $plataforma_id = $evento['fk_plataforma_plataforma_PK'];
-            $tipo_contato_id = $evento['fk_tipo_contato_id_tipo_contato'];
+            $plataforma_id = isset($evento['fk_plataforma_plataforma_pk']) ? $evento['fk_plataforma_plataforma_pk'] : null;
+            $tipo_contato_id = isset($evento['fk_tipo_contato_id_tipo_contato']) ? $evento['fk_tipo_contato_id_tipo_contato'] : null;
         
             // Consulta para obter a plataforma.
-            $sqlPlataforma = 'SELECT plataforma FROM plataforma WHERE plataforma_PK = ?';
-            $stmtPlataforma = Database::prepare($sqlPlataforma);
-            $stmtPlataforma->bindParam(1, $plataforma_id);
-            $stmtPlataforma->execute();
-            $plataforma = $stmtPlataforma->fetch(PDO::FETCH_ASSOC);
+            $plataforma = null;
+            if ($plataforma_id !== null) {
+                $sqlPlataforma = 'SELECT plataforma FROM plataforma WHERE plataforma_PK = ?';
+                $stmtPlataforma = Database::prepare($sqlPlataforma);
+                $stmtPlataforma->bindParam(1, $plataforma_id);
+                $stmtPlataforma->execute();
+                $plataforma = $stmtPlataforma->fetch(PDO::FETCH_ASSOC);
+            }
         
             // Consulta para obter o tipo de contato.
-            $sqlTipoContato = 'SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = ?';
-            $stmtTipoContato = Database::prepare($sqlTipoContato);
-            $stmtTipoContato->bindParam(1, $tipo_contato_id);
-            $stmtTipoContato->execute();
-            $tipo_contato = $stmtTipoContato->fetch(PDO::FETCH_ASSOC);
+            $tipo_contato = null;
+            if ($tipo_contato_id !== null) {
+                $sqlTipoContato = 'SELECT tipo_contato FROM TIPO_CONTATO WHERE id_tipo_contato = ?';
+                $stmtTipoContato = Database::prepare($sqlTipoContato);
+                $stmtTipoContato->bindParam(1, $tipo_contato_id);
+                $stmtTipoContato->execute();
+                $tipo_contato = $stmtTipoContato->fetch(PDO::FETCH_ASSOC);
+            }
         
             // Monta um array com as informações do evento e retorna.
             $resposta = array();
@@ -125,12 +131,13 @@
             $resposta["objetivo"] = $evento['objetivo'];
             $resposta["atracoes"] = $evento['atracoes'];
             $resposta["link"] = $evento['link']; 
-            $resposta['plataforma_evento'] = $plataforma['plataforma'];
-            $resposta['tipo_contato_evento'] = $tipo_contato['tipo_contato'];
+            $resposta['plataforma_evento'] = isset($plataforma['plataforma']) ? $plataforma['plataforma'] : null;
+            $resposta['tipo_contato_evento'] = isset($tipo_contato['tipo_contato']) ? $tipo_contato['tipo_contato'] : null;
             $resposta["contato"] = $evento['contato'];
         
             return $resposta;
         }
+        
         
     }
 ?>
