@@ -74,7 +74,8 @@
                                         $linha5 = $consulta5->fetch(PDO::FETCH_ASSOC);
                                         $cidade_id = $linha5["FK_CIDADE_id_cidade"];
 
-                                        $consulta6 = $db_con->prepare("SELECT cidade FROM CIDADE WHERE id_cidade = 'cidade_id'");
+                                        $consulta6 = $db_con->prepare("SELECT cidade FROM CIDADE WHERE id_cidade = :cidade_id");
+                                        $consulta6->bindParam(':cidade_id', $cidade_id, PDO::PARAM_INT); // Dependendo do tipo de dados
                                         if($consulta6->execute()){
                                             $linha6 = $consulta6->fetch(PDO::FETCH_ASSOC);
                                             $cidade = $linha6["cidade"];
