@@ -75,13 +75,13 @@
                                         $cidade_id = $linha5["FK_CIDADE_id_cidade"];
 
                                         $consulta6 = $db_con->prepare("SELECT cidade FROM CIDADE WHERE id_cidade = :cidade_id");
-                                        $consulta6->bindParam(':cidade_id', $cidade_id, PDO::PARAM_INT); // Dependendo do tipo de dados
+                                        $consulta6->bindParam(':cidade_id', $cidade_id); // Dependendo do tipo de dados
                                         if($consulta6->execute()){
                                             $linha6 = $consulta6->fetch(PDO::FETCH_ASSOC);
                                             $cidade = $linha6["cidade"];
 
                                             $consulta7 = $db_con->prepare("SELECT FK_ESTADO_id_estado FROM POSSUI_CIDADE_ESTADO WHERE FK_CIDADE_id_cidade = :cidade_id");
-					    $consulta7->bindParam(':cidade_id', $cidade_id, PDO::PARAM_INT);
+					    $consulta7->bindParam(':cidade_id', $cidade_id);
                                             if($consulta7->execute()){
                                                 $linha7 = $consulta7->fetch(PDO::FETCH_ASSOC);
                                                 $estado_id = $linha7["FK_ESTADO_id_estado"];
