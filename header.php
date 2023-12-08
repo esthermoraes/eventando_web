@@ -124,9 +124,9 @@
                         </button>
                     </div>
                     <div class="col-3 d-flex d-md-flex d-none align-self-center mb-4 ms-5 me-5">
-                        <form class="d-flex form-pesquisar w-100">
-                            <input class="form-control me-2" type="search" placeholder="Buscar eventos" aria-label="Search"/>
-                            <button class="btn-pesquisar" type="submit">
+                        <form class="d-flex form-pesquisar w-100" method="post" action="buscar_eventos.php">
+                            <input class="form-control me-2" type="search" placeholder="Buscar eventos" name = "buscar" aria-label="Search"/>
+                            <button class="btn-pesquisar" type="submit" value="buscar">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </form>
