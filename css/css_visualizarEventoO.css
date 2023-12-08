@@ -49,7 +49,6 @@ a{
 }
 
 .imagem{
-    width: 350px;
     height: 150px;
     border-radius: 8px;
     border: none !important;
@@ -59,12 +58,10 @@ a{
     align-items: center;
 }
 
-.botaoS{
+.botaoS, .botaoD{
     background-color: #fff !important;
     border-radius: 8px !important;
     border: solid 3px #770089 !important;
-    width: min(45vw, 250px) !important;
-    height: 35px !important;
     color: #770089 !important;
     font-size: min(3vw, 16px);
     font-weight: bold;
@@ -74,17 +71,6 @@ a{
     background-color: #006760!important;
     border: solid 3px #006760 !important;
     color: #fff !important;
-}
-
-.botaoD{
-    background-color: #fff !important;
-    border-radius: 8px !important;
-    border: solid 3px #770089 !important;
-    width: min(45vw, 250px) !important;
-    height: 35px !important;
-    color: #770089 !important;
-    font-size: min(3vw, 16px);
-    font-weight: bold;
 }
 
 .botaoD:hover{
@@ -97,3 +83,13 @@ a{
     border: solid 3px #770089;
 }
 
+.botoesev{
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+    align-items: center;
+}
+
+.primeiraparte{
+    padding-left: 20px;
+    padding-top: 20px;
+}

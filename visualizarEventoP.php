@@ -2,40 +2,72 @@
     // Define a variável $header como 3
     $header = 3;
     // Define a variável $css com um link para um arquivo CSS externo chamado 'css_visualizarEventoP.css'
-    $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_visualizarEventoP.css" />';
+    $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_visualizarEventoO.css" />';
     // Define a variável $js como vazia, ou seja, não inclui nenhum arquivo JavaScript
     $js = '';
     // Define a variável $title como 'VISUALIZAR EVENTO PRESENCIAL', que será o título da página
     $title = 'VISUALIZAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'header.php';
+    require_once 'BD/web/evento_presencial.php';
 ?>
 
     <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
-        <p class="ms-3">VISUALIZAR EVENTO PRESENCIAL</p>
-        <p class="me-3">Nome do Evento</p>
+        <p class="ms-3">VISUALIZAR EVENTO ONLINE</p>
+        <p class="me-3">Nome Do Evento</p>
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="img/evento25.jpg" alt="foto do evento" class="imagem m-2 ms-4">
+        <div class="col-4 d-flex flex-column justify-content-between align-items-start primeiraparte">
+            <img src="img/evento25.jpg" alt="foto do evento" class="imagem">
             <p class="privacidade">PÚBLICO</p>
+            <p class="justify-content-start"></p>
+            <div class="d-flex">
+                <div class="form-floating">
+                <p for="ObjetivoE">Objetivo do evento</p>
+                    <p for="dataEvento">Data do Evento</p>
+                  
+                
+                <p><strong>Localização</strong></p>
+                <p class="font-weight-bold">CEP</p>
+                <p class="font-weight-bold">Estado</p>
+                <p class="font-weight-bold">Bairro</p>
+                <p class="font-weight-bold">Cidade</p>
+                <p class="font-weight-bold">Logradouro</p>
+                <p class="font-weight-bold">Nº</p>
+                </div>  
+            </div>
+            
+            <div class="">
+                
+                
+            </div>
         </div>
-
-        <div class="d-flex justify-content-end mt-2 mb-2">
-            <a href="salvar_evento.php">
-                <button type="submit" id="btn-salvar" class="botaoS">
-                    <i class="fa-regular fa-calendar-check"></i>
-                    SALVAR EVENTO
+        
+            <div class="col-4 d-flexflex-column align-items-center-start mt-4">
+                <p><strong>Complemento</strong></p>
+                <p id=""> Complemento aqui</p>
+                <div class="d-flex mt-4">
+                    <p id=""> Tipo de contato</p>
+                </div>
+            
+            <div class="botoesev d-flex flex-column align-items-center m-2 mt-5">
+                <a href="salvar_evento.php">
+                    <button type="submit" id="btn-salvar" class="botaoS m-2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        SALVAR EVENTO
+                    </button>
+                </a>
+                <button type="submit" id="btn-deletar" class="botaoD m-1">
+                    <i class="fa-regular fa-calendar-xmark"></i>
+                    DELETAR EVENTO
                 </button>
-            </a>
-            <button type="submit" id="btn-deletar" class="botaoD">
-                <i class="fa-regular fa-calendar-xmark"></i>
-                DELETAR EVENTO
-            </button>
+            </div>
+            </div>
+        
+        <div class="col-4 d-flex flex-column justify-content-between align-items-start mt-4">
         </div>
     </div>
-
     
 </body>
 </html>

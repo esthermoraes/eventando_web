@@ -29,7 +29,7 @@
                 // $consulta2 = $db_con->prepare("SELECT * FROM EVENTO WHERE FK_USUARIO_id_usuario = '$user_id' 
                 // LIMIT " . $limit . " OFFSET " . $offset);
                 $consulta2 = $db_con->prepare("SELECT e.id_evento, e.nome, e.objetivo, e.data_prevista, e.src_img, 
-                ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
+                ep.FK_LOCALIZACAO_id_localizacao AS evento_presencial, eo.link AS evento_online FROM EVENTO e
                 LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
                 LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento
                 WHERE e.FK_USUARIO_id_usuario = '$user_id' LIMIT " . $limit . " OFFSET " . $offset);
