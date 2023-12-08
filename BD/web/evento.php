@@ -200,19 +200,51 @@
             $id_user = $stmt_user->fetchColumn();
         
             if($id_user) {
-                $sql_eR = "SELECT e.id_evento, e.nome, e.horario, e.data_prevista, 
+                $sql_cl = "SELECT e.id_evento, e.nome, e.horario, e.data_prevista, 
                 ep.FK_buffet_buffet_PK AS evento_presencial, eo.link AS evento_online FROM EVENTO e
                 LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
                 LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento
                 WHERE e.FK_USUARIO_id_usuario != (:id_user) ORDER BY 
                 data_prevista LIMIT 10";
-                $stmt_eR = Database::prepare($sql_eR);
-                $stmt_eR->bindParam(":id_user", $id_user, PDO::PARAM_INT);
-                $stmt_eR->execute();
+                $stmt_cl = Database::prepare($sql_cl);
+                $stmt_cl->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+                $stmt_cl->execute();
             }
+
+            // Construir a resposta
+            $resposta["eventos"] = array();
+            $resposta["sucesso"] = 1;
+
+            if ($stmt_cl && $stmt_cl->rowCount() > 0) {
+                while ($linha = $stmt_cl->fetch(PDO::FETCH_ASSOC)) {
+                    $evento = array();
+                    $evento["id"] = $linha["id_evento"];
+                    $evento["nome"] = $linha["nome"];
+                    $evento["horario"] = $linha["horario"];
+                    $evento["data_prevista"] = $linha["data_prevista"];
+
+                    // Adiciona a informação se o evento é presencial ou online
+                    if (!empty($linha["evento_presencial"])) {
+                        $evento["formato"] = "presencial";
+                    } elseif (!empty($linha["evento_online"])) {
+                        $evento["formato"] = "online";
+                    }
+
+                    // Adiciona o evento no array de eventos.
+                    array_push($resposta["eventos"], $evento);
+                }
+            } 
+            else {
+                // Caso não haja eventos, você pode lidar com isso conforme necessário
+                // Por exemplo, definindo um erro ou enviando uma mensagem específica
+                $resposta["sucesso"] = 0;
+                $resposta["erro"] = "Nenhum evento encontrado.";
+            }
+
+            return $resposta;
         }
 
-        public function favorita(){
+        public function favoritar(){
 
         }
 
