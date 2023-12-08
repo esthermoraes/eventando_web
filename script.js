@@ -20,19 +20,17 @@ function selectEventFormat(format) {
     alert("Você escolheu um evento " + format + ".");
 }
 
-
-
 function criarEvento() {
+    var onlineCheckbox = document.getElementById("onlineCheckbox");
+    var myForm = document.getElementById("myForm");
 
-      var onlineCheckbox = document.getElementById("onlineCheckbox");
-      var myForm = document.getElementById("myForm");
-
-      if (onlineCheckbox.checked) {
+    if (onlineCheckbox.checked) {
         myForm.action = "criarEventoO.php";
-      } else {
-          myForm.action = "criarEventoP.php";
-     }
-    // Submit the form
-     myForm.submit();
-  }
-  
+    } 
+    else {
+        myForm.action = "criarEventoP.php";
+    }
+
+    // Remove o botão do tipo "button" para permitir que o formulário seja submetido
+    myForm.submit();
+}  

@@ -44,7 +44,7 @@
                     <div class="barraMyE">
                         <label id="MyEventos"> MEUS <br> EVENTOS </label>
                         <br>
-                        <div id="barraMyE" class="row ms-1 me-1 mt-4 d-flex justify-content-between">
+                        <div id="barraMyE" class="row ms-1 me-0 mt-2 d-flex justify-content-between">
                             <?php
                             $eventosmY = $evento->selectMyEventos();
                             // Verifica se há eventos para exibir
@@ -52,7 +52,7 @@
                                 foreach ($eventosmY["eventos"] as $evento) {
                                     ?>
                                     <div class="row-sm col-md-3 mb-3 my-1">
-                                        <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1">
+                                        <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
                                     </div>
                                     <?php
                                 }
