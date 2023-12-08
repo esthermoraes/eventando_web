@@ -286,7 +286,7 @@
             $resposta["sucesso"] = 0;
             $resposta["erro"] = "Campo requerido nao preenchido";
         }
-    }
+//}
     //else{
         // senha ou email nao confere
         //$resposta["sucesso"] = 0;
