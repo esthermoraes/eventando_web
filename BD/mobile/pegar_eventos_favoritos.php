@@ -6,79 +6,81 @@
     $resposta = array();
 
     // verifica se o usuário conseguiu autenticar
-    if(autenticar($db_con)) {
+    if (autenticar($db_con)) {
         // limit - quantidade de eventos a ser entregues
         // offset - indica a partir de qual evento começa a lista
         if (isset($_GET['limit']) && isset($_GET['offset']) && isset($_GET['user_email'])) {
             $limit = $_GET['limit'];
             $offset = $_GET['offset'];
             $user_email = trim($_GET['user_email']);
-            
+
             // Consulta SQL para obter o ID do criador com base no e-mail
             $sql = "SELECT id_usuario FROM USUARIO WHERE email = '$user_email'";
             $consulta = $db_con->prepare($sql);
             $consulta->execute();
-            
+
             if ($consulta->rowCount() > 0) {
                 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 
                 // O ID do criador do evento
-                $user_id = $linha ['id_usuario'];
+                $user_id = $linha['id_usuario'];
 
-                $consulta2 = $db_con->prepare("SELECT EVENTO * FROM EVENTO JOIN Favorita ON FK_EVENTO_id_evento = id_evento 
-                WHERE FK_USUARIO_id_usuario = '$user_id' LIMIT " . $limit . " OFFSET " . $offset);
-                if($consulta2->execute()) {
-                    // Caso existam eventos no BD, eles sao armazenados na 
-                    // chave "eventos". O valor dessa chave e formado por um 
-                    // array onde cada elemento e um evento.
-                    $resposta["eventos"] = array();
-                    $resposta["sucesso"] = 1;
+                $consulta2 = $db_con->prepare("
+                    SELECT
+                        e.id_evento,
+                        e.nome,
+                        e.data_prevista,
+                        e.src_img,
+                        ep.FK_buffet_buffet_PK AS evento_presencial,
+                        eo.link AS evento_online
+                    FROM
+                        EVENTO e
+                        JOIN Favorita ON e.id_evento = Favorita.FK_EVENTO_id_evento
+                        LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
+                        LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento
+                    WHERE
+                        Favorita.FK_USUARIO_id_usuario = :user_id
+                    LIMIT $limit OFFSET $offset
+                ");
 
-                    if ($consulta2->rowCount() > 0) {
-                        while ($linha2 = $consulta2->fetch(PDO::FETCH_ASSOC)) {
-                            $evento = array();
-                            $evento["id"] = $linha2["id_evento"];
-                            $evento["nome"] = $linha2["nome"];
-                            $evento["data_prevista"] = $linha2["data_prevista"];
-                            $evento["img"] = $linha2["src_img"];
+                $consulta2->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+                if ($consulta2->execute()) {
+                    $resposta["eventos"] = array(); // Inicializa o array eventos
+
+                    while ($linha2 = $consulta2->fetch(PDO::FETCH_ASSOC)) {
+                        $evento = array();
+                        $evento["id"] = $linha2["id_evento"];
+                        $evento["nome"] = $linha2["nome"];
+                        $evento["data_prevista"] = $linha2["data_prevista"];
+                        $evento["img"] = $linha2["src_img"];
                         
-                            // Adiciona a lógica para determinar o formato do evento
-                            if (!empty($linha2["evento_presencial"])) {
-                                $evento["formato"] = "presencial";
-                            } elseif (!empty($linha2["evento_online"])) {
-                                $evento["formato"] = "online";
-                            } else {
-                                $evento["formato"] = "indefinido";
-                            }
-                    
-                            // Adiciona o evento no array de eventos.
-                            array_push($resposta["eventos"], $evento);
+                        // Adiciona o formato do evento ao array se presente
+                        if (!empty($linha2["evento_presencial"])) {
+                            $evento["formato"] = "presencial";
+                        } elseif (!empty($linha2["evento_online"])) {
+                            $evento["formato"] = "online";
                         }
-                    }   
-                }
-                else {
-                    // Caso ocorra falha no BD, o cliente 
-                    // recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
-                    // motivo da falha.
+
+                        // Adiciona o evento no array de eventos.
+                        array_push($resposta["eventos"], $evento);
+                    }
+
+                    $resposta["sucesso"] = 1; // Indica sucesso
+                } else {
                     $resposta["sucesso"] = 0;
                     $resposta["erro"] = "Erro no BD: " . $consulta2->errorInfo()[2];
                 }
-            }
-            else{
+            } else {
                 $resposta["sucesso"] = 0;
                 $resposta["erro"] = "O email do criador do evento não foi encontrado.";
             }
-        }
-        else {
-            // Se a requisicao foi feita incorretamente, ou seja, os parametros 
-            // nao foram enviados corretamente para o servidor, o cliente 
-            // recebe a chave "sucesso" com valor 0. A chave "erro" indica o 
-            // motivo da falha.
+        } else {
+            // Se a requisicao foi feita incorretamente...
             $resposta["sucesso"] = 0;
             $resposta["erro"] = "Campo requerido não preenchido";
         }
-    }
-    else {
+    } else {
         // senha ou usuario nao confere
         $resposta["sucesso"] = 0;
         $resposta["erro"] = "usuario ou senha não confere";
