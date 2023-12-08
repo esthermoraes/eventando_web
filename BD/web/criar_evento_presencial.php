@@ -69,9 +69,8 @@
         $eventoP = new EventoPresencial($nome, $objetivo, $dataPrevista, $horario, $img_url, $atracoes, 
         $user, $buffet, $cep, $numero, $logradouro, $tipoLogradouro, $bairro, $cidade, $estado,
         $tipoContato, $contato);
-        $eventoP->insert();
 
-        /*try{
+        try{
             $eventoP->insert();
             echo "<script>alert('Evento criado com sucesso!');</script>";
             echo '<script>window.location.href = "menu.php";</script>';
@@ -79,6 +78,6 @@
         }
         catch (Exception $e){
             echo "<script>alert('Erro ao criar evento. Tente novamente.');</script>";
-        }*/
+        }
     }  
 ?>
