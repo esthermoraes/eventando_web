@@ -58,9 +58,7 @@
                                 }
                             } else {
                                 // Caso não haja eventos, você pode lidar com isso conforme necessário
-                                echo "<div>
-                                <center>Você ainda não possui eventos!</center>
-                                </div>";
+                                echo "<div> <center>Você ainda não possui eventos!</center> </div>";
                             }
                             ?>
                         </div>

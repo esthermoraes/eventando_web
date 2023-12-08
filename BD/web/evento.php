@@ -115,7 +115,8 @@
                     // Adiciona o evento no array de eventos.
                     array_push($resposta["eventos"], $evento);
                 }
-            } else {
+            } 
+            else {
                 // Caso não haja eventos, você pode lidar com isso conforme necessário
                 $resposta["sucesso"] = 0;
                 $resposta["erro"] = "Nenhum evento encontrado.";
@@ -195,7 +196,7 @@
         public function selectCalendar(){
             $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
             $stmt_user = Database::prepare($sql_user);
-            $stmt_user->bindParam(":email", $this->email_user);
+            $stmt_user->bindParam(":email", $_SESSION['email_txt']);
             $stmt_user->execute();
             $id_user = $stmt_user->fetchColumn();
         
@@ -207,7 +208,7 @@
                 WHERE e.FK_USUARIO_id_usuario != (:id_user) ORDER BY 
                 data_prevista LIMIT 10";
                 $stmt_cl = Database::prepare($sql_cl);
-                $stmt_cl->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+                $stmt_cl->bindParam(':id_user', $id_user, PDO::PARAM_INT);
                 $stmt_cl->execute();
             }
 
@@ -244,15 +245,98 @@
             return $resposta;
         }
 
-        public function favoritar(){
+        public function favoritar($id_evento){
+            $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $_SESSION['email_txt']);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
 
+            if($id_user) {
+                $sql_favoritar = "INSERT INTO Favorita(fk_EVENTO_id_evento, fk_USUARIO_id_usuario) 
+                VALUES(:id_evento, :id_user)";
+                $stmt_favoritar = Database::prepare($sql_favoritar);
+                $stmt_favoritar->bindParam(":id_evento", $id_evento, PDO::PARAM_INT);
+                $stmt_favoritar->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+
+                return $stmt_favoritar->execute();
+            }
+            return false;
         }
 
         public function selectFavoritos(){
-            
+            $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $_SESSION['email_txt']);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
+
+            if($id_user) {
+                $sql_sf = "SELECT
+                e.id_evento,
+                e.src_img,
+                ep.FK_buffet_buffet_PK AS evento_presencial,
+                eo.link AS evento_online
+                FROM EVENTO e JOIN Favorita ON e.id_evento = Favorita.FK_EVENTO_id_evento
+                LEFT JOIN EVENTO_PRESENCIAL ep ON e.id_evento = ep.FK_EVENTO_id_evento
+                LEFT JOIN EVENTO_ONLINE eo ON e.id_evento = eo.FK_EVENTO_id_evento
+                WHERE Favorita.FK_USUARIO_id_usuario = (:id_user)";
+                $stmt_sf = Database::prepare($sql_sf);
+                $stmt_sf->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+                $stmt_sf->execute();
+            }
+
+            // Construir a resposta
+            $resposta["eventos"] = array();
+            $resposta["sucesso"] = 1;
+
+            if ($stmt_sf && $stmt_sf->rowCount() > 0) {
+                while ($linha = $stmt_sf->fetch(PDO::FETCH_ASSOC)) {
+                    $evento = array();
+                    $evento["id"] = $linha["id_evento"];
+                    $evento["img"] = $linha["src_img"];
+
+                    // Adiciona a informação se o evento é presencial ou online
+                    if (!empty($linha["evento_presencial"])) {
+                        $evento["formato"] = "presencial";
+                    } elseif (!empty($linha["evento_online"])) {
+                        $evento["formato"] = "online";
+                    }
+
+                    // Adiciona o evento no array de eventos.
+                    array_push($resposta["eventos"], $evento);
+                }
+            } 
+            else {
+                // Caso não haja eventos, você pode lidar com isso conforme necessário
+                // Por exemplo, definindo um erro ou enviando uma mensagem específica
+                $resposta["sucesso"] = 0;
+                $resposta["erro"] = "Nenhum evento encontrado.";
+            }
+
+            return $resposta;
         }
 
-        public function update($id){
+        public function desfavoritar($id_evento){
+            $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
+            $stmt_user = Database::prepare($sql_user);
+            $stmt_user->bindParam(":email", $_SESSION['email_txt']);
+            $stmt_user->execute();
+            $id_user = $stmt_user->fetchColumn();
+
+            if($id_user) {
+                $sql_desfavoritar = "DELETE FROM Favorita WHERE fk_EVENTO_id_evento = (:id_evento) and 
+                fk_USUARIO_id_usuario = (:id_user)";
+                $stmt_desfavoritar = Database::prepare($sql_desfavoritar);
+                $stmt_desfavoritar->bindParam(":id_evento", $id_evento, PDO::PARAM_INT);
+                $stmt_desfavoritar->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+
+                return $stmt_desfavoritar->execute();
+            }
+            return false;
+        }
+
+        public function update($id_evento){
         }
     }
 ?>
