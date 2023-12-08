@@ -91,8 +91,6 @@
 						if ($consulta8->execute()) {
 						    $linha8 = $consulta8->fetch(PDO::FETCH_ASSOC);
 						    $estado = $linha8["estado"];
-						}
-
                                                     $contato = "sem contato";
                                                     $tipo_contato = "sem tipo";
                                                     $atracoes = "sem atrações";
