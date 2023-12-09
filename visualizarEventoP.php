@@ -13,8 +13,7 @@
 ?>
 
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
-        <p class="me-5">VISUALIZAR EVENTO PRESENCIAL</p>
-        <!-- <p class="ms-5"><?php echo htmlspecialchars($nome);?></p> -->
+    <center><p class="me-5">VISUALIZAR EVENTO PRESENCIAL</p></center>
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete mb-4">
@@ -25,19 +24,19 @@
             
             <div class="d-flex ms-2">
                 <div class="form-floating">
-                    <p>Objetivo: <?php echo $objetivo;?></p> 
-                    <p>Dia e Hora: <?php echo $data_prevista;?> às <?php echo $horario;?></p>
+                    <p><?php echo $objetivo;?></p> 
+                    <p><?php echo $data_prevista;?> às <?php echo $horario;?></p>
 
                     <p><strong>Localização</strong></p>
                     <p> <?php echo $tipoLogradouro;?> <?php echo $logradouro;?>, <?php echo $numero;?> </p>
                     <p> <?php echo $bairro;?> - <?php echo $cidade;?> - <?php echo $estado;?> </p>
-                    <p> <?php echo $cep;?> </p>
+                    <p>CEP <?php echo $cep;?> </p>
                     
 
                     <p><strong>Complementos</strong></p>
-                    <p> Atrações: <?php echo $atracoes;?> </p>
-                    <p> Buffet: <?php echo $buffet;?> </p>
-                    <p> Contato: <?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
+                    <p><?php echo $atracoes;?> </p>
+                    <p><?php echo $buffet;?> </p>
+                    <p><?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
                 </div>  
             </div>
         </div>
