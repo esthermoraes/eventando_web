@@ -58,12 +58,6 @@ body{
     border-radius: 6px;
 }
 
-.titulo-card{
-    /*background-color: #e1d1e5;*/
-    color: #f5d742;
-    font-weight: bold;
-}
-
 /* Definindo a estilização do html scrollbar*/
 html ::-webkit-scrollbar {
     height: 14px;

@@ -156,10 +156,10 @@
                 $stmt_presencial->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
                 $stmt_presencial->execute();
 
-                $sql_contato = "INSERT INTO POSSUI_TIPO_CONTATO_EVENTO (tipo_contato, fk_EVENTO_id_evento, contato) 
-                VALUES (:tipo_contato, :id_evento, :contato)";
+                $sql_contato = "INSERT INTO POSSUI_TIPO_CONTATO_EVENTO (fk_tipo_contato_id_tipo_contato, 
+                fk_EVENTO_id_evento, contato) VALUES (:fk_tipo_contato_id_tipo_contato, :id_evento, :contato)";
                 $stmt_contato = Database::prepare($sql_contato);
-                $stmt_contato->bindParam(':tipo_contato', $this->tipo_contato);
+                $stmt_contato->bindParam(':fk_tipo_contato_id_tipo_contato', $this->tipo_contato);
                 $stmt_contato->bindParam(':id_evento', $id_evento, PDO::PARAM_INT);
                 $stmt_contato->bindParam(':contato', $this->contato);
                 return $stmt_contato->execute();
