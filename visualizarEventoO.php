@@ -12,48 +12,41 @@
     include_once 'BD/web/pegar_detalhes_evento_online.php';
 ?>
 
-<div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
-        <p class="ms-3">VISUALIZAR EVENTO ONLINE</p>
-        <p class="me-3"><?php echo htmlspecialchars($nome);?></p>
+    <div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
+        <p class="me-5">VISUALIZAR EVENTO ONLINE</p>
+        <p class="ms-5"><?php echo htmlspecialchars($nome);?></p>
     </div>
 
-    <div class="container-fluid d-flex p-0 bagulhete">
-        <div class="col-4 d-flex flex-column justify-content-between align-items-start primeiraparte">
+    <div class="container-fluid d-flex p-0 bagulhete mb-4">
+        <div class="col-6 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
             <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
             <p class="privacidade"><?php echo $privacidade;?></p>
             
-            <div class="d-flex">
+            <div class="d-flex ms-2">
                 <div class="form-floating">
-                <p><?php echo $objetivo;?></p> 
-                <p><?php echo $data_prevista;?></p>  
-                <p><?php echo $horario;?></p>
+                    <p>Objetivo: <?php echo $objetivo;?></p> 
+                    <p>Dia e Hora: <?php echo $data_prevista;?> às <?php echo $horario;?></p>
 
-                <p><strong>Endereço</strong></p>
-                <p><?php echo $plataforma;?></p>
-                <p><?php echo $link;?></p>
-                </div>  
+                    <p><strong>Endereço</strong></p>
+                    <p>Plataforma: <?php echo $plataforma;?></p>
+                    <p>Link: <?php echo $link;?></p>
+
+                    <p><strong>Complementos</strong></p>
+                    <p> Atrações: <?php echo $atracoes;?> </p>
+                    <p> Contato: <?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
+
+                    <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2 me-2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        SALVAR EVENTO
+                    </button>
+                    
+                    <button type="submit" id="btn-deletar" class="botaoD mt-1 mb-2 me-1">
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        DELETAR EVENTO
+                    </button>
+                </div>
             </div>
         </div>
-        
-            <div class="col-4 d-flexflex-column align-items-center-start mt-4">
-                <p class="font-weight-bold"><strong>Complementos</strong></p>
-                <p> <?php echo $atracoes;?> </p>
-                <p> <?php echo $tipo_contato;?> </p>
-                <p> <?php echo $contato;?> </p>
-            </div>
-            
-            <div class="botoesev d-flex flex-column align-items-center m-2 mt-5">
-                <button type="submit" id="btn-salvar" class="botaoS m-2">
-                    <i class="fa-regular fa-calendar-check"></i>
-                    SALVAR EVENTO
-                </button>
-                
-                <button type="submit" id="btn-deletar" class="botaoD m-1">
-                    <i class="fa-regular fa-calendar-xmark"></i>
-                    DELETAR EVENTO
-                </button>
-            </div>
-        
     </div>
     
 </body>

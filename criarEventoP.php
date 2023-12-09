@@ -20,7 +20,7 @@
 
     // Verifica se o nome foi enviado
     if (isset($_POST['eventFormat'])) {
-        $nome = $_POST['nome'];
+        $nome = htmlspecialchars($_POST['nome']);
     } 
     else {
         echo '<p>Nenhum nome foi enviado.</p>';

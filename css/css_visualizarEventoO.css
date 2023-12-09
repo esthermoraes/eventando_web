@@ -44,7 +44,7 @@ a{
 
 .bagulhete{
     background-color: #dccce0;
-    width: 97% !important;
+    width: 50% !important;
     border-radius: 13px;
 }
 
@@ -97,3 +97,16 @@ a{
     border: solid 3px #770089;
 }
 
+/* Definindo a estilização do html scrollbar*/
+html ::-webkit-scrollbar {
+    height: 14px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #770089;
+}
+
+html ::-webkit-scrollbar-track {
+    background: #ededed;
+}
