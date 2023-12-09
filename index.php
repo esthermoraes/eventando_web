@@ -2,7 +2,7 @@
     // Define a variável $header como 1
     $header = 1;
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
-    include_once 'header.php';
+    include_once 'BD/web/header.php';
 ?>
 
     <div class="m-5">
@@ -39,5 +39,5 @@
 
     <?php
         // Inclui o arquivo 'footer.php', que geralmente contém código HTML e PHP relacionado ao rodapé da página
-        include_once 'footer.php';
+        include_once 'BD/web/footer.php';
     ?>

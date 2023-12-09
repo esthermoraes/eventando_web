@@ -10,7 +10,7 @@
     // Define a variável $title como 'CRIAR EVENTO PRESENCIAL', que será o título da página
     $title = 'CRIAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
-    include_once 'header.php';
+    include_once 'BD/web/header.php';    
     include_once 'BD/web/criar_evento_presencial.php';
 
     // deixei o POST para debugar os valores de acordo com os passos

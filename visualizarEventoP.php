@@ -8,7 +8,7 @@
     // Define a variável $title como 'VISUALIZAR EVENTO PRESENCIAL', que será o título da página
     $title = 'VISUALIZAR EVENTO PRESENCIAL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
-    include_once 'header.php';
+    include_once 'BD/web/header.php';
     require_once 'BD/web/pegar_detalhes_evento_presencial.php';
 ?>
 

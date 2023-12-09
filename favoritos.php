@@ -8,7 +8,7 @@
     // Define a variável $title como 'FAVORITOS', que será o título da página
     $title = 'FAVORITOS';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP anteriormente comentado
-    include_once 'header.php';
+	include_once 'BD/web/header.php';
 	include_once 'BD/web/evento.php';
 
 	$evento = new Evento();
@@ -65,5 +65,5 @@
 	
 	<?php
         // Inclui o arquivo 'footer.php', que geralmente contém código HTML e PHP relacionado ao rodapé da página
-        include_once 'footer.php';
+        include_once 'BD/web/footer.php';
     ?>

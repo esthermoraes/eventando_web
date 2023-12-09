@@ -8,7 +8,7 @@
     // Define a variável $title como 'PERFIL', que será o título da página
     $title = 'EDITAR PERFIL';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
-    include_once 'header.php';	
+    include_once 'BD/web/header.php';
 	// Inclui o arquivo 'editar_usuario.php'
 	include_once 'BD/web/editar_usuario.php';	
 ?>
@@ -109,5 +109,5 @@
 
 	<?php
         // Inclui o arquivo 'footer.php', que geralmente contém código HTML e PHP relacionado ao rodapé da página
-        include_once 'footer.php';
+        include_once 'BD/web/footer.php';
     ?>
