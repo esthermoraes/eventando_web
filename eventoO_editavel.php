@@ -35,6 +35,11 @@
                     <p><strong>Complementos</strong></p>
                     <p> Atrações: <?php echo $atracoes;?> </p>
                     <p> Contato: <?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
+
+                    <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2 me-2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        SALVAR EDIÇÕES
+                    </button>
                 </div>
             </div>
         </div>

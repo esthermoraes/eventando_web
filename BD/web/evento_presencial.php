@@ -251,6 +251,27 @@
         
             return $resposta;
         }
+
+        public function delete($id_evento) {
+            $pdo = Database::getInstance();
+        
+            $sql = "DELETE FROM EVENTO WHERE id_evento = :id_evento";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id_evento", $id_evento, PDO::PARAM_INT);
+            $result = $stmt->execute();
+        
+            if ($result) {
+                // A exclusão principal foi bem-sucedida, agora exclua as entradas relacionadas em POSSUI_TIPO_CONTATO_EVENTO
+                $sql2 = "DELETE FROM POSSUI_TIPO_CONTATO_EVENTO WHERE fk_evento_id_evento = :id_evento";
+                $stmt2 = $pdo->prepare($sql2);
+                $stmt2->bindParam(":id_evento", $id_evento, PDO::PARAM_INT);
+                $result2 = $stmt2->execute();
+        
+                return $result2; // Retorna o resultado da exclusão relacionada
+            }
+        
+            return false; // Retorna false se a exclusão principal falhar
+        }
                 
     }
 ?>

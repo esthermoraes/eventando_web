@@ -338,23 +338,6 @@
 
         public function update($id_evento){
         }
-
-        public function delete($id_evento){
-            $pdo = Database::getInstance();
-
-            $sql = "DELETE FROM $this->table WHERE id_evento = :id_evento";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":id_evento", $id_evento, PDO::PARAM_INT);
-            $result = $stmt->execute();
-
-            if($result){
-                $sql2 = "DELETE FROM POSSUI_TIPO_CONTATO_EVENTO WHERE fk_evento_id_evento = :id_evento";
-                $stmt2 = $pdo->prepare($sql2);
-                $stmt2->bindParam(":id_evento", $id_evento, PDO::PARAM_INT);
-                $stmt2->execute();
-
-                return $stmt2->execute();
-            }
-        }
+        
     }
 ?>
