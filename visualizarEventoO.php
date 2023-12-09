@@ -1,6 +1,6 @@
 <?php 
     // Define a variável $header como 3
-    $header = 3;
+    $header = 2;
     // Define a variável $css com um link para um arquivo CSS externo chamado 'css_visualizarEventoP.css'
     $css = '<link rel = "stylesheet" type = "text/css" href = "css/css_visualizarEventoO.css" />';
     // Define a variável $js como vazia, ou seja, não inclui nenhum arquivo JavaScript

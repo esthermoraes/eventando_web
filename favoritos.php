@@ -9,6 +9,9 @@
     $title = 'FAVORITOS';
     // Inclui o arquivo 'header.php', que contém código HTML e PHP anteriormente comentado
     include_once 'header.php';
+	include_once 'BD/web/evento.php';
+
+	$evento = new Evento();
 ?>
 
 	<div class="mae">
@@ -33,180 +36,31 @@
 		</div>
 
         <div class="ms-5 me-5 mb-1 teste">
-            <div class="ms-2 me-2 mt-5 mb-5 gx-5">
+			<div class="ms-2 me-2 mt-5 mb-5 gx-5">
 				<div class="row m-2 justify-content-between">
 
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento1.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
+					<?php
+					// Suponha que $resposta seja o array retornado pela função selectFavoritos()
+					$resposta = $evento->selectFavoritos();
 
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento2.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento3.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento4.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento5.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento6.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento7.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento8.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento9.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento10.jpg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento11.jpg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento12.jfif" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento13.jfif" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento14.jfif" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento15.jfif" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<!-- <div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento16.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div> -->
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento17.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento18.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento19.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<!-- <div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento20.jfif" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div>
-
-					<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-						<img src="img/evento21.jpeg" class="card-img-top config-img" alt="foto evento">
-						<div id="favoritar" estado="desfavoritado" class="card-img-overlay d-flex favoritado">
-							<i class="fa-regular fa-star ms-0 mt-0 me-2 fs-5" style="color: #f5d742;"></i>
-							<p class="card-title titulo-card ms-0 mt-0 fs-4">Título</p>
-						</div>
-					</div> -->
+					if ($resposta["sucesso"] == 1 && isset($resposta["eventos"])) {
+						foreach ($resposta["eventos"] as $evento) {
+							?>
+							<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
+								<img src="<?php echo $evento['img']; ?>" class="card-img-top config-img" alt="foto evento">
+							</div>
+							<?php
+						}
+					} else {
+						// Caso não haja eventos, você pode lidar com isso conforme necessário
+						// Por exemplo, exibindo uma mensagem específica
+						echo "<p>Nenhum evento encontrado.</p>";
+					}
+					?>
 
 				</div>
-        	</div>
-    	</div>
+			</div>
+		</div>
 	</div>
 	
 	<?php
