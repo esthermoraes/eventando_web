@@ -18,7 +18,7 @@
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete mb-4">
-        <div class="col-6 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
+        <div class="col-8 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
             <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
             <p class="privacidade"><?php echo $privacidade;?></p>
             
