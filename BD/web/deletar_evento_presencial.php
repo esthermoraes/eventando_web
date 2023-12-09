@@ -1,12 +1,12 @@
 <?php
-	include_once 'BD/web/evento_online.php';
+    include_once 'BD/web/evento_presencial.php';
 
 	if (isset($_POST['deletar'])) {
 		// Recupera os dados do formulário
 		$id_evento = $_POST['id_evento'];
 
 		// Cria uma instância da classe evento
-		$evento = new EventoOnline();
+		$evento = new EventoPresencial();
 
 		try {
 			// Deleta o usuário

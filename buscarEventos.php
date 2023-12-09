@@ -18,39 +18,47 @@
         <h2>Resultados da Busca</h2>
 
         <?php
-            if (isset($resultados) && $resultados["sucesso"] === 1) {
-                if (!empty($resultados["eventos"])) {
+        if (isset($resultados) && $resultados["sucesso"] === 1) {
+            if (!empty($resultados["eventos"])) {
         ?>
-
-                    <div class="evento-container">
-
-                        <?php
-                            foreach ($resultados["eventos"] as $evento) {
-                                $formatoClass = isset($evento["formato"]) ? 'formato-' . $evento["formato"] : '';
-                        ?>
-
-                                <div class="evento mb-3 <?php echo $formatoClass; ?>">
-                                    <img src="<?php echo $evento["img"]; ?>" alt="Imagem do Evento">
-                                </div>
-
-                        <?php
-                            }
-                        ?>
-
-                    </div>
-
+            <div class="evento-container">
                 <?php
-                } 
-                else {
-                    echo "<p>Nenhum evento encontrado.</p>";
+                foreach ($resultados["eventos"] as $evento) {
+                    if($evento['formato'] == 'presencial'){
+                    ?>
+                        <a href="./visualizarEventoP.php?id=<?php echo $evento["id"]?>">
+                            <div class="evento mb-3">
+                                <img src="<?php echo $evento["img"]; ?>" alt="Imagem do Evento">
+                            </div>
+                        </a>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        <a href="./visualizarEventoO.php?id=<?php echo $evento["id"]?>">
+                            <div class="evento mb-3">
+                                <img src="<?php echo $evento["img"]; ?>" alt="Imagem do Evento">
+                            </div>
+                        </a>
+                        <?php
+                    }
+                        ?>
+
+                    <?php
                 }
+                ?>
+            </div>
+            <?php
             } 
             else {
                 echo "<p>Erro: " . $resultados["erro"] . "</p>";
             }
+        }
+        else {
+            echo "<div> <center> Nenhum evento encontrado </center> </div>";
+        }
         ?>
     </div>
-
 </body>
 
 <?php

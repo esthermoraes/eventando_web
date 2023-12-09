@@ -38,6 +38,11 @@
                     <p> Atrações: <?php echo $atracoes;?> </p>
                     <p> Buffet: <?php echo $buffet;?> </p>
                     <p> Contato: <?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
+
+                    <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2 me-2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        SALVAR EVENTO
+                    </button>
                 </div>  
             </div>
         </div>

@@ -246,7 +246,7 @@
             $resposta['tipo_logradouro'] = $evento['tipo_logradouro'];
             $resposta['logradouro'] = $evento['logradouro'];
             $resposta['numero'] = $evento['numero'];
-            $resposta['tipo_contato_evento'] = isset($evento['tipo_contato']) ? $evento['tipo_contato'] : 'sem contato';
+            $resposta['tipo_contato_evento'] = isset($evento['tipo_contato']) ? $evento['tipo_contato'] : 'sem tipo';
             $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         
             return $resposta;

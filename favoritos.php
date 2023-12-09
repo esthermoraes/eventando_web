@@ -23,7 +23,7 @@
 				</h1>
 			</div>
 
-			<div class="col-5 ms-5 me-0 mt-5 d-flex justify-content-end">
+			<!-- <div class="col-5 ms-5 me-0 mt-5 d-flex justify-content-end">
 				<select class="form-select mt-4 ms-5 me-0" id="sltFiltros">
 					<option value="TE">&#xf0b0; Todos Eventos</option>
 					<option value="ME">&#xf274; Meus Eventos</option>
@@ -32,33 +32,74 @@
 					<option value="EO">&#xf0c1;	Eventos Online</option>
 					<option value="OA">&#xf15d; Ordem Alfabética</option>
 				</select>
-			</div>
+			</div> -->
 		</div>
 
         <div class="ms-5 me-5 mb-1 teste">
 			<div class="ms-2 me-2 mt-5 mb-5 gx-5">
-				<div class="row m-2 justify-content-between">
+				<div class="row m-2 justify-content-start">
 
 					<?php
-					// Suponha que $resposta seja o array retornado pela função selectFavoritos()
-					$resposta = $evento->selectFavoritos();
+					$eventos = $evento->selectFavoritos();
 
-					if ($resposta["sucesso"] == 1 && isset($resposta["eventos"])) {
-						foreach ($resposta["eventos"] as $evento) {
+					if ($eventos["sucesso"] == 1 && isset($eventos["eventos"])) {
+						$counter = 0;
+
+						foreach ($eventos["eventos"] as $evento) {
+							if ($counter % 8 == 0) {
+								// Start a new row after every 8 cards
+								echo '<div class="row m-2 justify-content-start">';
+							}
+
 							?>
-							<div class="card bg-transparent config-card mt-4 m-4 mb-4 p-0">
-								<img src="<?php echo $evento['img']; ?>" class="card-img-top config-img" alt="foto evento">
+							<div class="col-md-3" style="margin-bottom: 10px; margin-right: 10px;">
+								<?php
+								if ($evento['formato'] == 'presencial') {
+									?>
+									<a href="./visualizarEventoP.php?id=<?php echo $evento["id"]?>">
+										<div class="card bg-transparent config-card p-0">
+											<img src="<?php echo $evento['img']; ?>" class="card-img-top config-img" alt="foto evento">
+										</div>
+									</a>
+									<?php
+								} 
+								else {
+									?>
+									<a href="./visualizarEventoO.php?id=<?php echo $evento["id"]?>">
+										<div class="card bg-transparent config-card p-0">
+											<img src="<?php echo $evento['img']; ?>" class="card-img-top config-img" alt="foto evento">
+										</div>
+									</a>
+									<?php
+								}
+								?>
 							</div>
 							<?php
+
+							// Increment the counter
+							$counter++;
+
+							// Close the row after every 8 cards
+							if ($counter % 8 == 0) {
+								echo '</div>';
+							}
 						}
-					} else {
-						// Caso não haja eventos, você pode lidar com isso conforme necessário
-						// Por exemplo, exibindo uma mensagem específica
-						echo "<p>Nenhum evento encontrado.</p>";
+
+						// Close the row if it's not already closed
+						if ($counter % 8 != 0) {
+							echo '</div>';
+						}
+					} 
+					else {
+						echo "<div> <center> Nenhum evento favoritado. </center> </div>";
 					}
 					?>
 
 				</div>
+
+
+
+
 			</div>
 		</div>
 	</div>

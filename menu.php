@@ -44,23 +44,37 @@
                     <div class="barraMyE">
                         <label id="MyEventos"> MEUS <br> EVENTOS </label>
                         <br>
-                        <div id="barraMyE" class="row ms-1 me-0 mt-2 d-flex justify-content-between">
-                            <?php
-                            $eventosmY = $evento->selectMyEventos();
-                            // Verifica se há eventos para exibir
-                            if ($eventosmY["sucesso"] == 1 && !empty($eventosmY["eventos"])) {
-                                foreach ($eventosmY["eventos"] as $evento) {
-                                    ?>
-                                    <div class="row-sm col-md-3 mb-3 my-1">
-                                        <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
-                                    </div>
-                                    <?php
+                        <div id="barraMyE" class="container">
+                            <div class="row ms-1 me-0 mt-2 d-flex justify-content-between">
+                                <?php
+                                $eventosmY = $evento->selectMyEventos();
+                                if ($eventosmY["sucesso"] == 1 && !empty($eventosmY["eventos"])) {
+                                    foreach ($eventosmY["eventos"] as $evento) {
+                                        ?>
+                                        <div class="col-md-3 mb-3 my-1">
+                                            <?php
+                                            if ($evento['formato'] == 'presencial') {
+                                                ?>
+                                                <a href="./visualizarMyEventoP.php?id=<?php echo $evento["id"] ?>">
+                                                    <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
+                                                </a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <a href="./visualizarMyEventoO.php?id=<?php echo $evento["id"] ?>">
+                                                    <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
+                                                </a>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                        <?php
+                                    }
+                                } else {
+                                    echo "<div> <center>Você ainda não possui eventos!</center> </div>";
                                 }
-                            } else {
-                                // Caso não haja eventos, você pode lidar com isso conforme necessário
-                                echo "<div> <center>Você ainda não possui eventos!</center> </div>";
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>

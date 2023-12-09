@@ -129,11 +129,11 @@
             $resposta["data_prevista"] = $evento['data_prevista'];
             $resposta["horario"] = $evento['horario'];
             $resposta["objetivo"] = $evento['objetivo'];
-            $resposta["atracoes"] = $evento['atracoes'];
+            $resposta["atracoes"] = isset($evento['atracoes']) ? $evento['atracoes'] : 'sem atracoes';
             $resposta["link"] = $evento['link']; 
-            $resposta['plataforma_evento'] = isset($plataforma['plataforma']) ? $plataforma['plataforma'] : null;
-            $resposta['tipo_contato_evento'] = isset($tipo_contato['tipo_contato']) ? $tipo_contato['tipo_contato'] : null;
-            $resposta["contato"] = $evento['contato'];
+            $resposta['plataforma_evento'] = isset($plataforma['plataforma']);
+            $resposta['tipo_contato_evento'] = isset($tipo_contato['tipo_contato']) ? $tipo_contato['tipo_contato'] : 'sem tipo';
+            $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         
             return $resposta;
         }

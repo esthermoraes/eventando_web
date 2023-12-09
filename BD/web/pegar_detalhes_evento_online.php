@@ -3,7 +3,8 @@
 	
 	// Obtém informações do usuário da resposta da consulta ao banco de dados.
 	$evento = new EventoOnline();
-	$resposta = $evento->select(123);
+    $id_evento = $_GET['id'];
+	$resposta = $evento->select($id_evento);
     
     $id_evento = $resposta['id_evento'];
     $nome = $resposta['nome'];
