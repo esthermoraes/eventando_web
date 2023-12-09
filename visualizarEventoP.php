@@ -14,11 +14,12 @@
 
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
         <p class="me-5">VISUALIZAR EVENTO PRESENCIAL</p>
-        <p class="ms-5"><?php echo htmlspecialchars($nome);?></p>
+        <!-- <p class="ms-5"><?php echo htmlspecialchars($nome);?></p> -->
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete mb-4">
         <div class="col-8 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
+            <p><?php echo htmlspecialchars($nome);?></p>
             <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
             <p class="privacidade"><?php echo $privacidade;?></p>
             

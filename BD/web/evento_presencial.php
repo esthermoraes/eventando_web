@@ -235,10 +235,10 @@
             $resposta["privacidade_restrita"] = $evento['privacidade_restrita'];
             $resposta["src_img"] = $evento['src_img'];
             $resposta["data_prevista"] = $evento['data_prevista'];
-            $resposta["horario"] = isset($evento['horario']) ? $evento['horario'] : null;
-            $resposta["objetivo"] = isset($evento['objetivo']) ? $evento['objetivo'] : null;
-            $resposta["atracoes"] = isset($evento['atracoes']) ? $evento['atracoes'] : null;
-            $resposta['buffet'] = isset($evento['buffet']) ? $evento['buffet'] : null;
+            $resposta["horario"] = isset($evento['horario']);
+            $resposta["objetivo"] = isset($evento['objetivo']);
+            $resposta["atracoes"] = isset($evento['atracoes']) ? $evento['atracoes'] : 'sem atrações';
+            $resposta['buffet'] = isset($evento['buffet']) ? $evento['buffet'] : 'sem buffet';
             $resposta['cep'] = $evento['cep'];
             $resposta['estado'] = $evento['estado'];
             $resposta['cidade'] = $evento['cidade'];
@@ -246,8 +246,8 @@
             $resposta['tipo_logradouro'] = $evento['tipo_logradouro'];
             $resposta['logradouro'] = $evento['logradouro'];
             $resposta['numero'] = $evento['numero'];
-            $resposta['tipo_contato_evento'] = isset($evento['tipo_contato']) ? $evento['tipo_contato'] : null;
-            $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : null;
+            $resposta['tipo_contato_evento'] = isset($evento['tipo_contato']) ? $evento['tipo_contato'] : 'sem contato';
+            $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         
             return $resposta;
         }
