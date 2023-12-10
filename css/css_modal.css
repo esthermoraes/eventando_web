@@ -1,0 +1,43 @@
+/* Remova a altura fixa do modal */
+.modal-dialog {
+    height: auto;
+}
+
+.modal-content, .modal-footer, .modal-header, .modal-body {
+    background-color: #dbe5eb;
+}
+
+.modal-content{
+    width: 100%;
+    border: 2px solid #9fcde8 !important;
+}
+
+/* Ajuste a posição e tamanho do campo de entrada do nome do evento */
+#eventName {
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    margin-bottom: 5px; /* Espaçamento abaixo do campo de entrada */
+    border: #b25abf 2px solid !important;
+    border-radius: 5px;
+}
+
+label{
+    font-size: 1.25rem;
+}
+
+.btnCriar {
+    background-color: #b25abf;
+    color: #fff;
+    border: #fff 2px solid !important;
+    border-radius: 8px;
+    text-align: center;
+    border-width: 2px;
+    margin-top: 5px;
+    font-size: 14px; /* Tamanho da fonte desejado */
+    width: 100%; /* Largura total */
+    height: 30px;
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+.btnCriar:hover {
+    background-color: #b900d5;
+}

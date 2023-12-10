@@ -99,11 +99,11 @@
             <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
             <!-- CSS externo-->
             <link rel="stylesheet" href="css/css_header2.css">
-            <link rel="stylesheet" href="styles.css">
+            <link rel="stylesheet" href="css/css_modal.css">
             <!-- Inclui o CSS externo definido na variável $css -->
             ' . $css . ' 
             <!-- JS externo-->
-            <script src="script.js" defer></script>
+            <script src="js/js_modal.js" defer></script>
             <!-- Inclui o JS externo definido na variável $js -->
             ' . $js . '
             <!-- Definimos o título da página -->
@@ -137,41 +137,49 @@
                     </div>
                     
                     <div class="col col-md-2 d-md-flex d-none flex-wrap align-self-center mb-5 mt-2 ms-5">
-                        
-                            <button class="btn-criar-evento" data-bs-toggle="modal" data-bs-target="#myModal">
-                                <i class="fa-regular fa-calendar-plus"></i> 
-                                &nbsp;CRIAR EVENTO
-                            </button>
-                        
+                        <button class="btn-criar-evento" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <i class="fa-regular fa-calendar-plus"></i> 
+                            &nbsp;CRIAR EVENTO
+                        </button>
                     </div>
                     <div class="col-1 d-md-none d-flex justify-content-center flex-wrap">
-                        <button class="short-criar">
-                            <a href = "modal.html"> 
-                                <i class="fa-regular fa-calendar-plus" aria-hidden="true"></i>
-                            </a> 
+                        <button class="short-criar" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <i class="fa-regular fa-calendar-plus" aria-hidden="true"></i>
                         </button>
                     </div>
 
-                    <div id="myModal" class="modal">
-                        <div class="modal-content">
-                            <form method= "post" id = "myForm" action="criarEventoO.php">
-                                <span class="close" id="closeModalBtn">&times;</span>
-                                <label for="eventName"> <b>NOME EVENTO:</b></label>
-                                <input type="text" id="eventName" name= "nome" placeholder="Digite o nome do evento" 
-                                class="w-100 form-control eventNameInput">
-                                <p><b>FORMATO:</b></p>
-                                <div class="formatOptions">
-                                    <label for="onlineCheckbox">
-                                        <input type="radio" id="onlineCheckbox" name="eventFormat"> <b>ONLINE</b>
-                                    </label>
-                                    <label for="presencialCheckbox">
-                                        <input type="radio" id="presencialCheckbox" name="eventFormat"> <b>PRESENCIAL</b>
-                                    </label>
+                    <div id="myModal" class="modal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <form method="post" id="myForm" action="criarEventoO.php">
+                                <div class="modal-header">
+                                    <h4 class="modal-title"> <strong> NOVO EVENTO </strong> </h4> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <button name = "criar" class="btnCriar createEventButton" onclick="criarEvento()">CRIAR</button>
+                                <div class="modal-body">
+                                    <input type="text" id="eventName" name="nome" placeholder="Digite o nome do evento" class="form-control mb-4">
+                                    <h5> <strong> FORMATO: </strong> </h5>
+                                    <div class="form-check">
+                                        <input type="radio" id="onlineCheckbox" name="eventFormat" class="form-check-input">
+                                        <label class="form-check-label mt-1" for="onlineCheckbox">
+                                            ONLINE
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" id="presencialCheckbox" name="eventFormat" class="form-check-input">
+                                        <label class="form-check-label mt-1" for="presencialCheckbox">
+                                            PRESENCIAL
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button name="criar" class="btnCriar" onclick="criarEvento()">CRIAR</button>
+                                </div>
                             </form>
+                            </div>
                         </div>
-                    </div> 
+                    </div>
+
             
                     <nav class="col navbar align-self-center mb-5 mt-3">
                         <div class="container-fluid pt-0 align-items-end flex-column">
