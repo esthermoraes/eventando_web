@@ -37,7 +37,6 @@
 
 <div class="container-fluid mt-5 ms-0 d-flex justify-content-between titulo">
     <p class="ms-3">INFORMAÇÕES DO EVENTO</p>
-    <!-- <p class="me-3" name="nome">Nome do Evento</p> -->
     <p class="me-3"> <?php echo htmlspecialchars($nome);?> </p>
 </div>
 
@@ -54,7 +53,7 @@
         </div>
     </div>
 
-    <form method="POST" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
+    <form method="POST" enctype="multipart/form-data" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">
         <div class="col-md-6">
             <input type="file" id="inputImagem" name="imagem" accept="image/*" onchange="previewImagem(event)" required>
@@ -86,7 +85,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <select class="w-100 form-select uf" id="sltEstado" name="estado">
+                    <select class="w-100 form-select uf" id="sltEstado" name="estado" required>
                         <option value="">Estado</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
@@ -128,7 +127,7 @@
 
 
                 <div class="col-md-3">
-                    <select class="form-select" id="sltTipoLogradouro" name="tipo_logradouro">
+                    <select class="form-select" id="sltTipoLogradouro" name="tipo_logradouro" required>
                         <option value="">Tipo Logradouro</option>
                         <option value="Rodovia">Rodovia</option>
                         <option value="Avenida">Avenida</option>
@@ -185,18 +184,20 @@
                 <div id="privacidade" estado="publico" class="d-flex publico_privado">
                     <i class="mt-2 fa-solid fa-unlock fa-flip-horizontal fa-xl" style="color: #b25abf;"></i>
                     <p class="ms-2 pp">Público</p>
-                    <input type = "hidden" name="privacidade" id="privado" value="false"/>
+                    <input type="hidden" name="privacidade" id="privado" value="false"/>
                 </div>
                 <input type="hidden" name="nome" value = <?php echo htmlspecialchars($nome);?>/>
             </div>
         </div>
 
         <div class="col-md-12 d-flex justify-content-end">
-            <button type="submit" name="proximo_passo" class="botao">&#10140; PRÓXIMO PASSO</button>
+            <button type="submit" name="proximo_passo" class="botao">
+                CRIAR EVENTO
+            </button>
         </div>
     </form>
 
-    <form method="POST" class="w-100 div-passo2 justify-content-center flex-wrap <?= ($passo == 2) ? 'd-flex' : 'd-none' ?>">
+    <!-- <form method="POST" class="w-100 div-passo2 justify-content-center flex-wrap <?= ($passo == 2) ? 'd-flex' : 'd-none' ?>">
 
         <input type="hidden" name="passo" value="2">
 
@@ -285,7 +286,7 @@
                 <div class="d-flex justify-content-start">
                     <div class="p-3">
 
-                        <div style="max-width: 600px;"> <!-- Define a largura máxima do contêiner pai -->
+                        <div style="max-width: 600px;"> 
                             <iframe id="preview_modelo" src="./cartaz_evento.php" frameborder="0" class="convitePronto"></iframe>
                         </div>
                     </div>
@@ -316,7 +317,7 @@
             </div>
         </div>
 
-    </form>
+    </form> -->
 
 </div>
 </body>

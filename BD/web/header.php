@@ -157,7 +157,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="text" id="eventName" name="nome" placeholder="Digite o nome do evento" class="form-control mb-4">
+                                    <input type="text" id="eventName" name="nome" placeholder="Digite o nome do evento" class="form-control mb-4" required>
                                     <h5> <strong> FORMATO: </strong> </h5>
                                     <div class="form-check">
                                         <input type="radio" id="onlineCheckbox" name="eventFormat" class="form-check-input">
@@ -275,8 +275,8 @@
                         <img class="logo-header img-fluid ms-5 ms-md-0 mt-xl-4" src="./img/logo.png">
                     </div>
                     <div class="div-pesquisar col-6 navbar-brand d-md-flex d-none justify-content-center align-items-center" href="#">
-                        <form class="d-flex mb-0 form-pesquisar">
-                            <input class="form-control me-2" type="search" placeholder="Buscar eventos" aria-label="Search"/>
+                        <form class="d-flex mb-0 form-pesquisar" method="post" action="buscarEventos.php">
+                            <input class="form-control me-2" type="search" name = "buscar" placeholder="Buscar eventos" aria-label="Search"/>
                             <button class="btn" type="submit">
                                 <i class="lupa fa-solid fa-magnifying-glass"></i>
                             </button>
