@@ -99,9 +99,13 @@
             <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
             <!-- CSS externo-->
             <link rel="stylesheet" href="css/css_header2.css">
-            ' . $css . ' <!-- Inclui o CSS externo definido na variável $css -->
+            <link rel="stylesheet" href="styles.css">
+            <!-- Inclui o CSS externo definido na variável $css -->
+            ' . $css . ' 
             <!-- JS externo-->
-            ' . $js . ' <!-- Inclui o JS externo definido na variável $js -->
+            <script src="script.js" defer></script>
+            <!-- Inclui o JS externo definido na variável $js -->
+            ' . $js . '
             <!-- Definimos o título da página -->
             <title> ' . $title . ' </title>
             <!-- Definimos o ícone na aba da página-->
@@ -133,12 +137,12 @@
                     </div>
                     
                     <div class="col col-md-2 d-md-flex d-none flex-wrap align-self-center mb-5 mt-2 ms-5">
-                        <a href = "modal.html"> 
-                            <button class="btn-criar-evento">
+                        
+                            <button class="btn-criar-evento" data-bs-toggle="modal" data-bs-target="#myModal">
                                 <i class="fa-regular fa-calendar-plus"></i> 
                                 &nbsp;CRIAR EVENTO
                             </button>
-                        </a>
+                        
                     </div>
                     <div class="col-1 d-md-none d-flex justify-content-center flex-wrap">
                         <button class="short-criar">
@@ -146,7 +150,28 @@
                                 <i class="fa-regular fa-calendar-plus" aria-hidden="true"></i>
                             </a> 
                         </button>
-                    </div>    
+                    </div>
+
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <form method= "post" id = "myForm" action="criarEventoO.php">
+                                <span class="close" id="closeModalBtn">&times;</span>
+                                <label for="eventName"> <b>NOME EVENTO:</b></label>
+                                <input type="text" id="eventName" name= "nome" placeholder="Digite o nome do evento" 
+                                class="w-100 form-control eventNameInput">
+                                <p><b>FORMATO:</b></p>
+                                <div class="formatOptions">
+                                    <label for="onlineCheckbox">
+                                        <input type="radio" id="onlineCheckbox" name="eventFormat"> <b>ONLINE</b>
+                                    </label>
+                                    <label for="presencialCheckbox">
+                                        <input type="radio" id="presencialCheckbox" name="eventFormat"> <b>PRESENCIAL</b>
+                                    </label>
+                                </div>
+                                <button name = "criar" class="btnCriar createEventButton" onclick="criarEvento()">CRIAR</button>
+                            </form>
+                        </div>
+                    </div> 
             
                     <nav class="col navbar align-self-center mb-5 mt-3">
                         <div class="container-fluid pt-0 align-items-end flex-column">
