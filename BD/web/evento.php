@@ -74,6 +74,51 @@
             return $this->id_evento;
         }
 
+        public function selectEventosRindex(){
+            $sql_eR = "SELECT src_img FROM EVENTO LIMIT 14";
+            $stmt_eR = Database::prepare($sql_eR);
+            $stmt_eR->execute();
+            
+            // Construir a resposta
+            $resposta["eventos"] = array();
+            $resposta["sucesso"] = 1;
+
+            // Verificar se $stmt_eR não é nulo antes de usar
+            if ($stmt_eR && $stmt_eR->rowCount() > 0) {
+                while ($linha = $stmt_eR->fetch(PDO::FETCH_ASSOC)) {
+                    $evento = array();
+                    $evento["img"] = $linha["src_img"];
+
+                    // Adiciona o evento no array de eventos.
+                    array_push($resposta["eventos"], $evento);
+                }
+            } 
+            else {
+                // Caso não haja eventos, você pode lidar com isso conforme necessário
+                $resposta["sucesso"] = 0;
+                $resposta["erro"] = "Nenhum evento encontrado.";
+            }
+
+            return $resposta;
+        }
+
+        public function renderCarrosselIndex($eventos) {
+            // Verifica se há eventos para exibir
+            if ($eventos["sucesso"] == 1 && !empty($eventos["eventos"])) {
+                ?>
+                    <?php
+                    foreach ($eventos["eventos"] as $evento) {
+                        ?>
+                        <img src="<?= $evento['img'];?>" class="img-fluid evento" alt="Imagem do Evento">
+                        <?php
+                    }
+            } 
+            else {
+                // Caso não haja eventos, você pode lidar com isso conforme necessário
+                echo "<div> <center> Nenhum evento encontrado. </center> </div>";
+            }
+        }
+        
         public function selectEventosR(){
             $sql_user = "SELECT id_usuario FROM USUARIO WHERE email = (:email)";
             $stmt_user = Database::prepare($sql_user);

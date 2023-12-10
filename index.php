@@ -3,12 +3,27 @@
     $header = 1;
     // Inclui o arquivo 'header.php', que contém código HTML e PHP
     include_once 'BD/web/header.php';
+    include_once 'BD/web/evento.php';
+
+    $evento = new Evento();
 ?>
 
     <div class="m-5">
         <p class="eventosR">EVENTOS RECENTES</p>
-        <div class = "barraE">
-            <img class="img-fluid evento" src="img/evento1.jpeg" alt="evento1">
+        <div class="barraE">
+            <?php
+            $eventos = $evento->selectEventosRindex();
+
+            // Verifica se há eventos para renderizar
+            if ($eventos["sucesso"] == 1 && !empty($eventos["eventos"])) {
+                // Chama a função para renderizar o carrossel
+                $evento->renderCarrosselIndex($eventos);
+            } else {
+                // Caso não haja eventos, você pode lidar com isso conforme necessário
+                echo "<div> <center> Nenhum evento encontrado. </center> </div>";
+            }?>
+            
+            <!-- <img class="img-fluid evento" src="img/evento1.jpeg" alt="evento1">
             <img class="img-fluid evento" src="img/evento2.jpeg" alt="evento2">
             <img class="img-fluid evento" src="img/evento3.jpeg" alt="evento3">
             <img class="img-fluid evento" src="img/evento4.jpeg" alt="evento4">
@@ -20,7 +35,7 @@
             <img class="img-fluid evento" src="img/evento10.jpg" alt="evento10">
             <img class="img-fluid evento" src="img/evento11.jpg" alt="evento11">
             <img class="img-fluid evento" src="img/evento12.jfif" alt="evento12">
-            <img class="img-fluid evento" src="img/evento13.jfif" alt="evento13">
+            <img class="img-fluid evento" src="img/evento13.jfif" alt="evento13"> -->
         </div>
     </div>
 
