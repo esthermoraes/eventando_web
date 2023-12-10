@@ -1,13 +1,17 @@
 /* Remova a altura fixa do modal */
-.modal-dialog {
+#myModal .modal-dialog {
     height: auto;
 }
 
-.modal-content, .modal-footer, .modal-header, .modal-body {
+#myModal .modal-content,
+#myModal .modal-footer,
+#myModal .modal-header,
+#myModal .modal-body {
     background-color: #dbe5eb;
 }
 
-.modal-content{
+
+#myModal .modal-content{
     width: 100%;
     border: 2px solid #9fcde8 !important;
 }
