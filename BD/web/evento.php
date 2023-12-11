@@ -109,7 +109,7 @@
                     <?php
                     foreach ($eventos["eventos"] as $evento) {
                         ?>
-                        <img src="<?= $evento['img'];?>" class="img-fluid evento" alt="Imagem do Evento">
+                        <img src="<?= $evento['img'];?>" class="evento" alt="Imagem do Evento">
                         <?php
                     }
             } 
