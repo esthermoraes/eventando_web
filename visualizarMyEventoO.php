@@ -13,47 +13,49 @@
     include_once 'BD/web/deletar_evento_online.php';
 ?>
 
-    <div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
-        <center><p>VISUALIZAR MEU EVENTO ONLINE</p></center>
-    </div>
+<div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
+    <center><p>VISUALIZAR MEU EVENTO ONLINE</p></center>
+</div>
 
-    <div class="container-fluid d-flex p-0 bagulhete mb-4">
-        <div class="col-8 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
-            <form method="post" action="visualizarMyEventoO.php">
-                <input type="hidden" name="id_evento" value = <?php echo $id_evento;?>/>
-                <p><?php echo htmlspecialchars($nome);?></p>
-                <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
-                <p><?php echo $privacidade;?></p>
-                
-                <div class="d-flex ms-2">
-                    <div class="form-floating">
-                        <p><?php echo $objetivo;?></p> 
-                        <p><?php echo $data_prevista;?> às <?php echo $horario;?></p>
+<div class="container-fluid d-flex p-0 bagulhete mb-4">
+    <div class="col-8 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
+        <form method="post" action="visualizarMyEventoO.php">
+            <input type="hidden" name="id_evento" value="<?php echo $id_evento;?>" />
+            <p><?php echo htmlspecialchars($nome);?></p>
+            <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
+            <p><?php echo $privacidade;?></p>
+            
+            <div class="d-flex ms-2">
+                <div class="form-floating">
+                    <p><?php echo $objetivo;?></p> 
+                    <p><?php echo $data_prevista;?> às <?php echo $horario;?></p>
 
-                        <p><strong>Endereço</strong></p>
-                        <p><?php echo $plataforma;?></p>
-                        <p><?php echo $link;?></p>
+                    <p><strong>Endereço</strong></p>
+                    <p><?php echo $plataforma;?></p>
+                    <p><?php echo $link;?></p>
 
-                        <p><strong>Complementos</strong></p>
-                        <p><?php echo $atracoes;?> </p>
-                        <p><?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
+                    <p><strong>Complementos</strong></p>
+                    <p><?php echo $atracoes;?> </p>
+                    <p><?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
 
-                        <a href="eventoO_editavel">
-                            <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2 me-2">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                            EDITAR EVENTO
+                    <div class="d-flex">
+                        <a href="eventoO_editavel.p"hp class="me-1">
+                            <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                EDITAR EVENTO
                             </button>
                         </a>
                         
-                        <button type="submit" id="btn-deletar" name= "deletar" class="botaoD mt-1 mb-2 me-1">
+                        <button type="submit" id="btn-deletar" name="deletar" class="botaoD mt-2 mb-2 me-2">
                             <i class="fa-regular fa-calendar-xmark"></i>
                             DELETAR EVENTO
                         </button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
     
 </body>
 </html>

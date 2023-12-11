@@ -39,17 +39,19 @@
                         <p><?php echo $buffet;?> </p>
                         <p><?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
 
-                        <a href="eventoP_editavel">
-                            <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2 me-2">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                            EDITAR EVENTO
+                        <div class="d-flex">
+                            <a href="eventoP_editavel.php" class="me-1">
+                                <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    EDITAR EVENTO
+                                </button>
+                            </a>
+                            
+                            <button type="submit" id="btn-deletar" name="deletar" class="botaoD mt-2 mb-2 me-2">
+                                <i class="fa-regular fa-calendar-xmark"></i>
+                                DELETAR EVENTO
                             </button>
-                        </a>
-                        
-                        <button type="submit" id="btn-deletar" name= "deletar" class="botaoD mt-1 mb-2 me-1">
-                            <i class="fa-regular fa-calendar-xmark"></i>
-                            DELETAR EVENTO
-                        </button>
+                        </div>
                     </div>  
                 </div>
             </form>
