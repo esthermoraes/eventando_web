@@ -1,11 +1,12 @@
 <?php
-    include_once 'BD/web/evento_presencial.php';
+    include_once 'evento_presencial.php';
 	
 	// Obtém informações do usuário da resposta da consulta ao banco de dados.
 	$evento = new EventoPresencial();
     $id_evento = $_GET['id'];
 	$resposta = $evento->select($id_evento);
     
+    $id_bairro = $resposta['nome'];
     $nome = $resposta['nome'];
 
     $img = $resposta['src_img'];
