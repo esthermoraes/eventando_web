@@ -1,3 +1,22 @@
+<?php
+    // Inclui os arquivos 'cadastrar.php' e 'entrar.php', que provavelmente contêm definições de classes ou funções relacionadas ao cadastro e entrada.
+    include_once 'BD/web/cadastrar.php';
+    include_once 'BD/web/entrar.php';
+
+    // Verifica se há um parâmetro GET chamado "Cadastro".
+    if (isset($_GET["Cadastro"])) {
+        // Verifica se o valor do parâmetro "Cadastro" é "sucesso".
+        if ($_GET["Cadastro"] == "sucesso") {
+            // Se for "sucesso", exibe um alerta de sucesso.
+            echo "<script> alert('Cadastro realizado com sucesso')</script>";
+        } 
+        else {
+            // Se não for "sucesso", exibe um alerta de erro.
+            echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";
+        }
+    }
+?>
+
 <!-- Aqui iniciamos o código html -->
 <html>
 <head>
@@ -23,25 +42,6 @@
     <!-- Definimos o ícone na aba da página-->
     <link rel="shortcut icon" type="image/png" href="img/calendar_icon.png"/>
 </head>
-
-<?php
-    // Inclui os arquivos 'cadastrar.php' e 'entrar.php', que provavelmente contêm definições de classes ou funções relacionadas ao cadastro e entrada.
-    include_once 'BD/web/cadastrar.php';
-    include_once 'BD/web/entrar.php';
-
-    // Verifica se há um parâmetro GET chamado "Cadastro".
-    if (isset($_GET["Cadastro"])) {
-        // Verifica se o valor do parâmetro "Cadastro" é "sucesso".
-        if ($_GET["Cadastro"] == "sucesso") {
-            // Se for "sucesso", exibe um alerta de sucesso.
-            echo "<script> alert('Cadastro realizado com sucesso')</script>";
-        } 
-        else {
-            // Se não for "sucesso", exibe um alerta de erro.
-            echo "<script>alert('Desculpe, ocorreu um erro e não foi possível concluir o cadastro. Por favor, tente novamente.')</script>";
-        }
-    }
-?>
 
 <body>
     <div class="container m-10">
