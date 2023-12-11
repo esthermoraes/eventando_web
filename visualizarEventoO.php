@@ -13,14 +13,13 @@
 ?>
 
     <div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
-        <center><p class="me-5">VISUALIZAR EVENTO ONLINE</p></center>
+        <center><p>VISUALIZAR EVENTO ONLINE</p></center>
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete mb-4">
         <div class="col-8 d-flex flex-column ms-2 mt-2 justify-content-between align-items-start primeiraparte">
             <p><?php echo htmlspecialchars($nome);?></p>
             <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
-            <p class="privacidade"><?php echo $privacidade;?></p>
             
             <div class="d-flex ms-2">
                 <div class="form-floating">

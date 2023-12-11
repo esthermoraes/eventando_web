@@ -96,7 +96,7 @@
             }
         
             // Obtém o ID da plataforma e o ID do tipo de contato.
-            $plataforma_id = isset($evento['fk_plataforma_plataforma_pk']) ? $evento['fk_plataforma_plataforma_pk'] : null;
+            $plataforma_id = $evento['fk_plataforma_plataforma_pk'];
             $tipo_contato_id = isset($evento['fk_tipo_contato_id_tipo_contato']) ? $evento['fk_tipo_contato_id_tipo_contato'] : null;
         
             // Consulta para obter a plataforma.
@@ -125,14 +125,15 @@
             $resposta['id_evento'] = $evento['id_evento'];
             $resposta["nome"] = $evento['nome'];
             $resposta["privacidade_restrita"] = $evento['privacidade_restrita'];
+            $resposta['tipo_privacidade'] = $evento['privacidade_restrita'] ? 'PRIVADO' : 'PÚBLICO';
             $resposta["src_img"] = $evento['src_img'];
             $resposta["data_prevista"] = $evento['data_prevista'];
-            $resposta["horario"] = $evento['horario'];
             $resposta["objetivo"] = $evento['objetivo'];
-            $resposta["atracoes"] = isset($evento['atracoes']) ? $evento['atracoes'] : 'sem atracoes';
+            $resposta["horario"] = $evento['horario'];
+            $resposta["atracoes"] = !empty($evento['atracoes']) ? $evento['atracoes'] : 'sem atrações';
             $resposta["link"] = $evento['link']; 
-            $resposta['plataforma_evento'] = isset($plataforma['plataforma']);
-            $resposta['tipo_contato_evento'] = isset($tipo_contato['tipo_contato']) ? $tipo_contato['tipo_contato'] : 'sem tipo';
+            $resposta['plataforma_evento'] = $plataforma['plataforma'];
+            $resposta['tipo_contato'] = isset($tipo_contato['tipo_contato']) ? $tipo_contato['tipo_contato'] : 'sem tipo';
             $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         
             return $resposta;

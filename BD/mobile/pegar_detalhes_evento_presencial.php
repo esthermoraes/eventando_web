@@ -6,7 +6,7 @@
     $resposta = array();
     
     // verifica se o usuário conseguiu autenticar
-    //if(autenticar($db_con)){
+    if(autenticar($db_con)){
         // Verifica se o parametro email foi enviado na requisicao
         if (isset($_GET["evento_id"])){
             
@@ -286,12 +286,12 @@
             $resposta["sucesso"] = 0;
             $resposta["erro"] = "Campo requerido nao preenchido";
         }
-//}
-    //else{
-        // senha ou email nao confere
-        //$resposta["sucesso"] = 0;
-        //$resposta["error"] = "Email ou senha nao confere";
-    //}
+}
+    else{
+        //senha ou email nao confere
+        $resposta["sucesso"] = 0;
+        $resposta["error"] = "Email ou senha nao confere";
+    }
 
     // Fecha a conexao com o BD
     $db_con = null;

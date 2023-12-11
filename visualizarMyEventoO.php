@@ -14,7 +14,7 @@
 ?>
 
     <div class="container-fluid mt-5 ms-0 d-flex justify-content-center titulo">
-        <center><p class="me-5">VISUALIZAR MEU EVENTO ONLINE</p></center>
+        <center><p>VISUALIZAR MEU EVENTO ONLINE</p></center>
     </div>
 
     <div class="container-fluid d-flex p-0 bagulhete mb-4">
@@ -23,7 +23,7 @@
                 <input type="hidden" name="id_evento" value = <?php echo $id_evento;?>/>
                 <p><?php echo htmlspecialchars($nome);?></p>
                 <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
-                <p class="privacidade"><?php echo $privacidade;?></p>
+                <p><?php echo $privacidade;?></p>
                 
                 <div class="d-flex ms-2">
                     <div class="form-floating">

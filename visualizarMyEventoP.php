@@ -22,7 +22,7 @@
             <form method="post" action="visualizarMyEventoP.php">
                 <p><?php echo htmlspecialchars($nome);?></p>
                 <img src="<?php echo $img;?>" alt="foto do evento" class="imagem">
-                <p class="privacidade"><?php echo $privacidade;?></p>
+                <p><?php echo $privacidade;?></p>
                 
                 <div class="d-flex ms-2">
                     <div class="form-floating">
@@ -34,7 +34,6 @@
                         <p> <?php echo $bairro;?> - <?php echo $cidade;?> - <?php echo $estado;?> </p>
                         <p> CEP <?php echo $cep;?> </p>
                         
-
                         <p><strong>Complementos</strong></p>
                         <p><?php echo $atracoes;?> </p>
                         <p><?php echo $buffet;?> </p>

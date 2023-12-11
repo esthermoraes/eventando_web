@@ -177,7 +177,7 @@
             $sql = 'SELECT 
                 E.id_evento,
                 E.nome,
-                E.privacidade_restrita,
+                CAST(E.privacidade_restrita AS BOOLEAN) AS privacidade_restrita,
                 E.src_img,
                 E.data_prevista,
                 E.horario,    
@@ -190,16 +190,19 @@
                 BC.bairro,
                 C.cidade,
                 ES.estado,
-                PTC.FK_TIPO_CONTATO_id_tipo_contato AS tipo_contato_id,
+                PTC.FK_TIPO_CONTATO_id_tipo_contato AS id_tipo_contato,
+                TC.tipo_contato,
                 B.buffet,
                 L.cep,
                 PTC.contato
-            FROM 
+            FROM
                 EVENTO E
             LEFT JOIN 
                 EVENTO_PRESENCIAL EP ON E.id_evento = EP.FK_EVENTO_id_evento
             LEFT JOIN 
                 POSSUI_TIPO_CONTATO_EVENTO PTC ON E.id_evento = PTC.FK_EVENTO_id_evento
+            LEFT JOIN 
+                TIPO_CONTATO TC ON PTC.FK_TIPO_CONTATO_id_tipo_contato = TC.id_tipo_contato
             LEFT JOIN 
                 LOCALIZACAO L ON EP.FK_LOCALIZACAO_id_localizacao = L.id_localizacao
             LEFT JOIN 
@@ -233,12 +236,13 @@
             $resposta['id_evento'] = $evento['id_evento'];
             $resposta["nome"] = $evento['nome'];
             $resposta["privacidade_restrita"] = $evento['privacidade_restrita'];
+            $resposta['tipo_privacidade'] = $evento['privacidade_restrita'] ? 'PRIVADO' : 'PÚBLICO';
             $resposta["src_img"] = $evento['src_img'];
             $resposta["data_prevista"] = $evento['data_prevista'];
-            $resposta["horario"] = isset($evento['horario']);
-            $resposta["objetivo"] = isset($evento['objetivo']);
-            $resposta["atracoes"] = isset($evento['atracoes']) ? $evento['atracoes'] : 'sem atrações';
-            $resposta['buffet'] = isset($evento['buffet']) ? $evento['buffet'] : 'sem buffet';
+            $resposta["objetivo"] = $evento['objetivo'];
+            $resposta["horario"] = $evento['horario'];
+            $resposta["atracoes"] = !empty($evento['atracoes']) ? $evento['atracoes'] : 'sem atrações';
+            $resposta['buffet'] = !empty($evento['buffet']) ? $evento['buffet'] : 'sem buffet';
             $resposta['cep'] = $evento['cep'];
             $resposta['estado'] = $evento['estado'];
             $resposta['cidade'] = $evento['cidade'];
@@ -246,7 +250,7 @@
             $resposta['tipo_logradouro'] = $evento['tipo_logradouro'];
             $resposta['logradouro'] = $evento['logradouro'];
             $resposta['numero'] = $evento['numero'];
-            $resposta['tipo_contato_evento'] = isset($evento['tipo_contato']) ? $evento['tipo_contato'] : 'sem tipo';
+            $resposta['tipo_contato'] = isset($evento['tipo_contato']) ? $evento['tipo_contato'] : 'sem tipo';
             $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         
             return $resposta;

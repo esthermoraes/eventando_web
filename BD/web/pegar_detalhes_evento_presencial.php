@@ -9,7 +9,7 @@
     $nome = $resposta['nome'];
 
     $img = $resposta['src_img'];
-    $privacidade = $resposta['privacidade_restrita'];
+    $privacidade = $resposta['tipo_privacidade'];
     $objetivo = $resposta['objetivo'];
     $data_prevista = $resposta['data_prevista'];
     $horario = $resposta['horario'];
@@ -24,6 +24,6 @@
 
     $atracoes = $resposta['atracoes'];
     $buffet = $resposta['buffet'];
-    $tipo_contato = $resposta['tipo_contato_evento'];
+    $tipo_contato = $resposta['tipo_contato'];
     $contato = $resposta['contato'];
 ?>
