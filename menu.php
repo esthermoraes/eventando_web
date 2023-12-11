@@ -59,7 +59,8 @@
                                                     <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
                                                 </a>
                                                 <?php
-                                            } else {
+                                            } 
+                                            else {
                                                 ?>
                                                 <a href="./visualizarMyEventoO.php?id=<?php echo $evento["id"] ?>">
                                                     <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
