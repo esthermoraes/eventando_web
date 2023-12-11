@@ -193,7 +193,8 @@
                                             $linha7 = $consulta7->fetch(PDO::FETCH_ASSOC);
                                             $estado_id = $linha7["FK_ESTADO_id_estado"];
 
-                                            $consulta8 = $db_con->prepare("SELECT estado FROM ESTADO WHERE id_estado = '$estado_id'");
+                                            $consulta8 = $db_con->prepare("SELECT estado FROM ESTADO WHERE id_estado = :estado_id");
+					    $consulta8->bindParam(':estado_id', $estado_id, PDO::PARAM_INT);
                                             if($consulta8->execute()){
                                                 $linha8 = $consulta8->fetch(PDO::FETCH_ASSOC);
                                                 $estado = $linha8["estado"];
