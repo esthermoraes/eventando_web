@@ -46,10 +46,10 @@
            $result =  $usuario->insert();
         }
         catch (Exception $e) {
-            header('Location: login.php?Cadastro=false');
+               echo "<script>window.location.href = 'login.php?Cadastro=false';</script>";
         }
         if($result){
-           header('Location: login.php?Cadastro=sucesso');
+             echo "<script>window.location.href = 'login.php?Cadastro=sucesso';</script>";
         }
     }	
 ?>
