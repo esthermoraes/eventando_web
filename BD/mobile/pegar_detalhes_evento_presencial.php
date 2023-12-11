@@ -216,7 +216,7 @@
 
                                                 $consulta9 = $db_con->prepare("SELECT buffet FROM buffet WHERE buffet_PK = '$FK_buffet_buffet_PK'");
                                                 if($consulta9->execute()){
-                                                    $linha9 = $consulta8->fetch(PDO::FETCH_ASSOC);
+                                                    $linha9 = $consulta9->fetch(PDO::FETCH_ASSOC);
 						    var_dump($linha9);
                                                     $buffet = $linha9["buffet"];
 
