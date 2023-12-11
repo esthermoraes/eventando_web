@@ -187,8 +187,8 @@
                                         $linha6 = $consulta6->fetch(PDO::FETCH_ASSOC);
                                         $cidade = $linha6["cidade"];
 
-                                        $consulta7 = $db_con->prepare("SELECT FK_ESTADO_id_estado FROM POSSUI_CIDADE_ESTADO WHERE 
-                                        FK_CIDADE_id_cidade = '$cidade_id'");
+                                        $consulta7 = $db_con->prepare("SELECT FK_ESTADO_id_estado FROM POSSUI_CIDADE_ESTADO WHERE FK_CIDADE_id_cidade = :cidade_id");
+					$consulta7->bindParam(':cidade_id', $cidade_id, PDO::PARAM_INT);
                                         if($consulta7->execute()){
                                             $linha7 = $consulta7->fetch(PDO::FETCH_ASSOC);
                                             $estado_id = $linha7["FK_ESTADO_id_estado"];
