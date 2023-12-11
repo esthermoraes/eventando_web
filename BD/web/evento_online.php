@@ -81,6 +81,7 @@
         }
 
         public function select($id) {
+            // Consulta principal com INNER JOIN
             $sql = 'SELECT * FROM EVENTO_ONLINE
                     INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento INNER JOIN 
                     POSSUI_TIPO_CONTATO_EVENTO ON EVENTO.id_evento = POSSUI_TIPO_CONTATO_EVENTO.FK_EVENTO_id_evento
@@ -90,9 +91,39 @@
             $stmt->execute();
             $evento = $stmt->fetch(PDO::FETCH_ASSOC);
         
-            // Verifica se o evento foi encontrado.
+            // Se o evento não foi encontrado na primeira consulta, faz uma segunda consulta sem INNER JOIN
             if ($evento === false) {
-                return false;
+                $sqlSemTipoContato = 'SELECT * FROM EVENTO_ONLINE
+                                      INNER JOIN EVENTO ON EVENTO_ONLINE.FK_EVENTO_id_evento = EVENTO.id_evento
+                                      WHERE EVENTO_ONLINE.FK_EVENTO_id_evento = ?';
+                $stmtSemTipoContato = Database::prepare($sqlSemTipoContato);
+                $stmtSemTipoContato->bindParam(1, $id);
+                $stmtSemTipoContato->execute();
+                $eventoSemTipoContato = $stmtSemTipoContato->fetch(PDO::FETCH_ASSOC);
+        
+                // Se o evento também não foi encontrado na segunda consulta, retorna false
+                if ($eventoSemTipoContato === false) {
+                    return false;
+                }
+        
+                // Retorna as informações do evento sem o INNER JOIN com POSSUI_TIPO_CONTATO_EVENTO
+                $resposta = array(
+                    'id_evento' => $eventoSemTipoContato['id_evento'],
+                    'nome' => $eventoSemTipoContato['nome'],
+                    'privacidade_restrita' => $eventoSemTipoContato['privacidade_restrita'],
+                    'tipo_privacidade' => $eventoSemTipoContato['privacidade_restrita'] ? 'PRIVADO' : 'PÚBLICO',
+                    'src_img' => $eventoSemTipoContato['src_img'],
+                    'data_prevista' => $eventoSemTipoContato['data_prevista'],
+                    'objetivo' => $eventoSemTipoContato['objetivo'],
+                    'horario' => $eventoSemTipoContato['horario'],
+                    'atracoes' => !empty($eventoSemTipoContato['atracoes']) ? $eventoSemTipoContato['atracoes'] : 'sem atrações',
+                    'link' => $eventoSemTipoContato['link'],
+                    'plataforma_evento' => null,  // Defina como necessário
+                    'tipo_contato' => 'sem tipo',
+                    'contato' => isset($eventoSemTipoContato['contato']) ? $eventoSemTipoContato['contato'] : 'sem contato',
+                );
+        
+                return $resposta;
             }
         
             // Obtém o ID da plataforma e o ID do tipo de contato.
@@ -117,11 +148,14 @@
                 $stmtTipoContato->bindParam(1, $tipo_contato_id);
                 $stmtTipoContato->execute();
                 $tipo_contato = $stmtTipoContato->fetch(PDO::FETCH_ASSOC);
+            } else {
+                // Tipo de contato não encontrado, ajuste a resposta conforme necessário.
+                $tipo_contato = array('tipo_contato' => 'sem tipo');
             }
         
             // Monta um array com as informações do evento e retorna.
             $resposta = array();
-            
+        
             $resposta['id_evento'] = $evento['id_evento'];
             $resposta["nome"] = $evento['nome'];
             $resposta["privacidade_restrita"] = $evento['privacidade_restrita'];
@@ -137,7 +171,7 @@
             $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         
             return $resposta;
-        }
+        }        
 
         public function delete($id_evento) {
             $pdo = Database::getInstance();
