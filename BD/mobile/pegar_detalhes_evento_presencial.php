@@ -72,6 +72,7 @@
                                     FK_BAIRRO_id_bairro = '$FK_BAIRRO_id_bairro'");
                                     if($consulta5->execute()){
                                         $linha5 = $consulta5->fetch(PDO::FETCH_ASSOC);
+					var_dump($linha5);
                                         $cidade_id = $linha5["FK_CIDADE_id_cidade"];
 					                    echo $cidade_id;
                                         $consulta6 = $db_con->prepare("SELECT cidade FROM CIDADE WHERE id_cidade = :cidade_id");
