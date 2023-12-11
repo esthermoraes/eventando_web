@@ -1,12 +1,13 @@
 <?php
-    //Conexão
-    include_once 'usuario.php';
-    //include_once 'BD/web/login_banco.php';
 
-    //Se a sessão não existir, então inicia a sessão
+     //Se a sessão não existir, então inicia a sessão
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+
+    //Conexão
+    include_once 'usuario.php';
+    //include_once 'BD/web/login_banco.php';
 
     // Função para limpar strings
     function sanitizeString($input) {
