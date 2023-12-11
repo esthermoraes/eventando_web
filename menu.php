@@ -56,14 +56,14 @@
                                             if ($evento['formato'] == 'presencial') {
                                                 ?>
                                                 <a href="./visualizarMyEventoP.php?id=<?php echo $evento["id"] ?>">
-                                                    <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
+                                                    <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 mt-2">
                                                 </a>
                                                 <?php
                                             } 
                                             else {
                                                 ?>
                                                 <a href="./visualizarMyEventoO.php?id=<?php echo $evento["id"] ?>">
-                                                    <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 ms-2 mt-2">
+                                                    <img src="<?= $evento['img']; ?>" alt="Imagem do Evento" class="img-fluid evento1 mt-2">
                                                 </a>
                                                 <?php
                                             }
