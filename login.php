@@ -1,8 +1,10 @@
+<!-- Aqui iniciamos o código html -->
+<html>
 <?php
     // Inclui os arquivos 'cadastrar.php' e 'entrar.php', que provavelmente contêm definições de classes ou funções relacionadas ao cadastro e entrada.
     include_once 'BD/web/cadastrar.php';
     include_once 'BD/web/entrar.php';
-
+    
     // Verifica se há um parâmetro GET chamado "Cadastro".
     if (isset($_GET["Cadastro"])) {
         // Verifica se o valor do parâmetro "Cadastro" é "sucesso".
@@ -16,9 +18,6 @@
         }
     }
 ?>
-
-<!-- Aqui iniciamos o código html -->
-<html>
 <head>
     <meta charset = "utf-8">
     <!-- Definição a escala da página para se adequar ao tamanho da tela do dispositivo -->
