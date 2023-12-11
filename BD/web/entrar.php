@@ -26,7 +26,7 @@
             if (password_verify($senha1, $senha_db)) {
                 $_SESSION['email_txt'] = $Emailsanitized1;
                 $_SESSION['nome_txt'] = $tabela_usuario['nome_usuario'];
-                header('Location: menu.php?login_success=true');
+                window.location.href = 'menu.php?login_success=true';
             } 
             else {
                 echo "<script>alert('Credenciais de email ou senha inválidas. Tente novamente.');</script>";
