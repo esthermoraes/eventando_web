@@ -60,8 +60,3 @@
         ?>
     </div>
 </body>
-
-<?php
-    // Inclui o arquivo 'footer.php', que geralmente contém código HTML e PHP relacionado ao rodapé da página
-    include_once 'BD/web/footer.php';
-?>
