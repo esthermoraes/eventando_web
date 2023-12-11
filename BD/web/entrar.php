@@ -1,11 +1,12 @@
 <?php
-    //Conexão
-    include_once 'usuario.php';
-
+    
     //Se a sessão não existir, então inicia a sessão
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+
+    //Conexão
+    include_once 'usuario.php';
 
     // Esta condição verifica se o formulário de login foi enviado
     if (isset($_POST["entrar"])) {
