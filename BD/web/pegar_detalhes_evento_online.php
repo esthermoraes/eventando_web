@@ -5,7 +5,6 @@
 	$evento = new EventoOnline();
     $id_evento = $_GET['id'];
 	$resposta = $evento->select($id_evento);
-    var_dump($resposta);
     
     $id_evento = $resposta['id_evento'];
     $nome = $resposta['nome'];

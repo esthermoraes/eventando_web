@@ -217,6 +217,14 @@
                 $stmt_myE = Database::prepare($sql_myE);
                 $stmt_myE->bindParam(":id_user", $id_user, PDO::PARAM_INT);
                 $stmt_myE->execute();
+
+                $stmt_myE->execute();
+
+                // Verificar se há erros no PDO
+                $errorInfo = $stmt_myE->errorInfo();
+                if ($errorInfo[0] !== PDO::ERR_NONE) {
+                    die("Erro no PDO: " . $errorInfo[2]);
+                }
             }
 
             // Construir a resposta
