@@ -82,65 +82,78 @@
   
                 <div class="col-md-6">
                     <p id="EventosM">EVENTOS DO MOMENTO</p>
-                    <table class="table table-hover scrollable-table" style="border-radius: 4px;">
-                        <thead>
-                            <tr style="background: #d9d5d4">
-                                <th scope="col">Domingo</th>
-                                <th scope="col">10 de Dezembro</th>
-                            </tr>
-                        </thead>
-                        <tbody style="background: #ededed">
-                            <tr>
-                                <td>14h00</td>
-                                <td style="color: #b25abf; font-weight: bold;">Fantasia Fest</td>
-                            </tr>
-                            <tr>
-                                <td>16h00</td>
-                                <td style="color: #b25abf; font-weight: bold;">Inovação Insights</td>                            
-                            </tr>
-                            <tr>
-                                <td>19h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Conexão Cultural</td>
-                            </tr>
-                        </tbody>
+                    <!-- <div class="scrollable-table-container"> -->
+                        <table class="table table-hover scrollable-table mb-5" style="border-radius: 4px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Segunda-feira</th>
+                                    <th scope="col">11 de Dezembro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8:30</td>
+                                    <td style="color: #b25abf; font-weight: bold;">Reunião de TCC</td>                            
+                                </tr>
+                            </tbody>
 
-                        <thead>
-                            <tr>
-                                <th scope="col">Segunda-feira</th>
-                                <th scope="col">11 de Dezembro</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>8h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Aventura Arte</td>                            
-                            </tr>
-                            <tr>
-                                <td>13h30</td>
-                                <td style="color: #b25abf; font-weight: bold;">Exploração Express</td>                            
-                            </tr>
-                            <tr>
-                                <td>22h00</td>                            
-                                <td style="color: #b25abf; font-weight: bold;">Criativa com Classe</td>                            
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col">Terça-feira</th>
-                                <th scope="col">12 de Dezembro</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10h45</td>                            
-                                <td style="color: #b25abf; font-weight: bold;">Radiante Reunião</td>                            
-                            </tr>
-                            <tr>
-                                <td>15h30</td>                            
-                                <td style="color: #b25abf; font-weight: bold;">Inspirar Interação</td>                           
-                            </tr>
-                        </tbody>
-                    </table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Terça-feira</th>
+                                    <th scope="col">12 de Dezembro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>09:20</td>                            
+                                    <td style="color: #b25abf; font-weight: bold;">Eventando</td>                            
+                                </tr>
+                            </tbody>
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Quarta-feira</th>
+                                    <th scope="col">13 de Dezembro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>19:00</td>                            
+                                    <td style="color: #b25abf; font-weight: bold;">Formatura</td>                            
+                                </tr>
+                            </tbody>
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Quinta-feira</th>
+                                    <th scope="col">14 de Dezembro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>15:00</td>                            
+                                    <td style="color: #b25abf; font-weight: bold;">Café com os aliados</td>                            
+                                </tr>
+                            </tbody>
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sexta-feira</th>
+                                    <th scope="col">15 de Dezembro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10:00</td>                            
+                                    <td style="color: #b25abf; font-weight: bold;">UBU</td>                            
+                                </tr>
+                                <tr>
+                                    <td>00:00</td>                            
+                                    <td style="color: #b25abf; font-weight: bold;">Férias</td>                            
+                                </tr>
+                            </tbody>
+                        </table>
+                    <!-- </table> -->
                 </div>
             </div>
         </div>

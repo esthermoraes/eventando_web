@@ -105,6 +105,18 @@
                 if ($eventoSemTipoContato === false) {
                     return false;
                 }
+
+                $plataforma_id = $eventoSemTipoContato['fk_plataforma_plataforma_pk'];
+
+                // Consulta para obter a plataforma.
+                $plataforma = null;
+                if ($plataforma_id !== null) {
+                    $sqlPlataforma = 'SELECT plataforma FROM plataforma WHERE plataforma_PK = ?';
+                    $stmtPlataforma = Database::prepare($sqlPlataforma);
+                    $stmtPlataforma->bindParam(1, $plataforma_id);
+                    $stmtPlataforma->execute();
+                    $plataforma = $stmtPlataforma->fetch(PDO::FETCH_ASSOC);
+                }
         
                 // Retorna as informações do evento sem o INNER JOIN com POSSUI_TIPO_CONTATO_EVENTO
                 $resposta = array(
@@ -118,9 +130,9 @@
                     'horario' => $eventoSemTipoContato['horario'],
                     'atracoes' => !empty($eventoSemTipoContato['atracoes']) ? $eventoSemTipoContato['atracoes'] : 'sem atrações',
                     'link' => $eventoSemTipoContato['link'],
-                    'plataforma_evento' => null,  // Defina como necessário
+                    'plataforma' => $plataforma['plataforma'],
                     'tipo_contato' => 'sem tipo',
-                    'contato' => isset($eventoSemTipoContato['contato']) ? $eventoSemTipoContato['contato'] : 'sem contato',
+                    'contato' => 'sem contato',
                 );
         
                 return $resposta;
@@ -166,7 +178,7 @@
             $resposta["horario"] = $evento['horario'];
             $resposta["atracoes"] = !empty($evento['atracoes']) ? $evento['atracoes'] : 'sem atrações';
             $resposta["link"] = $evento['link']; 
-            $resposta['plataforma_evento'] = $plataforma['plataforma'];
+            $resposta['plataforma'] = $plataforma['plataforma'];
             $resposta['tipo_contato'] = isset($tipo_contato['tipo_contato']) ? $tipo_contato['tipo_contato'] : 'sem tipo';
             $resposta["contato"] = isset($evento['contato']) ? $evento['contato'] : 'sem contato';
         

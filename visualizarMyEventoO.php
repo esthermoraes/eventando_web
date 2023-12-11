@@ -46,12 +46,12 @@
                     <p><?php echo $tipo_contato;?> - <?php echo $contato;?> </p>
 
                     <div class="d-flex">
-                        <a href="eventoO_editavel.p"hp class="me-1">
+                        <!-- <a href="eventoO_editavel.php" class="me-1">
                             <button type="submit" id="btn-salvar" class="botaoS mt-2 mb-2">
                                 <i class="fa-regular fa-pen-to-square"></i>
                                 EDITAR EVENTO
                             </button>
-                        </a>
+                        </a> -->
                         
                         <button type="submit" id="btn-deletar" name="deletar" class="botaoD mt-2 mb-2 me-2">
                             <i class="fa-regular fa-calendar-xmark"></i>

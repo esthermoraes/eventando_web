@@ -42,7 +42,7 @@
 </div>
 
 <div class="container-fluid  p-0 bagulhete d-flex">
-    <div class="div_passos">
+    <!-- <div class="div_passos">
         <div id="btn-passo1" class="passo1 mb-2">
             <p class="m-0">PASSO 1</p>
         </div>
@@ -52,7 +52,7 @@
         <div class="passo3">
             <p class="m-0">PASSO 3</p>
         </div>
-    </div>
+    </div> -->
 
     <form method="POST" enctype="multipart/form-data" class="w-100 row p-4 div-passo1 <?= ($passo == 1) ? 'd-flex' : 'd-none' ?>">
         <input type="hidden" name="passo" value="1">

@@ -77,7 +77,7 @@ body{
     border: solid 2px;
     border-color: #770089;
     cursor: pointer;
-    margin-left: 1.7rem;
+    margin-left: 0.5rem;
 }
 
 .blur{
@@ -100,6 +100,11 @@ body{
 
 thead{
    background-color: #d9d5d4 !important; 
+}
+
+.scrollable-table-container {
+    max-height: 400px; /* Defina a altura máxima desejada */
+    overflow-y: auto;
 }
 
 /* Definindo a estilização do html scrollbar*/

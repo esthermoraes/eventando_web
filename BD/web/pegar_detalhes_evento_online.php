@@ -15,7 +15,7 @@
     $data_prevista = $resposta['data_prevista'];
     $horario = $resposta['horario'];
 
-    $plataforma = $resposta['plataforma_evento'];
+    $plataforma = $resposta['plataforma'];
     $link = $resposta['link'];
 
     $atracoes = $resposta['atracoes'];
