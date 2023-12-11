@@ -230,11 +230,11 @@
                     $evento["img"] = $linha["src_img"];
 
                     // Adiciona a informação se o evento é presencial ou online
-                    if (!empty($linha["evento_presencial"]) && empty($linha["evento_online"])) {
+                    if (!empty($linha["evento_presencial"])) {
                         $evento["formato"] = "presencial";
-                    } elseif (empty($linha["evento_presencial"]) && !empty($linha["evento_online"])) {
+                    } elseif (!empty($linha["evento_online"])) {
                         $evento["formato"] = "online";
-                    }                    
+                    }                                      
 
                     // Adiciona o evento no array de eventos.
                     array_push($resposta["eventos"], $evento);

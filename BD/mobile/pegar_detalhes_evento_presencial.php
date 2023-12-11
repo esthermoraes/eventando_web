@@ -205,7 +205,7 @@
                 
                     $consulta->bindParam(1, $id);
                 
-                    if ($consulta->execute()) {
+                    if ($consulta2->execute()) {
                         $evento = $consulta->fetch(PDO::FETCH_ASSOC);
                 
                         if ($evento === false) {

@@ -10,7 +10,7 @@
     $nome = $resposta['nome'];
 
     $img = $resposta['src_img'];
-    $privacidade = $resposta['tipo_privacidade'];
+    $privacidade = $resposta['privacidade_restrita'];
     $objetivo = $resposta['objetivo'];
     $data_prevista = $resposta['data_prevista'];
     $horario = $resposta['horario'];
