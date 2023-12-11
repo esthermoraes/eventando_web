@@ -82,11 +82,11 @@
   
                 <div class="col-md-6">
                     <p id="EventosM">EVENTOS DO MOMENTO</p>
-                    <table class="table table-hover" style="border-radius: 4px;">
+                    <table class="table table-hover scrollable-table" style="border-radius: 4px;">
                         <thead>
                             <tr style="background: #d9d5d4">
-                                <th scope="col">Segunda-feira</th>
-                                <th scope="col">27 de Novembro</th>
+                                <th scope="col">Domingo</th>
+                                <th scope="col">10 de Dezembro</th>
                             </tr>
                         </thead>
                         <tbody style="background: #ededed">
@@ -106,8 +106,8 @@
 
                         <thead>
                             <tr>
-                                <th scope="col">Terça-feira</th>
-                                <th scope="col">28 de Novembro</th>
+                                <th scope="col">Segunda-feira</th>
+                                <th scope="col">11 de Dezembro</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -126,8 +126,8 @@
                         </tbody>
                         <thead>
                             <tr>
-                                <th scope="col">Quarta-feira</th>
-                                <th scope="col">29 de Novembro</th>
+                                <th scope="col">Terça-feira</th>
+                                <th scope="col">12 de Dezembro</th>
                             </tr>
                         </thead>
                         <tbody>

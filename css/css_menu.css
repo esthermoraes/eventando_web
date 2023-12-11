@@ -102,11 +102,6 @@ thead{
    background-color: #d9d5d4 !important; 
 }
 
-.table-wrapper {
-    max-height: 300px; /* Defina a altura máxima desejada */
-    overflow-y: auto; /* Adiciona a barra de rolagem vertical quando necessário */
-}
-
 /* Definindo a estilização do html scrollbar*/
 html ::-webkit-scrollbar {
     height: 14px;
