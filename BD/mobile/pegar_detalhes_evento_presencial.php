@@ -288,7 +288,7 @@
         }
 }
     else{
-        senha ou email nao confere
+        //senha ou email nao confere
         $resposta["sucesso"] = 0;
         $resposta["error"] = "Email ou senha nao confere";
     }
