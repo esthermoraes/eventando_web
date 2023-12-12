@@ -38,36 +38,27 @@
         <div class="ms-5 me-5 mb-1 teste">
 			<div class="ms-2 me-2 mt-5 mb-5 gx-5">
 				<div class="row m-2 justify-content-start">
-
 					<?php
 					$eventos = $evento->selectFavoritos();
 
 					if ($eventos["sucesso"] == 1 && isset($eventos["eventos"])) {
-						$counter = 0;
-
 						foreach ($eventos["eventos"] as $evento) {
-							if ($counter % 8 == 0) {
-								// Start a new row after every 8 cards
-								echo '<div class="row m-2 justify-content-start">';
-							}
-
 							?>
-							<div class="col-md-3" style="margin-bottom: 10px; margin-right: 10px;">
+							<div class="col-md-3 mb-4">
 								<?php
 								if ($evento['formato'] == 'presencial') {
 									?>
 									<a href="./visualizarEventoP.php?id=<?php echo $evento["id"]?>">
-										<div class="card bg-transparent config-card p-0">
-											<img src="<?php echo $evento['img']; ?>" class="card-img-top config-img" alt="foto evento">
+										<div class="card bg-transparent config-card p-0 mt-2">
+											<img src="<?php echo $evento['img']; ?>" class="card-img config-img" alt="foto evento">
 										</div>
 									</a>
 									<?php
-								} 
-								else {
+								} else {
 									?>
 									<a href="./visualizarEventoO.php?id=<?php echo $evento["id"]?>">
-										<div class="card bg-transparent config-card p-0">
-											<img src="<?php echo $evento['img']; ?>" class="card-img-top config-img" alt="foto evento">
+										<div class="card bg-transparent config-card p-0 mt-2">
+											<img src="<?php echo $evento['img']; ?>" class="card-img config-img" alt="foto evento">
 										</div>
 									</a>
 									<?php
@@ -75,25 +66,13 @@
 								?>
 							</div>
 							<?php
-
-							// Increment the counter
-							$counter++;
-
-							// Close the row after every 8 cards
-							if ($counter % 8 == 0) {
-								echo '</div>';
-							}
 						}
-
-						// Close the row if it's not already closed
-						if ($counter % 8 != 0) {
-							echo '</div>';
-						}
-					} 
-					else {
+					} else {
 						echo "<div> <center> Nenhum evento favoritado. </center> </div>";
 					}
 					?>
+
+
 
 				</div>
 
